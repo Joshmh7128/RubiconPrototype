@@ -17,7 +17,7 @@ public class GunScript : MonoBehaviour
     private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
     private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
     private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after firing
-    private bool drawLaser = false;                                      // Whether or not to draw the laser this frame
+    //private bool drawLaser = false;                                      // Whether or not to draw the laser this frame
 
 
     void Start()
@@ -82,16 +82,16 @@ public class GunScript : MonoBehaviour
         // Turn on our line renderer
         laserLine.enabled = true;
 
-        drawLaser = true;
+        //drawLaser = true;
         //Wait for .07 seconds
         yield return shotDuration;
-        drawLaser = false;
+        //drawLaser = false;
 
         // Deactivate our line renderer after waiting
         laserLine.enabled = false;
     }
 
-    private void LateUpdate()
+    /*private void LateUpdate()
     {
         //if laser tracking is on, make sure laser start point is on barrel this frame
         if(laserTracking)
@@ -101,5 +101,5 @@ public class GunScript : MonoBehaviour
                 laserLine.SetPosition(0, gunEnd.position);
             }
         }  
-    }
+    }*/
 }
