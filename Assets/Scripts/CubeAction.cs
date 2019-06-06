@@ -20,7 +20,7 @@ public class CubeAction : MonoBehaviour
 
     public string axis;
     public string axisKey;
-    public float rotKey;
+    public int lastAxis;
     public float multiplier;
 
     private Quaternion qKey;
@@ -44,11 +44,10 @@ public class CubeAction : MonoBehaviour
 
     public void executeRotation()
     {
-        pickAmount();
         pickSide();
         setupRotation();
-        qKey = generateQuaternion(rotKey, axisKey);
-        StartCoroutine(rotateCubes(pivot, qKey, rotateTime * multiplier));
+        qKey = generateQuaternion(axisKey);
+        StartCoroutine(rotateCubes(pivot, qKey, rotateTime));
     }
 
     public void setupRotation()
@@ -123,91 +122,86 @@ public class CubeAction : MonoBehaviour
             gameObjectToMove.transform.rotation = Quaternion.Lerp(currentRot, newRot, counter / duration);
             yield return null;
         }
-        gameObjectToMove.transform.rotation = newRot;
+        //gameObjectToMove.transform.rotation = newRot;
         rotating = false;
     }
 
     public void pickSide()
     {
-        int index = Random.Range(1, 6);
+        int index = Random.Range(1, 7);
+        while(index == lastAxis)
+        {
+            index = Random.Range(1, 7);
+        }
         if(index == 1)
         {
             axis = ("front");
             axisKey = ("x");
+            lastAxis = 1;
         }
         else if (index == 2)
         {
             axis = ("back");
             axisKey = ("x");
+            lastAxis = 2;
         }
         else if (index == 3)
         {
             axis = ("bottom");
             axisKey = ("y");
+            lastAxis = 3;
         }
         else if (index == 4)
         {
             axis = ("top");
             axisKey = ("y");
+            lastAxis = 4;
         }
         else if (index == 5)
         {
             axis = ("left");
             axisKey = ("z");
+            lastAxis = 5;
         }
         else
         {
             axis = ("right");
             axisKey = ("z");
+            lastAxis = 6;
         }
     }
 
-    public void pickAmount()
+    public Quaternion generateQuaternion(string axisKey)
     {
-        int index = Random.Range(1, 4);
-        rotKey = (float)index;
-    }
-
-    public Quaternion generateQuaternion(float amountKey, string axisKey)
-    {
-        float amount = 90 * amountKey;
+        float amount = 90;
         float curAngle = 0;
         Quaternion generated = Quaternion.Euler(0f, 0f, 0f);
         if (axisKey.Equals("x"))
         {
-            if (Mathf.Abs(pivot.transform.eulerAngles.x - amount) < 45f || Mathf.Abs(pivot.transform.eulerAngles.x + amount) < 45f)
+            if (pivot.transform.eulerAngles.x == 90)
             {
-                return generateQuaternion(amountKey + 1, axisKey);
+                amount = 0;
             }
             curAngle = pivot.transform.eulerAngles.x;
             generated = Quaternion.Euler(amount, 0, 0);
         }
         else if (axisKey.Equals("y"))
         {
-            if (Mathf.Abs(pivot.transform.eulerAngles.y - amount) < 45f || Mathf.Abs(pivot.transform.eulerAngles.y + amount) < 45f)
+            if (pivot.transform.eulerAngles.y == 90)
             {
-                return generateQuaternion(amountKey + 1, axisKey);
+                amount = 0;
             }
             curAngle = pivot.transform.eulerAngles.y;
             generated = Quaternion.Euler(0, amount, 0);
         }
         else if (axisKey.Equals("z"))
         {
-            if (Mathf.Abs(pivot.transform.eulerAngles.z - amount) < 45f || Mathf.Abs(pivot.transform.eulerAngles.z + amount) < 45f)
+            if (pivot.transform.eulerAngles.z == 90)
             {
-                return generateQuaternion(amountKey + 1, axisKey);
+                amount = 0;
             }
             curAngle = pivot.transform.eulerAngles.z;
             generated = Quaternion.Euler(0, 0, amount);
-        }
-        multiplier = Mathf.Abs(rotKey - (curAngle / 90));
-        if(multiplier > 1)
-        {
-            multiplier = 2;
-        }
-        else
-        {
-            multiplier = 1;
         }
         return generated;
     }
