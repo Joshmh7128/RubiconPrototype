@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunScript : MonoBehaviour
 {
     public float fireRate = 0.25f;                                        // Number in seconds which controls how often the player can fire
-    public float weaponRange = 50f;                                        // Distance in Unity units over which the player can fire
+    public float weaponRange = 100f;                                        // Distance in Unity units over which the player can fire
     private Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
     public Transform gunEnd1;                                            //Right gun barrel
     public Transform gunEnd2;                                             //Left gun barrel
@@ -17,6 +17,7 @@ public class GunScript : MonoBehaviour
     private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
     private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after firing
 
+    public ParticleSystem burst;
 
     void Start()
     {
@@ -64,6 +65,10 @@ public class GunScript : MonoBehaviour
             {
                 // Set the end position for our laser line 
                 laserLine.SetPosition(1, hit.point);
+                if(hit.collider.gameObject.CompareTag("Arena"))
+                {
+                    Instantiate(burst, hit.point, Quaternion.identity);
+                } 
             }
             else
             {
