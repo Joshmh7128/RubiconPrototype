@@ -99,6 +99,12 @@ public class GunScript : MonoBehaviour
                 StartCoroutine("Reload");
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            mag = 0;
+            StartCoroutine("Reload");
+        }
     }
 
 
