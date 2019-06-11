@@ -17,7 +17,16 @@ public class GunScript : MonoBehaviour
     private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
     private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after firing
 
+    public Animator rightAnim;
+    public Animator leftAnim;
+
+    public ParticleSystem rightMuzzle;
+    public ParticleSystem leftMuzzle;
+
     public ParticleSystem burst;
+
+    public int mag;
+    private int magSize = 24;
 
     void Start()
     {
@@ -26,6 +35,8 @@ public class GunScript : MonoBehaviour
 
         // Get and store a reference to our Camera by searching this GameObject and its parents
         fpsCam = GetComponentInParent<Camera>();
+
+        mag = magSize;
     }
 
 
@@ -34,46 +45,58 @@ public class GunScript : MonoBehaviour
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
         if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
         {
-            // Update the time when our player can fire next
-            nextFire = Time.time + fireRate;
-
-            // Start our ShotEffect coroutine to turn our laser line on and off
-            StartCoroutine(ShotEffect());
-
-            // Create a vector at the center of our camera's viewport
-            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
-
-            // Declare a raycast hit to store information about what our raycast has hit
-            RaycastHit hit;
-
-            //switch gun barrels
-            if(isRight)
+            if(mag > 0)
             {
-                gunEnd = gunEnd1;
-            }
-            else
-            {
-                gunEnd = gunEnd2;
-            }
-            isRight = !isRight;
+                mag--;
+                // Update the time when our player can fire next
+                nextFire = Time.time + fireRate;
 
-            // Set the start position for our visual effect for our laser to the position of gunEnd
-            laserLine.SetPosition(0, gunEnd.position);
+                // Start our ShotEffect coroutine to turn our laser line on and off
+                StartCoroutine(ShotEffect());
 
-            // Check if our raycast has hit anything
-            if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
-            {
-                // Set the end position for our laser line 
-                laserLine.SetPosition(1, hit.point);
-                if(hit.collider.gameObject.CompareTag("Arena"))
+                // Create a vector at the center of our camera's viewport
+                Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+
+                // Declare a raycast hit to store information about what our raycast has hit
+                RaycastHit hit;
+
+                //switch gun barrels
+                if (isRight)
                 {
-                    Instantiate(burst, hit.point, Quaternion.identity);
-                } 
+                    gunEnd = gunEnd1;
+                    rightAnim.Play("fireR");
+                    rightMuzzle.Play();
+                }
+                else
+                {
+                    gunEnd = gunEnd2;
+                    leftAnim.Play("fireL");
+                    leftMuzzle.Play();
+                }
+                isRight = !isRight;
+
+                // Set the start position for our visual effect for our laser to the position of gunEnd
+                laserLine.SetPosition(0, gunEnd.position);
+
+                // Check if our raycast has hit anything
+                if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
+                {
+                    // Set the end position for our laser line 
+                    laserLine.SetPosition(1, hit.point);
+                    if (hit.collider.gameObject.CompareTag("Arena"))
+                    {
+                        Instantiate(burst, hit.point, Quaternion.identity);
+                    }
+                }
+                else
+                {
+                    // If we did not hit anything, set the end of the line to a position directly in front of the camera at the distance of weaponRange
+                    laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
+                }
             }
             else
             {
-                // If we did not hit anything, set the end of the line to a position directly in front of the camera at the distance of weaponRange
-                laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
+                StartCoroutine("Reload");
             }
         }
     }
@@ -90,5 +113,13 @@ public class GunScript : MonoBehaviour
 
         // Deactivate our line renderer after waiting
         laserLine.enabled = false;
+    }
+
+    private IEnumerator Reload()
+    {
+        rightAnim.Play("loadR");
+        leftAnim.Play("loadL");
+        yield return  new WaitForSeconds(1.01f);
+        mag = magSize;
     }
 }
