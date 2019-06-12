@@ -7,7 +7,7 @@ public class DestroyAfterTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(this.gameObject, 3);
+        Destroy(this.gameObject, 1);
     }
 
     // Update is called once per frame

@@ -20,6 +20,10 @@ public class GunScript : MonoBehaviour
     public Animator rightAnim;
     public Animator leftAnim;
 
+    public GameObject rightLight;
+    public GameObject leftLight;
+    private GameObject muzzleFlashLight;
+
     public ParticleSystem rightMuzzle;
     public ParticleSystem leftMuzzle;
 
@@ -37,6 +41,9 @@ public class GunScript : MonoBehaviour
         fpsCam = GetComponentInParent<Camera>();
 
         mag = magSize;
+
+        rightLight.SetActive(false);
+        leftLight.SetActive(false);
     }
 
 
@@ -51,6 +58,23 @@ public class GunScript : MonoBehaviour
                 // Update the time when our player can fire next
                 nextFire = Time.time + fireRate;
 
+                //switch gun barrels
+                if (isRight)
+                {
+                    gunEnd = gunEnd1;
+                    rightAnim.Play("fireR");
+                    rightMuzzle.Play();
+                    muzzleFlashLight = rightLight;
+                }
+                else
+                {
+                    gunEnd = gunEnd2;
+                    leftAnim.Play("fireL");
+                    leftMuzzle.Play();
+                    muzzleFlashLight = leftLight;
+                }
+                isRight = !isRight;
+
                 // Start our ShotEffect coroutine to turn our laser line on and off
                 StartCoroutine(ShotEffect());
 
@@ -59,21 +83,6 @@ public class GunScript : MonoBehaviour
 
                 // Declare a raycast hit to store information about what our raycast has hit
                 RaycastHit hit;
-
-                //switch gun barrels
-                if (isRight)
-                {
-                    gunEnd = gunEnd1;
-                    rightAnim.Play("fireR");
-                    rightMuzzle.Play();
-                }
-                else
-                {
-                    gunEnd = gunEnd2;
-                    leftAnim.Play("fireL");
-                    leftMuzzle.Play();
-                }
-                isRight = !isRight;
 
                 // Set the start position for our visual effect for our laser to the position of gunEnd
                 laserLine.SetPosition(0, gunEnd.position);
@@ -113,12 +122,14 @@ public class GunScript : MonoBehaviour
 
         // Turn on our line renderer
         laserLine.enabled = true;
+        muzzleFlashLight.SetActive(true);
 
         //Wait for .07 seconds
         yield return shotDuration;
 
         // Deactivate our line renderer after waiting
         laserLine.enabled = false;
+        muzzleFlashLight.SetActive(false);
     }
 
     private IEnumerator Reload()
