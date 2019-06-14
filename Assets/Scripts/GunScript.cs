@@ -32,6 +32,8 @@ public class GunScript : MonoBehaviour
     public int mag;
     private int magSize = 24;
 
+    public GameObject bar;
+
     void Start()
     {
         // Get and store a reference to our LineRenderer component
@@ -41,6 +43,8 @@ public class GunScript : MonoBehaviour
         fpsCam = GetComponentInParent<Camera>();
 
         mag = magSize;
+
+        bar.transform.localScale = new Vector3(1, 1, 1);
 
         rightLight.SetActive(false);
         leftLight.SetActive(false);
@@ -55,6 +59,8 @@ public class GunScript : MonoBehaviour
             if(mag > 0)
             {
                 mag--;
+                bar.transform.localScale = new Vector3((float) mag / magSize, 1, 1);
+
                 // Update the time when our player can fire next
                 nextFire = Time.time + fireRate;
 
@@ -138,5 +144,6 @@ public class GunScript : MonoBehaviour
         leftAnim.Play("loadL");
         yield return  new WaitForSeconds(1.01f);
         mag = magSize;
+        bar.transform.localScale = new Vector3(1, 1, 1);
     }
 }
