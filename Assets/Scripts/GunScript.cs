@@ -33,6 +33,7 @@ public class GunScript : MonoBehaviour
     private int magSize = 24;
 
     public GameObject bar;
+    public Animator ammoAnim;
 
     void Start()
     {
@@ -140,6 +141,7 @@ public class GunScript : MonoBehaviour
 
     private IEnumerator Reload()
     {
+        ammoAnim.Play("ammoBump");
         rightAnim.Play("loadR");
         leftAnim.Play("loadL");
         yield return  new WaitForSeconds(1.01f);

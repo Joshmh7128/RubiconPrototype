@@ -122,7 +122,6 @@ public class CubeAction : MonoBehaviour
             gameObjectToMove.transform.rotation = Quaternion.Lerp(currentRot, newRot, counter / duration);
             yield return null;
         }
-        //gameObjectToMove.transform.rotation = newRot;
         rotating = false;
     }
 
