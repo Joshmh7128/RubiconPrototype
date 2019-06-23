@@ -18,7 +18,8 @@ public class CameraController : MonoBehaviour
     private bool camMoved = false;
 
     public Transform target;                        //player object to track
-    public float smoothSpeed;                       //amount of smoothing
+    public float smoothSpeed;                       //amount of smoothing for movement
+    public float slerpAmount;
 
     public float offset;                            //forward camera offset amount
 
@@ -44,7 +45,7 @@ public class CameraController : MonoBehaviour
     private void CameraRotation()
     {
         target.transform.rotation = Quaternion.Euler(-rotAroundX, rotAroundY, 0);
-        cam.transform.rotation = Quaternion.Euler(-rotAroundX, rotAroundY, 0);
+        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, target.transform.rotation, slerpAmount);
     }
 
     private void LateUpdate()
