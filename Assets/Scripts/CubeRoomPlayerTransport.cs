@@ -9,13 +9,11 @@ public class CubeRoomPlayerTransport : MonoBehaviour
     {
         player.transform.SetParent(transform);
         //player.transform.gameObject.transform.rotation = transform.rotation;
-        Debug.Log("Player captured");
     }   
 
     void OnTriggerExit(Collider player)
     {
         player.transform.parent = null;
         //player.transform.gameObject.transform.rotation = null;
-        Debug.Log("Player released");
     }
 }
