@@ -8,6 +8,7 @@ public class HealthTracker : MonoBehaviour
     private int maxHP = 6;
     public GameObject bar;
     public Animator anim;
+    public Animator flashAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class HealthTracker : MonoBehaviour
         {
             hp = 0;
         }
+        flashAnim.Play("redFlash");
         bar.transform.localScale = new Vector3((float)hp / maxHP, 1, 1);
     }
 }
