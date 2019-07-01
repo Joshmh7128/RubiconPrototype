@@ -4,12 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Left
-  - Right
-  - Top
-  - Bottom
-  - Front
-  - Back
   - Arena
   layers:
   - Default
