@@ -20,6 +20,7 @@ public class GunScript : MonoBehaviour
     public ParticleSystem muzzle;
 
     public ParticleSystem burst;
+    public ParticleSystem blood;
 
     public int mag;
     private int magSize = 24;
@@ -82,6 +83,7 @@ public class GunScript : MonoBehaviour
                     }
                     if(hit.collider.gameObject.CompareTag("Player"))
                     {
+                        Instantiate(blood, hit.point, Quaternion.identity);
                         hit.collider.gameObject.GetComponent<HealthTracker>().TakeDamage(1);
                     }
                 }

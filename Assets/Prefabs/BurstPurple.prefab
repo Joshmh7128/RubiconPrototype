@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1386193425164969430}
   - component: {fileID: 6346801074424018034}
   m_Layer: 0
-  m_Name: Burst
+  m_Name: BurstPurple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4769,3 +4769,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228793d7cea88ea46876d9696c82fbed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: 1
