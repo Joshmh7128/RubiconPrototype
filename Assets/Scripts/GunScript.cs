@@ -63,7 +63,8 @@ public class GunScript : MonoBehaviour
                 // Start our ShotEffect coroutine to turn our laser line on and off
                 StartCoroutine(ShotEffect());
 
-                // Create a vector at the center of our camera's viewport
+                    // Create a vector at the center of our camera's viewport
+                    Vector3 origin = gunEnd.transform.position;
                 Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
 
                 // Declare a raycast hit to store information about what our raycast has hit
@@ -77,6 +78,7 @@ public class GunScript : MonoBehaviour
                 {
                     // Set the end position for our laser line 
                     laserLine.SetPosition(1, hit.point);
+
                     if (hit.collider.gameObject.CompareTag("Arena"))
                     {
                         Instantiate(burst, hit.point, Quaternion.identity);
