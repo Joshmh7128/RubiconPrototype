@@ -77,6 +77,7 @@ public class GunScript2 : MonoBehaviour
                 {
                     // Set the end position for our laser line 
                     laserLine.SetPosition(1, hit.point);
+
                     if (hit.collider.gameObject.CompareTag("Arena"))
                     {
                         Instantiate(burst, hit.point, Quaternion.identity);
