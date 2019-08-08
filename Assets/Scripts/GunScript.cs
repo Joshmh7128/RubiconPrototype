@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-    public float fireRate = 0.25f;                                        // Number in seconds which controls how often the player can fire
+    public float fireRate = 10f;                                        // Number in seconds which controls how often the player can fire
     public float weaponRange = 100f;                                        // Distance in Unity units over which the player can fire
     public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
 
     private Camera fpsCam;                                                // Holds a reference to the first person camera
     private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
     private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
-    private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after firing
+    public float nextFire;                                                // Float to store the time the player will be allowed to fire again, after firing
+    public float ticktock;
 
     public Animator anim;
 
@@ -46,12 +47,16 @@ public class GunScript : MonoBehaviour
 
     void Update()
     {
+        ticktock = Time.time;
+
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+        if (Input.GetAxis("Joy1Axis10") > 0.1f && Time.time > nextFire)
         {
-            if(mag > 0)
+            //nextFire = Time.time + fireRate;
+
+            if (mag > 0)
             {
-                mag--;
+                mag -= 1;
                 bar.transform.localScale = new Vector3((float) mag / magSize, 1, 1);
 
                 // Update the time when our player can fire next
@@ -100,7 +105,7 @@ public class GunScript : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetButton("Player1Reload") && mag < 24)
         {
             mag = 0;
             StartCoroutine("Reload");
@@ -125,6 +130,7 @@ public class GunScript : MonoBehaviour
 
     private IEnumerator Reload()
     {
+        mag = 0;
         ammoAnim.Play("ammoBump");
         anim.Play("loadR");
         yield return new WaitForSeconds(1.01f);

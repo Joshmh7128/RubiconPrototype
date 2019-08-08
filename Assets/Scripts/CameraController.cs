@@ -36,6 +36,9 @@ public class CameraController : MonoBehaviour
         rotAroundX += Input.GetAxis("Mouse Y") * Xsensitivity;
         rotAroundY += Input.GetAxis("Mouse X") * Ysensitivity;
 
+        rotAroundX += Input.GetAxis("Joy1Axis5") * -Xsensitivity;
+        rotAroundY += Input.GetAxis("Joy1Axis4") * Ysensitivity;
+
         // Clamp rotation values
         rotAroundX = Mathf.Clamp(rotAroundX, XMinRotation, XMaxRotation);
 

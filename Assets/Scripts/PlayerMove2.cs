@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove2 : MonoBehaviour
 {
-    private Rigidbody playerBody;
+    public Rigidbody playerBody;
 
     private Vector3 inputVector;
 
@@ -19,7 +19,7 @@ public class PlayerMove2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inputVector = new Vector3(Input.GetAxisRaw("Horizontal2"), Input.GetAxisRaw("TrueVertical2"), Input.GetAxisRaw("Vertical2"));
+        inputVector = new Vector3(Input.GetAxis("Joy2Axis1"), 0, -Input.GetAxis("Joy2Axis2"));
         inputVector = transform.TransformDirection(inputVector);
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunScript2 : MonoBehaviour
 {
-    public float fireRate = 0.25f;                                        // Number in seconds which controls how often the player can fire
+    public float fireRate;                                        // Number in seconds which controls how often the player can fire
     public float weaponRange = 100f;                                        // Distance in Unity units over which the player can fire
     public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
 
@@ -47,15 +47,15 @@ public class GunScript2 : MonoBehaviour
     void Update()
     {
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-        if (Input.GetButtonDown("Fire2") && Time.time > nextFire)
+        if (Input.GetAxis("Joy2Axis10") > 0.1f && Time.deltaTime > nextFire)
         {
-            if(mag > 0)
+            if (mag > 0)
             {
-                mag--;
+                mag -= 1;
                 bar.transform.localScale = new Vector3((float) mag / magSize, 1, 1);
 
                 // Update the time when our player can fire next
-                nextFire = Time.time + fireRate;
+                nextFire = Time.deltaTime + fireRate;
 
                 anim.Play("fireR");
                 muzzle.Play();
@@ -100,12 +100,7 @@ public class GunScript2 : MonoBehaviour
             }
         }
 
-        /*if(Input.GetKeyDown(KeyCode.R))
-        {
-            mag = 0;
-            StartCoroutine("Reload");
-        }*/
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetButton("Player2Reload") && mag < 24)
         {
             mag = 0;
             StartCoroutine("Reload");
@@ -131,6 +126,7 @@ public class GunScript2 : MonoBehaviour
 
     private IEnumerator Reload()
     {
+        mag = 0;
         ammoAnim.Play("ammoBump");
         anim.Play("loadR");
         yield return new WaitForSeconds(1.01f);
