@@ -4,30 +4,24 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-    public float fireRate = 0.25f;                                        // Number in seconds which controls how often the player can fire
+    public float fireRate = 10f;                                        // Number in seconds which controls how often the player can fire
     public float weaponRange = 100f;                                        // Distance in Unity units over which the player can fire
-    private Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
-    public Transform gunEnd1;                                            //Right gun barrel
-    public Transform gunEnd2;                                             //Left gun barrel
-    public bool isRight = true;                                          //True = right gun barrel active, false = left gun barrel active
-    public bool laserTracking = true;                                     //Whether or not the laser emitter should track to the gun barrel; matter of preference
+    public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
 
     private Camera fpsCam;                                                // Holds a reference to the first person camera
     private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
     private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
-    private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after firing
+    public float nextFire;                                                // Float to store the time the player will be allowed to fire again, after firing
+    public float ticktock;
 
-    public Animator rightAnim;
-    public Animator leftAnim;
+    public Animator anim;
 
-    public GameObject rightLight;
-    public GameObject leftLight;
-    private GameObject muzzleFlashLight;
+    public GameObject flashLight;
 
-    public ParticleSystem rightMuzzle;
-    public ParticleSystem leftMuzzle;
+    public ParticleSystem muzzle;
 
     public ParticleSystem burst;
+    public ParticleSystem blood;
 
     public int mag;
     private int magSize = 24;
@@ -47,40 +41,29 @@ public class GunScript : MonoBehaviour
 
         bar.transform.localScale = new Vector3(1, 1, 1);
 
-        rightLight.SetActive(false);
-        leftLight.SetActive(false);
+        flashLight.SetActive(false);
     }
 
 
     void Update()
     {
+        ticktock = Time.time;
+
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+        if (Input.GetAxis("Joy1Axis10") > 0.1f && Time.time > nextFire)
         {
-            if(mag > 0)
+            //nextFire = Time.time + fireRate;
+
+            if (mag > 0)
             {
-                mag--;
+                mag -= 1;
                 bar.transform.localScale = new Vector3((float) mag / magSize, 1, 1);
 
                 // Update the time when our player can fire next
                 nextFire = Time.time + fireRate;
 
-                //switch gun barrels
-                if (isRight)
-                {
-                    gunEnd = gunEnd1;
-                    rightAnim.Play("fireR");
-                    rightMuzzle.Play();
-                    muzzleFlashLight = rightLight;
-                }
-                else
-                {
-                    gunEnd = gunEnd2;
-                    leftAnim.Play("fireL");
-                    leftMuzzle.Play();
-                    muzzleFlashLight = leftLight;
-                }
-                isRight = !isRight;
+                anim.Play("fireR");
+                muzzle.Play();
 
                 // Start our ShotEffect coroutine to turn our laser line on and off
                 StartCoroutine(ShotEffect());
@@ -99,9 +82,15 @@ public class GunScript : MonoBehaviour
                 {
                     // Set the end position for our laser line 
                     laserLine.SetPosition(1, hit.point);
+
                     if (hit.collider.gameObject.CompareTag("Arena"))
                     {
                         Instantiate(burst, hit.point, Quaternion.identity);
+                    }
+                    if(hit.collider.gameObject.CompareTag("Player"))
+                    {
+                        Instantiate(blood, hit.point, Quaternion.identity);
+                        hit.collider.gameObject.GetComponent<HealthTracker>().TakeDamage(1);
                     }
                 }
                 else
@@ -116,7 +105,7 @@ public class GunScript : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetButton("Player1Reload") && mag < 24)
         {
             mag = 0;
             StartCoroutine("Reload");
@@ -129,22 +118,22 @@ public class GunScript : MonoBehaviour
 
         // Turn on our line renderer
         laserLine.enabled = true;
-        muzzleFlashLight.SetActive(true);
+        flashLight.SetActive(true);
 
         //Wait for .07 seconds
         yield return shotDuration;
 
         // Deactivate our line renderer after waiting
         laserLine.enabled = false;
-        muzzleFlashLight.SetActive(false);
+        flashLight.SetActive(false);
     }
 
     private IEnumerator Reload()
     {
+        mag = 0;
         ammoAnim.Play("ammoBump");
-        rightAnim.Play("loadR");
-        leftAnim.Play("loadL");
-        yield return  new WaitForSeconds(1.01f);
+        anim.Play("loadR");
+        yield return new WaitForSeconds(1.01f);
         mag = magSize;
         bar.transform.localScale = new Vector3(1, 1, 1);
     }

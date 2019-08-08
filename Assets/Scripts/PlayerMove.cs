@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inputVector = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("TrueVertical"), Input.GetAxisRaw("Vertical"));
+        inputVector = new Vector3(Input.GetAxis("Joy1Axis1"), 0, -Input.GetAxis("Joy1Axis2"));
         inputVector = transform.TransformDirection(inputVector);
     }
 
