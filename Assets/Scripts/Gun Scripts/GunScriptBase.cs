@@ -32,7 +32,7 @@ public class GunScriptBase
 		ticktock = Time.time;
 
 		// Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-		if (Input.GetAxis("Joy" + player.playerID + "Axis10") > 0.1f && Time.time > nextFire)
+		if ((Input.GetAxis("Joy" + player.playerID + "Axis10") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
 		{
 			//nextFire = Time.time + fireRate;
 
@@ -87,7 +87,7 @@ public class GunScriptBase
 			}
 		}
 
-		if (Input.GetButton("Player" + player.playerID + "Reload") && mag < 24)
+		if (Input.GetButton("Player" + player.playerID + "Reload") && mag < magSize)
 		{
 			mag = 0;
 			player.StartCoroutine(Reload());
