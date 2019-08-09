@@ -38,6 +38,19 @@ public class RoundManager : MonoBehaviour
         }
         GameObject.FindGameObjectWithTag("Counter").GetComponent<ScoreSetter>().updateText(Player1Score, Player2Score);
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("RoundSetup");
+        if(Player1Score >= 3)
+        {
+            SceneManager.LoadScene("WinScreen");
+        }
+        else if (Player2Score >= 3)
+        {
+            SceneManager.LoadScene("WinScreen");
+        }
+        else
+        {
+            SceneManager.LoadScene("ModAssign");
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene("RoundSetup");
+        }  
     }
 }
