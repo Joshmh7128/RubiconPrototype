@@ -111,11 +111,13 @@ public class GunScriptBase
 
 	private IEnumerator Reload()
 	{
-		mag = 0;
+		//mag = 0;
 		player.ammoAnim.Play("ammoBump");
 		player.weaponAnim.Play("loadR");
+		player.SetState(PlayerState.reloadState);
 		yield return new WaitForSeconds(1.01f);
 		mag = magSize;
 		player.ammoBar.transform.localScale = new Vector3(1, 1, 1);
+		player.SetState(PlayerState.normalState);
 	}
 }

@@ -95,4 +95,17 @@ public class PlayerController : MonoBehaviour
 	{
 		Instantiate(blood, point, Quaternion.identity);
 	}
+
+
+	public void SetState(PlayerState state)
+	{
+		//_state.LeaveState(this);
+		_state = state;
+		//_state.EnterState(this);
+	}
+
+	public void Reload()
+	{
+		_state = PlayerState.reloadState;
+	}
 }

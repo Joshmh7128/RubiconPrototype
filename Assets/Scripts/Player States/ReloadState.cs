@@ -16,16 +16,19 @@ public class ReloadState : PlayerState
 
 	public override void Update(PlayerController player)
 	{
-		throw new System.NotImplementedException();
+		player._cameraController.Update();
+		player._playerMover.Update();
 	}
 
 	public override void FixedUpdate(PlayerController player)
 	{
-		throw new System.NotImplementedException();
+		//player._cameraController.FixedUpdate();
+		player._playerMover.FixedUpdate();
 	}
 
 	public override void LateUpdate(PlayerController player)
 	{
-		throw new System.NotImplementedException();
+		player._cameraController.LateUpdate();
+		//player._playerMover.LateUpdate();
 	}
 }
