@@ -5,52 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class RoundManager : MonoBehaviour
 {
-    public int Player1Score;
-    public int Player2Score;
-    public int won;
+    public int Player1Kills = 0;
+    public int Player2Kills = 0;
+    private int needed = 3;
 
-    private void Awake()
+    public void updateScore(int loser)
     {
-        DontDestroyOnLoad(this.gameObject);
-        Player1Score = 0;
-        Player2Score = 0;
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Manager");
-        if (objs.Length > 1)
+        if(loser == 1)
         {
-            Destroy(this.gameObject);
+            Player1Kills++;
+            if(Player1Kills >= needed)
+            {
+                Debug.Log("Player 1 Wins the Round!");
+                resetScore();
+            }
+        }
+        else if(loser == 2)
+        {
+            Player2Kills++;
+            if (Player2Kills >= needed)
+            {
+                Debug.Log("Player 2 Wins the Round!");
+                resetScore();
+            }
         }
     }
 
-    public IEnumerator ShowScore()
+    public void resetScore()
     {
-        
-        Debug.Log("Player " + won + " wins!");
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("ScoreScreen");
-        yield return new WaitForSeconds(1);
-        if (won == 1)
-        {
-            Player1Score++;
-        }
-        else
-        {
-            Player2Score++;
-        }
-        GameObject.FindGameObjectWithTag("Counter").GetComponent<ScoreSetter>().updateText(Player1Score, Player2Score);
-        yield return new WaitForSeconds(1);
-        if(Player1Score >= 3)
-        {
-            SceneManager.LoadScene("WinScreen");
-        }
-        else if (Player2Score >= 3)
-        {
-            SceneManager.LoadScene("WinScreen");
-        }
-        else
-        {
-            SceneManager.LoadScene("ModAssign");
-            yield return new WaitForSeconds(3);
-            SceneManager.LoadScene("RoundSetup");
-        }  
+        Player1Kills = 0;
+        Player2Kills = 0;
     }
 }

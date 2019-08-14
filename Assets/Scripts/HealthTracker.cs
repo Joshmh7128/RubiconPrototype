@@ -5,14 +5,13 @@ using UnityEngine;
 public class HealthTracker : MonoBehaviour
 {
     public PlayerController myPlayer;
-    private RoundManager manager;
+    private RoundManager rm;
     public int id;
 	public int hp;
 	public GameObject healthBar;
 	public Animator healthAnim;
 	public Animator flashAnim;
 	private int maxHP = 6;
-    private bool over = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -20,7 +19,7 @@ public class HealthTracker : MonoBehaviour
         hp = maxHP;
         healthBar.transform.localScale = new Vector3(1, 1, 1);
         id = myPlayer.playerID;
-        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<RoundManager>();
+        rm = GameObject.FindGameObjectWithTag("Manager").GetComponent<RoundManager>();
     }
 
     public void TakeDamage(int taken)
@@ -29,13 +28,8 @@ public class HealthTracker : MonoBehaviour
         healthAnim.Play("HPbump");
         if(hp <= 0)
         {
-            hp = 0;
-            if(!over)
-            {
-                manager.won = Mathf.Abs(id - 3);
-                manager.StartCoroutine("ShowScore");
-                over = true;
-            }
+            rm.updateScore(id);
+            hp = 6;
         }
         flashAnim.Play("redFlash");
         healthBar.transform.localScale = new Vector3((float)hp / maxHP, 1, 1);
