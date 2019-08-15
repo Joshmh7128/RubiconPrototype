@@ -30,7 +30,7 @@ public class GunScriptBase
 	{
 
 		// Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-		if (Input.GetAxis("Joy" + player.playerID + "Axis10") > 0.1f && Time.time > nextFire)
+		if ((Input.GetAxis("Joy" + player.playerID + "Axis10") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
 		{
 			//nextFire = Time.time + fireRate;
 
@@ -85,7 +85,7 @@ public class GunScriptBase
 			}
 		}
 
-		if (Input.GetButton("Player" + player.playerID + "Reload") && mag < 24)
+		if (Input.GetButton("Player" + player.playerID + "Reload") && mag < magSize)
 		{
 			mag = 0;
 			player.StartCoroutine(Reload());
@@ -109,11 +109,13 @@ public class GunScriptBase
 
 	private IEnumerator Reload()
 	{
-		mag = 0;
+		//mag = 0;
 		player.ammoAnim.Play("ammoBump");
 		player.weaponAnim.Play("loadR");
+		player.SetState(PlayerState.reloadState);
 		yield return new WaitForSeconds(1.01f);
 		mag = magSize;
 		player.ammoBar.transform.localScale = new Vector3(1, 1, 1);
+		player.SetState(PlayerState.normalState);
 	}
 }
