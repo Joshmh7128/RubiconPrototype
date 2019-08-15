@@ -7,7 +7,17 @@ public class RoundManager : MonoBehaviour
 {
     public int Player1Kills = 0;
     public int Player2Kills = 0;
+
     private int needed = 3;
+
+    private CubeAction myArena;
+    private int shuffles = 20;
+
+    private void Start()
+    {
+        myArena = GameObject.Find("PivotManager").GetComponent<CubeAction>();
+        myArena.shuffle(shuffles);
+    }
 
     public void updateScore(int loser)
     {
