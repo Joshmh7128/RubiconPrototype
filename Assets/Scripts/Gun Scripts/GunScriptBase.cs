@@ -12,7 +12,6 @@ public class GunScriptBase
 	private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
 	private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
 	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after firing
-	private float ticktock;
 
 	public GunScriptBase(PlayerController player)
 	{
@@ -29,7 +28,6 @@ public class GunScriptBase
 
 	public void Update()
 	{
-		ticktock = Time.time;
 
 		// Check if the player has pressed the fire button and if enough time has elapsed since they last fired
 		if (Input.GetAxis("Joy" + player.playerID + "Axis10") > 0.1f && Time.time > nextFire)
