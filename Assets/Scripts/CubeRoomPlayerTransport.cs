@@ -7,11 +7,17 @@ public class CubeRoomPlayerTransport : MonoBehaviour
     
     void OnTriggerEnter(Collider player)
     {
-        player.transform.SetParent(transform);
+        if(player.CompareTag("Player"))
+        {
+            player.transform.SetParent(transform);
+        } 
     }   
 
     void OnTriggerExit(Collider player)
     {
-        player.transform.parent = null;
+        if(player.CompareTag("Player"))
+        {
+            player.transform.parent = null;
+        }
     }
 }

@@ -8,6 +8,12 @@ public class RoundManager : MonoBehaviour
     public int Player1Kills = 0;
     public int Player2Kills = 0;
 
+    public GameObject Player1;
+    public GameObject Player2;
+
+    public Transform SpawnTop;
+    public Transform SpawnBottom;
+
     private int needed = 3;
 
     private CubeAction myArena;
@@ -17,6 +23,7 @@ public class RoundManager : MonoBehaviour
     {
         myArena = GameObject.Find("PivotManager").GetComponent<CubeAction>();
         myArena.shuffle(shuffles);
+        StartCoroutine("SetupRound");
     }
 
     public void updateScore(int loser)
@@ -45,5 +52,12 @@ public class RoundManager : MonoBehaviour
     {
         Player1Kills = 0;
         Player2Kills = 0;
+    }
+
+    private IEnumerator SetupRound()
+    {
+        yield return new WaitForEndOfFrame();
+        Player1.transform.position = SpawnTop.position;
+        Player2.transform.position = SpawnBottom.position;
     }
 }
