@@ -6,8 +6,8 @@ public class GunScriptBase
 {
 	private PlayerController player;
 	
-	private int mag;
-	private int magSize = 24;
+	public int mag;
+	public int magSize = 24;
 	private Camera fpsCam;                                                // Holds a reference to the first person camera
 	private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
 	private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline

@@ -7,8 +7,8 @@ public class CubeAction : MonoBehaviour
     private List<GameObject> cubeList;
 
     private float cubeDiam = 31;
-    private bool live = false;
-    public bool rotating = false;
+    public bool live = false;
+    private bool rotating = false;
 
     public GameObject pivot;
     public GameObject frontPivot;
