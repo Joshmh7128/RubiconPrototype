@@ -26,12 +26,28 @@ public class HealthTracker : MonoBehaviour
     {
         hp -= taken;
         healthAnim.Play("HPbump");
-        if(hp <= 0)
+        if(hp == 0)
         {
-            rm.updateScore(id);
-            hp = 6;
+            Die();
         }
-        flashAnim.Play("redFlash");
-        healthBar.transform.localScale = new Vector3((float)hp / maxHP, 1, 1);
+        else if (hp > 0)
+        {
+            flashAnim.Play("redFlash");
+            healthBar.transform.localScale = new Vector3((float)hp / maxHP, 1, 1);
+        }    
+    }
+
+    public void Die()
+    {
+        flashAnim.Play("redDead");
+        Debug.Log("Player " + id.ToString() + " slain!");
+        rm.updateScore(id);
+    }
+
+    public void Resurrect()
+    {
+        flashAnim.Play("redIdle");
+        hp = maxHP;
+        healthBar.transform.localScale = new Vector3(1, 1, 1);
     }
 }
