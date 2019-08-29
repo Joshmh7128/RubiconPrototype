@@ -48,5 +48,6 @@ public class HealthTracker : MonoBehaviour
     {
         flashAnim.Play("redIdle");
         hp = maxHP;
+        healthBar.transform.localScale = new Vector3(1, 1, 1);
     }
 }
