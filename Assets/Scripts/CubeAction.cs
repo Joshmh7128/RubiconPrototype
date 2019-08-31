@@ -7,8 +7,8 @@ public class CubeAction : MonoBehaviour
     private List<GameObject> cubeList;
 
     private float cubeDiam = 31;
-    public bool live = true;
-    public bool rotating = false;
+    public bool live = false;
+    private bool rotating = false;
 
     public GameObject pivot;
     public GameObject frontPivot;
@@ -48,6 +48,18 @@ public class CubeAction : MonoBehaviour
         setupRotation();
         qKey = generateQuaternion(axisKey);
         StartCoroutine(rotateCubes(pivot, qKey, rotateTime));
+    }
+
+    public void shuffle(int shuffles)
+    {
+        for(int i = 0; i < shuffles; i++)
+        {
+            pickSide();
+            setupRotation();
+            qKey = generateQuaternion(axisKey);
+            instantRotateCubes(pivot, qKey);
+        }
+        live = true;
     }
 
     public void setupRotation()
@@ -122,8 +134,12 @@ public class CubeAction : MonoBehaviour
             gameObjectToMove.transform.rotation = Quaternion.Lerp(currentRot, newRot, counter / duration);
             yield return null;
         }
-        //gameObjectToMove.transform.rotation = newRot;
         rotating = false;
+    }
+
+    public void instantRotateCubes(GameObject gameObjectToMove, Quaternion newRot)
+    {
+        gameObjectToMove.transform.rotation = newRot;
     }
 
     public void pickSide()

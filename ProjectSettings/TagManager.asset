@@ -4,13 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Left
-  - Right
-  - Top
-  - Bottom
-  - Front
-  - Back
   - Arena
+  - Manager
   layers:
   - Default
   - TransparentFX
@@ -21,8 +16,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - Guns
+  - Guns2
   - 
   - 
   - 
@@ -45,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: PlayerUI
+    uniqueID: 2177145587
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
