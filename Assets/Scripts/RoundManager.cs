@@ -9,17 +9,17 @@ public class RoundManager : MonoBehaviour
     public int Player1Kills = 0;
     public int Player2Kills = 0;
 
-    private GameObject Player1;
-    private GameObject Player2;
+    public GameObject Player1;
+    public GameObject Player2;
 
-    private GameObject Player1Cam;
-    private GameObject Player2Cam;
+    public GameObject Player1Cam;
+    public GameObject Player2Cam;
 
-    private GameObject Player1Canvas;
-    private GameObject Player2Canvas;
+    public GameObject Player1Canvas;
+    public GameObject Player2Canvas;
 
-    private Text ScoreText1;
-    private Text ScoreText2;
+    //private Text ScoreText1;
+    //private Text ScoreText2;
 
     private CubeAction Rotator;
 
@@ -35,7 +35,7 @@ public class RoundManager : MonoBehaviour
     {
         myArena = GameObject.Find("PivotManager").GetComponent<CubeAction>();
 
-        Player1 = GameObject.Find("Player");
+        Player1 = GameObject.Find("Player1");
         Player1Cam = GameObject.Find("PlayerCam");
 
         Player2 = GameObject.Find("Player2");
@@ -43,9 +43,6 @@ public class RoundManager : MonoBehaviour
 
         Player1Canvas = GameObject.Find("PlayerCanvas");
         Player2Canvas = GameObject.Find("PlayerCanvas2");
-
-        ScoreText1 = Player1Canvas.transform.GetChild(4).GetComponent<Text>();
-        ScoreText2 = Player2Canvas.transform.GetChild(4).GetComponent<Text>();
 
         Rotator = GameObject.Find("PivotManager").GetComponent<CubeAction>();
 
@@ -58,12 +55,12 @@ public class RoundManager : MonoBehaviour
         if(loser == 1)
         {
             Player2Kills++;
-            ScoreText2.text = Player2Kills.ToString();
+            //ScoreText2.text = Player2Kills.ToString();
         }
         else if(loser == 2)
         {
             Player1Kills++;
-            ScoreText1.text = Player1Kills.ToString();
+            //ScoreText1.text = Player1Kills.ToString();
         }
 
         Rotator.live = false;
@@ -99,42 +96,18 @@ public class RoundManager : MonoBehaviour
             Player1Cam.GetComponent<PlayerController>().enabled = false;
             Player1.GetComponent<Rigidbody>().useGravity = true;
             Player1Cam.transform.SetParent(Player1.transform);
-            for(int i = 0; i < Player1Canvas.transform.childCount - 2; i++)
-            {
-                Player1Canvas.transform.GetChild(i).gameObject.SetActive(false);
-            }
-            for (int i = 0; i < Player2Canvas.transform.childCount - 2; i++)
-            {
-                Player2Canvas.transform.GetChild(i).gameObject.SetActive(false);
-            }
-
-            ScoreText1.gameObject.SetActive(true);
-            ScoreText2.gameObject.SetActive(true);
+            Player2.GetComponent<InfoTracker>().Hide();
 
             yield return new WaitForSeconds(10);
 
-            ScoreText1.gameObject.SetActive(false);
-            ScoreText2.gameObject.SetActive(false);
-
             Player1Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
             Player2Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player2Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
-            Player1Cam.GetComponent<PlayerController>().ammoBar.transform.localScale = new Vector3(1, 1, 1);
-            Player2Cam.GetComponent<PlayerController>().ammoBar.transform.localScale = new Vector3(1, 1, 1);
-
-            for (int i = 0; i < Player1Canvas.transform.childCount - 2; i++)
-            {
-                Player1Canvas.transform.GetChild(i).gameObject.SetActive(true);
-            }
-            for (int i = 0; i < Player2Canvas.transform.childCount - 2; i++)
-            {
-                Player2Canvas.transform.GetChild(i).gameObject.SetActive(true);
-            }
 
             Player1Cam.GetComponent<PlayerController>().enabled = true;
             Player1.GetComponent<Rigidbody>().useGravity = false;
             Player1Cam.transform.SetParent(null);
-            Player1.GetComponent<HealthTracker>().Resurrect();
-            Player2.GetComponent<HealthTracker>().Resurrect();
+            Player1.GetComponent<InfoTracker>().ResetStats();
+            Player2.GetComponent<InfoTracker>().ResetStats();
         }
 
         else if(id == 2)
@@ -142,41 +115,18 @@ public class RoundManager : MonoBehaviour
             Player2Cam.GetComponent<PlayerController>().enabled = false;
             Player2.GetComponent<Rigidbody>().useGravity = true;
             Player2Cam.transform.SetParent(Player2.transform);
-            for (int i = 0; i < Player1Canvas.transform.childCount - 2; i++)
-            {
-                Player1Canvas.transform.GetChild(i).gameObject.SetActive(false);
-            }
-            for (int i = 0; i < Player2Canvas.transform.childCount - 2; i++)
-            {
-                Player2Canvas.transform.GetChild(i).gameObject.SetActive(false);
-            }
-
-            ScoreText1.gameObject.SetActive(true);
-            ScoreText2.gameObject.SetActive(true);
+            Player1.GetComponent<InfoTracker>().Hide();
 
             yield return new WaitForSeconds(10);
 
-            ScoreText1.gameObject.SetActive(false);
-            ScoreText2.gameObject.SetActive(false);
-
             Player1Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
             Player2Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player2Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
-            Player1Cam.GetComponent<PlayerController>().ammoBar.transform.localScale = new Vector3(1, 1, 1);
-            Player2Cam.GetComponent<PlayerController>().ammoBar.transform.localScale = new Vector3(1, 1, 1);
 
-            for (int i = 0; i < Player1Canvas.transform.childCount - 2; i++)
-            {
-                Player1Canvas.transform.GetChild(i).gameObject.SetActive(true);
-            }
-            for (int i = 0; i < Player2Canvas.transform.childCount - 2; i++)
-            {
-                Player2Canvas.transform.GetChild(i).gameObject.SetActive(true);
-            }
             Player2Cam.GetComponent<PlayerController>().enabled = true;
             Player2.GetComponent<Rigidbody>().useGravity = false;
             Player2Cam.transform.SetParent(null);
-            Player1.GetComponent<HealthTracker>().Resurrect();
-            Player2.GetComponent<HealthTracker>().Resurrect();
+            Player1.GetComponent<InfoTracker>().ResetStats();
+            Player2.GetComponent<InfoTracker>().ResetStats();
         }
 
         StartCoroutine(SetupRound());
