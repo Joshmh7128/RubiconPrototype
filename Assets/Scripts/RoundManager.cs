@@ -56,11 +56,7 @@ public class RoundManager : MonoBehaviour
 
     [Header("Modifiers")]
 
-    public string weapon1;
-    public string weapon2;
-    public string weapon3;
-    public string weapon4;
-    public string weapon5;
+    public string[] weaponList;
 
     // what mods do we have?
     public enum battleMods
@@ -136,11 +132,7 @@ public class RoundManager : MonoBehaviour
                 }
             }
         }
-        weapon1 = weapons[0];
-        weapon2 = weapons[1];
-        weapon3 = weapons[2];
-        weapon4 = weapons[3];
-        weapon5 = weapons[4];
+        weaponList = weapons;
     }
 
     // score update

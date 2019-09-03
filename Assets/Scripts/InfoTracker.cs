@@ -11,10 +11,13 @@ public class InfoTracker : MonoBehaviour
 
 	public int hp;
     private int maxHP = 100;
+    public int shield = 0;
+    public int maxShield = 0; 
     private bool dead = false;
 
     public Image hpBar;
     public Text hpText;
+    public Text shieldText;
     public Animator redAnim;
 
     public Text ammoText;
@@ -29,6 +32,15 @@ public class InfoTracker : MonoBehaviour
         hp = maxHP;
         hpText.text = hp.ToString() + " / " + maxHP.ToString();
         hpBar.fillAmount = 1f;
+        shield = maxShield;
+        if(maxShield > 0)
+        {
+            shieldText.text = "Shield: " + shield.ToString();
+        }
+        else
+        {
+            shieldText.text = "";
+        }
         StartCoroutine(startAmmo());
         id = myPlayer.playerID;
         rm = GameObject.FindGameObjectWithTag("Manager").GetComponent<RoundManager>();
@@ -53,19 +65,45 @@ public class InfoTracker : MonoBehaviour
 
     public void TakeDamage(int taken)
     {
-        hp -= taken;
-        if(hp <= 0 && !dead)
+        if (shield > 0)
         {
-            hpBar.fillAmount = 0;
-            dead = true;
-            Die();
+            int temp = taken;
+            taken -= shield;
+            shield -= temp;
+            if (taken <= 0)
+            {
+                taken = 0;
+                if (shield > 0)
+                {
+                    shieldText.text = "Shield: " + shield.ToString();
+                }
+                else
+                {
+                    shield = 0;
+                    shieldText.text = "";
+                }
+            }
         }
-        else if (hp > 0)
+
+        if(taken > 0)
         {
-            hpBar.fillAmount = (float) hp / maxHP;
-            hpText.text = hp.ToString() + " / " + maxHP.ToString();
-            redAnim.Play("redFlash");
-        }    
+            shield = 0;
+            shieldText.text = "";
+            hp -= taken;
+            if (hp <= 0 && !dead)
+            {
+                hpBar.fillAmount = 0;
+                dead = true;
+                Die();
+            }
+            else if (hp > 0)
+            {
+                hpBar.fillAmount = (float)hp / maxHP;
+                hpText.text = hp.ToString() + " / " + maxHP.ToString();
+                redAnim.Play("redFlash");
+            }
+        }
+           
     }
 
     public void Die()
@@ -88,6 +126,15 @@ public class InfoTracker : MonoBehaviour
         hp = maxHP;
         hpBar.fillAmount = 1;
         hpText.text = hp.ToString() + " / " + maxHP.ToString();
+        shield = maxShield;
+        if(shield > 0)
+        {
+            shieldText.text = "Shield: " + shield.ToString();
+        }
+        else
+        {
+            shieldText.text = "";
+        }
         resetAmmo();
     }
 }
