@@ -27,16 +27,12 @@ public class PlayerController : MonoBehaviour
 	public float offset;                            //forward camera offset amount
 
 	[Header("Weapon Fields")]
-	public float fireRate = 0.5f;                                        // Number in seconds which controls how often the player can fire
-	public float weaponRange = 200f;                                        // Distance in Unity units over which the player can fire
 	public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
 	public Animator weaponAnim;
 	public GameObject flashLight;
 	public ParticleSystem muzzle;
 	public ParticleSystem burst;
 	public ParticleSystem blood;
-	public GameObject ammoBar;
-	public Animator ammoAnim;
 
 	public PlayerState _state
 	{

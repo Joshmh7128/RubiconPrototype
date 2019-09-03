@@ -5,24 +5,30 @@ using UnityEngine;
 public class GunScriptBase
 {
 	private PlayerController player;
-	
-	public int mag;
-	public int magSize = 24;
+
+    private InfoTracker myInfo;
+
+    public string type = "blaster";
+    public int mag;
+	public int magSize = 16;
+    public int dmg = 17;
+    public float fireRate = 0.2f;
+    public float weaponRange = 100f;
 	private Camera fpsCam;                                                // Holds a reference to the first person camera
-	private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
+	public WaitForSeconds shotDuration;    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
+    public float laserTime = 0.07f;
 	private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
 	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after firing
 
 	public GunScriptBase(PlayerController player)
 	{
 		this.player = player;
-		// Get and store a reference to our LineRenderer component
+        myInfo = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<InfoTracker>();
 		laserLine = player.GetComponent<LineRenderer>();
-		// Get and store a reference to our Camera by searching this GameObject and its parents
 		fpsCam = player.GetComponentInParent<Camera>();
 		mag = magSize;
-		player.ammoBar.transform.localScale = new Vector3(1, 1, 1);
 		player.flashLight.SetActive(false);
+        shotDuration = new WaitForSeconds(laserTime);
 	}
 
 
@@ -32,15 +38,14 @@ public class GunScriptBase
 		// Check if the player has pressed the fire button and if enough time has elapsed since they last fired
 		if ((Input.GetAxis("Joy" + player.playerID + "Axis10") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
 		{
-			//nextFire = Time.time + fireRate;
 
 			if (mag > 0)
 			{
 				mag--;
-				player.ammoBar.transform.localScale = new Vector3((float)mag / magSize, 1, 1);
+                myInfo.updateAmmo(mag);
 
 				// Update the time when our player can fire next
-				nextFire = Time.time + player.fireRate;
+				nextFire = Time.time + fireRate;
 
 				player.weaponAnim.Play("fireR");
 				player.muzzle.Play();
@@ -58,7 +63,7 @@ public class GunScriptBase
 				laserLine.SetPosition(0, player.gunEnd.position);
 
 				// Check if our raycast has hit anything
-				if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, player.weaponRange))
+				if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
 				{
 					// Set the end position for our laser line 
 					laserLine.SetPosition(1, hit.point);
@@ -70,13 +75,13 @@ public class GunScriptBase
 					if (hit.collider.gameObject.CompareTag("Player"))
 					{
 						player.InstantiateBlood(hit.point);
-						hit.collider.gameObject.GetComponent<HealthTracker>().TakeDamage(1);
-					}
+                        hit.collider.gameObject.GetComponent<InfoTracker>().TakeDamage(dmg);
+                    }
 				}
 				else
 				{
 					// If we did not hit anything, set the end of the line to a position directly in front of the camera at the distance of weaponRange
-					laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * player.weaponRange));
+					laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
 				}
 			}
 			else
@@ -110,12 +115,11 @@ public class GunScriptBase
 	private IEnumerator Reload()
 	{
 		//mag = 0;
-		player.ammoAnim.Play("ammoBump");
 		player.weaponAnim.Play("loadR");
 		player.SetState(PlayerState.reloadState);
 		yield return new WaitForSeconds(1.01f);
 		mag = magSize;
-		player.ammoBar.transform.localScale = new Vector3(1, 1, 1);
-		player.SetState(PlayerState.normalState);
+        myInfo.updateAmmo(mag);
+        player.SetState(PlayerState.normalState);
 	}
 }
