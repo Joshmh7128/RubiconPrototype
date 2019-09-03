@@ -6,6 +6,14 @@ using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour
 {
+    /*
+     * this script handles:
+     * Game score, scene items, both player tracking
+     * battle modifiers, and round modifiers
+     */
+
+    // all variable definitions
+    #region
     [Header("Score")]
 
     public int Player1Kills = 0;
@@ -20,7 +28,7 @@ public class RoundManager : MonoBehaviour
     public Text Player1Rounds;
     public Text Player2Rounds;
 
-    private int roundNum = 1;
+    public int roundNum = 1; // needed to make public
     public Text RoundCounter;
 
     [Header("Scene")]
@@ -54,12 +62,34 @@ public class RoundManager : MonoBehaviour
     public string weapon4;
     public string weapon5;
 
+    // what mods do we have?
+    public enum battleMods
+    {
+        none,  Speed, Invis, Armor, Shield, Cinematic, Regen, Vampire, Glowing, Tracking, LargePlayer,
+    }
+
+    // what mods do the players have? // remember to set the length of these before using them so we don't have to recreate them over and over
+    public int[] player1Mods = new int[10];
+    public int[] player2Mods = new int[10];
+    public int[] player3Mods = new int[10];
+    public int[] player4Mods = new int[10];
+
+    public int newMod;
+
+    #endregion
+
+    // start
+
     private void Start()
     {
         GenerateWeapons();
         myArena.shuffle(shuffles);
         StartCoroutine("SetupRound");
+
+
     }
+
+    // weapon generation
 
     public void GenerateWeapons()
     {
@@ -113,6 +143,8 @@ public class RoundManager : MonoBehaviour
         weapon5 = weapons[4];
     }
 
+    // score update
+
     public void updateScore(int loser)
     {
         if(loser == 1)
@@ -130,10 +162,15 @@ public class RoundManager : MonoBehaviour
         StartCoroutine(PlayerDeath(loser));
     }
 
+    // round end coroutine
+
     private IEnumerator EndRound(int winner)
     {
         yield return null;
     }
+
+    // full reset and next round start and setup
+    #region
 
     public void resetScore()
     {
@@ -212,6 +249,7 @@ public class RoundManager : MonoBehaviour
 
     private IEnumerator PlayerDeath(int id)
     {
+        Debug.Log("Player died, running coroutine...");
         if(id == 1)
         {
             Player1Cam.GetComponent<PlayerController>().enabled = false;
@@ -251,6 +289,141 @@ public class RoundManager : MonoBehaviour
             }
         }
         Rotator.live = true;
+
+        BattleModAssign(true, 1); // choose a modifier
+        BattleModActivate(newMod); // set it
+
         yield return null;
+    }
+
+    #endregion
+
+    // battle mod framework
+    #region
+
+    private int[] targetMods; // we'll create an array to hold the mods before we apply them
+    private int[] setMods; // we'll create an array to copy our mods off of and apply them
+    
+
+    public void BattleModAssign(bool isGood, int targetPlayer)
+    {
+        // this script will choose one of the battle mods and assign it
+        // if a mod is good or bad will be assigned externally
+        // this script will add mods to an array
+
+        // which player are we working with?
+        #region 
+        if (targetPlayer == 1)
+        { targetMods = player1Mods; };
+
+        if (targetPlayer == 2)
+        { targetMods = player2Mods; };
+
+        if (targetPlayer == 3)
+        { targetMods = player3Mods; };
+
+        if (targetPlayer == 4)
+        { targetMods = player4Mods; };
+        #endregion
+
+        for (int i = 0; i < targetMods.Length;  i++)
+        {
+            if (i <= roundNum-1) //check one less than the round 
+
+            if (targetMods[i] == 0)
+            {
+
+                int j; // declare the number that will be used to determine our mod
+
+                if (isGood)
+                {
+                    j = Random.Range((int)1, (int)7); // choose a good mod
+                }
+                else
+                {
+                    j = Random.Range((int)8, (int)10); // choose a bad mod
+                }
+
+                for (int f = 0; f < targetMods.Length; f++) // check for no dupes
+                {
+                    if (targetMods[f] == j)
+                    {
+                        j = Random.Range((int)1, (int)10); // choose a new mod
+                    }
+                }
+
+                targetMods[i] = j; // set it
+                newMod = j;
+                Debug.Log("mod is " + j);
+            }
+        }
+    }
+    #endregion
+
+    // working with and activating battlemods
+    public void BattleModActivate(int mod)
+    {
+        // this script will activate the mods and make the necessary applications to all players
+        #region
+        if (mod == (int)battleMods.Armor)
+        {
+            // add armor
+
+        }
+
+        if (mod == (int)battleMods.Cinematic)
+        {
+            // change the camera
+
+        }
+
+        if (mod == (int)battleMods.Glowing)
+        {
+            // change the target player's material
+
+        }
+
+        if (mod == (int)battleMods.Invis)
+        {
+            // change the target player's material
+
+        }
+
+        if (mod == (int)battleMods.LargePlayer)
+        {
+            // change the target player's size
+
+        }
+
+        if (mod == (int)battleMods.Regen)
+        {
+            // add HP regen to a player
+
+        }
+
+        if (mod == (int)battleMods.Shield)
+        {
+            // change the target player's material
+
+        }
+
+        if (mod == (int)battleMods.Speed)
+        {
+            // increase the speed of the player
+
+        }
+
+        if (mod == (int)battleMods.Tracking)
+        {
+            // add tracking particles to the player
+
+        }
+
+        if (mod == (int)battleMods.Vampire)
+        {
+            // change the target player's material
+
+        }
+        #endregion
     }
 }
