@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour
 {
+    [Header("Score")]
+
     public int Player1Kills = 0;
     public int Player2Kills = 0;
 
@@ -20,6 +22,8 @@ public class RoundManager : MonoBehaviour
 
     private int roundNum = 1;
     public Text RoundCounter;
+
+    [Header("Scene")]
 
     public GameObject Player1;
     public GameObject Player2;
@@ -42,10 +46,71 @@ public class RoundManager : MonoBehaviour
 
     private int downtime = 10;
 
+    [Header("Modifiers")]
+
+    public string weapon1;
+    public string weapon2;
+    public string weapon3;
+    public string weapon4;
+    public string weapon5;
+
     private void Start()
     {
+        GenerateWeapons();
         myArena.shuffle(shuffles);
         StartCoroutine("SetupRound");
+    }
+
+    public void GenerateWeapons()
+    {
+        string[] weapons = new string[5];
+        for(int i = 0; i <= 4; i++)
+        {
+            bool original = false;
+            while(original == false)
+            {
+                int key = Random.Range(1, 7);
+                if (key == 1)
+                {
+                    weapons[i] = "blaster";
+                }
+                else if (key == 2)
+                {
+                    weapons[i] = "shotgun";
+                }
+                else if (key == 3)
+                {
+                    weapons[i] = "sniper";
+                }
+                else if (key == 4)
+                {
+                    weapons[i] = "machinegun";
+                }
+                else if (key == 5)
+                {
+                    weapons[i] = "missile";
+                }
+                else if (key == 6)
+                {
+                    weapons[i] = "grenade";
+                }
+
+                original = true;
+
+                for (int x = 0; x < i; x++)
+                {
+                    if (weapons[i] == weapons[x])
+                    {
+                        original = false;
+                    }
+                }
+            }
+        }
+        weapon1 = weapons[0];
+        weapon2 = weapons[1];
+        weapon3 = weapons[2];
+        weapon4 = weapons[3];
+        weapon5 = weapons[4];
     }
 
     public void updateScore(int loser)
