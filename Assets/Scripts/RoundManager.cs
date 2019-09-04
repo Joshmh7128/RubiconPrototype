@@ -58,6 +58,8 @@ public class RoundManager : MonoBehaviour
 
     public string[] weaponList;
 
+    public ModDisplay md;
+
     // what mods do we have?
     public enum battleMods
     {
@@ -220,6 +222,7 @@ public class RoundManager : MonoBehaviour
         roundNum++;
         RoundCounter.text = "Round " + roundNum.ToString();
         resetPlayers(loser);
+        md.ResetPanels();
         SetupRound();
     }
 
@@ -242,7 +245,8 @@ public class RoundManager : MonoBehaviour
     private IEnumerator PlayerDeath(int id)
     {
         Debug.Log("Player died, running coroutine...");
-        if(id == 1)
+        int posNeg = Random.Range(1, 3);
+        if (id == 1)
         {
             Player1Cam.GetComponent<PlayerController>().enabled = false;
             Player1.GetComponent<Rigidbody>().useGravity = true;
@@ -258,6 +262,16 @@ public class RoundManager : MonoBehaviour
             else
             {
                 StartCoroutine(NextRound(id));
+            }
+            if(posNeg == 1)
+            {
+                BattleModAssign(true, 1); // choose a modifier
+                BattleModActivate(newMod); // set it
+            }
+            else
+            {
+                BattleModAssign(false, 2); // choose a modifier
+                BattleModActivate(newMod); // set it
             }
         }
 
@@ -282,8 +296,16 @@ public class RoundManager : MonoBehaviour
         }
         Rotator.live = true;
 
-        BattleModAssign(true, 1); // choose a modifier
-        BattleModActivate(newMod); // set it
+        if (posNeg == 1)
+        {
+            BattleModAssign(true, 2); // choose a modifier
+            BattleModActivate(newMod); // set it
+        }
+        else
+        {
+            BattleModAssign(false, 1); // choose a modifier
+            BattleModActivate(newMod); // set it
+        }
 
         yield return null;
     }
@@ -333,20 +355,28 @@ public class RoundManager : MonoBehaviour
                 }
                 else
                 {
-                    j = Random.Range((int)8, (int)10); // choose a bad mod
+                    j = Random.Range((int)8, (int)11); // choose a bad mod
                 }
 
                 for (int f = 0; f < targetMods.Length; f++) // check for no dupes
                 {
-                    if (targetMods[f] == j)
+                    while (targetMods[f] == j)
                     {
-                        j = Random.Range((int)1, (int)10); // choose a new mod
-                    }
+                            if (isGood)
+                            {
+                                j = Random.Range((int)1, (int)7); // choose a good mod
+                            }
+                            else
+                            {
+                                j = Random.Range((int)8, (int)11); // choose a bad mod
+                            }
+                        }
                 }
 
                 targetMods[i] = j; // set it
                 newMod = j;
                 Debug.Log("mod is " + j);
+                md.ActivateMod(targetPlayer, isGood, i, j);
             }
         }
     }
