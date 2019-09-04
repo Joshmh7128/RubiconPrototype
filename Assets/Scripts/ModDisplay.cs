@@ -48,43 +48,43 @@ public class ModDisplay : MonoBehaviour
             Text modName = Player1Panels[modNum].transform.Find("Text").GetComponent<Text>();
             if (modKey == 1)
             {
-                modName.text = "Good Mod #1";
+                modName.text = "Speed";
             }
             if (modKey == 2)
             {
-                modName.text = "Good Mod #2";
+                modName.text = "Stealth";
             }
             if (modKey == 3)
             {
-                modName.text = "Good Mod #3";
+                modName.text = "Armor";
             }
             if (modKey == 4)
             {
-                modName.text = "Good Mod #4";
+                modName.text = "Shield";
             }
             if (modKey == 5)
             {
-                modName.text = "Good Mod #5";
+                modName.text = "Regen";
             }
             if (modKey == 6)
             {
-                modName.text = "Good Mod #6";
+                modName.text = "Tracking";
             }
             if (modKey == 7)
             {
-                modName.text = "Good Mod #7";
+                modName.text = "Vampire";
             }
             if (modKey == 8)
             {
-                modName.text = "Bad Mod #8";
+                modName.text = "Glowing";
             }
             if (modKey == 9)
             {
-                modName.text = "Bad Mod #9";
+                modName.text = "Cinematic";
             }
             if (modKey == 10)
             {
-                modName.text = "Bad Mod #10";
+                modName.text = "Large";
             }
 
             Player1Panels[modNum].SetActive(true);
@@ -106,43 +106,43 @@ public class ModDisplay : MonoBehaviour
             Text modName = Player2Panels[modNum].transform.Find("Text").GetComponent<Text>();
             if (modKey == 1)
             {
-                modName.text = "Good Mod #1";
+                modName.text = "Speed";
             }
             if (modKey == 2)
             {
-                modName.text = "Good Mod #2";
+                modName.text = "Stealth";
             }
             if (modKey == 3)
             {
-                modName.text = "Good Mod #3";
+                modName.text = "Armor";
             }
             if (modKey == 4)
             {
-                modName.text = "Good Mod #4";
+                modName.text = "Shield";
             }
             if (modKey == 5)
             {
-                modName.text = "Good Mod #5";
+                modName.text = "Regen";
             }
             if (modKey == 6)
             {
-                modName.text = "Good Mod #6";
+                modName.text = "Tracking";
             }
             if (modKey == 7)
             {
-                modName.text = "Good Mod #7";
+                modName.text = "Vampire";
             }
             if (modKey == 8)
             {
-                modName.text = "Bad Mod #8";
+                modName.text = "Glowing";
             }
             if (modKey == 9)
             {
-                modName.text = "Bad Mod #9";
+                modName.text = "Cinematic";
             }
             if (modKey == 10)
             {
-                modName.text = "Bad Mod #10";
+                modName.text = "Large";
             }
 
             Player2Panels[modNum].SetActive(true);

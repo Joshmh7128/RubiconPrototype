@@ -63,7 +63,7 @@ public class RoundManager : MonoBehaviour
     // what mods do we have?
     public enum battleMods
     {
-        none,  Speed, Invis, Armor, Shield, Cinematic, Regen, Vampire, Glowing, Tracking, LargePlayer,
+        none,  Speed, Invis, Armor, Shield, Regen, Tracking, Vampire, Glowing, Cinematic, LargePlayer,
     }
 
     // what mods do the players have? // remember to set the length of these before using them so we don't have to recreate them over and over
@@ -389,60 +389,70 @@ public class RoundManager : MonoBehaviour
         #region
         if (mod == (int)battleMods.Armor)
         {
+            Debug.Log(mod.ToString() + ": Armor");
             // add armor
 
         }
 
         if (mod == (int)battleMods.Cinematic)
         {
+            Debug.Log(mod.ToString() + ": Cinematic");
             // change the camera
 
         }
 
         if (mod == (int)battleMods.Glowing)
         {
+            Debug.Log(mod.ToString() + ": Glowing");
             // change the target player's material
 
         }
 
         if (mod == (int)battleMods.Invis)
         {
+            Debug.Log(mod.ToString() + ": Invis");
             // change the target player's material
 
         }
 
         if (mod == (int)battleMods.LargePlayer)
         {
+            Debug.Log(mod.ToString() + ": Large");
             // change the target player's size
 
         }
 
         if (mod == (int)battleMods.Regen)
         {
+            Debug.Log(mod.ToString() + ": Regen");
             // add HP regen to a player
 
         }
 
         if (mod == (int)battleMods.Shield)
         {
+            Debug.Log(mod.ToString() + ": Shield");
             // change the target player's material
 
         }
 
         if (mod == (int)battleMods.Speed)
         {
+            Debug.Log(mod.ToString() + ": Speed");
             // increase the speed of the player
 
         }
 
         if (mod == (int)battleMods.Tracking)
         {
+            Debug.Log(mod.ToString() + ": Tracking");
             // add tracking particles to the player
 
         }
 
         if (mod == (int)battleMods.Vampire)
         {
+            Debug.Log(mod.ToString() + ": Vampire");
             // change the target player's material
 
         }
