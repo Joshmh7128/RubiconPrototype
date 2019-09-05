@@ -12,12 +12,15 @@ public class InfoTracker : MonoBehaviour
 	public int hp;
     private int maxHP = 100;
     public int shield = 0;
-    public int maxShield = 0; 
+    public int maxShield = 0;
+    private int tempMaxShield;
     private bool dead = false;
 
     public Image hpBar;
     public Text hpText;
     public Text shieldText;
+    public Image shieldBar;
+    public Image shieldAmount;
     public Animator redAnim;
 
     public Text ammoText;
@@ -32,14 +35,16 @@ public class InfoTracker : MonoBehaviour
         hp = maxHP;
         hpText.text = hp.ToString() + " / " + maxHP.ToString();
         hpBar.fillAmount = 1f;
+        shieldBar.gameObject.SetActive(false);
         shield = maxShield;
-        if(maxShield > 0)
+        tempMaxShield = maxShield;
+        if (shield > 0)
         {
-            shieldText.text = "Shield: " + shield.ToString();
-        }
-        else
-        {
-            shieldText.text = "";
+            shieldText.text = shield.ToString();
+            shieldBar.rectTransform.sizeDelta = new Vector2(180f * (float)maxShield / 100, shieldBar.rectTransform.sizeDelta.y);
+            shieldAmount.rectTransform.sizeDelta = new Vector2(180f * (float)maxShield / 100, shieldAmount.rectTransform.sizeDelta.y);
+            shieldAmount.fillAmount = 1f;
+            shieldBar.gameObject.SetActive(true);
         }
         StartCoroutine(startAmmo());
         id = myPlayer.playerID;
@@ -63,6 +68,22 @@ public class InfoTracker : MonoBehaviour
         ammoText.text = magSize + " / " + magSize;
     }
 
+    public void AddShield(int added)
+    {
+        int total = shield + added;
+        if(total > tempMaxShield)
+        {
+            tempMaxShield = total;
+        }
+        shieldBar.rectTransform.sizeDelta = new Vector2(180f * (float)tempMaxShield / 100, shieldBar.rectTransform.sizeDelta.y);
+        shieldAmount.rectTransform.sizeDelta = new Vector2(180f * (float)tempMaxShield / 100, shieldAmount.rectTransform.sizeDelta.y);
+        shield += added;
+        shieldBar.gameObject.SetActive(true);
+        shieldAmount.fillAmount = (float)shield / tempMaxShield;
+        shieldText.text = shield.ToString();
+        shieldBar.GetComponent<Animator>().Play("shieldAppear");
+    }
+
     public void TakeDamage(int taken)
     {
         if (shield > 0)
@@ -75,12 +96,15 @@ public class InfoTracker : MonoBehaviour
                 taken = 0;
                 if (shield > 0)
                 {
-                    shieldText.text = "Shield: " + shield.ToString();
+                    shieldText.text = shield.ToString();
+                    shieldAmount.fillAmount = (float) shield / tempMaxShield;
                 }
                 else
                 {
                     shield = 0;
                     shieldText.text = "";
+                    shieldBar.fillAmount = 0f;
+                    shieldBar.gameObject.SetActive(false);
                 }
             }
         }
@@ -89,6 +113,8 @@ public class InfoTracker : MonoBehaviour
         {
             shield = 0;
             shieldText.text = "";
+            shieldAmount.fillAmount = (float)shield / tempMaxShield;
+            shieldBar.gameObject.SetActive(false);
             hp -= taken;
             if (hp <= 0 && !dead)
             {
@@ -127,13 +153,18 @@ public class InfoTracker : MonoBehaviour
         hpBar.fillAmount = 1;
         hpText.text = hp.ToString() + " / " + maxHP.ToString();
         shield = maxShield;
+        tempMaxShield = maxShield;
         if(shield > 0)
         {
-            shieldText.text = "Shield: " + shield.ToString();
+            shieldText.text = shield.ToString();
+            shieldAmount.fillAmount = 1;
+            shieldBar.gameObject.SetActive(true);
         }
         else
         {
             shieldText.text = "";
+            shieldAmount.fillAmount = 0;
+            shieldBar.gameObject.SetActive(false);
         }
         resetAmmo();
     }
