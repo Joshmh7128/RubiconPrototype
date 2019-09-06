@@ -104,7 +104,7 @@ public class GunScriptBase
 		laserLine.enabled = true;
 		player.flashLight.SetActive(true);
 
-		//Wait for .07 seconds
+		//Wait for x seconds
 		yield return shotDuration;
 
 		// Deactivate our line renderer after waiting

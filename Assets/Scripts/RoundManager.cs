@@ -52,27 +52,25 @@ public class RoundManager : MonoBehaviour
     public CubeAction myArena;
     private int shuffles = 20;
 
-    private int downtime = 10;
+    private int downtime = 5;
 
     [Header("Modifiers")]
 
-    public string weapon1;
-    public string weapon2;
-    public string weapon3;
-    public string weapon4;
-    public string weapon5;
+    public string[] weaponList;
+
+    public ModDisplay md;
 
     // what mods do we have?
     public enum battleMods
     {
-        none,  Speed, Invis, Armor, Shield, Cinematic, Regen, Vampire, Glowing, Tracking, LargePlayer,
+        none,  Speed, Invis, Armor, Shield, Regen, Tracking, Vampire, Glowing, Cinematic, LargePlayer,
     }
 
     // what mods do the players have? // remember to set the length of these before using them so we don't have to recreate them over and over
-    public int[] player1Mods = new int[10];
-    public int[] player2Mods = new int[10];
-    public int[] player3Mods = new int[10];
-    public int[] player4Mods = new int[10];
+    public int[] player1Mods = new int[4];
+    public int[] player2Mods = new int[4];
+    public int[] player3Mods = new int[4];
+    public int[] player4Mods = new int[4];
 
     public int newMod;
 
@@ -136,11 +134,7 @@ public class RoundManager : MonoBehaviour
                 }
             }
         }
-        weapon1 = weapons[0];
-        weapon2 = weapons[1];
-        weapon3 = weapons[2];
-        weapon4 = weapons[3];
-        weapon5 = weapons[4];
+        weaponList = weapons;
     }
 
     // score update
@@ -228,6 +222,11 @@ public class RoundManager : MonoBehaviour
         roundNum++;
         RoundCounter.text = "Round " + roundNum.ToString();
         resetPlayers(loser);
+        player1Mods = new int[4];
+        player2Mods = new int[4];
+        player3Mods = new int[4];
+        player4Mods = new int[4];
+        md.ResetPanels();
         SetupRound();
     }
 
@@ -250,7 +249,8 @@ public class RoundManager : MonoBehaviour
     private IEnumerator PlayerDeath(int id)
     {
         Debug.Log("Player died, running coroutine...");
-        if(id == 1)
+        int posNeg = Random.Range(1, 11);
+        if (id == 1)
         {
             Player1Cam.GetComponent<PlayerController>().enabled = false;
             Player1.GetComponent<Rigidbody>().useGravity = true;
@@ -259,14 +259,23 @@ public class RoundManager : MonoBehaviour
 
             if(Player2Kills < 3)
             {
+                if (posNeg < 8)
+                {
+                    BattleModAssign(true, 1); // choose a modifier
+                    BattleModActivate(newMod); // set it
+                }
+                else
+                {
+                    BattleModAssign(false, 2); // choose a modifier
+                    BattleModActivate(newMod); // set it
+                }
                 yield return new WaitForSeconds(downtime);
                 resetPlayers(id);
             }
-
             else
             {
                 StartCoroutine(NextRound(id));
-            }
+            } 
         }
 
         else if(id == 2)
@@ -280,7 +289,16 @@ public class RoundManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(downtime);
                 resetPlayers(id);
-                StartCoroutine(SetupRound());
+                if (posNeg < 8)
+                {
+                    BattleModAssign(true, 2); // choose a modifier
+                    BattleModActivate(newMod); // set it
+                }
+                else
+                {
+                    BattleModAssign(false, 1); // choose a modifier
+                    BattleModActivate(newMod); // set it
+                }
             }
 
             else
@@ -289,10 +307,6 @@ public class RoundManager : MonoBehaviour
             }
         }
         Rotator.live = true;
-
-        BattleModAssign(true, 1); // choose a modifier
-        BattleModActivate(newMod); // set it
-
         yield return null;
     }
 
@@ -328,34 +342,42 @@ public class RoundManager : MonoBehaviour
 
         for (int i = 0; i < targetMods.Length;  i++)
         {
-            if (i <= roundNum-1) //check one less than the round 
 
-            if (targetMods[i] == 0)
-            {
-
-                int j; // declare the number that will be used to determine our mod
-
-                if (isGood)
+                if (targetMods[i] == 0)
                 {
-                    j = Random.Range((int)1, (int)7); // choose a good mod
-                }
-                else
-                {
-                    j = Random.Range((int)8, (int)10); // choose a bad mod
-                }
 
-                for (int f = 0; f < targetMods.Length; f++) // check for no dupes
-                {
-                    if (targetMods[f] == j)
+                    int j; // declare the number that will be used to determine our mod
+
+                    if (isGood)
                     {
-                        j = Random.Range((int)1, (int)10); // choose a new mod
+                        j = Random.Range((int)1, (int)7); // choose a good mod
                     }
-                }
+                    else
+                    {
+                        j = Random.Range((int)8, (int)11); // choose a bad mod
+                    }
 
-                targetMods[i] = j; // set it
-                newMod = j;
-                Debug.Log("mod is " + j);
-            }
+                    for (int f = 0; f < targetMods.Length; f++) // check for no dupes
+                    {
+                        while (targetMods[f] == j)
+                        {
+                            if (isGood)
+                            {
+                                j = Random.Range((int)1, (int)7); // choose a good mod
+                            }
+                            else
+                            {
+                                j = Random.Range((int)8, (int)11); // choose a bad mod
+                            }
+                        }
+                    }
+
+                    targetMods[i] = j; // set it
+                    newMod = j;
+                    Debug.Log("mod is " + j);
+                    md.ActivateMod(targetPlayer, isGood, i, j);
+                break;
+                }
         }
     }
     #endregion
@@ -367,60 +389,70 @@ public class RoundManager : MonoBehaviour
         #region
         if (mod == (int)battleMods.Armor)
         {
+            Debug.Log(mod.ToString() + ": Armor");
             // add armor
 
         }
 
         if (mod == (int)battleMods.Cinematic)
         {
+            Debug.Log(mod.ToString() + ": Cinematic");
             // change the camera
 
         }
 
         if (mod == (int)battleMods.Glowing)
         {
+            Debug.Log(mod.ToString() + ": Glowing");
             // change the target player's material
 
         }
 
         if (mod == (int)battleMods.Invis)
         {
+            Debug.Log(mod.ToString() + ": Invis");
             // change the target player's material
 
         }
 
         if (mod == (int)battleMods.LargePlayer)
         {
+            Debug.Log(mod.ToString() + ": Large");
             // change the target player's size
 
         }
 
         if (mod == (int)battleMods.Regen)
         {
+            Debug.Log(mod.ToString() + ": Regen");
             // add HP regen to a player
 
         }
 
         if (mod == (int)battleMods.Shield)
         {
+            Debug.Log(mod.ToString() + ": Shield");
             // change the target player's material
 
         }
 
         if (mod == (int)battleMods.Speed)
         {
+            Debug.Log(mod.ToString() + ": Speed");
             // increase the speed of the player
 
         }
 
         if (mod == (int)battleMods.Tracking)
         {
+            Debug.Log(mod.ToString() + ": Tracking");
             // add tracking particles to the player
 
         }
 
         if (mod == (int)battleMods.Vampire)
         {
+            Debug.Log(mod.ToString() + ": Vampire");
             // change the target player's material
 
         }
