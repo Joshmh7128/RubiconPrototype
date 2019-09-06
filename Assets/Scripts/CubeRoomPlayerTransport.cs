@@ -17,7 +17,7 @@ public class CubeRoomPlayerTransport : MonoBehaviour
     {
         if(player.CompareTag("Player"))
         {
-            player.transform.parent = null;
+            //player.transform.parent = null;
         }
     }
 }
