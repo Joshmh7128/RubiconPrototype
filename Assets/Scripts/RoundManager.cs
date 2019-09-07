@@ -259,6 +259,8 @@ public class RoundManager : MonoBehaviour
 
             if(Player2Kills < 3)
             {
+                yield return new WaitForSeconds(downtime);
+                resetPlayers(id);
                 if (posNeg < 8)
                 {
                     BattleModAssign(true, 1); // choose a modifier
@@ -268,9 +270,7 @@ public class RoundManager : MonoBehaviour
                 {
                     BattleModAssign(false, 2); // choose a modifier
                     BattleModActivate(newMod); // set it
-                }
-                yield return new WaitForSeconds(downtime);
-                resetPlayers(id);
+                } 
             }
             else
             {
