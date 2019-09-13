@@ -37,6 +37,13 @@ public class PlayerMoveBase
             // move down
             inputVector += new Vector3(0, -1, 0);
         }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            // for playtesting without a controller
+            inputVector += new Vector3(0, 0, 1);
+        }
+
         inputVector = player.transform.TransformDirection(inputVector);
 
     }

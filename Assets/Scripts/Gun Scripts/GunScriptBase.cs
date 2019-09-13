@@ -68,14 +68,14 @@ public class GunScriptBase
 					// Set the end position for our laser line 
 					laserLine.SetPosition(1, hit.point);
 
-					if (hit.collider.gameObject.CompareTag("Arena"))
-					{
-						player.InstantiateBurst(hit.point);
-					}
 					if (hit.collider.gameObject.CompareTag("Player"))
 					{
 						player.InstantiateBlood(hit.point);
                         hit.collider.gameObject.GetComponent<InfoTracker>().TakeDamage(dmg);
+                    }
+                    else
+                    {
+                        player.InstantiateBurst(hit.point);
                     }
 				}
 				else
