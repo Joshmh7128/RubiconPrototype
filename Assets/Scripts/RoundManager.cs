@@ -100,27 +100,27 @@ public class RoundManager : MonoBehaviour
                 int key = Random.Range(1, 7);
                 if (key == 1)
                 {
-                    weapons[i] = "blaster";
+                    weapons[i] = "Blasters";
                 }
                 else if (key == 2)
                 {
-                    weapons[i] = "shotgun";
+                    weapons[i] = "Shotguns";
                 }
                 else if (key == 3)
                 {
-                    weapons[i] = "sniper";
+                    weapons[i] = "Sniper Rifles";
                 }
                 else if (key == 4)
                 {
-                    weapons[i] = "machinegun";
+                    weapons[i] = "Machine Guns";
                 }
                 else if (key == 5)
                 {
-                    weapons[i] = "missile";
+                    weapons[i] = "Missile Launchers";
                 }
                 else if (key == 6)
                 {
-                    weapons[i] = "grenade";
+                    weapons[i] = "Grenade Launchers";
                 }
 
                 original = true;
