@@ -42,6 +42,9 @@ public class RoundManager : MonoBehaviour
     public GameObject Player1Canvas;
     public GameObject Player2Canvas;
 
+    public GameObject RoundCanvas;
+    public GameObject InterRound;
+
     public CubeAction Rotator;
 
     public Transform SpawnTop;
@@ -207,7 +210,7 @@ public class RoundManager : MonoBehaviour
 
     private IEnumerator NextRound(int loser)
     {
-        yield return new WaitForSeconds(downtime);
+        InterRound.SetActive(true);
         if(loser == 1)
         {
             Player2RoundsWon++;
@@ -218,6 +221,12 @@ public class RoundManager : MonoBehaviour
             Player1RoundsWon++;
             Player1Rounds.text = Player1RoundsWon.ToString();
         }
+        RoundCanvas.SetActive(false);
+
+        yield return new WaitForSeconds(10);
+
+        RoundCanvas.SetActive(true);
+        InterRound.SetActive(false);
         resetScore();
         roundNum++;
         RoundCounter.text = "Round " + roundNum.ToString();
