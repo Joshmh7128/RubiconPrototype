@@ -68,6 +68,17 @@ public class InfoTracker : MonoBehaviour
         ammoText.text = magSize + " / " + magSize;
     }
 
+    public void AddHealth(int added)
+    {
+        hp += added;
+        if(hp > maxHP)
+        {
+            hp = maxHP;
+        }
+        hpText.text = hp.ToString() + " / " + maxHP.ToString();
+        hpBar.fillAmount = (float)hp / maxHP;
+    }
+
     public void AddShield(int added)
     {
         int total = shield + added;
@@ -82,6 +93,19 @@ public class InfoTracker : MonoBehaviour
         shieldAmount.fillAmount = (float)shield / tempMaxShield;
         shieldText.text = shield.ToString();
         shieldBar.GetComponent<Animator>().Play("shieldAppear");
+    }
+
+    public void AddXray(int activeTime)
+    {
+        StartCoroutine(Xray(activeTime));
+    }
+
+    private IEnumerator Xray(int uptime)
+    {
+        GameObject x = gameObject.transform.Find("Xray").gameObject;
+        x.SetActive(true);
+        yield return new WaitForSeconds(uptime);
+        x.SetActive(false);
     }
 
     public void TakeDamage(int taken)
