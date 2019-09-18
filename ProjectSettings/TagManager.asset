@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Arena
   - Manager
+  - Breakable
   layers:
   - Default
   - TransparentFX
