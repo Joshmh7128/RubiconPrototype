@@ -9,6 +9,7 @@ public class DistanceDeactivate : MonoBehaviour
     bool isEnabled;
     float renderDistance = 100;
     // Start is called before the first frame update
+    /*
     void Start()
     {
        playerOne = GameObject.Find("Player1").GetComponent<Transform>();
@@ -18,7 +19,7 @@ public class DistanceDeactivate : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Vector3.Distance(playerOne.position, gameObject.transform.position) > renderDistance)
+        if ((Vector3.Distance(playerOne.position, gameObject.transform.position) > renderDistance) || (Vector3.Distance(playerTwo.position, gameObject.transform.position) > renderDistance))
         {
             gameObject.SetActive(false);
         }
@@ -26,5 +27,5 @@ public class DistanceDeactivate : MonoBehaviour
         {
             gameObject.SetActive(true);
         }
-    }
+    }*/
 }

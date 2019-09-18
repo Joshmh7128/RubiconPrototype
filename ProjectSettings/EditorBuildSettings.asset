@@ -6,15 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RoundSetup.unity
-    guid: f7e40f32492c8aa4d8132d737a4ac0f9
-  - enabled: 1
-    path: Assets/Scenes/ScoreScreen.unity
-    guid: 064affebc392d5544a87fa2ae3c43946
-  - enabled: 1
-    path: Assets/Scenes/ModAssign.unity
-    guid: e4231658b95d6ae40930e940603e2707
-  - enabled: 1
-    path: Assets/Scenes/WinScreen.unity
-    guid: bf6d4429a8139574f9796f5f33dd6138
+    path: Assets/Scenes/Map Designs (New).unity
+    guid: 8f156ed5213f6544f9875964fca31e5e
   m_configObjects: {}
