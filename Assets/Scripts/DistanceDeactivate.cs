@@ -7,7 +7,7 @@ public class DistanceDeactivate : MonoBehaviour
     Transform playerOne;
     Transform playerTwo;
     bool isEnabled;
-    float renderDistance = 1000;
+    float renderDistance = 100;
     // Start is called before the first frame update
     void Start()
     {
