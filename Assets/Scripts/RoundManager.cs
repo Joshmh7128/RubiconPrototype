@@ -42,6 +42,9 @@ public class RoundManager : MonoBehaviour
     public GameObject Player1Canvas;
     public GameObject Player2Canvas;
 
+    public GameObject RoundCanvas;
+    public GameObject InterRound;
+
     public CubeAction Rotator;
 
     public Transform SpawnTop;
@@ -83,8 +86,6 @@ public class RoundManager : MonoBehaviour
         GenerateWeapons();
         myArena.shuffle(shuffles);
         StartCoroutine("SetupRound");
-
-
     }
 
     // weapon generation
@@ -100,27 +101,27 @@ public class RoundManager : MonoBehaviour
                 int key = Random.Range(1, 7);
                 if (key == 1)
                 {
-                    weapons[i] = "blaster";
+                    weapons[i] = "Blasters";
                 }
                 else if (key == 2)
                 {
-                    weapons[i] = "shotgun";
+                    weapons[i] = "Shotguns";
                 }
                 else if (key == 3)
                 {
-                    weapons[i] = "sniper";
+                    weapons[i] = "Sniper Rifles";
                 }
                 else if (key == 4)
                 {
-                    weapons[i] = "machinegun";
+                    weapons[i] = "Machine Guns";
                 }
                 else if (key == 5)
                 {
-                    weapons[i] = "missile";
+                    weapons[i] = "Missile Launchers";
                 }
                 else if (key == 6)
                 {
-                    weapons[i] = "grenade";
+                    weapons[i] = "Grenade Launchers";
                 }
 
                 original = true;
@@ -207,7 +208,6 @@ public class RoundManager : MonoBehaviour
 
     private IEnumerator NextRound(int loser)
     {
-        yield return new WaitForSeconds(downtime);
         if(loser == 1)
         {
             Player2RoundsWon++;
@@ -218,16 +218,35 @@ public class RoundManager : MonoBehaviour
             Player1RoundsWon++;
             Player1Rounds.text = Player1RoundsWon.ToString();
         }
-        resetScore();
-        roundNum++;
-        RoundCounter.text = "Round " + roundNum.ToString();
-        resetPlayers(loser);
-        player1Mods = new int[4];
-        player2Mods = new int[4];
-        player3Mods = new int[4];
-        player4Mods = new int[4];
-        md.ResetPanels();
-        SetupRound();
+
+        if(Player1RoundsWon < 3 && Player2RoundsWon < 3)
+        {
+            RoundCanvas.SetActive(false);
+            Player1.GetComponent<InfoTracker>().Hide();
+            Player2.GetComponent<InfoTracker>().Hide();
+            InterRound.SetActive(true);
+            InterRound.transform.Find("TopText").GetComponent<Text>().text = "Round " + roundNum.ToString() + " Complete";
+            InterRound.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
+            InterRound.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
+            InterRound.transform.Find("WeaponText").GetComponent<Text>().text = weaponList[roundNum].ToString();
+
+            yield return new WaitForSeconds(10);
+
+            RoundCanvas.SetActive(true);
+            Player1Canvas.SetActive(true);
+            Player2Canvas.SetActive(true);
+            InterRound.SetActive(false);
+            resetScore();
+            roundNum++;
+            RoundCounter.text = "Round " + roundNum.ToString();
+            resetPlayers(loser);
+            player1Mods = new int[4];
+            player2Mods = new int[4];
+            player3Mods = new int[4];
+            player4Mods = new int[4];
+            md.ResetPanels();
+            SetupRound();
+        }
     }
 
     private IEnumerator SetupRound()
