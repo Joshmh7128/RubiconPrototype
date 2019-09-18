@@ -73,8 +73,9 @@ public class GunScriptBase
 						player.InstantiateBlood(hit.point);
                         hit.collider.gameObject.GetComponent<InfoTracker>().TakeDamage(dmg);
                     }
-                    else
+                    else if (hit.collider.gameObject.CompareTag("Breakable"))
                     {
+                        hit.collider.gameObject.GetComponent<BreakableObject>().TakeDamage();
                         player.InstantiateBurst(hit.point);
                     }
 				}
