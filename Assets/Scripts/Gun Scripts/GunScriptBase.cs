@@ -78,6 +78,10 @@ public class GunScriptBase
                         hit.collider.gameObject.GetComponent<BreakableObject>().TakeDamage();
                         player.InstantiateBurst(hit.point);
                     }
+                    else
+                    {
+                        player.InstantiateBurst(hit.point);
+                    }
 				}
 				else
 				{
