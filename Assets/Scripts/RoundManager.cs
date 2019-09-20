@@ -44,6 +44,7 @@ public class RoundManager : MonoBehaviour
 
     public GameObject RoundCanvas;
     public GameObject InterRound;
+    public GameObject MatchEnd;
 
     public CubeAction Rotator;
 
@@ -159,9 +160,15 @@ public class RoundManager : MonoBehaviour
 
     // round end coroutine
 
-    private IEnumerator EndRound(int winner)
+    private void EndMatch(int winner)
     {
-        yield return null;
+        RoundCanvas.SetActive(false);
+        Player1.GetComponent<InfoTracker>().Hide();
+        Player2.GetComponent<InfoTracker>().Hide();
+        MatchEnd.transform.Find("TopText").GetComponent<Text>().text = "Player " + winner.ToString() + " is the Champion";
+        MatchEnd.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
+        MatchEnd.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
+        MatchEnd.SetActive(true);
     }
 
     // full reset and next round start and setup
@@ -246,6 +253,10 @@ public class RoundManager : MonoBehaviour
             player4Mods = new int[4];
             md.ResetPanels();
             SetupRound();
+        }
+        else
+        {
+            EndMatch(Mathf.Abs(loser - 3));
         }
     }
 
