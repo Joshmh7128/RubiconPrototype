@@ -7,6 +7,7 @@ public class GunScriptBase
 	private PlayerController player;
 
     private InfoTracker myInfo;
+    private ModApplication modApp;
 
     public string type = "blaster";
     public int mag;
@@ -23,12 +24,13 @@ public class GunScriptBase
 	public GunScriptBase(PlayerController player)
 	{
 		this.player = player;
-        myInfo = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<InfoTracker>();
-		laserLine = player.GetComponent<LineRenderer>();
-		fpsCam = player.GetComponentInParent<Camera>();
-		mag = magSize;
-		player.flashLight.SetActive(false);
-        shotDuration = new WaitForSeconds(laserTime);
+        myInfo = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<InfoTracker>(); // get info
+        modApp = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<ModApplication>(); // get mod application
+        laserLine = player.GetComponent<LineRenderer>(); // get our lazer
+		fpsCam = player.GetComponentInParent<Camera>(); // which cam are we
+		mag = magSize; // mag size 
+		player.flashLight.SetActive(false); // do we have our flashlight on?
+        shotDuration = new WaitForSeconds(laserTime); // shot timing
 	}
 
 
@@ -72,6 +74,7 @@ public class GunScriptBase
 					{
 						player.InstantiateBlood(hit.point);
                         hit.collider.gameObject.GetComponent<InfoTracker>().TakeDamage(dmg);
+                        modApp.VampCheck();
                     }
                     else if (hit.collider.gameObject.CompareTag("Breakable"))
                     {
