@@ -61,7 +61,7 @@ public class PlayerMoveBase
     }
 
 	public void FixedUpdate()
-	{
+	{ // move the player
 		playerBody.velocity = inputVector * (player.speed * 50) * Time.deltaTime;
 	}
 }

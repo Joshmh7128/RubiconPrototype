@@ -9,8 +9,8 @@ public class InfoTracker : MonoBehaviour
     private RoundManager rm;
     public int id;
 
-	public int hp;
-    private int maxHP = 100;
+	public float hp;
+    public int maxHP = 100;
     public int shield = 0;
     public int maxShield = 0;
     private int tempMaxShield;
@@ -68,15 +68,17 @@ public class InfoTracker : MonoBehaviour
         ammoText.text = magSize + " / " + magSize;
     }
 
-    public void AddHealth(int added)
+    // changed HP from int to float to allow for frame-by-frame regen of HP 
+    public void AddHealth(float added)
     {
         hp += added;
         if(hp > maxHP)
         {
             hp = maxHP;
         }
-        hpText.text = hp.ToString() + " / " + maxHP.ToString();
-        hpBar.fillAmount = (float)hp / maxHP;
+        int displayHP = (int)hp;
+        hpText.text = displayHP.ToString() + " / " + maxHP.ToString();
+        hpBar.fillAmount = hp / maxHP;
     }
 
     public void AddShield(int added)
@@ -149,7 +151,8 @@ public class InfoTracker : MonoBehaviour
             else if (hp > 0)
             {
                 hpBar.fillAmount = (float)hp / maxHP;
-                hpText.text = hp.ToString() + " / " + maxHP.ToString();
+                int displayHP = (int)hp;
+                hpText.text = displayHP.ToString() + " / " + maxHP.ToString();
                 redAnim.Play("redFlash");
             }
         }
