@@ -26,7 +26,12 @@ public class PlayerController : MonoBehaviour
 	public float slerpAmount;
 	public float offset;                            //forward camera offset amount
 
-	[Header("Weapon Fields")]
+    public enum Weapons
+    {
+        Blaster, Grenade, Machine, Missile, Shotgun, Sniper
+    };
+    [Header("Weapon Fields")]
+    public Weapons activeWeapon;
 	public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
 	public Animator weaponAnim;
 	public GameObject flashLight;
@@ -34,7 +39,40 @@ public class PlayerController : MonoBehaviour
 	public ParticleSystem burst;
 	public ParticleSystem blood;
 
-	public PlayerState _state
+    [Header("Weapons (Set per Player!)")]
+    public GameObject blaster;
+    public Transform blasterEnd;
+    public float blasterShotSpeed;
+
+    public GameObject grenadeLauncher;
+    public Transform grenadeLauncherEnd;
+    public float grenadeShotSpeed;
+
+    public GameObject machineGun;
+    public Transform machineGunEnd;
+    public float machineShotSpeed;
+
+    public GameObject missileLauncher;
+    public Transform missileLauncherEnd;
+    public float missileShotSpeed;
+
+    public GameObject shotgun;
+    public Transform shotgunEnd;
+    public float shotgunShotSpeed;
+
+    public GameObject sniperRifle;
+    public Transform sniperRifleEnd;
+    public float sniperShotSpeed;
+
+    [Header("Weapon Projectiles")]
+    public GameObject blasterProjectile;
+    public GameObject grenadeProjectile;
+    public GameObject machineProjectile;
+    public GameObject missileProjectile;
+    public GameObject shotgunProjectile;
+    public GameObject sniperProjectile;
+
+    public PlayerState _state
 	{
 		get;
 		private set;
