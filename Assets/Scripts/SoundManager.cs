@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
     // this script does the sound
     // there's a lot okay
 
-    public AudioSource anouncerMain;
+    public AudioSource announcerMain;
     public AudioSource musicMain;
 
     #region Music Tracks
@@ -200,143 +200,764 @@ public class SoundManager : MonoBehaviour
         // pickups
         if (soundGroup == "armorPickup")
         {
+            int choice = Random.Range(1, 7);
+
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = armorPickup1;
+                    break;
+
+                case 2:
+                    announcerMain.clip = armorPickup2;
+                    break;
+
+                case 3:
+                    announcerMain.clip = armorPickup3;
+                    break;
+
+                case 4:
+                    announcerMain.clip = armorPickup4;
+                    break;
+
+                case 5:
+                    announcerMain.clip = armorPickup5;
+                    break;
+
+                case 6:
+                    announcerMain.clip = armorPickup6;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
 
         }
 
         if (soundGroup == "xrayPickup")
         {
+            int choice = Random.Range(1, 9);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = xrayPickup1;
+                    break;
+                case 2:
+                    announcerMain.clip = xrayPickup2;
+                    break;
+                case 3:
+                    announcerMain.clip = xrayPickup3;
+                    break;
+                case 4:
+                    announcerMain.clip = xrayPickup4;
+                    break;
+                case 5:
+                    announcerMain.clip = xrayPickup5;
+                    break;
+                case 6:
+                    announcerMain.clip = xrayPickup6;
+                    break;
+                case 7:
+                    announcerMain.clip = xrayPickup7;
+                    break;
+                case 8:
+                    announcerMain.clip = xrayPickup8;
+                    break;
+
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "hpPickup")
         {
+            int choice = Random.Range(1, 5);
 
-
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = HPPickup1;
+                    break;
+                case 2:
+                    announcerMain.clip = HPPickup2;
+                    break;
+                case 3:
+                    announcerMain.clip = HPPickup3;
+                    break;
+                case 4:
+                    announcerMain.clip = HPPickup4;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         // rounds
         if (soundGroup == "blasterRound")
         {
+            int choice = Random.Range(1, 9);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = blasterRound1;
+                    break;
+                case 2:
+                    announcerMain.clip = blasterRound2;
+                    break;
+                case 3:
+                    announcerMain.clip = blasterRound3;
+                    break;
+                case 4:
+                    announcerMain.clip = blasterRound4;
+                    break;
+                case 5:
+                    announcerMain.clip = blasterRound5;
+                    break;
+                case 6:
+                    announcerMain.clip = blasterRound6;
+                    break;
+                case 7:
+                    announcerMain.clip = blasterRound7;
+                    break;
+                case 8:
+                    announcerMain.clip = blasterRound8;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "grenadeRound")
         {
+            int choice = Random.Range(1, 7);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = grenadeRound1;
+                    break;
+                case 2:
+                    announcerMain.clip = grenadeRound2;
+                    break;
+                case 3:
+                    announcerMain.clip = grenadeRound3;
+                    break;
+                case 4:
+                    announcerMain.clip = grenadeRound4;
+                    break;
+                case 5:
+                    announcerMain.clip = grenadeRound5;
+                    break;
+                case 6:
+                    announcerMain.clip = grenadeRound6;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "machineRound")
         {
+            int choice = Random.Range(1, 9);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = machineRound1;
+                    break;
+                case 2:
+                    announcerMain.clip = machineRound2;
+                    break;
+                case 3:
+                    announcerMain.clip = machineRound3;
+                    break;
+                case 4:
+                    announcerMain.clip = machineRound4;
+                    break;
+                case 5:
+                    announcerMain.clip = machineRound5;
+                    break;
+                case 6:
+                    announcerMain.clip = machineRound6;
+                    break;
+                case 7:
+                    announcerMain.clip = machineRound7;
+                    break;
+                case 8:
+                    announcerMain.clip = machineRound8;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "missileRound")
         {
+            int choice = Random.Range(1, 9);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = missileRound1;
+                    break;
+                case 2:
+                    announcerMain.clip = missileRound2;
+                    break;
+                case 3:
+                    announcerMain.clip = missileRound3;
+                    break;
+                case 4:
+                    announcerMain.clip = missileRound4;
+                    break;
+                case 5:
+                    announcerMain.clip = missileRound5;
+                    break;
+                case 6:
+                    announcerMain.clip = missileRound6;
+                    break;
+                case 7:
+                    announcerMain.clip = missileRound7;
+                    break;
+                case 8:
+                    announcerMain.clip = missileRound8;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "shotgunRound")
         {
+            int choice = Random.Range(1, 9);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = shotgunRound1;
+                    break;
+                case 2:
+                    announcerMain.clip = shotgunRound2;
+                    break;
+                case 3:
+                    announcerMain.clip = shotgunRound3;
+                    break;
+                case 4:
+                    announcerMain.clip = shotgunRound4;
+                    break;
+                case 5:
+                    announcerMain.clip = shotgunRound5;
+                    break;
+                case 6:
+                    announcerMain.clip = shotgunRound6;
+                    break;
+                case 7:
+                    announcerMain.clip = shotgunRound7;
+                    break;
+                case 8:
+                    announcerMain.clip = shotgunRound8;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "sniperRound")
         {
+            int choice = Random.Range(1, 7);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = sniperRound1;
+                    break;
+                case 2:
+                    announcerMain.clip = sniperRound2;
+                    break;
+                case 3:
+                    announcerMain.clip = sniperRound3;
+                    break;
+                case 4:
+                    announcerMain.clip = sniperRound4;
+                    break;
+                case 5:
+                    announcerMain.clip = sniperRound5;
+                    break;
+                case 6:
+                    announcerMain.clip = sniperRound6;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         // mods
         if (soundGroup == "cineMod")
         {
+            int choice = Random.Range(1, 3);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = cineMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = cineMod2;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "glowingMod")
         {
+            int choice = Random.Range(1, 4);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = glowMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = glowMod2;
+                    break;
+                case 3:
+                    announcerMain.clip = glowMod3;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "hpRegenMod")
         {
+            int choice = Random.Range(1, 4);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = HPRegenMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = HPRegenMod1;
+                    break;
+                case 3:
+                    announcerMain.clip = HPRegenMod1;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "invisMod")
         {
+            int choice = Random.Range(1, 6);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = invisMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = invisMod2;
+                    break;
+                case 3:
+                    announcerMain.clip = invisMod3;
+                    break;
+                case 4:
+                    announcerMain.clip = invisMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = invisMod5;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "largeMod")
         {
+            int choice = Random.Range(1, 4);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = largeMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = largeMod2;
+                    break;
+                case 3:
+                    announcerMain.clip = largeMod3;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "shieldMod")
         {
+            int choice = Random.Range(1, 3);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = shieldMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = shieldMod2;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "speedMod")
         {
+            int choice = Random.Range(1, 3);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = speedMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = speedMod1;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "trackingMod")
         {
+            int choice = Random.Range(1, 3);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = trackingMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = trackingMod2;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "vampMod")
         {
+            int choice = Random.Range(1, 3);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = vampMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = vampMod2;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         // kills
         if (soundGroup == "kill")
         {
+            int choice = Random.Range(1, 17);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = kill1;
+                    break;
+                case 2:
+                    announcerMain.clip = kill2;
+                    break;
+                case 3:
+                    announcerMain.clip = kill3;
+                    break;
+                case 4:
+                    announcerMain.clip = kill4;
+                    break;
+                case 5:
+                    announcerMain.clip = kill5;
+                    break;
+                case 6:
+                    announcerMain.clip = kill6;
+                    break;
+                case 7:
+                    announcerMain.clip = kill7;
+                    break;
+                case 8:
+                    announcerMain.clip = kill8;
+                    break;
+                case 9:
+                    announcerMain.clip = kill9;
+                    break;
+                case 10:
+                    announcerMain.clip = kill10;
+                    break;
+                case 11:
+                    announcerMain.clip = kill11;
+                    break;
+                case 12:
+                    announcerMain.clip = kill12;
+                    break;
+                case 13:
+                    announcerMain.clip = kill13;
+                    break;
+                case 14:
+                    announcerMain.clip = kill14;
+                    break;
+                case 15:
+                    announcerMain.clip = kill15;
+                    break;
+                case 16:
+                    announcerMain.clip = kill16;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         // congrats
         if (soundGroup == "congratsPlayerOne")
         {
+            int choice = Random.Range(1, 4);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = playerOne1;
+                    break;
+                case 2:
+                    announcerMain.clip = playerOne2;
+                    break;
+                case 3:
+                    announcerMain.clip = playerOne3;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "congratsPlayerTwo")
         {
+            int choice = Random.Range(1, 3);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = playerTwo1;
+                    break;
+                case 2:
+                    announcerMain.clip = playerTwo2;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "congratsPlayerThree")
         {
+            int choice = Random.Range(1, 4);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = playerThree1;
+                    break;
+                case 2:
+                    announcerMain.clip = playerThree2;
+                    break;
+                case 3:
+                    announcerMain.clip = playerThree3;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         if (soundGroup == "congratsPlayerFour")
         {
+            int choice = Random.Range(1, 3);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = playerFour1;
+                    break;
+                case 2:
+                    announcerMain.clip = playerFour2;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         // round start
         if (soundGroup == "roundStart")
+        {
+            int choice = Random.Range(1, 6);
+
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = roundStart1;
+                    break;
+                case 2:
+                    announcerMain.clip = roundStart2;
+                    break;
+                case 3:
+                    announcerMain.clip = roundStart3;
+                    break;
+                case 4:
+                    announcerMain.clip = roundStart4;
+                    break;
+                case 5:
+                    announcerMain.clip = roundStart5;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
+        }
 
         // round over
         if (soundGroup == "roundOver")
         {
+            int choice = Random.Range(1, 10);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = roundOver1;
+                    break;
+                case 2:
+                    announcerMain.clip = roundOver2;
+                    break;
+                case 3:
+                    announcerMain.clip = roundOver3;
+                    break;
+                case 4:
+                    announcerMain.clip = roundOver4;
+                    break;
+                case 5:
+                    announcerMain.clip = roundOver5;
+                    break;
+                case 6:
+                    announcerMain.clip = roundOver6;
+                    break;
+                case 7:
+                    announcerMain.clip = roundOver7;
+                    break;
+                case 8:
+                    announcerMain.clip = roundOver8;
+                    break;
+                case 9:
+                    announcerMain.clip = roundOver9;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         // exclamation
         if (soundGroup == "exclamation")
         {
+            int choice = Random.Range(1, 8);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = exclaim1;
+                    break;
+                case 2:
+                    announcerMain.clip = exclaim2;
+                    break;
+                case 3:
+                    announcerMain.clip = exclaim3;
+                    break;
+                case 4:
+                    announcerMain.clip = exclaim4;
+                    break;
+                case 5:
+                    announcerMain.clip = exclaim5;
+                    break;
+                case 6:
+                    announcerMain.clip = exclaim6;
+                    break;
+                case 7:
+                    announcerMain.clip = exclaim7;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
         // ENTER THE RUBICOCNN
         if (soundGroup == "enterTheRubicon")
         {
+            int choice = Random.Range(1, 9);
 
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = enter1;
+                    break;
+                case 2:
+                    announcerMain.clip = enter2;
+                    break;
+                case 3:
+                    announcerMain.clip = enter3;
+                    break;
+                case 4:
+                    announcerMain.clip = enter4;
+                    break;
+                case 5:
+                    announcerMain.clip = enter5;
+                    break;
+                case 6:
+                    announcerMain.clip = enter6;
+                    break;
+                case 7:
+                    announcerMain.clip = enter7;
+                    break;
+                case 8:
+                    announcerMain.clip = enter8;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
 
     }
