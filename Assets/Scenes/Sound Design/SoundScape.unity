@@ -194,6 +194,72 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &597938900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597938903}
+  - component: {fileID: 597938902}
+  - component: {fileID: 597938901}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &597938901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597938900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &597938902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597938900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &597938903
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597938900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &726812707
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e9c344708781444b18a25142355648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anouncerMain: {fileID: 1805408213}
+  announcerMain: {fileID: 1805408213}
   musicMain: {fileID: 1874537546}
   BattleTheme: {fileID: 8300000, guid: 7ae854df17a68314f9ba3503acd17400, type: 3}
   armor1: {fileID: 8300000, guid: e48345482e329da46b44990039707f9d, type: 3}
@@ -403,9 +469,9 @@ MonoBehaviour:
   kill1: {fileID: 8300000, guid: 6d4ac8650b4f23942972ea8d0de4523b, type: 3}
   kill2: {fileID: 8300000, guid: 5cfd9c082c17e5240ba8808175ba3600, type: 3}
   kill3: {fileID: 8300000, guid: c472b01beb6c94542a4c530496b3da8a, type: 3}
-  kill4: {fileID: 8300000, guid: 7910ba61e6018d447a2db02e2781abd2, type: 3}
-  kill5: {fileID: 8300000, guid: 15c815a2972838c409d23e9a05026f06, type: 3}
-  kill6: {fileID: 8300000, guid: f107c6964faf75e4fb65e8dc4005228b, type: 3}
+  kill4: {fileID: 8300000, guid: 8114d47d25aedc54b93c0f02ad2cdcb2, type: 3}
+  kill5: {fileID: 8300000, guid: 68f9154c6bd977c409292d53b0d7e051, type: 3}
+  kill6: {fileID: 8300000, guid: b91afc216f1dd2541bb9ae7a2ccfce51, type: 3}
   kill7: {fileID: 8300000, guid: c03896d03f35b144eb9e7e8de26fa5fb, type: 3}
   kill8: {fileID: 8300000, guid: 9dc1ef38310a7d642830d1c6fb009d72, type: 3}
   kill9: {fileID: 8300000, guid: 9c32858186790ad40af6ccd82b5d4db2, type: 3}
@@ -419,9 +485,9 @@ MonoBehaviour:
   playerOne1: {fileID: 8300000, guid: 620c7ea91905ec44e9f1e42a6838dab1, type: 3}
   playerOne2: {fileID: 8300000, guid: b215f49e9231bf94da2c56ecd675aa58, type: 3}
   playerOne3: {fileID: 8300000, guid: 306d216c29637924f9bd9b9338a18352, type: 3}
-  playerTwo1: {fileID: 8300000, guid: 5a88a7918a313e64390d826bbc31ebc7, type: 3}
-  playerTwo2: {fileID: 8300000, guid: 09c0e042441d199458af7a9356c08763, type: 3}
-  playerThree1: {fileID: 8300000, guid: 5e4415fb530b8fc46a7c61400be531e6, type: 3}
+  playerTwo1: {fileID: 8300000, guid: 09c0e042441d199458af7a9356c08763, type: 3}
+  playerTwo2: {fileID: 8300000, guid: 5e4415fb530b8fc46a7c61400be531e6, type: 3}
+  playerThree1: {fileID: 8300000, guid: 5a88a7918a313e64390d826bbc31ebc7, type: 3}
   playerThree2: {fileID: 8300000, guid: 245c99f0af7142b4685a20ded23825c9, type: 3}
   playerThree3: {fileID: 8300000, guid: dde8e706670ebec45a7ed7ad9402f743, type: 3}
   playerFour1: {fileID: 8300000, guid: 3a60420ebf40f0a459446278f135fadc, type: 3}
@@ -455,6 +521,50 @@ MonoBehaviour:
   enter6: {fileID: 8300000, guid: cb69603d36017e248ae2a73fcc673d80, type: 3}
   enter7: {fileID: 8300000, guid: c19485736023ac2499e32bda6351ec5d, type: 3}
   enter8: {fileID: 8300000, guid: 90717118a922532448b0edaaf686318a, type: 3}
+--- !u!1 &1756886150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1756886151}
+  - component: {fileID: 1756886152}
+  m_Layer: 0
+  m_Name: Sound Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1756886151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756886150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 779.0504, y: 616.3432, z: -5.125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1756886152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756886150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21df1a9f8114b2d48973e3f0f13ee788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 1507761997}
 --- !u!1 &1805408211
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,11 +610,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 48d4068a5ecb1054f8faac64250b65f9, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.66
+  m_Volume: 0.7
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -690,7 +800,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7ae854df17a68314f9ba3503acd17400, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -820,7 +930,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

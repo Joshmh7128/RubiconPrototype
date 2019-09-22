@@ -33,11 +33,6 @@ public class ModApplication : MonoBehaviour
 
     public bool vampirism; // if the player lands a shot, reference back to this script and give some hp back to them
     public int vampAmount = 5; // how much hp per hit?
-
-    // all mods in need of weapon or bullet manipulation
-
-    public bool ricochetAmmo; // setup ammo that flings around
-    public bool explosiveAmmo; // boom ammo :D
     #endregion
 
     // which player are we working with?
@@ -55,6 +50,16 @@ public class ModApplication : MonoBehaviour
         {
             targetPlayerCineRend.SetActive(false);
         }
+    }
+
+    public void Reset()
+    {
+        trackingParticleBurst.SetActive(false);
+    }
+
+    public void ActivateTracking()
+    {
+        trackingParticleBurst.SetActive(true);
     }
 
     // FixedUpdate is called once per frame
@@ -94,7 +99,7 @@ public class ModApplication : MonoBehaviour
         if (trackingParticles)
         {
             // spawn particle objects one unit behind the player to ensure it doesn't pollute their view
-            Instantiate(trackingParticleBurst, targetPlayer.transform); // could parent to another object floating behind / out of view of the player, but this method works fine and looks fine. 
+            //Instantiate(trackingParticleBurst, targetPlayer.transform); // could parent to another object floating behind / out of view of the player, but this method works fine and looks fine. 
             // spawning at position makes it pretty awkward. 
         }
 
@@ -113,16 +118,6 @@ public class ModApplication : MonoBehaviour
             {
                 playerInfoTracker.AddHealth(hpRegenAmount);
             }
-        }
-
-        if (ricochetAmmo)
-        {
-            // change the ammo type
-        }
-
-        if (explosiveAmmo)
-        {
-            // change the ammo type
         }
 
     }
