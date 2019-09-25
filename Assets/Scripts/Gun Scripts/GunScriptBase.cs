@@ -103,17 +103,17 @@ public class GunScriptBase : MonoBehaviour
         // shotgun
         if (player.activeWeapon == PlayerController.Weapons.Shotgun)
         {
-            if (player.shotgun.activeSelf == false)
+            if (player.shotgunGun.activeSelf == false)
             {
-                player.shotgun.SetActive(true);
-                magSize = 12;
-                fireRate = 0.4f;
-                dmg = 9;
+                player.shotgunGun.SetActive(true);
+                magSize = 5;
+                fireRate = 1f;
+                dmg = 30;
             }
         }
         else
-        { player.shotgun.SetActive(false); }        
-        
+        { player.shotgunGun.SetActive(false); }
+
         // sniper
         if (player.activeWeapon == PlayerController.Weapons.Sniper)
         {
@@ -126,7 +126,7 @@ public class GunScriptBase : MonoBehaviour
             }
         }
         else
-        { player.shotgun.SetActive(false); }
+        { player.sniperRifle.SetActive(false); }
 
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
         if ((Input.GetAxis("Joy" + player.playerID + "Axis10") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
@@ -181,12 +181,12 @@ public class GunScriptBase : MonoBehaviour
                 }
 
                 // shotgun 
-                if (player.activeWeapon == PlayerController.Weapons.Shotgun)
+                if (player.activeWeapon == (PlayerController.Weapons)4)
                 {
                     GameObject projectile = Instantiate(player.shotgunProjectile, player.shotgunEnd.position, player.transform.rotation) as GameObject; //Spawns the selected projectile
                     projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
                     projectile.GetComponent<ProjectileScript>().modApp = modApp; // set this to utilize vampirism
-                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * player.shotgunShotSpeed); //Set the speed of the projectile by applying force to the rigidbody
+                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * player.otherShotSpeed); //Set the speed of the projectile by applying force to the rigidbody
                 }                
                 // sniper
                 if (player.activeWeapon == PlayerController.Weapons.Sniper)

@@ -26,10 +26,7 @@ public class PlayerController : MonoBehaviour
 	public float slerpAmount;
 	public float offset;                            //forward camera offset amount
 
-    public enum Weapons
-    {
-        Blaster, Grenade, Machine, Missile, Shotgun, Sniper
-    };
+    public enum Weapons { Blaster, Grenade, Machine, Missile, Shotgun, Sniper };
     [Header("Weapon Fields")]
     public Weapons activeWeapon;
 	public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
@@ -56,9 +53,9 @@ public class PlayerController : MonoBehaviour
     public Transform missileLauncherEnd;
     public float missileShotSpeed;
 
-    public GameObject shotgun;
+    public GameObject shotgunGun;
     public Transform shotgunEnd;
-    public float shotgunShotSpeed;
+    public float otherShotSpeed;
 
     public GameObject sniperRifle;
     public Transform sniperRifleEnd;
