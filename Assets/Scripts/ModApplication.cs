@@ -32,7 +32,7 @@ public class ModApplication : MonoBehaviour
     public int newScale; // how large is the player now?
     public int speedAdd; // how much speed are we adding?
     public float hpRegenAmount = 1f; // how much regen per update?
-    public float hpRegenDelay = 1f; // how long to wait between regen increments
+    public float hpRegenDelay = 0.5f; // how long to wait between regen increments
     public float vampAmount = 0.25f; // how much hp per hit?
     public int shieldAmount = 25;
 
@@ -43,6 +43,7 @@ public class ModApplication : MonoBehaviour
     public GameObject targetPlayer; // set manually
     public Material defaultMat;
     public GameObject glowObj;
+    public GameObject targetPlayerArmor;
     public Renderer targetPlayerRend; // set manually
     public PlayerController playerController; // set manually
     public InfoTracker playerInfoTracker; // set manually
@@ -52,7 +53,7 @@ public class ModApplication : MonoBehaviour
     // start
     void Start()
     {
-        glowObj.SetActive(false);
+
     }
 
     public void ResetMods()
@@ -71,6 +72,7 @@ public class ModApplication : MonoBehaviour
 
         trackingLine.SetActive(false);
         glowObj.SetActive(false);
+        targetPlayerArmor.SetActive(false);
         targetPlayer.transform.localScale = new Vector3(2, 2, 2);
         playerController.speed = 10;
         targetPlayerCineRend.SetActive(false);
@@ -135,6 +137,7 @@ public class ModApplication : MonoBehaviour
     {
         Debug.Log("Activating Armor");
         armor = true;
+        targetPlayerArmor.SetActive(true);
     }
 
     public void ActivateVampirism()
