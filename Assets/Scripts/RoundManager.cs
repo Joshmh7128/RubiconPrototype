@@ -228,6 +228,8 @@ public class RoundManager : MonoBehaviour
             Player1RoundsWon++;
             Player1Rounds.text = Player1RoundsWon.ToString();
         }
+        ma1.ResetMods();
+        ma2.ResetMods();
 
         if(Player1RoundsWon < 3 && Player2RoundsWon < 3)
         {
@@ -277,8 +279,6 @@ public class RoundManager : MonoBehaviour
             Player1.transform.position = SpawnBottom.position;
             Player2.transform.position = SpawnTop.position;
         }
-        ma1.ResetMods();
-        ma2.ResetMods();
     }
 
     private IEnumerator PlayerDeath(int id)
