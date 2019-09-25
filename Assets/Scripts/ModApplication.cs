@@ -41,6 +41,7 @@ public class ModApplication : MonoBehaviour
     // which player are we working with?
     [Header ("Set Manually Per Player")]
     public GameObject targetPlayer; // set manually
+    public Material defaultMat;
     public Renderer targetPlayerRend; // set manually
     public PlayerController playerController; // set manually
     public InfoTracker playerInfoTracker; // set manually
@@ -68,72 +69,84 @@ public class ModApplication : MonoBehaviour
         vampirism = false;
 
         trackingParticleBurst.SetActive(false);
-        targetPlayer.transform.localScale = new Vector3(1, 1, 1);
-        playerController.speed -= speedAdd;
+        targetPlayer.transform.localScale = new Vector3(2, 2, 2);
+        playerController.speed = 10;
         targetPlayerCineRend.SetActive(false);
+        targetPlayerRend.material = defaultMat;
     }
 
     public void ActivateTracking()
     {
+        tracking = true;
         trackingParticleBurst.SetActive(true);
     }
 
     public void ActivateLarge()
     {
+        large = true;
         targetPlayer.transform.localScale = new Vector3(newScale, newScale, newScale); // double size
     }
 
     public void ActivateSpeed()
     {
+        speed = true;
         playerController.speed += speedAdd; // base speed is 10
     }
 
     public void ActivateGlow()
     {
-
+        glowing = true;
     }
 
-    public void ActivateCinematic()
+    public void ActivateTunnelVision()
     {
+        tunnelVision = true;
         targetPlayerCineRend.SetActive(true);
     }
 
     public void ActivateSupercharge()
     {
-
+        supercharge = true;
     }
 
     public void ActivateScatter()
     {
-
+        scatter = true;
     }
 
-    // FixedUpdate is called once per frame
-    void FixedUpdate()
+    public void ActivateShield()
     {
-        // check every frame to see what we've applied
+        shield = true;
+    }
 
-        // invisible
-        if (stealth)
-        {
-            // set the proper material to the player's body
-            targetPlayerRend.material = invisPlayer;
-        }
+    public void ActivateArmor()
+    {
+        armor = true;
+    }
 
-        // HP regen over time
-        if (regen)
-        {
-            StartCoroutine(Regenerate());
-        }
+    public void ActivateVampirism()
+    {
+        vampirism = true;
+    }
 
+    public void ActivateRegen()
+    {
+        regen = true;
+        StartCoroutine(Regenerate());
+    }
+
+    public void ActivateStealth()
+    {
+        stealth = true;
+        targetPlayerRend.material = invisPlayer;
     }
 
     private IEnumerator Regenerate()
     {
         while(regen)
         {
-            yield return new WaitForSeconds(hpRegenDelay);
             playerInfoTracker.AddHealth(hpRegenAmount);
+            yield return new WaitForSeconds(hpRegenDelay);
         }
     }
     
