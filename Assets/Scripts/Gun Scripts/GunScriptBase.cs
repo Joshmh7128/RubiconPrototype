@@ -259,21 +259,6 @@ public class GunScriptBase : MonoBehaviour
 		}
 	}
 
-	private IEnumerator ShotEffect()
-	{
-
-		// Turn on our line renderer
-		laserLine.enabled = true;
-		player.flashLight.SetActive(true);
-
-		//Wait for x seconds
-		yield return shotDuration;
-
-		// Deactivate our line renderer after waiting
-		laserLine.enabled = false;
-		player.flashLight.SetActive(false);
-	}
-
 	private IEnumerator Reload()
 	{
 		//mag = 0;
