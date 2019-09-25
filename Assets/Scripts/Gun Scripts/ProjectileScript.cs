@@ -13,12 +13,11 @@ public class ProjectileScript : MonoBehaviour
         if (hit.collider.gameObject.CompareTag("Player"))
         {
             hit.collider.gameObject.GetComponent<InfoTracker>().TakeDamage(dmg);
-            modApp.VampCheck();
+            modApp.VampCheck(dmg);
         }
         else if (hit.collider.gameObject.CompareTag("Breakable"))
         {
             hit.collider.gameObject.GetComponent<BreakableObject>().TakeDamage();
-
         }
     }
 }

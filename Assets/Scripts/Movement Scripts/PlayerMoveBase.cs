@@ -37,7 +37,6 @@ public class PlayerMoveBase
         if (Input.GetButton(axis5bump))
         {
             // move up
-            //inputVector += new Vector3(0, 1, 0);
             inputVector.y += 1;
             
         }
@@ -45,14 +44,12 @@ public class PlayerMoveBase
         if (Input.GetButton(axis4bump))
         {
             // move down
-            //inputVector += new Vector3(0, -1, 0);
             inputVector.y -= 1;
         }
 
         if (Input.GetKey(KeyCode.W))
         {
             // for playtesting without a controller
-            //inputVector += new Vector3(0, 0, 1);
             inputVector.z += 1;
         }
 

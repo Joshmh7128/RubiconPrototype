@@ -62,12 +62,15 @@ public class RoundManager : MonoBehaviour
 
     public string[] weaponList;
 
+    public ModApplication ma1;
+    public ModApplication ma2;
+
     public ModDisplay md;
 
     // what mods do we have?
     public enum battleMods
     {
-        none,  Speed, Invis, Armor, Shield, Regen, Tracking, Vampire, Glowing, Cinematic, LargePlayer,
+        none, Armor, Regen, Scatter, Shield, Speed, Stealth, Supercharge, Vampirism, Glowing, Large, Tracking, TunnelVision
     }
 
     // what mods do the players have? // remember to set the length of these before using them so we don't have to recreate them over and over
@@ -225,6 +228,8 @@ public class RoundManager : MonoBehaviour
             Player1RoundsWon++;
             Player1Rounds.text = Player1RoundsWon.ToString();
         }
+        ma1.ResetMods();
+        ma2.ResetMods();
 
         if(Player1RoundsWon < 3 && Player2RoundsWon < 3)
         {
@@ -380,11 +385,11 @@ public class RoundManager : MonoBehaviour
 
                     if (isGood)
                     {
-                        j = Random.Range((int)1, (int)7); // choose a good mod
+                        j = Random.Range((int)1, (int)8); // choose a good mod
                     }
                     else
                     {
-                        j = Random.Range((int)8, (int)11); // choose a bad mod
+                        j = Random.Range((int)9, (int)13); // choose a bad mod
                     }
 
                     for (int f = 0; f < targetMods.Length; f++) // check for no dupes
@@ -424,9 +429,9 @@ public class RoundManager : MonoBehaviour
 
         }
 
-        if (mod == (int)battleMods.Cinematic)
+        if (mod == (int)battleMods.TunnelVision)
         {
-            Debug.Log(mod.ToString() + ": Cinematic");
+            Debug.Log(mod.ToString() + ": Tunnel Vision");
             // change the camera
 
         }
@@ -438,18 +443,28 @@ public class RoundManager : MonoBehaviour
 
         }
 
-        if (mod == (int)battleMods.Invis)
+        if (mod == (int)battleMods.Stealth)
         {
-            Debug.Log(mod.ToString() + ": Invis");
+            Debug.Log(mod.ToString() + ": Stealth");
             // change the target player's material
 
         }
 
-        if (mod == (int)battleMods.LargePlayer)
+        if (mod == (int)battleMods.Large)
         {
             Debug.Log(mod.ToString() + ": Large");
             // change the target player's size
 
+        }
+
+        if (mod == (int)battleMods.Scatter)
+        {
+            Debug.Log(mod.ToString() + ": Scatter");
+        }
+
+        if (mod == (int)battleMods.Supercharge)
+        {
+            Debug.Log(mod.ToString() + ": Supercharge");
         }
 
         if (mod == (int)battleMods.Regen)
@@ -480,9 +495,9 @@ public class RoundManager : MonoBehaviour
 
         }
 
-        if (mod == (int)battleMods.Vampire)
+        if (mod == (int)battleMods.Vampirism)
         {
-            Debug.Log(mod.ToString() + ": Vampire");
+            Debug.Log(mod.ToString() + ": Vampirism");
             // change the target player's material
 
         }
