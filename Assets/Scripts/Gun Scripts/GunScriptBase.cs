@@ -20,6 +20,7 @@ public class GunScriptBase : MonoBehaviour
     public float laserTime = 0.07f;
 	private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
 	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after 
+    private ModApplication modApp;
 
     public GunScriptBase(PlayerController player)
 	{
@@ -244,9 +245,9 @@ public class GunScriptBase : MonoBehaviour
     void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)
     {
         Quaternion rotationAdd = Quaternion.Euler(Random.Range(-randomShotRot, randomShotRot), Random.Range(-randomShotRot, randomShotRot), Random.Range(-randomShotRot, randomShotRot));
-        GameObject projectile = (GameObject)Instantiate(shotProjectile, gunEnd.position, transform.rotation * rotationAdd); //Spawns the selected projectile
+        GameObject projectile = Instantiate(shotProjectile, gunEnd.position, player.transform.rotation * rotationAdd); //Spawns the selected projectile
         projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
-        //projectile.GetComponent<ProjectileScript>().modApp = player.modApp; // set this to utilize vampirism
+        projectile.GetComponent<ProjectileScript>().modApp = player.modApp; // set this to utilize vampirism
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * shotSpeed); //Set the speed of the projectile by applying force to the rigidbody
     }
 
