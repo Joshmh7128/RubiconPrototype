@@ -74,6 +74,7 @@ public class ModApplication : MonoBehaviour
         glowObj.SetActive(false);
         targetPlayerArmor.SetActive(false);
         targetPlayer.transform.localScale = new Vector3(2, 2, 2);
+        targetPlayer.GetComponent<InfoTracker>().maxShield = 0;
         playerController.speed = 10;
         targetPlayerCineRend.SetActive(false);
         targetPlayerRend.material = defaultMat;

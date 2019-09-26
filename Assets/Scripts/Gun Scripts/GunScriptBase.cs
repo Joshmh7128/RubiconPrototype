@@ -31,7 +31,7 @@ public class GunScriptBase : MonoBehaviour
         laserLine = player.GetComponent<LineRenderer>(); // get our lazer
 		fpsCam = player.GetComponentInParent<Camera>(); // which cam are we
 		mag = magSize; // mag size 
-		player.flashLight.SetActive(false); // do we have our flashlight on?
+		//player.flashLight.SetActive(false); // do we have our flashlight on?
         shotDuration = new WaitForSeconds(laserTime); // shot timing
         bloodBurst = player.blood;
 
@@ -55,10 +55,14 @@ public class GunScriptBase : MonoBehaviour
                 magSize = 10;
                 fireRate = 0.2f;
                 dmg = 7;
+                player.blasterCrosshairs.SetActive(true);
             }
         }
         else
-        { player.blaster.SetActive(false); }
+        {
+            player.blaster.SetActive(false);
+            player.blasterCrosshairs.SetActive(false);
+        }
 
         // grenade launcher
         if (player.activeWeapon == PlayerController.Weapons.Grenade)
@@ -69,10 +73,14 @@ public class GunScriptBase : MonoBehaviour
                 magSize = 6;
                 fireRate = 0.5f;
                 dmg = 20;
+                player.grenadeCrosshairs.SetActive(true);
             }
         }
         else
-        { player.grenadeLauncher.SetActive(false); }
+        {
+            player.grenadeLauncher.SetActive(false);
+            player.grenadeCrosshairs.SetActive(false);
+        }
 
         // machine
         if (player.activeWeapon == PlayerController.Weapons.Machine)
@@ -83,10 +91,14 @@ public class GunScriptBase : MonoBehaviour
                 magSize = 20;
                 fireRate = 0.1f;
                 dmg = 10;
+                player.machineCrosshairs.SetActive(true);
             }
         }
         else
-        { player.machineGun.SetActive(false); }
+        {
+            player.machineGun.SetActive(false);
+            player.machineCrosshairs.SetActive(false);
+        }
 
         // missile
         if (player.activeWeapon == PlayerController.Weapons.Missile)
@@ -97,10 +109,14 @@ public class GunScriptBase : MonoBehaviour
                 magSize = 5;
                 fireRate = 1f;
                 dmg = 30;
+                player.missileCrosshairs.SetActive(true);
             }
         }
         else
-        { player.missileLauncher.SetActive(false); }
+        {
+            player.missileLauncher.SetActive(false);
+            player.missileCrosshairs.SetActive(false);
+        }
 
         // shotgun
         if (player.activeWeapon == PlayerController.Weapons.Shotgun)
@@ -111,10 +127,14 @@ public class GunScriptBase : MonoBehaviour
                 magSize = 5;
                 fireRate = 1f;
                 dmg = 5;
+                player.shotgunCrosshairs.SetActive(true);
             }
         }
         else
-        { player.shotgunGun.SetActive(false); }
+        {
+            player.shotgunGun.SetActive(false);
+            player.shotgunCrosshairs.SetActive(false);
+        }
 
         // sniper
         if (player.activeWeapon == PlayerController.Weapons.Sniper)
@@ -125,10 +145,14 @@ public class GunScriptBase : MonoBehaviour
                 magSize = 1;
                 fireRate = 1f;
                 dmg = 40;
+                player.sniperCrosshairs.SetActive(true);
             }
         }
         else
-        { player.sniperRifle.SetActive(false); }
+        {
+            player.sniperRifle.SetActive(false);
+            player.sniperCrosshairs.SetActive(false);
+        }
 
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
         if ((Input.GetAxis("Joy" + player.playerID + "Axis10") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
