@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 	public float smoothSpeed;                       //amount of smoothing for movement
 	public float slerpAmount;
 	public float offset;                            //forward camera offset amount
+    public ModApplication modApp;
 
     public enum Weapons { Blaster, Grenade, Machine, Missile, Shotgun, Sniper };
     [Header("Weapon Fields")]
@@ -40,26 +41,32 @@ public class PlayerController : MonoBehaviour
     public GameObject blaster;
     public Transform blasterEnd;
     public float blasterShotSpeed;
+    public float blasterShotRotAdd;
 
     public GameObject grenadeLauncher;
     public Transform grenadeLauncherEnd;
     public float grenadeShotSpeed;
+    public float grenadeShotRotAdd;
 
     public GameObject machineGun;
     public Transform machineGunEnd;
     public float machineShotSpeed;
+    public float machineShotRotAdd;
 
     public GameObject missileLauncher;
     public Transform missileLauncherEnd;
     public float missileShotSpeed;
+    public float missileShotRotAdd;
 
     public GameObject shotgunGun;
     public Transform shotgunEnd;
-    public float otherShotSpeed;
+    public float shotgunShotSpeed;
+    public float shotgunShotRotAdd;
 
     public GameObject sniperRifle;
     public Transform sniperRifleEnd;
     public float sniperShotSpeed;
+    public float sniperShotRotAdd;
 
     [Header("Weapon Projectiles")]
     public GameObject blasterProjectile;

@@ -7,7 +7,7 @@ public class GunScriptBase : MonoBehaviour
 	private PlayerController player;
 
     private InfoTracker myInfo;
-    private ModApplication modApp;
+    
 
     public string type = "blaster";
     public int mag;
@@ -25,7 +25,7 @@ public class GunScriptBase : MonoBehaviour
 	{
 		this.player = player;
         myInfo = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<InfoTracker>(); // get info
-        modApp = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<ModApplication>(); // get mod application
+       //modApp = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<ModApplication>(); // get mod application
         laserLine = player.GetComponent<LineRenderer>(); // get our lazer
 		fpsCam = player.GetComponentInParent<Camera>(); // which cam are we
 		mag = magSize; // mag size 
@@ -33,7 +33,6 @@ public class GunScriptBase : MonoBehaviour
         shotDuration = new WaitForSeconds(laserTime); // shot timing
 
 	}
-
 
 	public void Update()
 	{
@@ -147,54 +146,37 @@ public class GunScriptBase : MonoBehaviour
                 // blaster
                 if (player.activeWeapon == PlayerController.Weapons.Blaster)
                 {
-                    GameObject projectile = Instantiate(player.blasterProjectile, player.blasterEnd.position, player.transform.rotation) as GameObject; //Spawns the selected projectile
-                    projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
-                    projectile.GetComponent<ProjectileScript>().modApp = modApp; // set this to utilize vampirism
-                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * player.blasterShotSpeed); //Set the speed of the projectile by applying force to the rigidbody
+                    shootProjectile(player.blasterShotRotAdd, player.blasterEnd, player.blasterProjectile, player.blasterShotSpeed);
                 }
 
                 // grenade launcher
                 if (player.activeWeapon == PlayerController.Weapons.Grenade)
                 {
-                    GameObject projectile = Instantiate(player.grenadeProjectile, player.grenadeLauncherEnd.position, player.transform.rotation) as GameObject; //Spawns the selected projectile
-                    projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
-                    projectile.GetComponent<ProjectileScript>().modApp = modApp; // set this to utilize vampirism
-                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * player.grenadeShotSpeed); //Set the speed of the projectile by applying force to the rigidbody
+                    shootProjectile(player.grenadeShotRotAdd, player.grenadeLauncherEnd, player.grenadeProjectile, player.grenadeShotSpeed);
                 }
 
                 // machine gun
                 if (player.activeWeapon == PlayerController.Weapons.Machine)
                 {
-                    GameObject projectile = Instantiate(player.machineProjectile, player.machineGunEnd.position, player.transform.rotation) as GameObject; //Spawns the selected projectile
-                    projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
-                    projectile.GetComponent<ProjectileScript>().modApp = modApp; // set this to utilize vampirism
-                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * player.machineShotSpeed); //Set the speed of the projectile by applying force to the rigidbody
+                    shootProjectile(player.machineShotRotAdd, player.machineGunEnd, player.machineProjectile, player.machineShotSpeed);
                 }
 
                 // missile launcher
                 if (player.activeWeapon == PlayerController.Weapons.Missile)
                 {
-                    GameObject projectile = Instantiate(player.missileProjectile, player.missileLauncherEnd.position, player.transform.rotation) as GameObject; //Spawns the selected projectile
-                    projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
-                    projectile.GetComponent<ProjectileScript>().modApp = modApp; // set this to utilize vampirism
-                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * player.missileShotSpeed); //Set the speed of the projectile by applying force to the rigidbody
+                    shootProjectile(player.missileShotRotAdd, player.missileLauncherEnd, player.missileProjectile, player.missileShotSpeed);
                 }
 
                 // shotgun 
-                if (player.activeWeapon == (PlayerController.Weapons)4)
+                if (player.activeWeapon == PlayerController.Weapons.Shotgun)
                 {
-                    GameObject projectile = Instantiate(player.shotgunProjectile, player.shotgunEnd.position, player.transform.rotation) as GameObject; //Spawns the selected projectile
-                    projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
-                    projectile.GetComponent<ProjectileScript>().modApp = modApp; // set this to utilize vampirism
-                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * player.otherShotSpeed); //Set the speed of the projectile by applying force to the rigidbody
-                }                
+                    shootProjectile(player.shotgunShotRotAdd, player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
+                }
+
                 // sniper
                 if (player.activeWeapon == PlayerController.Weapons.Sniper)
                 {
-                    GameObject projectile = Instantiate(player.sniperProjectile, player.sniperRifleEnd.position, player.transform.rotation) as GameObject; //Spawns the selected projectile
-                    projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
-                    projectile.GetComponent<ProjectileScript>().modApp = modApp; // set this to utilize vampirism
-                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * player.sniperShotSpeed); //Set the speed of the projectile by applying force to the rigidbody
+                    shootProjectile(player.sniperShotRotAdd, player.sniperRifleEnd, player.sniperProjectile, player.sniperShotSpeed);
                 }
             }
 
@@ -259,7 +241,17 @@ public class GunScriptBase : MonoBehaviour
 		}
 	}
 
-	private IEnumerator Reload()
+    void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)
+    {
+        Quaternion rotationAdd = Quaternion.Euler(Random.Range(-randomShotRot, randomShotRot), Random.Range(-randomShotRot, randomShotRot), Random.Range(-randomShotRot, randomShotRot));
+        GameObject projectile = (GameObject)Instantiate(shotProjectile, gunEnd.position, transform.rotation * rotationAdd); //Spawns the selected projectile
+        projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
+        //projectile.GetComponent<ProjectileScript>().modApp = player.modApp; // set this to utilize vampirism
+        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * shotSpeed); //Set the speed of the projectile by applying force to the rigidbody
+    }
+
+
+        private IEnumerator Reload()
 	{
 		//mag = 0;
 		player.weaponAnim.Play("loadR");
