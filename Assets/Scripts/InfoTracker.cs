@@ -51,6 +51,12 @@ public class InfoTracker : MonoBehaviour
         rm = GameObject.FindGameObjectWithTag("Manager").GetComponent<RoundManager>();
     }
 
+    private void Update()
+    {
+        int ammo = myPlayer._weaponSystems.mag;
+        ammoText.text = ammo.ToString() + " / " + magSize;
+    }
+
     public void updateAmmo(int ammo)
     {
         ammoText.text = ammo.ToString() +  " / " + magSize;

@@ -8,13 +8,17 @@ public class GunScriptBase : MonoBehaviour
 
     private InfoTracker myInfo;
     
+
+    public string type = "blaster";
     public int mag;
 	public int magSize = 16;
     public int dmg = 17;
     public float fireRate = 0.2f;
     public float weaponRange = 100f;
 	private Camera fpsCam;                                                // Holds a reference to the first person camera
+	public WaitForSeconds shotDuration;    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
     public float laserTime = 0.07f;
+	private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
 	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after 
     private ModApplication modApp;
     public ParticleSystem bloodBurst;
@@ -23,9 +27,14 @@ public class GunScriptBase : MonoBehaviour
 	{
 		this.player = player;
         myInfo = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<InfoTracker>(); // get info
+       //modApp = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<ModApplication>(); // get mod application
+        laserLine = player.GetComponent<LineRenderer>(); // get our lazer
 		fpsCam = player.GetComponentInParent<Camera>(); // which cam are we
 		mag = magSize; // mag size 
+		//player.flashLight.SetActive(false); // do we have our flashlight on?
+        shotDuration = new WaitForSeconds(laserTime); // shot timing
         bloodBurst = player.blood;
+
 	}
 
 	public void Update()
