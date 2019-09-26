@@ -51,6 +51,8 @@ public class RoundManager : MonoBehaviour
     public Transform SpawnTop;
     public Transform SpawnBottom;
 
+    public SoundManager soundManager;
+
     private int needed = 3;
 
     public CubeAction myArena;
@@ -283,6 +285,9 @@ public class RoundManager : MonoBehaviour
 
     private IEnumerator PlayerDeath(int id)
     {
+        // sound time
+        soundManager.PlaySound("kill");
+
         Debug.Log("Player died, running coroutine...");
         int posNeg = Random.Range(1, 11);
         if (id == 1)

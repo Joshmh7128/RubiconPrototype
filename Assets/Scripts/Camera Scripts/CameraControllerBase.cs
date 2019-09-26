@@ -18,7 +18,7 @@ public class CameraControllerBase
 		rotAroundY = player.transform.eulerAngles.y;
 	}
 
-	public void Update()
+	public void FixedUpdate()
 	{
 		rotAroundX += Input.GetAxis("Mouse Y") * player.Xsensitivity;
 		rotAroundY += Input.GetAxis("Mouse X") * player.Ysensitivity;
