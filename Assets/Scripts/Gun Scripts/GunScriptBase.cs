@@ -26,7 +26,6 @@ public class GunScriptBase : MonoBehaviour
 		fpsCam = player.GetComponentInParent<Camera>(); // which cam are we
 		mag = magSize; // mag size 
         bloodBurst = player.blood;
-
 	}
 
 	public void Update()
@@ -45,6 +44,7 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.blaster.SetActive(true);
                 magSize = 10;
+                myInfo.magSize = magSize;
                 fireRate = 0.2f;
                 dmg = 7;
                 player.blasterCrosshairs.SetActive(true);
@@ -63,6 +63,7 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.grenadeLauncher.SetActive(true);
                 magSize = 6;
+                myInfo.magSize = magSize;
                 fireRate = 0.5f;
                 dmg = 20;
                 player.grenadeCrosshairs.SetActive(true);
@@ -81,6 +82,7 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.machineGun.SetActive(true);
                 magSize = 20;
+                myInfo.magSize = magSize;
                 fireRate = 0.1f;
                 dmg = 10;
                 player.machineCrosshairs.SetActive(true);
@@ -99,6 +101,7 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.missileLauncher.SetActive(true);
                 magSize = 5;
+                myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 30;
                 player.missileCrosshairs.SetActive(true);
@@ -117,6 +120,7 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.shotgunGun.SetActive(true);
                 magSize = 5;
+                myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 5;
                 player.shotgunCrosshairs.SetActive(true);
@@ -135,6 +139,7 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.sniperRifle.SetActive(true);
                 magSize = 1;
+                myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 40;
                 player.sniperCrosshairs.SetActive(true);
