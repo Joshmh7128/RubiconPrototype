@@ -21,6 +21,7 @@ public class GunScriptBase : MonoBehaviour
 	private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
 	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after 
     private ModApplication modApp;
+    public ParticleSystem bloodBurst;
 
     public GunScriptBase(PlayerController player)
 	{
@@ -32,6 +33,7 @@ public class GunScriptBase : MonoBehaviour
 		mag = magSize; // mag size 
 		player.flashLight.SetActive(false); // do we have our flashlight on?
         shotDuration = new WaitForSeconds(laserTime); // shot timing
+        bloodBurst = player.blood;
 
 	}
 
@@ -108,7 +110,7 @@ public class GunScriptBase : MonoBehaviour
                 player.shotgunGun.SetActive(true);
                 magSize = 5;
                 fireRate = 1f;
-                dmg = 30;
+                dmg = 5;
             }
         }
         else
@@ -171,7 +173,10 @@ public class GunScriptBase : MonoBehaviour
                 // shotgun 
                 if (player.activeWeapon == PlayerController.Weapons.Shotgun)
                 {
-                    shootProjectile(player.shotgunShotRotAdd, player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
+                    for(int i = 0; i < 6; i++)
+                    {
+                        shootProjectile(player.shotgunShotRotAdd, player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
+                    }
                 }
 
                 // sniper
@@ -247,6 +252,7 @@ public class GunScriptBase : MonoBehaviour
         Quaternion rotationAdd = Quaternion.Euler(Random.Range(-randomShotRot, randomShotRot), Random.Range(-randomShotRot, randomShotRot), Random.Range(-randomShotRot, randomShotRot));
         GameObject projectile = Instantiate(shotProjectile, gunEnd.position, player.transform.rotation * rotationAdd); //Spawns the selected projectile
         projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
+        projectile.GetComponent<ProjectileScript>().burst = bloodBurst;
         projectile.GetComponent<ProjectileScript>().modApp = player.modApp; // set this to utilize vampirism
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * shotSpeed); //Set the speed of the projectile by applying force to the rigidbody
     }
