@@ -154,8 +154,8 @@ public class RoundManager : MonoBehaviour
 
     private void AssignWeapons()
     {
-        Player1Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum];
-        Player2Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum];
+        Player1Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
+        Player2Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
     }
 
     // score update
