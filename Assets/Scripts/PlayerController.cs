@@ -30,11 +30,7 @@ public class PlayerController : MonoBehaviour
     public enum Weapons { Blaster, Grenade, Machine, Missile, Shotgun, Sniper };
     [Header("Weapon Fields")]
     public Weapons activeWeapon;
-	//public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
 	public Animator weaponAnim;
-	//public GameObject flashLight;
-	//public ParticleSystem muzzle;
-	//public ParticleSystem burst;
 	public ParticleSystem blood;
 
     [Header("Weapons (Set per Player!)")]

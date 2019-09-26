@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 13576440}
   - component: {fileID: 5479992}
   - component: {fileID: 11464288}
+  - component: {fileID: 598597948247041750}
   m_Layer: 0
   m_Name: BulletSmallGreenOBJ
   m_TagString: Untagged
@@ -79,3 +80,18 @@ MonoBehaviour:
   muzzleParticle: {fileID: 144156, guid: b812b96d8cdb67b48b7e6da077dbcab2, type: 3}
   colliderRadius: 1
   collideOffset: 0.15
+--- !u!114 &598597948247041750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cc300b07705bd4d8d766d68d7b7bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modApp: {fileID: 0}
+  dmg: 0
+  burst: {fileID: 0}
