@@ -179,4 +179,28 @@ public class ModApplication : MonoBehaviour
             playerInfoTracker.AddHealth((int)damage * vampAmount);
         }
     }
+
+    public bool ChargeCheck()
+    {
+        if(supercharge)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public int ScatterCheck()
+    {
+        if(scatter)
+        {
+            return 3;
+        }
+        else
+        {
+            return 1;
+        }
+    }
 }

@@ -8,17 +8,11 @@ public class GunScriptBase : MonoBehaviour
 
     private InfoTracker myInfo;
     
-
-    public string type = "blaster";
     public int mag;
 	public int magSize = 16;
     public int dmg = 17;
     public float fireRate = 0.2f;
-    public float weaponRange = 100f;
 	private Camera fpsCam;                                                // Holds a reference to the first person camera
-	public WaitForSeconds shotDuration;    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
-    public float laserTime = 0.07f;
-	private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
 	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after 
     private ModApplication modApp;
     public ParticleSystem bloodBurst;
@@ -27,12 +21,9 @@ public class GunScriptBase : MonoBehaviour
 	{
 		this.player = player;
         myInfo = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<InfoTracker>(); // get info
-       //modApp = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<ModApplication>(); // get mod application
-        laserLine = player.GetComponent<LineRenderer>(); // get our lazer
+       modApp = player.modApp;
 		fpsCam = player.GetComponentInParent<Camera>(); // which cam are we
 		mag = magSize; // mag size 
-		//player.flashLight.SetActive(false); // do we have our flashlight on?
-        shotDuration = new WaitForSeconds(laserTime); // shot timing
         bloodBurst = player.blood;
 
 	}
@@ -175,44 +166,63 @@ public class GunScriptBase : MonoBehaviour
 				nextFire = Time.time + fireRate;
 
 				player.weaponAnim.Play("fireR");
+                int x = modApp.ScatterCheck();
 
                 // blaster
                 if (player.activeWeapon == PlayerController.Weapons.Blaster)
                 {
-                    shootProjectile(player.blasterShotRotAdd, player.blasterEnd, player.blasterProjectile, player.blasterShotSpeed);
+                    for(int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.blasterShotRotAdd, player.blasterEnd, player.blasterProjectile, player.blasterShotSpeed);
+                    }
                 }
 
                 // grenade launcher
                 if (player.activeWeapon == PlayerController.Weapons.Grenade)
                 {
-                    shootProjectile(player.grenadeShotRotAdd, player.grenadeLauncherEnd, player.grenadeProjectile, player.grenadeShotSpeed);
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.grenadeShotRotAdd, player.grenadeLauncherEnd, player.grenadeProjectile, player.grenadeShotSpeed);
+                    }   
                 }
 
                 // machine gun
                 if (player.activeWeapon == PlayerController.Weapons.Machine)
                 {
-                    shootProjectile(player.machineShotRotAdd, player.machineGunEnd, player.machineProjectile, player.machineShotSpeed);
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.machineShotRotAdd, player.machineGunEnd, player.machineProjectile, player.machineShotSpeed);
+                    }  
                 }
 
                 // missile launcher
                 if (player.activeWeapon == PlayerController.Weapons.Missile)
                 {
-                    shootProjectile(player.missileShotRotAdd, player.missileLauncherEnd, player.missileProjectile, player.missileShotSpeed);
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.missileShotRotAdd, player.missileLauncherEnd, player.missileProjectile, player.missileShotSpeed);
+                    }
                 }
 
                 // shotgun 
                 if (player.activeWeapon == PlayerController.Weapons.Shotgun)
                 {
-                    for(int i = 0; i < 6; i++)
+                    for (int i = 0; i < x; i++)
                     {
-                        shootProjectile(player.shotgunShotRotAdd, player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
-                    }
+                        for (int j = 0; j < 6; j++)
+                        {
+                            shootProjectile(player.shotgunShotRotAdd, player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
+                        }
+                    } 
                 }
 
                 // sniper
                 if (player.activeWeapon == PlayerController.Weapons.Sniper)
                 {
-                    shootProjectile(player.sniperShotRotAdd, player.sniperRifleEnd, player.sniperProjectile, player.sniperShotSpeed);
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.sniperShotRotAdd, player.sniperRifleEnd, player.sniperProjectile, player.sniperShotSpeed);
+                    }
                 }
             }
 
