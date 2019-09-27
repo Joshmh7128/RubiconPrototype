@@ -289,11 +289,16 @@ public class GunScriptBase : MonoBehaviour
 
     void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)
     {
-        Quaternion rotationAdd = Quaternion.Euler(Random.Range(-randomShotRot, randomShotRot), Random.Range(-randomShotRot, randomShotRot), Random.Range(-randomShotRot, randomShotRot));
-        GameObject projectile = Instantiate(shotProjectile, gunEnd.position, player.transform.rotation * rotationAdd); //Spawns the selected projectile
+        GameObject projectile = Instantiate(shotProjectile, gunEnd.position, Quaternion.identity); //Spawns the selected projectile
         projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
         projectile.GetComponent<ProjectileScript>().burst = bloodBurst;
         projectile.GetComponent<ProjectileScript>().modApp = player.modApp; // set this to utilize vampirism
+        float myX = Random.Range(-randomShotRot, randomShotRot);
+        float myY = Random.Range(-randomShotRot, randomShotRot);
+        float myZ = Random.Range(-randomShotRot, randomShotRot);
+        Vector3 newRot = new Vector3(myX, myY, myZ);
+        projectile.transform.localEulerAngles += player.transform.localEulerAngles;
+        projectile.transform.localEulerAngles += newRot;
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * shotSpeed); //Set the speed of the projectile by applying force to the rigidbody
     }
 
