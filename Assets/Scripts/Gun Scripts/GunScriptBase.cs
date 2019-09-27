@@ -47,13 +47,13 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 0.2f;
                 dmg = 7;
-                player.blasterCrosshairs.SetActive(true);
+                //player.blasterCrosshairs.SetActive(true);
             }
         }
         else
         {
             player.blaster.SetActive(false);
-            player.blasterCrosshairs.SetActive(false);
+            //player.blasterCrosshairs.SetActive(false);
         }
 
         // grenade launcher
@@ -66,13 +66,13 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 0.5f;
                 dmg = 20;
-                player.grenadeCrosshairs.SetActive(true);
+                //player.grenadeCrosshairs.SetActive(true);
             }
         }
         else
         {
             player.grenadeLauncher.SetActive(false);
-            player.grenadeCrosshairs.SetActive(false);
+            //player.grenadeCrosshairs.SetActive(false);
         }
 
         // machine
@@ -85,13 +85,13 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 0.1f;
                 dmg = 10;
-                player.machineCrosshairs.SetActive(true);
+                //player.machineCrosshairs.SetActive(true);
             }
         }
         else
         {
             player.machineGun.SetActive(false);
-            player.machineCrosshairs.SetActive(false);
+            //player.machineCrosshairs.SetActive(false);
         }
 
         // missile
@@ -104,13 +104,13 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 30;
-                player.missileCrosshairs.SetActive(true);
+                //player.missileCrosshairs.SetActive(true);
             }
         }
         else
         {
             player.missileLauncher.SetActive(false);
-            player.missileCrosshairs.SetActive(false);
+            //player.missileCrosshairs.SetActive(false);
         }
 
         // shotgun
@@ -123,13 +123,13 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 5;
-                player.shotgunCrosshairs.SetActive(true);
+                //player.shotgunCrosshairs.SetActive(true);
             }
         }
         else
         {
             player.shotgunGun.SetActive(false);
-            player.shotgunCrosshairs.SetActive(false);
+            //player.shotgunCrosshairs.SetActive(false);
         }
 
         // sniper
@@ -142,13 +142,13 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 40;
-                player.sniperCrosshairs.SetActive(true);
+                //player.sniperCrosshairs.SetActive(true);
             }
         }
         else
         {
             player.sniperRifle.SetActive(false);
-            player.sniperCrosshairs.SetActive(false);
+            //player.sniperCrosshairs.SetActive(false);
         }
 
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
@@ -299,6 +299,10 @@ public class GunScriptBase : MonoBehaviour
         Vector3 newRot = new Vector3(myX, myY, myZ);
         projectile.transform.localEulerAngles += player.transform.localEulerAngles;
         projectile.transform.localEulerAngles += newRot;
+        if(modApp.supercharge)
+        {
+            shotSpeed *= 1.5f;
+        }
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * shotSpeed); //Set the speed of the projectile by applying force to the rigidbody
     }
 

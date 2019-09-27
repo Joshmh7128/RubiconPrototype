@@ -130,6 +130,7 @@ public class ModApplication : MonoBehaviour
     public void ActivateShield()
     {
         Debug.Log("Activating Shield");
+        targetPlayer.GetComponent<InfoTracker>().maxShield = shieldAmount;
         targetPlayer.GetComponent<InfoTracker>().AddShield(shieldAmount);
         shield = true;
     }

@@ -64,13 +64,14 @@ public class PlayerController : MonoBehaviour
     public float sniperShotSpeed;
     public float sniperShotRotAdd;
 
+    /*
     public GameObject blasterCrosshairs;
     public GameObject grenadeCrosshairs;
     public GameObject machineCrosshairs;
     public GameObject missileCrosshairs;
     public GameObject shotgunCrosshairs;
     public GameObject sniperCrosshairs;
-
+    */
 
     [Header("Weapon Projectiles")]
     public GameObject blasterProjectile;
