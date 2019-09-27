@@ -30,7 +30,7 @@ public class ProjectileScript : MonoBehaviour
         }
         else if (hit.collider.gameObject.CompareTag("Breakable"))
         {
-            hit.collider.gameObject.GetComponent<BreakableObject>().TakeDamage();
+            hit.collider.gameObject.GetComponent<BreakableObject>().TakeDamage((int)(dmg * dmgMult));
         }
     }
 }
