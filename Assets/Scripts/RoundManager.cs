@@ -67,6 +67,7 @@ public class RoundManager : MonoBehaviour
     public ModApplication ma2;
 
     public ModDisplay md;
+    public PickupManager pm;
 
     // what mods do we have?
     public enum battleMods
@@ -91,7 +92,7 @@ public class RoundManager : MonoBehaviour
         GenerateWeapons();
         AssignWeapons();
         myArena.shuffle(shuffles);
-        StartCoroutine("SetupRound");
+        StartCoroutine(SetupRound());
     }
 
     // weapon generation
@@ -296,6 +297,8 @@ public class RoundManager : MonoBehaviour
             Player2.transform.position = SpawnTop.position;
         }
         AssignWeapons();
+        pm.ClearPickups();
+        pm.SpawnPickups();
     }
 
     private IEnumerator PlayerDeath(int id)
