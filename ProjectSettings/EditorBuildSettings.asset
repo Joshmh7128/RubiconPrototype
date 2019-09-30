@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Map Designs (New).unity
-    guid: 8f156ed5213f6544f9875964fca31e5e
+    path: Assets/Scenes/CoreMods.unity
+    guid: 5b907b66b93ba02488a197a8bc7ee099
   m_configObjects: {}

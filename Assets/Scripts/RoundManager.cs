@@ -61,11 +61,13 @@ public class RoundManager : MonoBehaviour
     [Header("Modifiers")]
 
     public string[] weaponList;
+    public PlayerController.Weapons[] weaponTypeList;
 
     public ModApplication ma1;
     public ModApplication ma2;
 
     public ModDisplay md;
+    public PickupManager pm;
 
     // what mods do we have?
     public enum battleMods
@@ -88,8 +90,9 @@ public class RoundManager : MonoBehaviour
     private void Start()
     {
         GenerateWeapons();
+        AssignWeapons();
         myArena.shuffle(shuffles);
-        StartCoroutine("SetupRound");
+        StartCoroutine(SetupRound());
     }
 
     // weapon generation
@@ -97,6 +100,7 @@ public class RoundManager : MonoBehaviour
     public void GenerateWeapons()
     {
         string[] weapons = new string[5];
+        PlayerController.Weapons[] myWeapons = new PlayerController.Weapons[5];
         for(int i = 0; i <= 4; i++)
         {
             bool original = false;
@@ -106,26 +110,32 @@ public class RoundManager : MonoBehaviour
                 if (key == 1)
                 {
                     weapons[i] = "Blasters";
+                    myWeapons[i] = PlayerController.Weapons.Blaster;
                 }
                 else if (key == 2)
                 {
                     weapons[i] = "Shotguns";
+                    myWeapons[i] = PlayerController.Weapons.Shotgun;
                 }
                 else if (key == 3)
                 {
                     weapons[i] = "Sniper Rifles";
+                    myWeapons[i] = PlayerController.Weapons.Sniper;
                 }
                 else if (key == 4)
                 {
                     weapons[i] = "Machine Guns";
+                    myWeapons[i] = PlayerController.Weapons.Machine;
                 }
                 else if (key == 5)
                 {
                     weapons[i] = "Missile Launchers";
+                    myWeapons[i] = PlayerController.Weapons.Missile;
                 }
                 else if (key == 6)
                 {
                     weapons[i] = "Grenade Launchers";
+                    myWeapons[i] = PlayerController.Weapons.Grenade;
                 }
 
                 original = true;
@@ -140,6 +150,13 @@ public class RoundManager : MonoBehaviour
             }
         }
         weaponList = weapons;
+        weaponTypeList = myWeapons;
+    }
+
+    private void AssignWeapons()
+    {
+        Player1Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
+        Player2Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
     }
 
     // score update
@@ -279,6 +296,9 @@ public class RoundManager : MonoBehaviour
             Player1.transform.position = SpawnBottom.position;
             Player2.transform.position = SpawnTop.position;
         }
+        AssignWeapons();
+        pm.ClearPickups();
+        pm.SpawnPickups();
     }
 
     private IEnumerator PlayerDeath(int id)

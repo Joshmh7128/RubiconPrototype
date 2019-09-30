@@ -74,6 +74,7 @@ public class ModApplication : MonoBehaviour
         glowObj.SetActive(false);
         targetPlayerArmor.SetActive(false);
         targetPlayer.transform.localScale = new Vector3(2, 2, 2);
+        targetPlayer.GetComponent<InfoTracker>().maxShield = 0;
         playerController.speed = 10;
         targetPlayerCineRend.SetActive(false);
         targetPlayerRend.material = defaultMat;
@@ -129,6 +130,7 @@ public class ModApplication : MonoBehaviour
     public void ActivateShield()
     {
         Debug.Log("Activating Shield");
+        targetPlayer.GetComponent<InfoTracker>().maxShield = shieldAmount;
         targetPlayer.GetComponent<InfoTracker>().AddShield(shieldAmount);
         shield = true;
     }
@@ -176,6 +178,30 @@ public class ModApplication : MonoBehaviour
         if (vampirism)
         {
             playerInfoTracker.AddHealth((int)damage * vampAmount);
+        }
+    }
+
+    public bool ChargeCheck()
+    {
+        if(supercharge)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public int ScatterCheck()
+    {
+        if(scatter)
+        {
+            return 3;
+        }
+        else
+        {
+            return 1;
         }
     }
 }

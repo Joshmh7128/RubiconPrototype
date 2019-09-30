@@ -30,11 +30,7 @@ public class PlayerController : MonoBehaviour
     public enum Weapons { Blaster, Grenade, Machine, Missile, Shotgun, Sniper };
     [Header("Weapon Fields")]
     public Weapons activeWeapon;
-	public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
 	public Animator weaponAnim;
-	public GameObject flashLight;
-	public ParticleSystem muzzle;
-	public ParticleSystem burst;
 	public ParticleSystem blood;
 
     [Header("Weapons (Set per Player!)")]
@@ -67,6 +63,15 @@ public class PlayerController : MonoBehaviour
     public Transform sniperRifleEnd;
     public float sniperShotSpeed;
     public float sniperShotRotAdd;
+
+    /*
+    public GameObject blasterCrosshairs;
+    public GameObject grenadeCrosshairs;
+    public GameObject machineCrosshairs;
+    public GameObject missileCrosshairs;
+    public GameObject shotgunCrosshairs;
+    public GameObject sniperCrosshairs;
+    */
 
     [Header("Weapon Projectiles")]
     public GameObject blasterProjectile;
@@ -124,7 +129,8 @@ public class PlayerController : MonoBehaviour
 		_state.LateUpdate(this);
 	}
 
-	public void InstantiateBurst(Vector3 point)
+	/*
+     * public void InstantiateBurst(Vector3 point)
 	{
 		Instantiate(burst, point, Quaternion.identity);
 	}
@@ -133,7 +139,8 @@ public class PlayerController : MonoBehaviour
 	{
 		Instantiate(blood, point, Quaternion.identity);
 	}
-
+    *
+    */
 
 	public void SetState(PlayerState state)
 	{

@@ -11,37 +11,40 @@ public class PlayerMoveBase
     private string axis2;
     private string axis5bump;
     private string axis4bump;
+    private Rewired.Player rewiredPlayer;
 
-	// Start is called before the first frame update
-	public PlayerMoveBase(PlayerController player)
+    // Start is called before the first frame update
+    public PlayerMoveBase(PlayerController player)
 	{
-		this.player = player;
+        rewiredPlayer = Rewired.ReInput.players.GetPlayer(player.playerID - 1);
+        this.player = player;
 		playerBody = player.playerBody;
+        /* // depricated
         axis1 = "Joy" + player.playerID + "Axis1";
         axis2 = "Joy" + player.playerID + "Axis2";
         axis5bump = "Joy" + player.playerID + "Axis5Bump";
         axis4bump = "Joy" + player.playerID + "Axis4Bump";
-
+        */
     }
 
 	// Update is called once per frame
-	public void Update()
+	public void FixedUpdate()
 	{
         // basic stick based movement
-		inputVector = new Vector3(Input.GetAxis(axis1), 0, -Input.GetAxis(axis2));
+		inputVector = new Vector3(rewiredPlayer.GetAxis("MoveHorizontalX"), 0, rewiredPlayer.GetAxis("MoveHorizontalY"));
 		//inputVector = player.transform.TransformDirection(inputVector);
 
         // In order to properly get the bumper buttons you MUST set them manually through the inspector, they are next to each other near the joystick 1 definitions 
         // up and down movement
         
-        if (Input.GetButton(axis5bump))
+        if (rewiredPlayer.GetButton("RightBumper"))
         {
             // move up
             inputVector.y += 1;
             
         }
 
-        if (Input.GetButton(axis4bump))
+        if (rewiredPlayer.GetButton("LeftBumper"))
         {
             // move down
             inputVector.y -= 1;
@@ -55,10 +58,12 @@ public class PlayerMoveBase
 
         inputVector = player.transform.TransformDirection(inputVector);
 
-    }
+        playerBody.velocity = inputVector * (player.speed * 50) * Time.deltaTime;
 
+    }
+    /*
 	public void FixedUpdate()
 	{ // move the player
 		playerBody.velocity = inputVector * (player.speed * 50) * Time.deltaTime;
-	}
+	}*/
 }

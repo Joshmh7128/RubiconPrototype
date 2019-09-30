@@ -20,12 +20,12 @@ TagManager:
   - Guns
   - Guns2
   - Xray
-  - Track1
-  - Track2
-  - 
-  - 
-  - 
-  - 
+  - Only2CanSee
+  - Only1CanSee
+  - Player1Projectile
+  - Player2Projectile
+  - Player1Body
+  - Player2Body
   - 
   - 
   - 

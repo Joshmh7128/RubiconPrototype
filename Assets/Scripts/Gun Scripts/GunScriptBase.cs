@@ -8,30 +8,25 @@ public class GunScriptBase : MonoBehaviour
 
     private InfoTracker myInfo;
     
-
-    public string type = "blaster";
     public int mag;
 	public int magSize = 16;
     public int dmg = 17;
     public float fireRate = 0.2f;
-    public float weaponRange = 100f;
 	private Camera fpsCam;                                                // Holds a reference to the first person camera
-	public WaitForSeconds shotDuration;    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
-    public float laserTime = 0.07f;
-	private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
 	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after 
     private ModApplication modApp;
+    public ParticleSystem bloodBurst;
+    private Rewired.Player rewiredPlayer;
 
     public GunScriptBase(PlayerController player)
 	{
-		this.player = player;
+        rewiredPlayer = Rewired.ReInput.players.GetPlayer(player.playerID - 1);
+        this.player = player;
         myInfo = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<InfoTracker>(); // get info
-       //modApp = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<ModApplication>(); // get mod application
-        laserLine = player.GetComponent<LineRenderer>(); // get our lazer
+        modApp = player.modApp;
 		fpsCam = player.GetComponentInParent<Camera>(); // which cam are we
 		mag = magSize; // mag size 
-		player.flashLight.SetActive(false); // do we have our flashlight on?
-        shotDuration = new WaitForSeconds(laserTime); // shot timing
+        bloodBurst = player.blood;
 
 	}
 
@@ -51,12 +46,17 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.blaster.SetActive(true);
                 magSize = 10;
+                myInfo.magSize = magSize;
                 fireRate = 0.2f;
                 dmg = 7;
+                //player.blasterCrosshairs.SetActive(true);
             }
         }
         else
-        { player.blaster.SetActive(false); }
+        {
+            player.blaster.SetActive(false);
+            //player.blasterCrosshairs.SetActive(false);
+        }
 
         // grenade launcher
         if (player.activeWeapon == PlayerController.Weapons.Grenade)
@@ -65,12 +65,17 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.grenadeLauncher.SetActive(true);
                 magSize = 6;
+                myInfo.magSize = magSize;
                 fireRate = 0.5f;
                 dmg = 20;
+                //player.grenadeCrosshairs.SetActive(true);
             }
         }
         else
-        { player.grenadeLauncher.SetActive(false); }
+        {
+            player.grenadeLauncher.SetActive(false);
+            //player.grenadeCrosshairs.SetActive(false);
+        }
 
         // machine
         if (player.activeWeapon == PlayerController.Weapons.Machine)
@@ -79,12 +84,17 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.machineGun.SetActive(true);
                 magSize = 20;
+                myInfo.magSize = magSize;
                 fireRate = 0.1f;
                 dmg = 10;
+                //player.machineCrosshairs.SetActive(true);
             }
         }
         else
-        { player.machineGun.SetActive(false); }
+        {
+            player.machineGun.SetActive(false);
+            //player.machineCrosshairs.SetActive(false);
+        }
 
         // missile
         if (player.activeWeapon == PlayerController.Weapons.Missile)
@@ -93,12 +103,17 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.missileLauncher.SetActive(true);
                 magSize = 5;
+                myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 30;
+                //player.missileCrosshairs.SetActive(true);
             }
         }
         else
-        { player.missileLauncher.SetActive(false); }
+        {
+            player.missileLauncher.SetActive(false);
+            //player.missileCrosshairs.SetActive(false);
+        }
 
         // shotgun
         if (player.activeWeapon == PlayerController.Weapons.Shotgun)
@@ -107,12 +122,17 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.shotgunGun.SetActive(true);
                 magSize = 5;
+                myInfo.magSize = magSize;
                 fireRate = 1f;
-                dmg = 30;
+                dmg = 5;
+                //player.shotgunCrosshairs.SetActive(true);
             }
         }
         else
-        { player.shotgunGun.SetActive(false); }
+        {
+            player.shotgunGun.SetActive(false);
+            //player.shotgunCrosshairs.SetActive(false);
+        }
 
         // sniper
         if (player.activeWeapon == PlayerController.Weapons.Sniper)
@@ -121,15 +141,20 @@ public class GunScriptBase : MonoBehaviour
             {
                 player.sniperRifle.SetActive(true);
                 magSize = 1;
+                myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 40;
+                //player.sniperCrosshairs.SetActive(true);
             }
         }
         else
-        { player.sniperRifle.SetActive(false); }
+        {
+            player.sniperRifle.SetActive(false);
+            //player.sniperCrosshairs.SetActive(false);
+        }
 
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-        if ((Input.GetAxis("Joy" + player.playerID + "Axis10") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
+        if ((rewiredPlayer.GetAxis("FireTrigger") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
 		{
 
         #region
@@ -143,41 +168,63 @@ public class GunScriptBase : MonoBehaviour
 				nextFire = Time.time + fireRate;
 
 				player.weaponAnim.Play("fireR");
+                int x = modApp.ScatterCheck();
 
                 // blaster
                 if (player.activeWeapon == PlayerController.Weapons.Blaster)
                 {
-                    shootProjectile(player.blasterShotRotAdd, player.blasterEnd, player.blasterProjectile, player.blasterShotSpeed);
+                    for(int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.blasterShotRotAdd, player.blasterEnd, player.blasterProjectile, player.blasterShotSpeed);
+                    }
                 }
 
                 // grenade launcher
                 if (player.activeWeapon == PlayerController.Weapons.Grenade)
                 {
-                    shootProjectile(player.grenadeShotRotAdd, player.grenadeLauncherEnd, player.grenadeProjectile, player.grenadeShotSpeed);
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.grenadeShotRotAdd, player.grenadeLauncherEnd, player.grenadeProjectile, player.grenadeShotSpeed);
+                    }   
                 }
 
                 // machine gun
                 if (player.activeWeapon == PlayerController.Weapons.Machine)
                 {
-                    shootProjectile(player.machineShotRotAdd, player.machineGunEnd, player.machineProjectile, player.machineShotSpeed);
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.machineShotRotAdd, player.machineGunEnd, player.machineProjectile, player.machineShotSpeed);
+                    }  
                 }
 
                 // missile launcher
                 if (player.activeWeapon == PlayerController.Weapons.Missile)
                 {
-                    shootProjectile(player.missileShotRotAdd, player.missileLauncherEnd, player.missileProjectile, player.missileShotSpeed);
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.missileShotRotAdd, player.missileLauncherEnd, player.missileProjectile, player.missileShotSpeed);
+                    }
                 }
 
                 // shotgun 
                 if (player.activeWeapon == PlayerController.Weapons.Shotgun)
                 {
-                    shootProjectile(player.shotgunShotRotAdd, player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
+                    for (int i = 0; i < x; i++)
+                    {
+                        for (int j = 0; j < 6; j++)
+                        {
+                            shootProjectile(player.shotgunShotRotAdd, player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
+                        }
+                    } 
                 }
 
                 // sniper
                 if (player.activeWeapon == PlayerController.Weapons.Sniper)
                 {
-                    shootProjectile(player.sniperShotRotAdd, player.sniperRifleEnd, player.sniperProjectile, player.sniperShotSpeed);
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.sniperShotRotAdd, player.sniperRifleEnd, player.sniperProjectile, player.sniperShotSpeed);
+                    }
                 }
             }
 
@@ -235,7 +282,7 @@ public class GunScriptBase : MonoBehaviour
 
         #endregion
 
-        if (Input.GetButton("Player" + player.playerID + "Reload") && mag < magSize)
+        if (rewiredPlayer.GetButton("Reload") && mag < magSize)
 		{
 			mag = 0;
 			player.StartCoroutine(Reload());
@@ -244,10 +291,20 @@ public class GunScriptBase : MonoBehaviour
 
     void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)
     {
-        Quaternion rotationAdd = Quaternion.Euler(Random.Range(-randomShotRot, randomShotRot), Random.Range(-randomShotRot, randomShotRot), Random.Range(-randomShotRot, randomShotRot));
-        GameObject projectile = Instantiate(shotProjectile, gunEnd.position, player.transform.rotation * rotationAdd); //Spawns the selected projectile
+        GameObject projectile = Instantiate(shotProjectile, gunEnd.position, Quaternion.identity); //Spawns the selected projectile
         projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
+        projectile.GetComponent<ProjectileScript>().burst = bloodBurst;
         projectile.GetComponent<ProjectileScript>().modApp = player.modApp; // set this to utilize vampirism
+        float myX = Random.Range(-randomShotRot, randomShotRot);
+        float myY = Random.Range(-randomShotRot, randomShotRot);
+        float myZ = Random.Range(-randomShotRot, randomShotRot);
+        Vector3 newRot = new Vector3(myX, myY, myZ);
+        projectile.transform.localEulerAngles += player.transform.localEulerAngles;
+        projectile.transform.localEulerAngles += newRot;
+        if(modApp.supercharge)
+        {
+            shotSpeed *= 1.5f;
+        }
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * shotSpeed); //Set the speed of the projectile by applying force to the rigidbody
     }
 

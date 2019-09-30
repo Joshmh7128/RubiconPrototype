@@ -94,3 +94,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modApp: {fileID: 0}
   dmg: 0
+  burst: {fileID: 0}
