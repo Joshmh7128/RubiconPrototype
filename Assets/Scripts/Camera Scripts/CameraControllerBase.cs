@@ -8,6 +8,7 @@ public class CameraControllerBase
 	private Camera cam;
 	private float rotAroundX, rotAroundY;
 	private bool camMoved = false;
+    private Rewired.Player rewiredPlayer;
 
 	// Use this for initialization
 	public CameraControllerBase(PlayerController player)
@@ -16,15 +17,16 @@ public class CameraControllerBase
 		cam = player.GetComponent<Camera>();
 		rotAroundX = player.transform.eulerAngles.x;
 		rotAroundY = player.transform.eulerAngles.y;
+        rewiredPlayer = Rewired.ReInput.players.GetPlayer(player.playerID - 1);
 	}
 
-	public void Update()
+	public void FixedUpdate()
 	{
 		rotAroundX += Input.GetAxis("Mouse Y") * player.Xsensitivity;
 		rotAroundY += Input.GetAxis("Mouse X") * player.Ysensitivity;
 
-		rotAroundX += Input.GetAxis("Joy" + player.playerID + "Axis5") * -player.Xsensitivity;
-		rotAroundY += Input.GetAxis("Joy" + player.playerID + "Axis4") * player.Ysensitivity;
+		rotAroundX += rewiredPlayer.GetAxis("LookHorizontalX") * -player.Xsensitivity;
+		rotAroundY += rewiredPlayer.GetAxis("LookHorizontalY") * player.Ysensitivity;
 
 		// Clamp rotation values
 		rotAroundX = Mathf.Clamp(rotAroundX, player.XMinRotation, player.XMaxRotation);

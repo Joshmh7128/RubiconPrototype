@@ -16,12 +16,14 @@ public class GunScriptBase : MonoBehaviour
 	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after 
     private ModApplication modApp;
     public ParticleSystem bloodBurst;
+    private Rewired.Player rewiredPlayer;
 
     public GunScriptBase(PlayerController player)
 	{
-		this.player = player;
+        rewiredPlayer = Rewired.ReInput.players.GetPlayer(player.playerID - 1);
+        this.player = player;
         myInfo = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<InfoTracker>(); // get info
-       modApp = player.modApp;
+        modApp = player.modApp;
 		fpsCam = player.GetComponentInParent<Camera>(); // which cam are we
 		mag = magSize; // mag size 
         bloodBurst = player.blood;
@@ -152,7 +154,7 @@ public class GunScriptBase : MonoBehaviour
         }
 
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-        if ((Input.GetAxis("Joy" + player.playerID + "Axis10") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
+        if ((rewiredPlayer.GetAxis("FireTrigger") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
 		{
 
         #region
@@ -280,7 +282,7 @@ public class GunScriptBase : MonoBehaviour
 
         #endregion
 
-        if (Input.GetButton("Player" + player.playerID + "Reload") && mag < magSize)
+        if (rewiredPlayer.GetButton("Reload") && mag < magSize)
 		{
 			mag = 0;
 			player.StartCoroutine(Reload());
