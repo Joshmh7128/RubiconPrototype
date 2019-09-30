@@ -174,12 +174,12 @@ public class InfoTracker : MonoBehaviour
 
     public void Hide()
     {
-        playerCanvas.transform.GetChild(0).gameObject.SetActive(false);
+        playerCanvas.transform.Find("ToHide").gameObject.SetActive(false);
     }
 
     public void ResetStats()
     {
-        playerCanvas.transform.GetChild(0).gameObject.SetActive(true);
+        playerCanvas.transform.Find("ToHide").gameObject.SetActive(true);
         dead = false;
         redAnim.Play("redIdle");
         hp = maxHP;
