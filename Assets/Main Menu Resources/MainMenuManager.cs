@@ -5,45 +5,36 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public Transform mainCenter;
-    public Transform optionsCenter;
-    public Transform creditsCenter;
-    public Transform target;
-
+    public Button exitButton;
     public Button playButton;
     public Button optionsButton;
-    public Button creditsButton;
-    public Button exitButton;
-
-    public Transform cameraPos;
+    public GameObject optionsContainer;
+    public bool optionsActive;
+    public bool clicked;
 
     private void Start()
     {
-        target = mainCenter;
+        optionsActive = false;   
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        cameraPos.position = target.position;
-        Vector3.Lerp(cameraPos.position, target.position, 1f);
+        
     }
 
-    public void SetTarget(int targetPos)
+    public void OptionsMenuToggle()
     {
-        switch (targetPos)
-        {
-            case 1:
-                target = mainCenter;
-                break;
-
-            case 2:
-                target = optionsCenter;
-                break;
-
-            case 3:
-                target = creditsCenter;
-                break;
-        }
+        if (!clicked)
+        clicked = true;
+        // activate and deactivate the options menu
+        optionsActive = !optionsActive;
+        optionsContainer.SetActive(optionsActive);
     }
+
+    public void StartPlay()
+    {
+        // load the next scene
+
+    }
+
 }
