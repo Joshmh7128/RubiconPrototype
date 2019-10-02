@@ -85755,8 +85755,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032564526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.51, y: 0.91, z: 107.26}
-  m_LocalScale: {x: 1.2086202, y: 0.304515, z: 0.304515}
+  m_LocalPosition: {x: -0.053, y: 0.034, z: 107.26}
+  m_LocalScale: {x: 0.25684848, y: 0.25461352, z: 0.304515}
   m_Children: []
   m_Father: {fileID: 1056333612}
   m_RootOrder: 0
@@ -89078,8 +89078,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -499, y: -399}
-  m_SizeDelta: {x: 460.2, y: 70.54}
+  m_AnchoredPosition: {x: -349, y: -399}
+  m_SizeDelta: {x: 760.1, y: 70.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2116205799
 MonoBehaviour:
@@ -89114,7 +89114,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Developed by Take Flight Development
+  m_Text: Developed by Take Flight Development, Built by Devin Quinn and Josh Hirshfield
 --- !u!222 &2116205800
 CanvasRenderer:
   m_ObjectHideFlags: 0
