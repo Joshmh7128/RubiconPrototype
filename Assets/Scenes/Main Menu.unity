@@ -86767,8 +86767,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 189.5, y: -303}
-  m_SizeDelta: {x: 244.61, y: 58.09}
+  m_AnchoredPosition: {x: 158, y: -303.55}
+  m_SizeDelta: {x: 305.4, y: 89.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1462678295
 MonoBehaviour:
@@ -86803,8 +86803,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Default audio levels are recommended! If the game is too loud, adjust the
-    Master Volume.
+  m_Text: Default audio levels are recommended! If the game is too loud or soft, adjust
+    the Master Volume.
 --- !u!222 &1462678296
 CanvasRenderer:
   m_ObjectHideFlags: 0
