@@ -16,7 +16,7 @@ public class TriggerClick : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if ((col.tag == "MenuMouse") && (player.GetAxis("Click") > 0))
+        if ((col.tag == "MenuMouse") && (player.GetButton("Click")))
         {
             switch (buttonType)
             {
