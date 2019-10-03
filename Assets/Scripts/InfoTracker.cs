@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class InfoTracker : MonoBehaviour
 {
     public PlayerController myPlayer;
-    private RoundManager rm;
+    public RoundManager rm;
     public int id;
 
 	public float hp;
@@ -156,6 +156,11 @@ public class InfoTracker : MonoBehaviour
             }
             else if (hp > 0)
             {
+                int exKey = Random.Range(1, 101);
+                if (exKey >= (103 - taken))
+                {
+                    rm.sm.PlaySound("exclamation");
+                }
                 hpBar.fillAmount = (float)hp / maxHP;
                 int displayHP = (int)hp;
                 hpText.text = displayHP.ToString() + " / " + maxHP.ToString();

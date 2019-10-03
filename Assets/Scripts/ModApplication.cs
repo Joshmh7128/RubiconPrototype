@@ -85,6 +85,7 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Tracking");
         tracking = true;
         trackingLine.SetActive(true);
+        playerInfoTracker.rm.sm.PlaySound("trackingMod");
     }
 
     public void ActivateLarge()
@@ -92,6 +93,7 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Large");
         large = true;
         targetPlayer.transform.localScale = new Vector3(newScale, newScale, newScale); // double size
+        playerInfoTracker.rm.sm.PlaySound("largeMod");
     }
 
     public void ActivateSpeed()
@@ -99,6 +101,7 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Speed");
         speed = true;
         playerController.speed += speedAdd; // base speed is 10
+        playerInfoTracker.rm.sm.PlaySound("speedMod");
     }
 
     public void ActivateGlow()
@@ -106,6 +109,7 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Glow");
         glowing = true;
         glowObj.SetActive(true);
+        playerInfoTracker.rm.sm.PlaySound("glowingMod");
     }
 
     public void ActivateTunnelVision()
@@ -113,6 +117,7 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Tunnel Vision");
         tunnelVision = true;
         targetPlayerCineRend.SetActive(true);
+        playerInfoTracker.rm.sm.PlaySound("cineMod");
     }
 
     public void ActivateSupercharge()
@@ -140,12 +145,14 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Armor");
         armor = true;
         targetPlayerArmor.SetActive(true);
+        playerInfoTracker.rm.sm.PlaySound("shieldMod");
     }
 
     public void ActivateVampirism()
     {
         Debug.Log("Activating Vampirism");
         vampirism = true;
+        playerInfoTracker.rm.sm.PlaySound("vampMod");
     }
 
     public void ActivateRegen()
@@ -153,6 +160,7 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Regen");
         regen = true;
         StartCoroutine(Regenerate());
+        playerInfoTracker.rm.sm.PlaySound("hpRegenMod");
     }
 
     public void ActivateStealth()
@@ -160,6 +168,7 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Stealth");
         stealth = true;
         targetPlayerRend.material = invisPlayer;
+        playerInfoTracker.rm.sm.PlaySound("invisMod");
     }
 
     private IEnumerator Regenerate()

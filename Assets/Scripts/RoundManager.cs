@@ -162,6 +162,34 @@ public class RoundManager : MonoBehaviour
 
     private void AssignWeapons()
     {
+        if(roundNum > 1)
+        {
+            string weaponKey = weaponTypeList[roundNum - 1].ToString();
+            if (weaponKey == "Blaster")
+            {
+                sm.PlaySound("blasterRound");
+            }
+            if (weaponKey == "Grenade")
+            {
+                sm.PlaySound("grenadeRound");
+            }
+            if (weaponKey == "Machine")
+            {
+                sm.PlaySound("machineRound");
+            }
+            if (weaponKey == "Missile")
+            {
+                sm.PlaySound("missileRound");
+            }
+            if (weaponKey == "Shotgun")
+            {
+                sm.PlaySound("shotgunRound");
+            }
+            if (weaponKey == "Sniper")
+            {
+                sm.PlaySound("sniperRound");
+            }
+        }
         Player1Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
         Player2Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
     }
@@ -189,6 +217,22 @@ public class RoundManager : MonoBehaviour
 
     private void EndMatch(int winner)
     {
+        if(winner == 1)
+        {
+            sm.PlaySound("congratsPlayerOne");
+        }
+        if (winner == 2)
+        {
+            sm.PlaySound("congratsPlayerTwo");
+        }
+        if (winner == 3)
+        {
+            sm.PlaySound("congratsPlayerThree");
+        }
+        if (winner == 4)
+        {
+            sm.PlaySound("congratsPlayerFour");
+        }
         RoundCanvas.SetActive(false);
         Player1.GetComponent<InfoTracker>().Hide();
         Player2.GetComponent<InfoTracker>().Hide();
@@ -241,7 +285,7 @@ public class RoundManager : MonoBehaviour
     }
 
     private IEnumerator NextRound(int loser)
-    {
+    { 
         if(loser == 1)
         {
             Player2RoundsWon++;
@@ -266,7 +310,11 @@ public class RoundManager : MonoBehaviour
             InterRound.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
             InterRound.transform.Find("WeaponText").GetComponent<Text>().text = weaponList[roundNum].ToString();
 
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(2);
+
+            sm.PlaySound("endRound");
+
+            yield return new WaitForSeconds(8);
 
             RoundCanvas.SetActive(true);
             Player1Canvas.SetActive(true);
@@ -328,6 +376,7 @@ public class RoundManager : MonoBehaviour
     private IEnumerator PlayerDeath(int id)
     {
         Debug.Log("Player died, running coroutine...");
+        sm.PlaySound("kill");
         int posNeg = Random.Range(1, 11);
         if (id == 1)
         {
