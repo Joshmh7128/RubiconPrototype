@@ -162,7 +162,7 @@ public class RoundManager : MonoBehaviour
 
     private void AssignWeapons()
     {
-        if(roundNum > 1)
+        if (roundNum > 1 && (Player1Kills + Player2Kills == 0))
         {
             string weaponKey = weaponTypeList[roundNum - 1].ToString();
             if (weaponKey == "Blaster")
@@ -309,12 +309,9 @@ public class RoundManager : MonoBehaviour
             InterRound.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
             InterRound.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
             InterRound.transform.Find("WeaponText").GetComponent<Text>().text = weaponList[roundNum].ToString();
+            sm.PlaySound("roundOver");
 
-            yield return new WaitForSeconds(2);
-
-            sm.PlaySound("endRound");
-
-            yield return new WaitForSeconds(8);
+            yield return new WaitForSeconds(10);
 
             RoundCanvas.SetActive(true);
             Player1Canvas.SetActive(true);
@@ -376,7 +373,6 @@ public class RoundManager : MonoBehaviour
     private IEnumerator PlayerDeath(int id)
     {
         Debug.Log("Player died, running coroutine...");
-        sm.PlaySound("kill");
         int posNeg = Random.Range(1, 11);
         if (id == 1)
         {
@@ -387,6 +383,7 @@ public class RoundManager : MonoBehaviour
 
             if(Player2Kills < 3)
             {
+                sm.PlaySound("kill");
                 yield return new WaitForSeconds(downtime);
                 resetPlayers(id);
                 if (posNeg < 8)
@@ -415,6 +412,7 @@ public class RoundManager : MonoBehaviour
 
             if (Player1Kills < 3)
             {
+                sm.PlaySound("kill");
                 yield return new WaitForSeconds(downtime);
                 resetPlayers(id);
                 if (posNeg < 8)
