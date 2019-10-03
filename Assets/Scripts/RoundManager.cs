@@ -42,6 +42,9 @@ public class RoundManager : MonoBehaviour
     public GameObject Player1Canvas;
     public GameObject Player2Canvas;
 
+    public GameObject Player1Countdown;
+    public GameObject Player2Countdown;
+
     public GameObject RoundCanvas;
     public GameObject InterRound;
     public GameObject MatchEnd;
@@ -93,7 +96,10 @@ public class RoundManager : MonoBehaviour
         AssignWeapons();
         myArena.shuffle(shuffles);
         StartCoroutine(SetupRound());
+        StartCoroutine(CountDown());
     }
+
+    
 
     // weapon generation
 
@@ -299,6 +305,22 @@ public class RoundManager : MonoBehaviour
         AssignWeapons();
         pm.ClearPickups();
         pm.SpawnPickups();
+    }
+
+    private IEnumerator CountDown()
+    {
+        float baseSpeed = Player1Cam.GetComponent<PlayerController>().speed;
+        Player1Cam.GetComponent<PlayerController>().speed = 0;
+        Player2Cam.GetComponent<PlayerController>().speed = 0;
+        Player1Countdown.SetActive(true);
+        Player2Countdown.SetActive(true);
+        yield return new WaitForSeconds(3.75f);
+        Player1Cam.GetComponent<PlayerController>().speed = baseSpeed;
+        Player2Cam.GetComponent<PlayerController>().speed = baseSpeed;
+        yield return new WaitForSeconds(1f);
+        Player1Countdown.SetActive(false);
+        Player2Countdown.SetActive(false);
+        yield return null;
     }
 
     private IEnumerator PlayerDeath(int id)
