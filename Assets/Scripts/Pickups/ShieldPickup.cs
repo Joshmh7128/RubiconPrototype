@@ -6,6 +6,7 @@ public class ShieldPickup : MonoBehaviour
 {
     public int shieldBoost;
     public ParticleSystem burst;
+    public SoundManager sm;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -13,6 +14,7 @@ public class ShieldPickup : MonoBehaviour
         {
             collision.gameObject.GetComponent<InfoTracker>().AddShield(shieldBoost);
             Instantiate(burst, this.transform.position, Quaternion.identity);
+            sm.PlaySound("armorPickup");
             Destroy(this.gameObject);
         }
     }

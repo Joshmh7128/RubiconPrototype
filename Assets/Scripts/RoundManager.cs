@@ -57,6 +57,10 @@ public class RoundManager : MonoBehaviour
     private int needed = 3;
 
     public CubeAction myArena;
+    public ModDisplay md;
+    public PickupManager pm;
+    public SoundManager sm;
+
     private int shuffles = 20;
 
     private int downtime = 5;
@@ -68,9 +72,6 @@ public class RoundManager : MonoBehaviour
 
     public ModApplication ma1;
     public ModApplication ma2;
-
-    public ModDisplay md;
-    public PickupManager pm;
 
     // what mods do we have?
     public enum battleMods
@@ -317,6 +318,7 @@ public class RoundManager : MonoBehaviour
         yield return new WaitForSeconds(3.75f);
         Player1Cam.GetComponent<PlayerController>().speed = baseSpeed;
         Player2Cam.GetComponent<PlayerController>().speed = baseSpeed;
+        sm.PlaySound("enterTheRubicon");
         yield return new WaitForSeconds(1f);
         Player1Countdown.SetActive(false);
         Player2Countdown.SetActive(false);

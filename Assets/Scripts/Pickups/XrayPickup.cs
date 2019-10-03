@@ -7,6 +7,7 @@ public class XrayPickup : MonoBehaviour
     private RoundManager rm;
     public int activeTime;
     public ParticleSystem burst;
+    public SoundManager sm;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class XrayPickup : MonoBehaviour
                 rm.Player1.GetComponent<InfoTracker>().AddXray(activeTime);
             }
             Instantiate(burst, this.transform.position, Quaternion.identity);
+            sm.PlaySound("xrayPickup");
             Destroy(this.gameObject);
         }
     }

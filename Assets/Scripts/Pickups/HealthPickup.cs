@@ -6,6 +6,7 @@ public class HealthPickup : MonoBehaviour
 {
     public int hpBoost;
     public ParticleSystem burst;
+    public SoundManager sm;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -13,6 +14,7 @@ public class HealthPickup : MonoBehaviour
         {
             collision.gameObject.GetComponent<InfoTracker>().AddHealth(hpBoost);
             Instantiate(burst, this.transform.position, Quaternion.identity);
+            sm.PlaySound("hpPickup");
             Destroy(this.gameObject);
         }
     }
