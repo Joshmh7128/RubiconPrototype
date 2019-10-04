@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4535149275967958820}
   - component: {fileID: 4535149275967958821}
   m_Layer: 12
-  m_Name: Shield
+  m_Name: Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,6 +524,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
