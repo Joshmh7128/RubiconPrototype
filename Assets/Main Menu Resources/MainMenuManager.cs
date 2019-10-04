@@ -25,6 +25,8 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         optionsActive = false;
         optionsButton.onClick.AddListener(OptionsMenuToggle);
         playButton.onClick.AddListener(LoadLevel);
