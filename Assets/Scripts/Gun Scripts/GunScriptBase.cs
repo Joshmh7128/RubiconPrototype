@@ -1,121 +1,333 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GunScriptBase
+public class GunScriptBase : MonoBehaviour
 {
 	private PlayerController player;
-	
-	public int mag;
-	public int magSize = 24;
+
+    private InfoTracker myInfo;
+    
+    public int mag;
+	public int magSize = 16;
+    public int dmg = 17;
+    public float fireRate = 0.2f;
 	private Camera fpsCam;                                                // Holds a reference to the first person camera
-	private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
-	private LineRenderer laserLine;                                        // Reference to the LineRenderer component which will display our laserline
-	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after firing
+	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after 
+    private ModApplication modApp;
+    public ParticleSystem bloodBurst;
+    private Rewired.Player rewiredPlayer;
 
-	public GunScriptBase(PlayerController player)
+    public GunScriptBase(PlayerController player)
 	{
-		this.player = player;
-		// Get and store a reference to our LineRenderer component
-		laserLine = player.GetComponent<LineRenderer>();
-		// Get and store a reference to our Camera by searching this GameObject and its parents
-		fpsCam = player.GetComponentInParent<Camera>();
-		mag = magSize;
-		player.ammoBar.transform.localScale = new Vector3(1, 1, 1);
-		player.flashLight.SetActive(false);
-	}
+        rewiredPlayer = Rewired.ReInput.players.GetPlayer(player.playerID - 1);
+        this.player = player;
+        myInfo = GameObject.Find("Player" + player.playerID.ToString()).GetComponent<InfoTracker>(); // get info
+        modApp = player.modApp;
+		fpsCam = player.GetComponentInParent<Camera>(); // which cam are we
+		mag = magSize; // mag size 
+        bloodBurst = player.blood;
 
+	}
 
 	public void Update()
 	{
+        // make sure we never exceed our mag size
+        if (mag > magSize)
+        {
+            mag = magSize;
+        }
 
-		// Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-		if ((Input.GetAxis("Joy" + player.playerID + "Axis10") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
+        // set our weapons to active or inactive
+        // blaster
+        if (player.activeWeapon == PlayerController.Weapons.Blaster)
+        {
+            if (player.blaster.activeSelf == false)
+            {
+                player.blaster.SetActive(true);
+                magSize = 10;
+                myInfo.magSize = magSize;
+                fireRate = 0.2f;
+                dmg = 7;
+                //player.blasterCrosshairs.SetActive(true);
+            }
+        }
+        else
+        {
+            player.blaster.SetActive(false);
+            //player.blasterCrosshairs.SetActive(false);
+        }
+
+        // grenade launcher
+        if (player.activeWeapon == PlayerController.Weapons.Grenade)
+        {
+            if (player.grenadeLauncher.activeSelf == false)
+            {
+                player.grenadeLauncher.SetActive(true);
+                magSize = 6;
+                myInfo.magSize = magSize;
+                fireRate = 0.5f;
+                dmg = 20;
+                //player.grenadeCrosshairs.SetActive(true);
+            }
+        }
+        else
+        {
+            player.grenadeLauncher.SetActive(false);
+            //player.grenadeCrosshairs.SetActive(false);
+        }
+
+        // machine
+        if (player.activeWeapon == PlayerController.Weapons.Machine)
+        {
+            if (player.machineGun.activeSelf == false)
+            {
+                player.machineGun.SetActive(true);
+                magSize = 20;
+                myInfo.magSize = magSize;
+                fireRate = 0.1f;
+                dmg = 10;
+                //player.machineCrosshairs.SetActive(true);
+            }
+        }
+        else
+        {
+            player.machineGun.SetActive(false);
+            //player.machineCrosshairs.SetActive(false);
+        }
+
+        // missile
+        if (player.activeWeapon == PlayerController.Weapons.Missile)
+        {
+            if (player.missileLauncher.activeSelf == false)
+            {
+                player.missileLauncher.SetActive(true);
+                magSize = 5;
+                myInfo.magSize = magSize;
+                fireRate = 1f;
+                dmg = 30;
+                //player.missileCrosshairs.SetActive(true);
+            }
+        }
+        else
+        {
+            player.missileLauncher.SetActive(false);
+            //player.missileCrosshairs.SetActive(false);
+        }
+
+        // shotgun
+        if (player.activeWeapon == PlayerController.Weapons.Shotgun)
+        {
+            if (player.shotgunGun.activeSelf == false)
+            {
+                player.shotgunGun.SetActive(true);
+                magSize = 5;
+                myInfo.magSize = magSize;
+                fireRate = 1f;
+                dmg = 5;
+                //player.shotgunCrosshairs.SetActive(true);
+            }
+        }
+        else
+        {
+            player.shotgunGun.SetActive(false);
+            //player.shotgunCrosshairs.SetActive(false);
+        }
+
+        // sniper
+        if (player.activeWeapon == PlayerController.Weapons.Sniper)
+        {
+            if (player.sniperRifle.activeSelf == false)
+            {
+                player.sniperRifle.SetActive(true);
+                magSize = 1;
+                myInfo.magSize = magSize;
+                fireRate = 1f;
+                dmg = 40;
+                //player.sniperCrosshairs.SetActive(true);
+            }
+        }
+        else
+        {
+            player.sniperRifle.SetActive(false);
+            //player.sniperCrosshairs.SetActive(false);
+        }
+
+        // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
+        if ((rewiredPlayer.GetAxis("FireTrigger") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
 		{
-			//nextFire = Time.time + fireRate;
 
+        #region
+        
 			if (mag > 0)
 			{
 				mag--;
-				player.ammoBar.transform.localScale = new Vector3((float)mag / magSize, 1, 1);
+                myInfo.updateAmmo(mag);
 
 				// Update the time when our player can fire next
-				nextFire = Time.time + player.fireRate;
+				nextFire = Time.time + fireRate;
 
 				player.weaponAnim.Play("fireR");
-				player.muzzle.Play();
+                int x = modApp.ScatterCheck();
 
-				// Start our ShotEffect coroutine to turn our laser line on and off
-				player.StartCoroutine(ShotEffect());
+                // blaster
+                if (player.activeWeapon == PlayerController.Weapons.Blaster)
+                {
+                    for(int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.blasterShotRotAdd, player.blasterEnd, player.blasterProjectile, player.blasterShotSpeed);
+                    }
+                }
 
-				// Create a vector at the center of our camera's viewport
-				Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+                // grenade launcher
+                if (player.activeWeapon == PlayerController.Weapons.Grenade)
+                {
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.grenadeShotRotAdd, player.grenadeLauncherEnd, player.grenadeProjectile, player.grenadeShotSpeed);
+                    }   
+                }
 
-				// Declare a raycast hit to store information about what our raycast has hit
-				RaycastHit hit;
+                // machine gun
+                if (player.activeWeapon == PlayerController.Weapons.Machine)
+                {
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.machineShotRotAdd, player.machineGunEnd, player.machineProjectile, player.machineShotSpeed);
+                    }  
+                }
 
-				// Set the start position for our visual effect for our laser to the position of gunEnd
-				laserLine.SetPosition(0, player.gunEnd.position);
+                // missile launcher
+                if (player.activeWeapon == PlayerController.Weapons.Missile)
+                {
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.missileShotRotAdd, player.missileLauncherEnd, player.missileProjectile, player.missileShotSpeed);
+                    }
+                }
 
-				// Check if our raycast has hit anything
-				if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, player.weaponRange))
+                // shotgun 
+                if (player.activeWeapon == PlayerController.Weapons.Shotgun)
+                {
+                    for (int i = 0; i < x; i++)
+                    {
+                        for (int j = 0; j < 6; j++)
+                        {
+                            shootProjectile(player.shotgunShotRotAdd, player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
+                        }
+                    } 
+                }
+
+                // sniper
+                if (player.activeWeapon == PlayerController.Weapons.Sniper)
+                {
+                    for (int i = 0; i < x; i++)
+                    {
+                        shootProjectile(player.sniperShotRotAdd, player.sniperRifleEnd, player.sniperProjectile, player.sniperShotSpeed);
+                    }
+                }
+            }
+
+            #region
+            //player.muzzle.Play();
+
+            // Start our ShotEffect coroutine to turn our laser line on and off
+            //player.StartCoroutine(ShotEffect());
+
+            // Create a vector at the center of our camera's viewport
+            //Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+
+            // Declare a raycast hit to store information about what our raycast has hit
+            //RaycastHit hit;
+
+            // Set the start position for our visual effect for our laser to the position of gunEnd
+            //laserLine.SetPosition(0, player.gunEnd.position);
+
+            // Check if our raycast has hit anything
+            /*
+			if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
+			{
+				// Set the end position for our laser line 
+				laserLine.SetPosition(1, hit.point);
+
+				if (hit.collider.gameObject.CompareTag("Player"))
 				{
-					// Set the end position for our laser line 
-					laserLine.SetPosition(1, hit.point);
-
-					if (hit.collider.gameObject.CompareTag("Arena"))
-					{
-						player.InstantiateBurst(hit.point);
-					}
-					if (hit.collider.gameObject.CompareTag("Player"))
-					{
-						player.InstantiateBlood(hit.point);
-						hit.collider.gameObject.GetComponent<HealthTracker>().TakeDamage(1);
-					}
-				}
-				else
-				{
-					// If we did not hit anything, set the end of the line to a position directly in front of the camera at the distance of weaponRange
-					laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * player.weaponRange));
-				}
+					player.InstantiateBlood(hit.point);
+                    hit.collider.gameObject.GetComponent<InfoTracker>().TakeDamage(dmg);
+                    modApp.VampCheck();
+                }
+                else if (hit.collider.gameObject.CompareTag("Breakable"))
+                {
+                    hit.collider.gameObject.GetComponent<BreakableObject>().TakeDamage();
+                    player.InstantiateBurst(hit.point);
+                }
+                else
+                {
+                    player.InstantiateBurst(hit.point);
+                }
 			}
 			else
 			{
-				player.StartCoroutine(Reload());
+				// If we did not hit anything, set the end of the line to a position directly in front of the camera at the distance of weaponRange
+				laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
 			}
 		}
+		else
+		{
+			player.StartCoroutine(Reload());
+		}*/
 
-		if (Input.GetButton("Player" + player.playerID + "Reload") && mag < magSize)
+            #endregion
+        }
+
+        #endregion
+
+        if (rewiredPlayer.GetButton("Reload") && mag < magSize)
 		{
 			mag = 0;
 			player.StartCoroutine(Reload());
 		}
-	}
 
-	private IEnumerator ShotEffect()
-	{
+        if(rewiredPlayer.GetButton("A") && myInfo.rm.isOver)
+        {
+            SceneManager.LoadScene("GameplayBase");
+        }
 
-		// Turn on our line renderer
-		laserLine.enabled = true;
-		player.flashLight.SetActive(true);
+        if (rewiredPlayer.GetButton("B") && myInfo.rm.isOver)
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
+    }
 
-		//Wait for .07 seconds
-		yield return shotDuration;
+    void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)
+    {
+        GameObject projectile = Instantiate(shotProjectile, gunEnd.position, Quaternion.identity); //Spawns the selected projectile
+        projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
+        projectile.GetComponent<ProjectileScript>().burst = bloodBurst;
+        projectile.GetComponent<ProjectileScript>().modApp = player.modApp; // set this to utilize vampirism
+        float myX = Random.Range(-randomShotRot, randomShotRot);
+        float myY = Random.Range(-randomShotRot, randomShotRot);
+        float myZ = Random.Range(-randomShotRot, randomShotRot);
+        Vector3 newRot = new Vector3(myX, myY, myZ);
+        projectile.transform.localEulerAngles += player.transform.localEulerAngles;
+        projectile.transform.localEulerAngles += newRot;
+        if(modApp.supercharge)
+        {
+            shotSpeed *= 1.5f;
+        }
+        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * shotSpeed); //Set the speed of the projectile by applying force to the rigidbody
+    }
 
-		// Deactivate our line renderer after waiting
-		laserLine.enabled = false;
-		player.flashLight.SetActive(false);
-	}
 
-	private IEnumerator Reload()
+        private IEnumerator Reload()
 	{
 		//mag = 0;
-		player.ammoAnim.Play("ammoBump");
 		player.weaponAnim.Play("loadR");
 		player.SetState(PlayerState.reloadState);
 		yield return new WaitForSeconds(1.01f);
 		mag = magSize;
-		player.ammoBar.transform.localScale = new Vector3(1, 1, 1);
-		player.SetState(PlayerState.normalState);
+        myInfo.updateAmmo(mag);
+        player.SetState(PlayerState.normalState);
 	}
 }

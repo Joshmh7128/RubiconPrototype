@@ -16,13 +16,13 @@ public class ReloadState : PlayerState
 
 	public override void Update(PlayerController player)
 	{
-		player._cameraController.Update();
-		player._playerMover.Update();
+		//player._cameraController.Update();
+		//player._playerMover.Update();
 	}
 
 	public override void FixedUpdate(PlayerController player)
 	{
-		//player._cameraController.FixedUpdate();
+		player._cameraController.FixedUpdate();
 		player._playerMover.FixedUpdate();
 	}
 

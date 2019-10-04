@@ -25,20 +25,63 @@ public class PlayerController : MonoBehaviour
 	public float smoothSpeed;                       //amount of smoothing for movement
 	public float slerpAmount;
 	public float offset;                            //forward camera offset amount
+    public ModApplication modApp;
 
-	[Header("Weapon Fields")]
-	public float fireRate = 0.5f;                                        // Number in seconds which controls how often the player can fire
-	public float weaponRange = 200f;                                        // Distance in Unity units over which the player can fire
-	public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
+    public enum Weapons { Blaster, Grenade, Machine, Missile, Shotgun, Sniper };
+    [Header("Weapon Fields")]
+    public Weapons activeWeapon;
 	public Animator weaponAnim;
-	public GameObject flashLight;
-	public ParticleSystem muzzle;
-	public ParticleSystem burst;
 	public ParticleSystem blood;
-	public GameObject ammoBar;
-	public Animator ammoAnim;
 
-	public PlayerState _state
+    [Header("Weapons (Set per Player!)")]
+    public GameObject blaster;
+    public Transform blasterEnd;
+    public float blasterShotSpeed;
+    public float blasterShotRotAdd;
+
+    public GameObject grenadeLauncher;
+    public Transform grenadeLauncherEnd;
+    public float grenadeShotSpeed;
+    public float grenadeShotRotAdd;
+
+    public GameObject machineGun;
+    public Transform machineGunEnd;
+    public float machineShotSpeed;
+    public float machineShotRotAdd;
+
+    public GameObject missileLauncher;
+    public Transform missileLauncherEnd;
+    public float missileShotSpeed;
+    public float missileShotRotAdd;
+
+    public GameObject shotgunGun;
+    public Transform shotgunEnd;
+    public float shotgunShotSpeed;
+    public float shotgunShotRotAdd;
+
+    public GameObject sniperRifle;
+    public Transform sniperRifleEnd;
+    public float sniperShotSpeed;
+    public float sniperShotRotAdd;
+
+    /*
+    public GameObject blasterCrosshairs;
+    public GameObject grenadeCrosshairs;
+    public GameObject machineCrosshairs;
+    public GameObject missileCrosshairs;
+    public GameObject shotgunCrosshairs;
+    public GameObject sniperCrosshairs;
+    */
+
+    [Header("Weapon Projectiles")]
+    public GameObject blasterProjectile;
+    public GameObject grenadeProjectile;
+    public GameObject machineProjectile;
+    public GameObject missileProjectile;
+    public GameObject shotgunProjectile;
+    public GameObject sniperProjectile;
+
+    public PlayerState _state
 	{
 		get;
 		private set;
@@ -86,7 +129,8 @@ public class PlayerController : MonoBehaviour
 		_state.LateUpdate(this);
 	}
 
-	public void InstantiateBurst(Vector3 point)
+	/*
+     * public void InstantiateBurst(Vector3 point)
 	{
 		Instantiate(burst, point, Quaternion.identity);
 	}
@@ -95,7 +139,8 @@ public class PlayerController : MonoBehaviour
 	{
 		Instantiate(blood, point, Quaternion.identity);
 	}
-
+    *
+    */
 
 	public void SetState(PlayerState state)
 	{
