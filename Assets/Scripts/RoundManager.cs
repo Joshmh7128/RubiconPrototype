@@ -48,6 +48,7 @@ public class RoundManager : MonoBehaviour
     public GameObject RoundCanvas;
     public GameObject InterRound;
     public GameObject MatchEnd;
+    public bool isOver = false;
 
     public CubeAction Rotator;
 
@@ -217,6 +218,7 @@ public class RoundManager : MonoBehaviour
 
     private void EndMatch(int winner)
     {
+        isOver = true;
         if(winner == 1)
         {
             sm.PlaySound("congratsPlayerOne");

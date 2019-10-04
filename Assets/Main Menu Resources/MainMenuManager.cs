@@ -70,7 +70,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene("CoreMods");
+        SceneManager.LoadScene("GameplayBase");
     }
 
     public void OptionsMenuToggle()

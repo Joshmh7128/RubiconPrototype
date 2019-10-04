@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GunScriptBase : MonoBehaviour
 {
@@ -287,7 +288,17 @@ public class GunScriptBase : MonoBehaviour
 			mag = 0;
 			player.StartCoroutine(Reload());
 		}
-	}
+
+        if(rewiredPlayer.GetButton("A") && myInfo.rm.isOver)
+        {
+            SceneManager.LoadScene("GameplayBase");
+        }
+
+        if (rewiredPlayer.GetButton("B") && myInfo.rm.isOver)
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
+    }
 
     void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)
     {
