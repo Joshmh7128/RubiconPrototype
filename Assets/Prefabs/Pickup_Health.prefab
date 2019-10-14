@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBoost: 25
   burst: {fileID: 1386193425164969425, guid: 51cf53f6df706f941a7270232ef5b272, type: 3}
+  sm: {fileID: 0}
 --- !u!1 &2181439029224230942
 GameObject:
   m_ObjectHideFlags: 0
