@@ -141,7 +141,7 @@ public class GunScriptBase : MonoBehaviour
             if (player.sniperRifle.activeSelf == false)
             {
                 player.sniperRifle.SetActive(true);
-                magSize = 1;
+                magSize = 3;
                 myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 40;
@@ -176,7 +176,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     for(int i = 0; i < x; i++)
                     {
-                        shootProjectile(player.blasterShotRotAdd, player.blasterEnd, player.blasterProjectile, player.blasterShotSpeed);
+                        shootProjectile((player.blasterShotRotAdd * x) + (x - 1), player.blasterEnd, player.blasterProjectile, player.blasterShotSpeed);
                     }
                 }
 
@@ -185,7 +185,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     for (int i = 0; i < x; i++)
                     {
-                        shootProjectile(player.grenadeShotRotAdd, player.grenadeLauncherEnd, player.grenadeProjectile, player.grenadeShotSpeed);
+                        shootProjectile((player.grenadeShotRotAdd * x) + (x - 1), player.grenadeLauncherEnd, player.grenadeProjectile, player.grenadeShotSpeed);
                     }   
                 }
 
@@ -194,7 +194,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     for (int i = 0; i < x; i++)
                     {
-                        shootProjectile(player.machineShotRotAdd, player.machineGunEnd, player.machineProjectile, player.machineShotSpeed);
+                        shootProjectile((player.machineShotRotAdd * x) + (x - 1), player.machineGunEnd, player.machineProjectile, player.machineShotSpeed);
                     }  
                 }
 
@@ -203,7 +203,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     for (int i = 0; i < x; i++)
                     {
-                        shootProjectile(player.missileShotRotAdd, player.missileLauncherEnd, player.missileProjectile, player.missileShotSpeed);
+                        shootProjectile((player.missileShotRotAdd * x) + (x - 1), player.missileLauncherEnd, player.missileProjectile, player.missileShotSpeed);
                     }
                 }
 
@@ -214,7 +214,7 @@ public class GunScriptBase : MonoBehaviour
                     {
                         for (int j = 0; j < 6; j++)
                         {
-                            shootProjectile(player.shotgunShotRotAdd, player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
+                            shootProjectile((player.shotgunShotRotAdd * x) + (x - 1), player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
                         }
                     } 
                 }
@@ -224,7 +224,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     for (int i = 0; i < x; i++)
                     {
-                        shootProjectile(player.sniperShotRotAdd, player.sniperRifleEnd, player.sniperProjectile, player.sniperShotSpeed);
+                        shootProjectile((player.sniperShotRotAdd * x) + (x - 1), player.sniperRifleEnd, player.sniperProjectile, player.sniperShotSpeed);
                     }
                 }
             }

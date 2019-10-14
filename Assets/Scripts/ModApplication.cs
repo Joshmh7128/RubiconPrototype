@@ -32,9 +32,9 @@ public class ModApplication : MonoBehaviour
     public int newScale; // how large is the player now?
     public int speedAdd; // how much speed are we adding?
     public float hpRegenAmount = 1f; // how much regen per update?
-    public float hpRegenDelay = 0.5f; // how long to wait between regen increments
+    public float hpRegenDelay = 1f; // how long to wait between regen increments
     public float vampAmount = 0.25f; // how much hp per hit?
-    public int shieldAmount = 25;
+    private int shieldAmount = 50;
 
     #endregion
 
