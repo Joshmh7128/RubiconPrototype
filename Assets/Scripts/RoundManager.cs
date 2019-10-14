@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class RoundManager : MonoBehaviour
 {
@@ -66,6 +67,9 @@ public class RoundManager : MonoBehaviour
 
     private int downtime = 5;
 
+    public PostProcessVolume post;
+    DepthOfField depthOfField = null;
+
     [Header("Modifiers")]
 
     public string[] weaponList;
@@ -94,6 +98,7 @@ public class RoundManager : MonoBehaviour
 
     private void Start()
     {
+        post.profile.TryGetSettings(out depthOfField);
         GenerateWeapons();
         AssignWeapons();
         myArena.shuffle(shuffles);
@@ -238,6 +243,7 @@ public class RoundManager : MonoBehaviour
         RoundCanvas.SetActive(false);
         Player1.GetComponent<InfoTracker>().Hide();
         Player2.GetComponent<InfoTracker>().Hide();
+        depthOfField.active = true;
         MatchEnd.transform.Find("TopText").GetComponent<Text>().text = "Player " + winner.ToString() + " is the Champion";
         MatchEnd.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
         MatchEnd.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
@@ -306,6 +312,7 @@ public class RoundManager : MonoBehaviour
             RoundCanvas.SetActive(false);
             Player1.GetComponent<InfoTracker>().Hide();
             Player2.GetComponent<InfoTracker>().Hide();
+            depthOfField.active = true;
             InterRound.SetActive(true);
             InterRound.transform.Find("TopText").GetComponent<Text>().text = "Round " + roundNum.ToString() + " Complete";
             InterRound.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
@@ -318,6 +325,7 @@ public class RoundManager : MonoBehaviour
             RoundCanvas.SetActive(true);
             Player1Canvas.SetActive(true);
             Player2Canvas.SetActive(true);
+            depthOfField.active = false;
             InterRound.SetActive(false);
             resetScore();
             roundNum++;
