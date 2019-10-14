@@ -33,6 +33,8 @@ public class GunScriptBase : MonoBehaviour
 
 	public void Update()
 	{
+        int x = modApp.ScatterCheck();
+
         // make sure we never exceed our mag size
         if (mag > magSize)
         {
@@ -50,6 +52,10 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 0.2f;
                 dmg = 7;
+                if (x > 1)
+                {
+                    dmg = 3;
+                }
                 //player.blasterCrosshairs.SetActive(true);
             }
         }
@@ -69,6 +75,10 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 0.5f;
                 dmg = 20;
+                if (x > 1)
+                {
+                    dmg = 10;
+                }
                 //player.grenadeCrosshairs.SetActive(true);
             }
         }
@@ -88,6 +98,10 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 0.1f;
                 dmg = 10;
+                if (x > 1)
+                {
+                    dmg = 5;
+                }
                 //player.machineCrosshairs.SetActive(true);
             }
         }
@@ -107,6 +121,10 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 30;
+                if (x > 1)
+                {
+                    dmg = 15;
+                }
                 //player.missileCrosshairs.SetActive(true);
             }
         }
@@ -126,6 +144,10 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 5;
+                if (x > 1)
+                {
+                    dmg = 2;
+                }
                 //player.shotgunCrosshairs.SetActive(true);
             }
         }
@@ -145,6 +167,10 @@ public class GunScriptBase : MonoBehaviour
                 myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 40;
+                if(x > 1)
+                {
+                    dmg = 20;
+                }
                 //player.sniperCrosshairs.SetActive(true);
             }
         }
@@ -169,14 +195,13 @@ public class GunScriptBase : MonoBehaviour
 				nextFire = Time.time + fireRate;
 
 				player.weaponAnim.Play("fireR");
-                int x = modApp.ScatterCheck();
 
                 // blaster
                 if (player.activeWeapon == PlayerController.Weapons.Blaster)
                 {
                     for(int i = 0; i < x; i++)
                     {
-                        shootProjectile((player.blasterShotRotAdd * x) + (x - 1), player.blasterEnd, player.blasterProjectile, player.blasterShotSpeed);
+                        shootProjectile(player.blasterShotRotAdd + ((x - 1) * 3), player.blasterEnd, player.blasterProjectile, player.blasterShotSpeed);
                     }
                 }
 
@@ -185,7 +210,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     for (int i = 0; i < x; i++)
                     {
-                        shootProjectile((player.grenadeShotRotAdd * x) + (x - 1), player.grenadeLauncherEnd, player.grenadeProjectile, player.grenadeShotSpeed);
+                        shootProjectile(player.grenadeShotRotAdd + ((x - 1) * 3), player.grenadeLauncherEnd, player.grenadeProjectile, player.grenadeShotSpeed);
                     }   
                 }
 
@@ -194,7 +219,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     for (int i = 0; i < x; i++)
                     {
-                        shootProjectile((player.machineShotRotAdd * x) + (x - 1), player.machineGunEnd, player.machineProjectile, player.machineShotSpeed);
+                        shootProjectile(player.machineShotRotAdd + ((x - 1) * 3), player.machineGunEnd, player.machineProjectile, player.machineShotSpeed);
                     }  
                 }
 
@@ -203,7 +228,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     for (int i = 0; i < x; i++)
                     {
-                        shootProjectile((player.missileShotRotAdd * x) + (x - 1), player.missileLauncherEnd, player.missileProjectile, player.missileShotSpeed);
+                        shootProjectile(player.missileShotRotAdd + ((x - 1) * 3), player.missileLauncherEnd, player.missileProjectile, player.missileShotSpeed);
                     }
                 }
 
@@ -214,7 +239,7 @@ public class GunScriptBase : MonoBehaviour
                     {
                         for (int j = 0; j < 6; j++)
                         {
-                            shootProjectile((player.shotgunShotRotAdd * x) + (x - 1), player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
+                            shootProjectile(player.shotgunShotRotAdd + ((x - 1) * 3), player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
                         }
                     } 
                 }
@@ -224,7 +249,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     for (int i = 0; i < x; i++)
                     {
-                        shootProjectile((player.sniperShotRotAdd * x) + (x - 1), player.sniperRifleEnd, player.sniperProjectile, player.sniperShotSpeed);
+                        shootProjectile(player.sniperShotRotAdd + ((x - 1) * 3), player.sniperRifleEnd, player.sniperProjectile, player.sniperShotSpeed);
                     }
                 }
             }
