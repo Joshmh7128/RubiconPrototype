@@ -73,6 +73,7 @@ public class InfoTracker : MonoBehaviour
 
         if(rewiredPlayer.GetButton("B") && rm.isPaused)
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("NewMainMenu");
         }
 
