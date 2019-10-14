@@ -77,7 +77,7 @@ public class GunScriptBase : MonoBehaviour
                 dmg = 20;
                 if (x > 1)
                 {
-                    dmg = 10;
+                    dmg = 12;
                 }
                 //player.grenadeCrosshairs.SetActive(true);
             }
@@ -97,10 +97,10 @@ public class GunScriptBase : MonoBehaviour
                 magSize = 20;
                 myInfo.magSize = magSize;
                 fireRate = 0.1f;
-                dmg = 10;
+                dmg = 8;
                 if (x > 1)
                 {
-                    dmg = 5;
+                    dmg = 3;
                 }
                 //player.machineCrosshairs.SetActive(true);
             }
@@ -123,7 +123,7 @@ public class GunScriptBase : MonoBehaviour
                 dmg = 30;
                 if (x > 1)
                 {
-                    dmg = 15;
+                    dmg = 12;
                 }
                 //player.missileCrosshairs.SetActive(true);
             }
@@ -169,7 +169,7 @@ public class GunScriptBase : MonoBehaviour
                 dmg = 40;
                 if(x > 1)
                 {
-                    dmg = 20;
+                    dmg = 15;
                 }
                 //player.sniperCrosshairs.SetActive(true);
             }
