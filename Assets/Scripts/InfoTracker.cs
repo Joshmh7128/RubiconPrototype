@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InfoTracker : MonoBehaviour
 {
     public PlayerController myPlayer;
+    private Rewired.Player rewiredPlayer;
     public RoundManager rm;
     public int id;
 
@@ -49,12 +51,31 @@ public class InfoTracker : MonoBehaviour
         StartCoroutine(startAmmo());
         id = myPlayer.playerID;
         rm = GameObject.FindGameObjectWithTag("Manager").GetComponent<RoundManager>();
+        rewiredPlayer = Rewired.ReInput.players.GetPlayer(myPlayer.playerID - 1);
     }
 
     private void Update()
     {
         int ammo = myPlayer._weaponSystems.mag;
         ammoText.text = ammo.ToString() + " / " + magSize;
+
+        if (rewiredPlayer.GetButton("Pause") && !rm.isPaused && !rm.isOver)
+        {
+            rm.isPaused = true;
+            rm.PauseGame();
+        }
+
+        if(rewiredPlayer.GetButton("A") && rm.isPaused && !rm.isOver)
+        {
+            rm.isPaused = false;
+            rm.ResumeGame();
+        }
+
+        if(rewiredPlayer.GetButton("B") && rm.isPaused)
+        {
+            SceneManager.LoadScene("NewMainMenu");
+        }
+
     }
 
     public void updateAmmo(int ammo)

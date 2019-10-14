@@ -296,8 +296,9 @@ public class GunScriptBase : MonoBehaviour
 
         if (rewiredPlayer.GetButton("B") && myInfo.rm.isOver)
         {
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("NewMainMenu");
         }
+
     }
 
     void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)

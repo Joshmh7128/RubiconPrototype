@@ -49,7 +49,9 @@ public class RoundManager : MonoBehaviour
     public GameObject RoundCanvas;
     public GameObject InterRound;
     public GameObject MatchEnd;
+    public GameObject PauseMenu;
     public bool isOver = false;
+    public bool isPaused = false;
 
     public CubeAction Rotator;
 
@@ -105,8 +107,6 @@ public class RoundManager : MonoBehaviour
         StartCoroutine(SetupRound());
         StartCoroutine(CountDown());
     }
-
-    
 
     // weapon generation
 
@@ -248,6 +248,24 @@ public class RoundManager : MonoBehaviour
         MatchEnd.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
         MatchEnd.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
         MatchEnd.SetActive(true);
+    }
+
+    public void PauseGame()
+    {
+        Player1Cam.GetComponent<PlayerController>().enabled = false;
+        Player2Cam.GetComponent<PlayerController>().enabled = false;
+        depthOfField.active = true;
+        Time.timeScale = 0;
+        PauseMenu.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Player1Cam.GetComponent<PlayerController>().enabled = true;
+        Player2Cam.GetComponent<PlayerController>().enabled = true;
+        depthOfField.active = false;
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 
     // full reset and next round start and setup
