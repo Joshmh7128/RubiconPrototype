@@ -11,7 +11,10 @@ public class SoundManager : MonoBehaviour
     public AudioSource musicMain;
 
     #region Music Tracks
-    public AudioClip BattleTheme;
+    public AudioClip MainMenuTheme;
+    public AudioClip BattleThemeA;
+    public AudioClip BattleThemeB;
+    public AudioClip BattleThemeC;
     #endregion
 
     #region all the sounds (if you're gonna open this take a deep breath)
@@ -960,5 +963,28 @@ public class SoundManager : MonoBehaviour
             announcerMain.Play();
         }
 
+        if (soundGroup == "menuMusic")
+        {
+            musicMain.clip = MainMenuTheme;
+            musicMain.Play();
+        }
+
+        if (soundGroup == "battleThemeA")
+        {
+            musicMain.clip = BattleThemeA;
+            musicMain.Play();
+        }
+
+        if (soundGroup == "battleThemeB")
+        {
+            musicMain.clip = BattleThemeB;
+            musicMain.Play();
+        }
+
+        if (soundGroup == "battleThemeC")
+        {
+            musicMain.clip = BattleThemeC;
+            musicMain.Play();
+        }
     }
 }

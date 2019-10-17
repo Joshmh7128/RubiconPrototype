@@ -48,7 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   announcerMain: {fileID: 161520610467450581}
   musicMain: {fileID: 161520610537010506}
-  BattleTheme: {fileID: 8300000, guid: 7ae854df17a68314f9ba3503acd17400, type: 3}
+  MainMenuTheme: {fileID: 8300000, guid: 44b5150cc7cebc744a9c1c162184fc9d, type: 3}
+  BattleThemeA: {fileID: 8300000, guid: 7ae854df17a68314f9ba3503acd17400, type: 3}
+  BattleThemeB: {fileID: 8300000, guid: d17f14e22d4db834486936733d85f8ea, type: 3}
+  BattleThemeC: {fileID: 8300000, guid: a28c8790630e0744ea238cf3f0c5c61c, type: 3}
   armor1: {fileID: 8300000, guid: e48345482e329da46b44990039707f9d, type: 3}
   armor2: {fileID: 8300000, guid: 62b13605c9f3c954f97261eb6f002fe3, type: 3}
   armorPickup1: {fileID: 8300000, guid: 2c0808d6cbfeffa4baedbfaa560bf4cd, type: 3}
@@ -201,8 +204,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 161520610158655960}
-  - component: {fileID: 161520610158655961}
   - component: {fileID: 161520610158655962}
+  - component: {fileID: 7512993125051708374}
   m_Layer: 0
   m_Name: Crowd (Ambient)
   m_TagString: Untagged
@@ -224,7 +227,7 @@ Transform:
   m_Father: {fileID: 161520609624573516}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &161520610158655961
+--- !u!82 &161520610158655962
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,9 +238,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243429072504075248, guid: 799874704090a374e8c83de6eaf39642,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 31eac84ca80ef4546a34a0cdb953ae96, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2eb3837372151e8489ed970389233dad, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.294
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -321,7 +324,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &161520610158655962
+--- !u!82 &7512993125051708374
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,12 +333,13 @@ AudioSource:
   m_GameObject: {fileID: 161520610158655959}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2eb3837372151e8489ed970389233dad, type: 3}
+  OutputAudioMixerGroup: {fileID: 243429072504075248, guid: 799874704090a374e8c83de6eaf39642,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 31eac84ca80ef4546a34a0cdb953ae96, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.255
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -652,7 +656,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243426878483651694, guid: 799874704090a374e8c83de6eaf39642,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7ae854df17a68314f9ba3503acd17400, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

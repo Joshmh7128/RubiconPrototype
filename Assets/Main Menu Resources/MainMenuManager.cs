@@ -22,9 +22,11 @@ public class MainMenuManager : MonoBehaviour
     public Text sfxVolDisplay;
     public Text announcerVolDisplay;
     public Text musicVolDisplay;
+    public SoundManager soundManager;
 
     private void Start()
     {
+        // on click listeners
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         optionsActive = false;
@@ -34,10 +36,15 @@ public class MainMenuManager : MonoBehaviour
         fullscreenToggle.onClick.AddListener(ToggleFullscreen);
         resetAudioButton.onClick.AddListener(ResetAudio);
 
+        // add the hover checks
+
         audioValues.masterVolume = (int)masterVol.value;
         audioValues.sfxVolume = (int)sfxVol.value;
         audioValues.announcerVolume = (int)announcerVol.value;
         audioValues.musicVolume = (int)musicVol.value;
+
+        // get our sound manager
+        soundManager.PlaySound("menuMusic");
     }
 
     private void Update()
@@ -55,14 +62,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void ResetAudio()
     {
-        audioValues.masterVolume = 75;
-        masterVol.value = 75;
-        audioValues.sfxVolume = 50;
-        sfxVol.value = 50;
-        audioValues.announcerVolume = 75;
-        announcerVol.value = 75;
-        audioValues.musicVolume = 80;
-        musicVol.value = 60;
+        audioValues.masterVolume = 10;
+        masterVol.value = 10;
+        audioValues.sfxVolume = 80;
+        sfxVol.value = 80;
+        audioValues.announcerVolume = 80;
+        announcerVol.value = 80;
+        audioValues.musicVolume = 100;
+        musicVol.value = 100;
     }
 
     public void EndGame()

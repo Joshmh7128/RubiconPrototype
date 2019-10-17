@@ -80,6 +80,9 @@ public class RoundManager : MonoBehaviour
     public ModApplication ma1;
     public ModApplication ma2;
 
+    [Header("Others")]
+    public SoundManager soundManager;
+
     // what mods do we have?
     public enum battleMods
     {
@@ -346,7 +349,7 @@ public class RoundManager : MonoBehaviour
             depthOfField.active = false;
             InterRound.SetActive(false);
             resetScore();
-            roundNum++;
+            roundNum++; // advances to next round
             RoundCounter.text = "Round " + roundNum.ToString();
             resetPlayers(loser);
             player1Mods = new int[4];
@@ -355,11 +358,13 @@ public class RoundManager : MonoBehaviour
             player4Mods = new int[4];
             md.ResetPanels();
             SetupRound();
+
         }
         else
         {
             EndMatch(Mathf.Abs(loser - 3));
         }
+        PlayMusic(roundNum);
     }
 
     private IEnumerator SetupRound()
@@ -379,6 +384,7 @@ public class RoundManager : MonoBehaviour
         AssignWeapons();
         pm.ClearPickups();
         pm.SpawnPickups();
+        
     }
 
     private IEnumerator CountDown()
@@ -396,6 +402,7 @@ public class RoundManager : MonoBehaviour
         Player1Countdown.SetActive(false);
         Player2Countdown.SetActive(false);
         yield return null;
+        PlayMusic(roundNum);
     }
 
     private IEnumerator PlayerDeath(int id)
@@ -462,6 +469,30 @@ public class RoundManager : MonoBehaviour
         }
         Rotator.live = true;
         yield return null;
+    }
+
+    private void PlayMusic(int currentRoundNum)
+    {
+        // play music
+        switch (currentRoundNum)
+        {
+            case 1:
+                soundManager.PlaySound("battleThemeA");
+                break;
+            case 2:
+                soundManager.PlaySound("battleThemeC");
+                break;
+            case 3:
+                soundManager.PlaySound("battleThemeB");
+                break;
+            case 4:
+                soundManager.PlaySound("battleThemeA");
+                break;
+            case 5:
+                soundManager.PlaySound("battleThemeB");
+                break;
+
+        }
     }
 
     #endregion
