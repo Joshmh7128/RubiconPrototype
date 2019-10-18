@@ -11,7 +11,10 @@ public class TriggerClick : MonoBehaviour
 
     private void Start()
     {
-        player = Rewired.ReInput.players.GetPlayer(0);
+        if(Rewired.ReInput.players.playerCount > 0)
+        {
+            player = Rewired.ReInput.players.GetPlayer(0);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
