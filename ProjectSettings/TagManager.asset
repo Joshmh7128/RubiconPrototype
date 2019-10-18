@@ -21,8 +21,8 @@ TagManager:
   - Guns
   - Guns2
   - Xray
-  - Only2CanSee
-  - Only1CanSee
+  - 1CantSee
+  - 2CantSee
   - Player1Projectile
   - Player2Projectile
   - Player1Body
