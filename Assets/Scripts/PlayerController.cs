@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Weapons activeWeapon;
 	public Animator weaponAnim;
 	public ParticleSystem blood;
+    public bool weaponLocked = false;
 
     [Header("Weapons (Set per Player!)")]
     public GameObject blaster;

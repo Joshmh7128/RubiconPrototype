@@ -18,6 +18,7 @@ public class GunScriptBase : MonoBehaviour
     private ModApplication modApp;
     public ParticleSystem bloodBurst;
     private Rewired.Player rewiredPlayer;
+    private bool isLocked;
 
     public GunScriptBase(PlayerController player)
 	{
@@ -33,6 +34,8 @@ public class GunScriptBase : MonoBehaviour
 
 	public void Update()
 	{
+        isLocked = player.weaponLocked;
+
         int x = modApp.ScatterCheck();
 
         // make sure we never exceed our mag size
@@ -181,7 +184,7 @@ public class GunScriptBase : MonoBehaviour
         }
 
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-        if ((rewiredPlayer.GetAxis("FireTrigger") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire)
+        if ((rewiredPlayer.GetAxis("FireTrigger") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire && !isLocked)
 		{
 
         #region

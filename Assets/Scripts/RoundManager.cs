@@ -128,6 +128,8 @@ public class RoundManager : MonoBehaviour
         float baseSpeed = Player1Cam.GetComponent<PlayerController>().speed;
         Player1Cam.GetComponent<PlayerController>().speed = 0;
         Player2Cam.GetComponent<PlayerController>().speed = 0;
+        Player1Cam.GetComponent<PlayerController>().weaponLocked = true;
+        Player2Cam.GetComponent<PlayerController>().weaponLocked = true;
         InterRound.transform.Find("TopText").GetComponent<Text>().text = "Prepare for Battle";
         InterRound.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
         InterRound.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
@@ -186,6 +188,8 @@ public class RoundManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Player1Countdown.SetActive(false);
         Player2Countdown.SetActive(false);
+        Player1Cam.GetComponent<PlayerController>().weaponLocked = false;
+        Player2Cam.GetComponent<PlayerController>().weaponLocked = false;
         yield return null;
         PlayMusic(roundNum);
     }
