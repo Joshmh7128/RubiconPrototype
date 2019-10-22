@@ -103,12 +103,86 @@ public class RoundManager : MonoBehaviour
 
     private void Start()
     {
+        StartGame();
+    }
+
+    //pre-first round setup and display
+
+    private void StartGame()
+    {
         post.profile.TryGetSettings(out depthOfField);
         GenerateWeapons();
         AssignWeapons();
         myArena.shuffle(shuffles);
         StartCoroutine(SetupRound());
+        StartCoroutine(DisplayFirst());
+    }
+
+    private IEnumerator DisplayFirst()
+    {
+        RoundCanvas.SetActive(false);
+        depthOfField.active = true;
+        InterRound.SetActive(true);
+        Player1Canvas.SetActive(false);
+        Player2Canvas.SetActive(false);
+        InterRound.transform.Find("TopText").GetComponent<Text>().text = "Prepare for Battle";
+        InterRound.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
+        InterRound.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
+        InterRound.transform.Find("BottomText").GetComponent<Text>().text = "This Round: ";
+        InterRound.transform.Find("WeaponText").GetComponent<Text>().text = weaponList[roundNum -1].ToString();
+        //sm.PlaySound("roundStart");
+        yield return new WaitForSeconds(5);
+        string weaponKey = weaponTypeList[roundNum - 1].ToString();
+        if (weaponKey == "Blaster")
+        {
+            sm.PlaySound("blasterRound");
+        }
+        if (weaponKey == "Grenade")
+        {
+            sm.PlaySound("grenadeRound");
+        }
+        if (weaponKey == "Machine")
+        {
+            sm.PlaySound("machineRound");
+        }
+        if (weaponKey == "Missile")
+        {
+            sm.PlaySound("missileRound");
+        }
+        if (weaponKey == "Shotgun")
+        {
+            sm.PlaySound("shotgunRound");
+        }
+        if (weaponKey == "Sniper")
+        {
+            sm.PlaySound("sniperRound");
+        }
+        yield return new WaitForSeconds(5);
+
+        RoundCanvas.SetActive(true);
+        Player1Canvas.SetActive(true);
+        Player2Canvas.SetActive(true);
+        depthOfField.active = false;
+        InterRound.SetActive(false);
         StartCoroutine(CountDown());
+    }
+
+    private IEnumerator CountDown()
+    {
+        float baseSpeed = Player1Cam.GetComponent<PlayerController>().speed;
+        Player1Cam.GetComponent<PlayerController>().speed = 0;
+        Player2Cam.GetComponent<PlayerController>().speed = 0;
+        Player1Countdown.SetActive(true);
+        Player2Countdown.SetActive(true);
+        yield return new WaitForSeconds(3.75f);
+        Player1Cam.GetComponent<PlayerController>().speed = baseSpeed;
+        Player2Cam.GetComponent<PlayerController>().speed = baseSpeed;
+        sm.PlaySound("enterTheRubicon");
+        yield return new WaitForSeconds(1f);
+        Player1Countdown.SetActive(false);
+        Player2Countdown.SetActive(false);
+        yield return null;
+        PlayMusic(roundNum);
     }
 
     // weapon generation
@@ -385,24 +459,6 @@ public class RoundManager : MonoBehaviour
         pm.ClearPickups();
         pm.SpawnPickups();
         
-    }
-
-    private IEnumerator CountDown()
-    {
-        float baseSpeed = Player1Cam.GetComponent<PlayerController>().speed;
-        Player1Cam.GetComponent<PlayerController>().speed = 0;
-        Player2Cam.GetComponent<PlayerController>().speed = 0;
-        Player1Countdown.SetActive(true);
-        Player2Countdown.SetActive(true);
-        yield return new WaitForSeconds(3.75f);
-        Player1Cam.GetComponent<PlayerController>().speed = baseSpeed;
-        Player2Cam.GetComponent<PlayerController>().speed = baseSpeed;
-        sm.PlaySound("enterTheRubicon");
-        yield return new WaitForSeconds(1f);
-        Player1Countdown.SetActive(false);
-        Player2Countdown.SetActive(false);
-        yield return null;
-        PlayMusic(roundNum);
     }
 
     private IEnumerator PlayerDeath(int id)
