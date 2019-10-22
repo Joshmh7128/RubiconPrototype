@@ -125,6 +125,9 @@ public class RoundManager : MonoBehaviour
         InterRound.SetActive(true);
         Player1Canvas.SetActive(false);
         Player2Canvas.SetActive(false);
+        float baseSpeed = Player1Cam.GetComponent<PlayerController>().speed;
+        Player1Cam.GetComponent<PlayerController>().speed = 0;
+        Player2Cam.GetComponent<PlayerController>().speed = 0;
         InterRound.transform.Find("TopText").GetComponent<Text>().text = "Prepare for Battle";
         InterRound.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
         InterRound.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
@@ -164,6 +167,8 @@ public class RoundManager : MonoBehaviour
         Player2Canvas.SetActive(true);
         depthOfField.active = false;
         InterRound.SetActive(false);
+        Player1Cam.GetComponent<PlayerController>().speed = baseSpeed;
+        Player2Cam.GetComponent<PlayerController>().speed = baseSpeed;
         StartCoroutine(CountDown());
     }
 

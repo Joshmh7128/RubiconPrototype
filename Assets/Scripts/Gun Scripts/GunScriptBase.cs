@@ -348,11 +348,13 @@ public class GunScriptBase : MonoBehaviour
 
         private IEnumerator Reload()
 	{
-		//mag = 0;
+        //mag = 0;
+        myInfo.reloadPrompt.SetActive(false);
 		player.weaponAnim.Play("loadR");
 		player.SetState(PlayerState.reloadState);
 		yield return new WaitForSeconds(1.01f);
-		mag = magSize;
+        myInfo.reloadPrompt.SetActive(true);
+        mag = magSize;
         //myInfo.updateAmmo(mag);
         player.SetState(PlayerState.normalState);
 	}

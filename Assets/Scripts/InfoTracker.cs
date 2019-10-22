@@ -58,7 +58,14 @@ public class InfoTracker : MonoBehaviour
     private void Update()
     {
         int ammo = myPlayer._weaponSystems.mag;
-        if(ammo < 1)
+        reloadPrompt.GetComponent<Animator>().SetInteger("ammo", ammo);
+        /*
+        if(ammo == 1)
+        {
+            reloadPrompt.SetActive(true);
+            reloadPrompt.GetComponent<Animator>().Play("reloadPromptFaded");
+        }
+        else if (ammo < 1)
         {
             reloadPrompt.SetActive(true);
         }
@@ -66,6 +73,7 @@ public class InfoTracker : MonoBehaviour
         {
             reloadPrompt.SetActive(false);
         }
+        */
         int mag = myPlayer._weaponSystems.magSize;
         ammoText.text = ammo.ToString() + " / " + mag;
 
