@@ -23,6 +23,7 @@ public class InfoTracker : MonoBehaviour
     public Text shieldText;
     public Image shieldBar;
     public Image shieldAmount;
+    public GameObject reloadPrompt;
     public Animator redAnim;
 
     public Text ammoText;
@@ -57,6 +58,14 @@ public class InfoTracker : MonoBehaviour
     private void Update()
     {
         int ammo = myPlayer._weaponSystems.mag;
+        if(ammo < 1)
+        {
+            reloadPrompt.SetActive(true);
+        }
+        else
+        {
+            reloadPrompt.SetActive(false);
+        }
         int mag = myPlayer._weaponSystems.magSize;
         ammoText.text = ammo.ToString() + " / " + mag;
 

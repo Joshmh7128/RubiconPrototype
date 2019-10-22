@@ -10,9 +10,9 @@ public class GunScriptBase : MonoBehaviour
     private InfoTracker myInfo;
     
     public int mag;
-	public int magSize = 16;
-    public int dmg = 17;
-    public float fireRate = 0.2f;
+	public int magSize = 100;
+    public int dmg;
+    public float fireRate;
 	private Camera fpsCam;                                                // Holds a reference to the first person camera
 	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after 
     private ModApplication modApp;
