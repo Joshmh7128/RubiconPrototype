@@ -189,7 +189,7 @@ public class GunScriptBase : MonoBehaviour
 			if (mag > 0)
 			{
 				mag--;
-                myInfo.updateAmmo(mag);
+                //myInfo.updateAmmo(mag);
 
 				// Update the time when our player can fire next
 				nextFire = Time.time + fireRate;
@@ -353,7 +353,7 @@ public class GunScriptBase : MonoBehaviour
 		player.SetState(PlayerState.reloadState);
 		yield return new WaitForSeconds(1.01f);
 		mag = magSize;
-        myInfo.updateAmmo(mag);
+        //myInfo.updateAmmo(mag);
         player.SetState(PlayerState.normalState);
 	}
 }

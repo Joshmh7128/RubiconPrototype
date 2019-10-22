@@ -48,7 +48,7 @@ public class InfoTracker : MonoBehaviour
             shieldAmount.fillAmount = 1f;
             shieldBar.gameObject.SetActive(true);
         }
-        StartCoroutine(startAmmo());
+        //StartCoroutine(startAmmo());
         id = myPlayer.playerID;
         rm = GameObject.FindGameObjectWithTag("Manager").GetComponent<RoundManager>();
         rewiredPlayer = Rewired.ReInput.players.GetPlayer(myPlayer.playerID - 1);
@@ -57,7 +57,8 @@ public class InfoTracker : MonoBehaviour
     private void Update()
     {
         int ammo = myPlayer._weaponSystems.mag;
-        ammoText.text = ammo.ToString() + " / " + magSize;
+        int mag = myPlayer._weaponSystems.magSize;
+        ammoText.text = ammo.ToString() + " / " + mag;
 
         if (rewiredPlayer.GetButton("Pause") && !rm.isPaused && !rm.isOver)
         {
@@ -79,6 +80,7 @@ public class InfoTracker : MonoBehaviour
 
     }
 
+    /*
     public void updateAmmo(int ammo)
     {
         ammoText.text = ammo.ToString() +  " / " + magSize;
@@ -95,6 +97,8 @@ public class InfoTracker : MonoBehaviour
     {
         ammoText.text = magSize + " / " + magSize;
     }
+
+    */
 
     // changed HP from int to float to allow for frame-by-frame regen of HP 
     public void AddHealth(float added)
@@ -226,6 +230,6 @@ public class InfoTracker : MonoBehaviour
             shieldAmount.fillAmount = 0;
             shieldBar.gameObject.SetActive(false);
         }
-        resetAmmo();
+        //resetAmmo();
     }
 }
