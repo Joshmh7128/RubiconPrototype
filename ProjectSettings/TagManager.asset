@@ -25,8 +25,8 @@ TagManager:
   - 2CantSee
   - Player1Projectile
   - Player2Projectile
-  - Player1Body
-  - Player2Body
+  - Only1CanSee
+  - Only2CanSee
   - HoloLayer
   - 
   - 

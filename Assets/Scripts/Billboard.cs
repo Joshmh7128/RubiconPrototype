@@ -5,11 +5,11 @@ using UnityEngine;
 public class Billboard : MonoBehaviour
 {
 
-    public Camera otherPlayer;
+    public GameObject target;
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(otherPlayer.transform.position, -Vector3.up);
+        transform.LookAt(target.transform.position, -Vector3.up);
     }
 }
