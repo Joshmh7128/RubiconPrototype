@@ -8,6 +8,7 @@ TagManager:
   - Manager
   - Breakable
   - MenuMouse
+  - SoundManager
   layers:
   - Default
   - TransparentFX

@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-
     public GameObject target;
+    public int playerKey;
+
+    private void Start()
+    {
+        foreach ( GameObject x in GameObject.FindGameObjectsWithTag("MainCamera"))
+        {
+            if(x.name == "PlayerCam" + playerKey.ToString())
+            {
+                target = x;
+                break;
+            }
+        }
+    }
 
     // Update is called once per frame
     void Update()

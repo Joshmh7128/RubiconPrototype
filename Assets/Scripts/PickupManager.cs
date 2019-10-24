@@ -117,6 +117,24 @@ public class PickupManager : MonoBehaviour
 
     public void ClearPickups()
     {
+        foreach (Transform child in location1.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        foreach (Transform child in location2.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        foreach (Transform child in location2.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        foreach (Transform child in location2.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        /*
         if(spawned1 != null)
         {
             Destroy(spawned1);
@@ -133,5 +151,6 @@ public class PickupManager : MonoBehaviour
         {
             Destroy(spawned4);
         }
+        */
     }
 }

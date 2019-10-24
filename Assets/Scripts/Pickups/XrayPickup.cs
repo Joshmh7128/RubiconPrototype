@@ -8,6 +8,12 @@ public class XrayPickup : MonoBehaviour
     public int activeTime;
     public ParticleSystem burst;
     public SoundManager sm;
+    public GameObject respawner;
+
+    private void Start()
+    {
+        sm = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+    }
 
     private void Awake()
     {
@@ -29,6 +35,8 @@ public class XrayPickup : MonoBehaviour
             }
             Instantiate(burst, this.transform.position, Quaternion.identity);
             sm.PlaySound("xrayPickup");
+            GameObject instantiated = Instantiate(respawner, this.transform.position, Quaternion.identity);
+            instantiated.transform.SetParent(this.transform.parent);
             Destroy(this.gameObject);
         }
     }

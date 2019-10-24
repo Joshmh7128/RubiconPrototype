@@ -127,6 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeTime: 10
   burst: {fileID: 1386193425164969425, guid: 8ad85b5238aab10418d9e52e119da373, type: 3}
+  sm: {fileID: 0}
+  respawner: {fileID: 9089779280362250002, guid: 0892f4ae5cd6d444f8d4ce5cd9a02f36,
+    type: 3}
 --- !u!1 &8064735072915117030
 GameObject:
   m_ObjectHideFlags: 0

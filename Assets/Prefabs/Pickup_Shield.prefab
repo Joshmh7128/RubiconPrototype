@@ -127,6 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldBoost: 25
   burst: {fileID: 1386193425164969425, guid: f0cf6f26fe5671a478a3f054f6fe693d, type: 3}
+  sm: {fileID: 0}
+  respawner: {fileID: 9089779280362250002, guid: 0892f4ae5cd6d444f8d4ce5cd9a02f36,
+    type: 3}
 --- !u!1 &7918055003549057095
 GameObject:
   m_ObjectHideFlags: 0
