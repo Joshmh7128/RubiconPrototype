@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9089779280362250000}
   - component: {fileID: 9089779280362250001}
+  - component: {fileID: 723161802}
   m_Layer: 0
   m_Name: PickupRespawner
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 9089779280362250002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.4134407, y: -0.75226784, z: -36.478554}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 9089779280553201174}
   - {fileID: 9089779281508293675}
@@ -52,6 +53,25 @@ MonoBehaviour:
   pickup1: {fileID: 1449638096123819848, guid: f9a5dd0cf53210b4ea990bf79816fcc2, type: 3}
   pickup2: {fileID: 6036684876639179153, guid: f4e94f8ecb7522e4b8c36c1f39b41008, type: 3}
   pickup3: {fileID: 7328360200165749936, guid: b5b92cab72a6b1a4e9282fbffb22affa, type: 3}
+--- !u!95 &723161802
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9089779280362250002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5807c712f22e5f44ab23075788fb1587, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9089779280553201170
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +111,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &9089779280553201175
 Canvas:
@@ -502,7 +522,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &9089779281508293679
 Canvas:
