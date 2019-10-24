@@ -133,6 +133,11 @@ public class InfoTracker : MonoBehaviour
     public void AddShield(int added)
     {
         int total = shield + added;
+        if(total > 100)
+        {
+            total = 100;
+            added = 100 - shield;
+        }
         if(total > tempMaxShield)
         {
             tempMaxShield = total;
