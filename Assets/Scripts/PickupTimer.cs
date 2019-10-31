@@ -7,7 +7,7 @@ public class PickupTimer : MonoBehaviour
 {
     public float myTimer;
     public Image[] myBars;
-    private float timerLength = 30f;
+    private float timerLength = 90f;
 
     public GameObject pickup1;
     public GameObject pickup2;
