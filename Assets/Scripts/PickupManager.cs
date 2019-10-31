@@ -125,11 +125,11 @@ public class PickupManager : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
-        foreach (Transform child in location2.transform)
+        foreach (Transform child in location3.transform)
         {
             GameObject.Destroy(child.gameObject);
         }
-        foreach (Transform child in location2.transform)
+        foreach (Transform child in location4.transform)
         {
             GameObject.Destroy(child.gameObject);
         }
