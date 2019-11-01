@@ -18,6 +18,7 @@ public class GunScriptBase : MonoBehaviour
     private ModApplication modApp;
     public ParticleSystem bloodBurst;
     private Rewired.Player rewiredPlayer;
+    private float shake = 0.1f;
     private bool isLocked;
 
     public GunScriptBase(PlayerController player)
@@ -59,6 +60,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     dmg = 3;
                 }
+                shake = 0.05f;
                 //player.blasterCrosshairs.SetActive(true);
             }
         }
@@ -82,6 +84,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     dmg = 12;
                 }
+                shake = 0.1f;
                 //player.grenadeCrosshairs.SetActive(true);
             }
         }
@@ -105,6 +108,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     dmg = 3;
                 }
+                shake = 0.08f;
                 //player.machineCrosshairs.SetActive(true);
             }
         }
@@ -128,6 +132,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     dmg = 12;
                 }
+                shake = 0.125f;
                 //player.missileCrosshairs.SetActive(true);
             }
         }
@@ -151,6 +156,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     dmg = 2;
                 }
+                shake = 0.125f;
                 //player.shotgunCrosshairs.SetActive(true);
             }
         }
@@ -174,6 +180,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     dmg = 15;
                 }
+                shake = 0.1f;
                 //player.sniperCrosshairs.SetActive(true);
             }
         }
@@ -198,6 +205,7 @@ public class GunScriptBase : MonoBehaviour
 				nextFire = Time.time + fireRate;
 
 				player.weaponAnim.Play("fireR");
+                fpsCam.GetComponent<StressReceiver>().InduceStress(shake);
 
                 // blaster
                 if (player.activeWeapon == PlayerController.Weapons.Blaster)
