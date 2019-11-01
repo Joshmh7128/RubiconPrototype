@@ -340,6 +340,8 @@ public class GunScriptBase : MonoBehaviour
     void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)
     {
         GameObject projectile = Instantiate(shotProjectile, gunEnd.position, Quaternion.identity); //Spawns the selected projectile
+        projectile.AddComponent<DestroyAfterTime>();
+        projectile.GetComponent<DestroyAfterTime>().key = 5;
         projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
         projectile.GetComponent<ProjectileScript>().burst = bloodBurst;
         projectile.GetComponent<ProjectileScript>().modApp = player.modApp; // set this to utilize vampirism
