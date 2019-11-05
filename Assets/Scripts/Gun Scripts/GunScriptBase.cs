@@ -60,7 +60,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     dmg = 3;
                 }
-                shake = 0.05f;
+                shake = 0.075f;
                 //player.blasterCrosshairs.SetActive(true);
             }
         }
@@ -132,7 +132,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     dmg = 12;
                 }
-                shake = 0.125f;
+                shake = 0.15f;
                 //player.missileCrosshairs.SetActive(true);
             }
         }
@@ -156,7 +156,7 @@ public class GunScriptBase : MonoBehaviour
                 {
                     dmg = 2;
                 }
-                shake = 0.125f;
+                shake = 0.175f;
                 //player.shotgunCrosshairs.SetActive(true);
             }
         }
