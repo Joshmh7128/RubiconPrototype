@@ -425,23 +425,26 @@ public class RoundManager : MonoBehaviour
             sm.PlaySound("roundOver");
 
             yield return new WaitForSeconds(10);
-
-            RoundCanvas.SetActive(true);
-            Player1Canvas.SetActive(true);
-            Player2Canvas.SetActive(true);
+            
             depthOfField.active = false;
             InterRound.SetActive(false);
             resetScore();
             roundNum++; // advances to next round
-            RoundCounter.text = "Round " + roundNum.ToString();
-            resetPlayers(loser);
             player1Mods = new int[4];
             player2Mods = new int[4];
             player3Mods = new int[4];
             player4Mods = new int[4];
             md.ResetPanels();
-            SetupRound();
+            resetPlayers(loser);
 
+            yield return new WaitForSeconds(0.1f);
+
+            RoundCanvas.SetActive(true);
+            Player1Canvas.SetActive(true);
+            Player2Canvas.SetActive(true);
+            Player1Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+            Player2Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player2Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+            RoundCounter.text = "Round " + roundNum.ToString();
         }
         else
         {
@@ -467,7 +470,6 @@ public class RoundManager : MonoBehaviour
         AssignWeapons();
         pm.ClearPickups();
         pm.SpawnPickups();
-        
     }
 
     private IEnumerator PlayerDeath(int id)

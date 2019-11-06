@@ -100,7 +100,7 @@ public class GunScriptBase : MonoBehaviour
             if (player.machineGun.activeSelf == false)
             {
                 player.machineGun.SetActive(true);
-                magSize = 20;
+                magSize = 25;
                 myInfo.magSize = magSize;
                 fireRate = 0.1f;
                 dmg = 8;
