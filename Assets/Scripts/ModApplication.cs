@@ -34,7 +34,7 @@ public class ModApplication : MonoBehaviour
     public float hpRegenAmount = 1f; // how much regen per update?
     public float hpRegenDelay = 1f; // how long to wait between regen increments
     public float vampAmount = 0.25f; // how much hp per hit?
-    private int shieldAmount = 50;
+    private int armorAmount = 50;
 
     #endregion
 
@@ -43,7 +43,7 @@ public class ModApplication : MonoBehaviour
     public GameObject targetPlayer; // set manually
     public Material defaultMat;
     public GameObject glowObj;
-    public GameObject targetPlayerArmor;
+    public GameObject targetPlayerShield;
     public Renderer targetPlayerRend; // set manually
     public PlayerController playerController; // set manually
     public InfoTracker playerInfoTracker; // set manually
@@ -72,9 +72,9 @@ public class ModApplication : MonoBehaviour
 
         trackingLine.SetActive(false);
         glowObj.SetActive(false);
-        targetPlayerArmor.SetActive(false);
+        targetPlayerShield.SetActive(false);
         targetPlayer.transform.localScale = new Vector3(2, 2, 2);
-        targetPlayer.GetComponent<InfoTracker>().maxShield = 0;
+        targetPlayer.GetComponent<InfoTracker>().maxArmor = 0;
         playerController.speed = 10;
         targetPlayerCineRend.SetActive(false);
         targetPlayerRend.material = defaultMat;
@@ -135,17 +135,17 @@ public class ModApplication : MonoBehaviour
     public void ActivateShield()
     {
         Debug.Log("Activating Shield");
-        targetPlayer.GetComponent<InfoTracker>().maxShield = shieldAmount;
-        targetPlayer.GetComponent<InfoTracker>().AddShield(shieldAmount);
-        shield = true;
+        armor = true;
+        targetPlayerShield.SetActive(true);
+        playerInfoTracker.rm.sm.PlaySound("shieldMod");
     }
 
     public void ActivateArmor()
     {
         Debug.Log("Activating Armor");
-        armor = true;
-        targetPlayerArmor.SetActive(true);
-        playerInfoTracker.rm.sm.PlaySound("shieldMod");
+        targetPlayer.GetComponent<InfoTracker>().maxArmor = armorAmount;
+        targetPlayer.GetComponent<InfoTracker>().AddArmor(armorAmount);
+        shield = true;
     }
 
     public void ActivateVampirism()

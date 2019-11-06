@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldPickup : MonoBehaviour
+public class ArmorPickup : MonoBehaviour
 {
-    public int shieldBoost;
+    public int armorBoost;
     public ParticleSystem burst;
     public SoundManager sm;
     public GameObject respawner;
@@ -16,9 +16,9 @@ public class ShieldPickup : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<InfoTracker>().AddShield(shieldBoost);
+            collision.gameObject.GetComponent<InfoTracker>().AddArmor(armorBoost);
             Instantiate(burst, this.transform.position, Quaternion.identity);
             sm.PlaySound("armorPickup");
             GameObject instantiated = Instantiate(respawner, this.transform.position, Quaternion.identity);

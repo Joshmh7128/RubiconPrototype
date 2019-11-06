@@ -38,7 +38,7 @@ public class PickupManager : MonoBehaviour
             {
                 spawned1 = Instantiate(pickupShield, location1.position, Quaternion.identity);
                 spawned1.transform.SetParent(location1);
-                spawned1.GetComponent<ShieldPickup>().sm = sm;
+                spawned1.GetComponent<ArmorPickup>().sm = sm;
             }
             if (spawnKey == 2)
             {
@@ -60,7 +60,7 @@ public class PickupManager : MonoBehaviour
             {
                 spawned2 = Instantiate(pickupShield, location2.position, Quaternion.identity);
                 spawned2.transform.SetParent(location2);
-                spawned2.GetComponent<ShieldPickup>().sm = sm;
+                spawned2.GetComponent<ArmorPickup>().sm = sm;
             }
             if (spawnKey == 2)
             {
@@ -82,7 +82,7 @@ public class PickupManager : MonoBehaviour
             {
                 spawned3 = Instantiate(pickupShield, location3.position, Quaternion.identity);
                 spawned3.transform.SetParent(location3);
-                spawned3.GetComponent<ShieldPickup>().sm = sm;
+                spawned3.GetComponent<ArmorPickup>().sm = sm;
             }
             if (spawnKey == 2)
             {
@@ -104,7 +104,7 @@ public class PickupManager : MonoBehaviour
             {
                 spawned4 = Instantiate(pickupShield, location4.position, Quaternion.identity);
                 spawned4.transform.SetParent(location4);
-                spawned4.GetComponent<ShieldPickup>().sm = sm;
+                spawned4.GetComponent<ArmorPickup>().sm = sm;
             }
             if (spawnKey == 2)
             {

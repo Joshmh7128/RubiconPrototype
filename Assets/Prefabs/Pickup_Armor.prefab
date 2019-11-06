@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6036684876639179167}
   - component: {fileID: 7474484466464581394}
   - component: {fileID: 7474484466464581395}
-  - component: {fileID: 4749355752677647004}
+  - component: {fileID: 2085426740870538619}
   m_Layer: 0
-  m_Name: Pickup_Shield
+  m_Name: Pickup_Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: -0.00000000745058}
---- !u!114 &4749355752677647004
+--- !u!114 &2085426740870538619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,10 +122,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6036684876639179153}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e85f898a78f223a42afc38cd461382a1, type: 3}
+  m_Script: {fileID: 11500000, guid: c24210710ca4d5c4ea6fb60a7d84a500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldBoost: 25
+  armorBoost: 25
   burst: {fileID: 1386193425164969425, guid: f0cf6f26fe5671a478a3f054f6fe693d, type: 3}
   sm: {fileID: 0}
   respawner: {fileID: 9089779280362250002, guid: 0892f4ae5cd6d444f8d4ce5cd9a02f36,

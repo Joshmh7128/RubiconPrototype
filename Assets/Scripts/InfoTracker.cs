@@ -13,16 +13,16 @@ public class InfoTracker : MonoBehaviour
 
 	public float hp;
     public int maxHP = 100;
-    public int shield = 0;
-    public int maxShield = 0;
-    private int tempMaxShield;
+    public int armor = 0;
+    public int maxArmor = 0;
+    private int tempMaxArmor;
     private bool dead = false;
 
     public Image hpBar;
     public Text hpText;
-    public Text shieldText;
-    public Image shieldBar;
-    public Image shieldAmount;
+    public Text armorText;
+    public Image armorBar;
+    public Image armorAmount;
     public GameObject reloadPrompt;
     public Animator redAnim;
 
@@ -38,16 +38,16 @@ public class InfoTracker : MonoBehaviour
         hp = maxHP;
         hpText.text = hp.ToString() + " / " + maxHP.ToString();
         hpBar.fillAmount = 1f;
-        shieldBar.gameObject.SetActive(false);
-        shield = maxShield;
-        tempMaxShield = maxShield;
-        if (shield > 0)
+        armorBar.gameObject.SetActive(false);
+        armor = maxArmor;
+        tempMaxArmor = maxArmor;
+        if (armor > 0)
         {
-            shieldText.text = shield.ToString();
-            shieldBar.rectTransform.sizeDelta = new Vector2(180f * (float)maxShield / 100, shieldBar.rectTransform.sizeDelta.y);
-            shieldAmount.rectTransform.sizeDelta = new Vector2(180f * (float)maxShield / 100, shieldAmount.rectTransform.sizeDelta.y);
-            shieldAmount.fillAmount = 1f;
-            shieldBar.gameObject.SetActive(true);
+            armorText.text = armor.ToString();
+            armorBar.rectTransform.sizeDelta = new Vector2(180f * (float)maxArmor / 100, armorBar.rectTransform.sizeDelta.y);
+            armorAmount.rectTransform.sizeDelta = new Vector2(180f * (float)maxArmor / 100, armorAmount.rectTransform.sizeDelta.y);
+            armorAmount.fillAmount = 1f;
+            armorBar.gameObject.SetActive(true);
         }
         //StartCoroutine(startAmmo());
         id = myPlayer.playerID;
@@ -130,25 +130,25 @@ public class InfoTracker : MonoBehaviour
         hpBar.fillAmount = hp / maxHP;
     }
 
-    public void AddShield(int added)
+    public void AddArmor(int added)
     {
-        int total = shield + added;
+        int total = armor + added;
         if(total > 100)
         {
             total = 100;
-            added = 100 - shield;
+            added = 100 - armor;
         }
-        if(total > tempMaxShield)
+        if(total > tempMaxArmor)
         {
-            tempMaxShield = total;
+            tempMaxArmor = total;
         }
-        shieldBar.rectTransform.sizeDelta = new Vector2(180f * (float)tempMaxShield / 100, shieldBar.rectTransform.sizeDelta.y);
-        shieldAmount.rectTransform.sizeDelta = new Vector2(180f * (float)tempMaxShield / 100, shieldAmount.rectTransform.sizeDelta.y);
-        shield += added;
-        shieldBar.gameObject.SetActive(true);
-        shieldAmount.fillAmount = (float)shield / tempMaxShield;
-        shieldText.text = shield.ToString();
-        shieldBar.GetComponent<Animator>().Play("shieldAppear");
+        armorBar.rectTransform.sizeDelta = new Vector2(180f * (float)tempMaxArmor / 100, armorBar.rectTransform.sizeDelta.y);
+        armorAmount.rectTransform.sizeDelta = new Vector2(180f * (float)tempMaxArmor / 100, armorAmount.rectTransform.sizeDelta.y);
+        armor += added;
+        armorBar.gameObject.SetActive(true);
+        armorAmount.fillAmount = (float)armor / tempMaxArmor;
+        armorText.text = armor.ToString();
+        armorBar.GetComponent<Animator>().Play("shieldAppear");
     }
 
     public void AddXray(int activeTime)
@@ -166,35 +166,35 @@ public class InfoTracker : MonoBehaviour
 
     public void TakeDamage(int taken)
     {
-        if (shield > 0)
+        if (armor > 0)
         {
             int temp = taken;
-            taken -= shield;
-            shield -= temp;
+            taken -= armor;
+            armor -= temp;
             if (taken <= 0)
             {
                 taken = 0;
-                if (shield > 0)
+                if (armor > 0)
                 {
-                    shieldText.text = shield.ToString();
-                    shieldAmount.fillAmount = (float) shield / tempMaxShield;
+                    armorText.text = armor.ToString();
+                    armorAmount.fillAmount = (float)armor / tempMaxArmor;
                 }
                 else
                 {
-                    shield = 0;
-                    shieldText.text = "";
-                    shieldBar.fillAmount = 0f;
-                    shieldBar.gameObject.SetActive(false);
+                    armor = 0;
+                    armorText.text = "";
+                    armorBar.fillAmount = 0f;
+                    armorBar.gameObject.SetActive(false);
                 }
             }
         }
 
         if(taken > 0)
         {
-            shield = 0;
-            shieldText.text = "";
-            shieldAmount.fillAmount = (float)shield / tempMaxShield;
-            shieldBar.gameObject.SetActive(false);
+            armor = 0;
+            armorText.text = "";
+            armorAmount.fillAmount = (float)armor / tempMaxArmor;
+            armorBar.gameObject.SetActive(false);
             hp -= taken;
             if (hp <= 0 && !dead)
             {
@@ -238,19 +238,19 @@ public class InfoTracker : MonoBehaviour
         hp = maxHP;
         hpBar.fillAmount = 1;
         hpText.text = hp.ToString() + " / " + maxHP.ToString();
-        shield = maxShield;
-        tempMaxShield = maxShield;
-        if(shield > 0)
+        armor = maxArmor;
+        tempMaxArmor = maxArmor;
+        if(armor > 0)
         {
-            shieldText.text = shield.ToString();
-            shieldAmount.fillAmount = 1;
-            shieldBar.gameObject.SetActive(true);
+            armorText.text = armor.ToString();
+            armorAmount.fillAmount = 1;
+            armorBar.gameObject.SetActive(true);
         }
         else
         {
-            shieldText.text = "";
-            shieldAmount.fillAmount = 0;
-            shieldBar.gameObject.SetActive(false);
+            armorText.text = "";
+            armorAmount.fillAmount = 0;
+            armorBar.gameObject.SetActive(false);
         }
         //resetAmmo();
     }

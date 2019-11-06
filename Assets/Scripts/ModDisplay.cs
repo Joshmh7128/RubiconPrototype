@@ -52,7 +52,7 @@ public class ModDisplay : MonoBehaviour
             if (modKey == 1)
             {
                 modName.text = "Shield";
-                ma1.ActivateArmor();
+                ma1.ActivateShield();
             }
             if (modKey == 2)
             {
@@ -67,7 +67,7 @@ public class ModDisplay : MonoBehaviour
             if (modKey == 4)
             {
                 modName.text = "Armor";
-                ma1.ActivateShield();
+                ma1.ActivateArmor();
             }
             if (modKey == 5)
             {
