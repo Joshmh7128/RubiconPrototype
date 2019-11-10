@@ -184,12 +184,13 @@ public class RoundManager : MonoBehaviour
         yield return new WaitForSeconds(3.75f);
         Player1Cam.GetComponent<PlayerController>().speed = baseSpeed;
         Player2Cam.GetComponent<PlayerController>().speed = baseSpeed;
+        Player1Cam.GetComponent<PlayerController>().weaponLocked = false;
+        Player2Cam.GetComponent<PlayerController>().weaponLocked = false;
+        Rotator.live = true;
         sm.PlaySound("enterTheRubicon");
         yield return new WaitForSeconds(1f);
         Player1Countdown.SetActive(false);
         Player2Countdown.SetActive(false);
-        Player1Cam.GetComponent<PlayerController>().weaponLocked = false;
-        Player2Cam.GetComponent<PlayerController>().weaponLocked = false;
         yield return null;
         PlayMusic(roundNum);
     }
@@ -440,8 +441,8 @@ public class RoundManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
 
             RoundCanvas.SetActive(true);
-            Player1Canvas.SetActive(true);
-            Player2Canvas.SetActive(true);
+            Player1Canvas.transform.Find("ToHide").gameObject.SetActive(true);
+            Player2Canvas.transform.Find("ToHide").gameObject.SetActive(true);
             Player1Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
             Player2Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player2Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
             RoundCounter.text = "Round " + roundNum.ToString();

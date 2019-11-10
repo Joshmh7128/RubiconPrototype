@@ -25,7 +25,6 @@ public class InfoTracker : MonoBehaviour
     public Image armorAmount;
     public GameObject reloadPrompt;
     public Animator redAnim;
-    public Camera uiCam;
 
     public Text ammoText;
     public int magSize;
@@ -228,12 +227,12 @@ public class InfoTracker : MonoBehaviour
 
     public void Hide()
     {
-        uiCam.gameObject.SetActive(false);
+        playerCanvas.transform.Find("ToHide").gameObject.SetActive(false);
     }
 
     public void ResetStats()
     {
-        uiCam.gameObject.SetActive(true);
+        playerCanvas.transform.Find("ToHide").gameObject.SetActive(true);
         dead = false;
         redAnim.Play("redIdle");
         hp = maxHP;

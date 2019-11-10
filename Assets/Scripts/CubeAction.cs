@@ -59,7 +59,7 @@ public class CubeAction : MonoBehaviour
             qKey = generateQuaternion(axisKey);
             instantRotateCubes(pivot, qKey);
         }
-        live = true;
+        //live = true;
     }
 
     public void setupRotation()
