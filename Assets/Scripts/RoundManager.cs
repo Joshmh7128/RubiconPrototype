@@ -181,12 +181,12 @@ public class RoundManager : MonoBehaviour
         Player2Cam.GetComponent<PlayerController>().speed = 0;
         Player1Countdown.SetActive(true);
         Player2Countdown.SetActive(true);
+        Rotator.live = true;
         yield return new WaitForSeconds(3.75f);
         Player1Cam.GetComponent<PlayerController>().speed = baseSpeed;
         Player2Cam.GetComponent<PlayerController>().speed = baseSpeed;
         Player1Cam.GetComponent<PlayerController>().weaponLocked = false;
         Player2Cam.GetComponent<PlayerController>().weaponLocked = false;
-        Rotator.live = true;
         sm.PlaySound("enterTheRubicon");
         yield return new WaitForSeconds(1f);
         Player1Countdown.SetActive(false);
