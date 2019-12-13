@@ -319,7 +319,7 @@ public class GunScriptBase : MonoBehaviour
 
         #endregion
 
-        if (rewiredPlayer.GetButton("Reload") && mag < magSize)
+        if ((rewiredPlayer.GetButton("Reload") || Input.GetKeyDown(KeyCode.R)) && mag < magSize)
 		{
 			mag = 0;
 			player.StartCoroutine(Reload());
