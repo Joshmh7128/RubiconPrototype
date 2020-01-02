@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de57e66d3f870746836a8c2d9c22fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTime: 10
+  activeTime: 12
   burst: {fileID: 1386193425164969425, guid: 8ad85b5238aab10418d9e52e119da373, type: 3}
   sm: {fileID: 0}
   respawner: {fileID: 9089779280362250002, guid: 0892f4ae5cd6d444f8d4ce5cd9a02f36,
