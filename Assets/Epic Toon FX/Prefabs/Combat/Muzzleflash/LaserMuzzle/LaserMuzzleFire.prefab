@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 488750}
   - component: {fileID: 19824572}
   - component: {fileID: 19993814}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LaserMuzzleFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4732,7 +4732,7 @@ GameObject:
   - component: {fileID: 425530}
   - component: {fileID: 19822334}
   - component: {fileID: 19913800}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

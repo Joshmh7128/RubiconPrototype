@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 465108}
   - component: {fileID: 19831516}
   - component: {fileID: 19999950}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VolumetricGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4704,7 +4704,7 @@ GameObject:
   - component: {fileID: 463104}
   - component: {fileID: 19812566}
   - component: {fileID: 19992902}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmokeRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9370,7 +9370,7 @@ GameObject:
   - component: {fileID: 412250}
   - component: {fileID: 19847508}
   - component: {fileID: 19914738}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14054,7 +14054,7 @@ GameObject:
   - component: {fileID: 468602}
   - component: {fileID: 19895682}
   - component: {fileID: 19972812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FireSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18747,7 +18747,7 @@ GameObject:
   - component: {fileID: 472408}
   - component: {fileID: 19897572}
   - component: {fileID: 19940312}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23476,7 +23476,7 @@ GameObject:
   - component: {fileID: 410190}
   - component: {fileID: 19894688}
   - component: {fileID: 19919750}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28160,7 +28160,7 @@ GameObject:
   - component: {fileID: 470840}
   - component: {fileID: 19859190}
   - component: {fileID: 19992158}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: NukeMuzzleFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28437,7 +28437,7 @@ ParticleSystem:
         m_RotationOrder: 0
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -28490,7 +28490,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -28543,7 +28543,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -28596,7 +28596,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:

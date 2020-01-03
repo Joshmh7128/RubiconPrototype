@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 494618}
   - component: {fileID: 19819752}
   - component: {fileID: 19961434}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletFatMuzzleFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4733,7 +4733,7 @@ GameObject:
   - component: {fileID: 461842}
   - component: {fileID: 19894786}
   - component: {fileID: 19904546}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9417,7 +9417,7 @@ GameObject:
   - component: {fileID: 447160}
   - component: {fileID: 19891858}
   - component: {fileID: 19957712}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

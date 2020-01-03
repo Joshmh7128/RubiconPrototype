@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 494788}
   - component: {fileID: 19803416}
   - component: {fileID: 19928116}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnergyNovaMuzzleSmallFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4734,7 +4734,7 @@ GameObject:
   - component: {fileID: 488636}
   - component: {fileID: 19871086}
   - component: {fileID: 19971120}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VolumetricGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9418,7 +9418,7 @@ GameObject:
   - component: {fileID: 482046}
   - component: {fileID: 19860414}
   - component: {fileID: 19912014}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14102,7 +14102,7 @@ GameObject:
   - component: {fileID: 451756}
   - component: {fileID: 19891910}
   - component: {fileID: 19957660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
