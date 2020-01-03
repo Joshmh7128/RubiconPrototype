@@ -343,6 +343,7 @@ public class GunScriptBase : MonoBehaviour
         GameObject projectile = Instantiate(shotProjectile, gunEnd.position, Quaternion.identity); //Spawns the selected projectile
         GameObject overlapper = Instantiate(overlapObj, gunEnd.position, Quaternion.identity);
         overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
+        overlapper.GetComponent<OverlapChecker>().damage = dmg;
         projectile.AddComponent<DestroyAfterTime>();
         projectile.GetComponent<DestroyAfterTime>().key = 5;
         projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
