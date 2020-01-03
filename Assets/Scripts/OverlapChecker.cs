@@ -5,6 +5,7 @@ using UnityEngine;
 public class OverlapChecker : MonoBehaviour
 {
     public int damage;
+    public int myID;
 
     private void Start()
     {
@@ -17,6 +18,14 @@ public class OverlapChecker : MonoBehaviour
         {
             other.GetComponent<BreakableObject>().TakeDamage(damage);
             Destroy(this.gameObject);
+        }
+        else if(other.gameObject.CompareTag("Player"))
+        {
+            if(other.GetComponent<InfoTracker>().id != myID)
+            {
+                other.GetComponent<InfoTracker>().TakeDamage(damage);
+                Destroy(this.gameObject);
+            }
         }
     }
 }

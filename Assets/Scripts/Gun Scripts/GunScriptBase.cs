@@ -344,11 +344,13 @@ public class GunScriptBase : MonoBehaviour
         GameObject overlapper = Instantiate(overlapObj, gunEnd.position, Quaternion.identity);
         overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
         overlapper.GetComponent<OverlapChecker>().damage = dmg;
+        overlapper.GetComponent<OverlapChecker>().myID = player.playerID;
         projectile.AddComponent<DestroyAfterTime>();
         projectile.GetComponent<DestroyAfterTime>().key = 5;
         projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
         projectile.GetComponent<ProjectileScript>().burst = bloodBurst;
         projectile.GetComponent<ProjectileScript>().modApp = player.modApp; // set this to utilize vampirism
+        projectile.GetComponent<ProjectileScript>().myID = myInfo.id;
         float myX = Random.Range(-randomShotRot, randomShotRot);
         float myY = Random.Range(-randomShotRot, randomShotRot);
         float myZ = Random.Range(-randomShotRot, randomShotRot);

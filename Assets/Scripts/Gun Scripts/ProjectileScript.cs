@@ -8,6 +8,7 @@ public class ProjectileScript : MonoBehaviour
     float dmgMult = 1f;
     public ModApplication modApp;
     public int dmg;
+    public int myID;
     public ParticleSystem burst;
 
     private void Start()
@@ -24,9 +25,12 @@ public class ProjectileScript : MonoBehaviour
     {
         if (hit.collider.gameObject.CompareTag("Player"))
         {
-            hit.collider.gameObject.GetComponent<InfoTracker>().TakeDamage((int)(dmg * dmgMult));
-            Instantiate(burst, transform.position, Quaternion.identity);
-            modApp.VampCheck((int)(dmg * dmgMult));
+            if(hit.gameObject.GetComponent<InfoTracker>().id != myID)
+            {
+                hit.collider.gameObject.GetComponent<InfoTracker>().TakeDamage((int)(dmg * dmgMult));
+                Instantiate(burst, transform.position, Quaternion.identity);
+                modApp.VampCheck((int)(dmg * dmgMult));
+            }
         }
         else if (hit.collider.gameObject.CompareTag("Breakable"))
         {
