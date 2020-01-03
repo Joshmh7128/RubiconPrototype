@@ -17,6 +17,7 @@ public class GunScriptBase : MonoBehaviour
 	private float nextFire;                                                // Float to store the time the player will be allowed to fire again, after 
     private ModApplication modApp;
     public ParticleSystem bloodBurst;
+    private GameObject overlapObj;
     private Rewired.Player rewiredPlayer;
     private float shake = 0.1f;
     private bool isLocked;
@@ -30,7 +31,7 @@ public class GunScriptBase : MonoBehaviour
 		fpsCam = player.GetComponentInParent<Camera>(); // which cam are we
 		mag = magSize; // mag size 
         bloodBurst = player.blood;
-
+        overlapObj = player.overlapCheckObj;
 	}
 
 	public void Update()
@@ -340,6 +341,8 @@ public class GunScriptBase : MonoBehaviour
     void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)
     {
         GameObject projectile = Instantiate(shotProjectile, gunEnd.position, Quaternion.identity); //Spawns the selected projectile
+        GameObject overlapper = Instantiate(overlapObj, gunEnd.position, Quaternion.identity);
+        overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
         projectile.AddComponent<DestroyAfterTime>();
         projectile.GetComponent<DestroyAfterTime>().key = 5;
         projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly

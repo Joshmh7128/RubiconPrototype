@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 	public Animator weaponAnim;
 	public ParticleSystem blood;
     public bool weaponLocked = false;
+    public GameObject overlapCheckObj;
 
     [Header("Weapons (Set per Player!)")]
     public GameObject blaster;
