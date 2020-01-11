@@ -331,16 +331,16 @@ public class SoundManager : MonoBehaviour
     public IEnumerator PlayChatter()
     {
         bool doPlayChatter = false;
-        yield return new WaitForSeconds(3);
-        if(!announcerMain.isPlaying)
+        float waitPeriod = Random.Range(5, 10);
+        yield return new WaitForSeconds(waitPeriod);
+        if (!announcerMain.isPlaying)
         {
             float chatterKey = Random.Range(1, 101);
             if(chatterKey <= chattiness)
             {
                 doPlayChatter = true;
             }
-            float waitPeriod = Random.Range(5, 10);
-            yield return new WaitForSeconds(waitPeriod);
+            yield return new WaitForSeconds(3);
             if(doPlayChatter && !announcerMain.isPlaying && !rm.isOver && !rm.isPaused)
             {
                 PlaySound("chatter");
