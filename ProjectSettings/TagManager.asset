@@ -9,6 +9,7 @@ TagManager:
   - Breakable
   - MenuMouse
   - SoundManager
+  - Joke
   layers:
   - Default
   - TransparentFX

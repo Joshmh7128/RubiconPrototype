@@ -36,5 +36,9 @@ public class ProjectileScript : MonoBehaviour
         {
             hit.collider.gameObject.GetComponent<BreakableObject>().TakeDamage((int)(dmg * dmgMult));
         }
+        else if (hit.collider.gameObject.CompareTag("Joke"))
+        {
+            hit.collider.gameObject.GetComponent<JokeObject>().TakeDamage((int)(dmg * dmgMult));
+        }
     }
 }

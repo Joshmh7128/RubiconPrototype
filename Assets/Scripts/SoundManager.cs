@@ -17,6 +17,7 @@ public class SoundManager : MonoBehaviour
     private bool chatterChecked = false;
     [Range (0, 100)]
     public int chattiness;
+    private int lastChatter = -1;
 
     #region Music Tracks
     public AudioClip MainMenuTheme;
@@ -278,6 +279,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip exclaim5;
     public AudioClip exclaim6;
     public AudioClip exclaim7;
+
+    public AudioClip joke1;
     #endregion
 
     #region chatter
@@ -340,7 +343,7 @@ public class SoundManager : MonoBehaviour
             {
                 doPlayChatter = true;
             }
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(5.5f);
             if(doPlayChatter && !announcerMain.isPlaying && !rm.isOver && !rm.isPaused)
             {
                 PlaySound("chatter");
@@ -1487,8 +1490,12 @@ public class SoundManager : MonoBehaviour
 
         if(soundGroup == "chatter")
         {
-            int choice = Random.Range(1, 23);
-
+            int choice = lastChatter;
+            while(choice == lastChatter)
+            {
+                choice = Random.Range(1, 23);
+            }
+            lastChatter = choice;
             // choose a sound
             switch (choice)
             {
@@ -1560,6 +1567,12 @@ public class SoundManager : MonoBehaviour
                     break;
             }
             // play the sound
+            announcerMain.Play();
+        }
+
+        if(soundGroup == "joke")
+        {
+            announcerMain.clip = joke1;
             announcerMain.Play();
         }
     }
