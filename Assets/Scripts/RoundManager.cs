@@ -136,7 +136,9 @@ public class RoundManager : MonoBehaviour
         InterRound.transform.Find("BottomText").GetComponent<Text>().text = "This Round: ";
         InterRound.transform.Find("WeaponText").GetComponent<Text>().text = weaponList[roundNum -1].ToString();
         //sm.PlaySound("roundStart");
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
+        sm.PlaySound("round1");
+        /*
         string weaponKey = weaponTypeList[roundNum - 1].ToString();
         if (weaponKey == "Blaster")
         {
@@ -162,7 +164,8 @@ public class RoundManager : MonoBehaviour
         {
             sm.PlaySound("sniperRound");
         }
-        yield return new WaitForSeconds(5);
+        */
+        yield return new WaitForSeconds(9);
 
         RoundCanvas.SetActive(true);
         Player1Canvas.SetActive(true);
@@ -172,6 +175,7 @@ public class RoundManager : MonoBehaviour
         Player1Cam.GetComponent<PlayerController>().speed = baseSpeed;
         Player2Cam.GetComponent<PlayerController>().speed = baseSpeed;
         StartCoroutine(CountDown());
+        PlayMusic(1);
     }
 
     private IEnumerator CountDown()
@@ -192,7 +196,7 @@ public class RoundManager : MonoBehaviour
         Player1Countdown.SetActive(false);
         Player2Countdown.SetActive(false);
         yield return null;
-        PlayMusic(roundNum);
+        //PlayMusic(roundNum);
     }
 
     // weapon generation
@@ -257,6 +261,7 @@ public class RoundManager : MonoBehaviour
     {
         if (roundNum > 1 && (Player1Kills + Player2Kills == 0))
         {
+            /*
             string weaponKey = weaponTypeList[roundNum - 1].ToString();
             if (weaponKey == "Blaster")
             {
@@ -282,6 +287,7 @@ public class RoundManager : MonoBehaviour
             {
                 sm.PlaySound("sniperRound");
             }
+            */
         }
         Player1Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
         Player2Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
@@ -425,8 +431,14 @@ public class RoundManager : MonoBehaviour
             InterRound.transform.Find("WeaponText").GetComponent<Text>().text = weaponList[roundNum].ToString();
             sm.PlaySound("roundOver");
 
-            yield return new WaitForSeconds(10);
-            
+            yield return new WaitForSeconds(5);
+
+            string testString = "round" + ((roundNum + 1).ToString());
+            Debug.Log(testString);
+            sm.PlaySound(testString);
+
+            yield return new WaitForSeconds(5);
+
             depthOfField.active = false;
             InterRound.SetActive(false);
             resetScore();
@@ -446,6 +458,7 @@ public class RoundManager : MonoBehaviour
             Player1Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
             Player2Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player2Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
             RoundCounter.text = "Round " + roundNum.ToString();
+            StartCoroutine(CountDown());
         }
         else
         {

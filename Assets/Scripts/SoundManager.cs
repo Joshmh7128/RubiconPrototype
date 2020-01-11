@@ -235,6 +235,29 @@ public class SoundManager : MonoBehaviour
     public AudioClip roundStart3;
     public AudioClip roundStart4;
     public AudioClip roundStart5;
+
+    public AudioClip round1_1;
+    public AudioClip round1_2;
+    public AudioClip round1_3;
+    public AudioClip round1_4;
+    public AudioClip round2_1;
+    public AudioClip round2_2;
+    public AudioClip round2_3;
+    public AudioClip round2_4;
+    public AudioClip round2_5;
+    public AudioClip round3_1;
+    public AudioClip round3_2;
+    public AudioClip round3_3;
+    public AudioClip round3_4;
+    public AudioClip round4_1;
+    public AudioClip round4_2;
+    public AudioClip round4_3;
+    public AudioClip round4_4;
+    public AudioClip round5_1;
+    public AudioClip round5_2;
+    public AudioClip round5_3;
+    public AudioClip round5_4;
+    public AudioClip round5_5;
     #endregion
 
     #region exclamations
@@ -1119,6 +1142,132 @@ public class SoundManager : MonoBehaviour
                     break;
                 case 5:
                     announcerMain.clip = roundStart5;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
+        }
+
+        if (soundGroup == "round1")
+        {
+            int choice = Random.Range(1, 5);
+
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = round1_1;
+                    break;
+                case 2:
+                    announcerMain.clip = round1_2;
+                    break;
+                case 3:
+                    announcerMain.clip = round1_3;
+                    break;
+                case 4:
+                    announcerMain.clip = round1_4;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
+        }
+
+        if (soundGroup == "round2")
+        {
+            int choice = Random.Range(1, 6);
+
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = round2_1;
+                    break;
+                case 2:
+                    announcerMain.clip = round2_2;
+                    break;
+                case 3:
+                    announcerMain.clip = round2_3;
+                    break;
+                case 4:
+                    announcerMain.clip = round2_4;
+                    break;
+                case 5:
+                    announcerMain.clip = round2_5;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
+        }
+
+        if (soundGroup == "round3")
+        {
+            int choice = Random.Range(1, 5);
+
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = round3_1;
+                    break;
+                case 2:
+                    announcerMain.clip = round3_2;
+                    break;
+                case 3:
+                    announcerMain.clip = round3_3;
+                    break;
+                case 4:
+                    announcerMain.clip = round3_4;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
+        }
+
+        if (soundGroup == "round4")
+        {
+            int choice = Random.Range(1, 5);
+
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = round4_1;
+                    break;
+                case 2:
+                    announcerMain.clip = round4_2;
+                    break;
+                case 3:
+                    announcerMain.clip = round4_3;
+                    break;
+                case 4:
+                    announcerMain.clip = round4_4;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
+        }
+
+        if (soundGroup == "round5")
+        {
+            int choice = Random.Range(1, 6);
+
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = round5_1;
+                    break;
+                case 2:
+                    announcerMain.clip = round5_2;
+                    break;
+                case 3:
+                    announcerMain.clip = round5_3;
+                    break;
+                case 4:
+                    announcerMain.clip = round5_4;
+                    break;
+                case 5:
+                    announcerMain.clip = round5_5;
                     break;
             }
             // play the sound
