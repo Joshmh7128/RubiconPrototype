@@ -341,7 +341,7 @@ public class SoundManager : MonoBehaviour
             }
             float waitPeriod = Random.Range(5, 10);
             yield return new WaitForSeconds(waitPeriod);
-            if(doPlayChatter && !announcerMain.isPlaying)
+            if(doPlayChatter && !announcerMain.isPlaying && !rm.isOver && !rm.isPaused)
             {
                 PlaySound("chatter");
             }
