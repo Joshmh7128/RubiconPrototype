@@ -124,12 +124,14 @@ public class ModApplication : MonoBehaviour
     {
         Debug.Log("Activating Supercharge");
         supercharge = true;
+        playerInfoTracker.rm.sm.PlaySound("superchargeMod");
     }
 
     public void ActivateScatter()
     {
         Debug.Log("Activating Scattershot");
         scatter = true;
+        playerInfoTracker.rm.sm.PlaySound("scatterMod");
     }
 
     public void ActivateShield()
@@ -146,6 +148,7 @@ public class ModApplication : MonoBehaviour
         targetPlayer.GetComponent<InfoTracker>().maxArmor = armorAmount;
         targetPlayer.GetComponent<InfoTracker>().AddArmor(armorAmount);
         shield = true;
+        playerInfoTracker.rm.sm.PlaySound("armorMod");
     }
 
     public void ActivateVampirism()

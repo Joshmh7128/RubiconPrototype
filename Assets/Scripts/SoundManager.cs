@@ -106,8 +106,6 @@ public class SoundManager : MonoBehaviour
     public AudioClip cineMod3;
     public AudioClip cineMod4;
     public AudioClip cineMod5;
-    public AudioClip cineMod6;
-    public AudioClip cineMod7;
     public AudioClip glowMod1;
     public AudioClip glowMod2;
     public AudioClip glowMod3;
@@ -569,9 +567,36 @@ public class SoundManager : MonoBehaviour
         }
 
         // mods
+        if (soundGroup == "armorMod")
+        {
+            int choice = Random.Range(1, 6);
+
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = armorMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = armorMod2;
+                    break;
+                case 3:
+                    announcerMain.clip = armorMod3;
+                    break;
+                case 4:
+                    announcerMain.clip = armorMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = armorMod5;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
+        }
+
         if (soundGroup == "cineMod")
         {
-            int choice = Random.Range(1, 3);
+            int choice = Random.Range(1, 6);
 
             // choose a sound
             switch (choice)
@@ -582,6 +607,15 @@ public class SoundManager : MonoBehaviour
                 case 2:
                     announcerMain.clip = cineMod2;
                     break;
+                case 3:
+                    announcerMain.clip = cineMod3;
+                    break;
+                case 4:
+                    announcerMain.clip = cineMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = cineMod5;
+                    break;
             }
             // play the sound
             announcerMain.Play();
@@ -589,7 +623,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "glowingMod")
         {
-            int choice = Random.Range(1, 4);
+            int choice = Random.Range(1, 9);
 
             // choose a sound
             switch (choice)
@@ -603,6 +637,21 @@ public class SoundManager : MonoBehaviour
                 case 3:
                     announcerMain.clip = glowMod3;
                     break;
+                case 4:
+                    announcerMain.clip = glowMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = glowMod5;
+                    break;
+                case 6:
+                    announcerMain.clip = glowMod6;
+                    break;
+                case 7:
+                    announcerMain.clip = glowMod7;
+                    break;
+                case 8:
+                    announcerMain.clip = glowMod8;
+                    break;
             }
             // play the sound
             announcerMain.Play();
@@ -610,7 +659,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "hpRegenMod")
         {
-            int choice = Random.Range(1, 4);
+            int choice = Random.Range(1, 9);
 
             // choose a sound
             switch (choice)
@@ -619,10 +668,25 @@ public class SoundManager : MonoBehaviour
                     announcerMain.clip = HPRegenMod1;
                     break;
                 case 2:
-                    announcerMain.clip = HPRegenMod1;
+                    announcerMain.clip = HPRegenMod2;
                     break;
                 case 3:
-                    announcerMain.clip = HPRegenMod1;
+                    announcerMain.clip = HPRegenMod3;
+                    break;
+                case 4:
+                    announcerMain.clip = HPRegenMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = HPRegenMod5;
+                    break;
+                case 6:
+                    announcerMain.clip = HPRegenMod6;
+                    break;
+                case 7:
+                    announcerMain.clip = HPRegenMod7;
+                    break;
+                case 8:
+                    announcerMain.clip = HPRegenMod8;
                     break;
             }
             // play the sound
@@ -631,7 +695,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "invisMod")
         {
-            int choice = Random.Range(1, 6);
+            int choice = Random.Range(1, 11);
 
             // choose a sound
             switch (choice)
@@ -651,6 +715,21 @@ public class SoundManager : MonoBehaviour
                 case 5:
                     announcerMain.clip = invisMod5;
                     break;
+                case 6:
+                    announcerMain.clip = invisMod6;
+                    break;
+                case 7:
+                    announcerMain.clip = invisMod7;
+                    break;
+                case 8:
+                    announcerMain.clip = invisMod8;
+                    break;
+                case 9:
+                    announcerMain.clip = invisMod9;
+                    break;
+                case 10:
+                    announcerMain.clip = invisMod10;
+                    break;
             }
             // play the sound
             announcerMain.Play();
@@ -658,7 +737,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "largeMod")
         {
-            int choice = Random.Range(1, 4);
+            int choice = Random.Range(1, 9);
 
             // choose a sound
             switch (choice)
@@ -672,6 +751,48 @@ public class SoundManager : MonoBehaviour
                 case 3:
                     announcerMain.clip = largeMod3;
                     break;
+                case 4:
+                    announcerMain.clip = largeMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = largeMod5;
+                    break;
+                case 6:
+                    announcerMain.clip = largeMod6;
+                    break;
+                case 7:
+                    announcerMain.clip = largeMod7;
+                    break;
+                case 8:
+                    announcerMain.clip = largeMod8;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
+        }
+
+        if (soundGroup == "scatterMod")
+        {
+            int choice = Random.Range(1, 6);
+
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = scatterMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = scatterMod2;
+                    break;
+                case 3:
+                    announcerMain.clip = scatterMod3;
+                    break;
+                case 4:
+                    announcerMain.clip = scatterMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = scatterMod5;
+                    break;
             }
             // play the sound
             announcerMain.Play();
@@ -679,7 +800,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "shieldMod")
         {
-            int choice = Random.Range(1, 3);
+            int choice = Random.Range(1, 8);
 
             // choose a sound
             switch (choice)
@@ -690,6 +811,21 @@ public class SoundManager : MonoBehaviour
                 case 2:
                     announcerMain.clip = shieldMod2;
                     break;
+                case 3:
+                    announcerMain.clip = shieldMod3;
+                    break;
+                case 4:
+                    announcerMain.clip = shieldMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = shieldMod5;
+                    break;
+                case 6:
+                    announcerMain.clip = shieldMod6;
+                    break;
+                case 7:
+                    announcerMain.clip = shieldMod7;
+                    break;
             }
             // play the sound
             announcerMain.Play();
@@ -697,7 +833,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "speedMod")
         {
-            int choice = Random.Range(1, 3);
+            int choice = Random.Range(1, 8);
 
             // choose a sound
             switch (choice)
@@ -706,7 +842,49 @@ public class SoundManager : MonoBehaviour
                     announcerMain.clip = speedMod1;
                     break;
                 case 2:
-                    announcerMain.clip = speedMod1;
+                    announcerMain.clip = speedMod2;
+                    break;
+                case 3:
+                    announcerMain.clip = speedMod3;
+                    break;
+                case 4:
+                    announcerMain.clip = speedMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = speedMod5;
+                    break;
+                case 6:
+                    announcerMain.clip = speedMod6;
+                    break;
+                case 7:
+                    announcerMain.clip = speedMod7;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
+        }
+
+        if (soundGroup == "superchargeMod")
+        {
+            int choice = Random.Range(1, 6);
+
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = superchargeMod1;
+                    break;
+                case 2:
+                    announcerMain.clip = superchargeMod2;
+                    break;
+                case 3:
+                    announcerMain.clip = superchargeMod3;
+                    break;
+                case 4:
+                    announcerMain.clip = superchargeMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = superchargeMod5;
                     break;
             }
             // play the sound
@@ -715,7 +893,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "trackingMod")
         {
-            int choice = Random.Range(1, 3);
+            int choice = Random.Range(1, 8);
 
             // choose a sound
             switch (choice)
@@ -726,6 +904,21 @@ public class SoundManager : MonoBehaviour
                 case 2:
                     announcerMain.clip = trackingMod2;
                     break;
+                case 3:
+                    announcerMain.clip = trackingMod3;
+                    break;
+                case 4:
+                    announcerMain.clip = trackingMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = trackingMod5;
+                    break;
+                case 6:
+                    announcerMain.clip = trackingMod6;
+                    break;
+                case 7:
+                    announcerMain.clip = trackingMod7;
+                    break;
             }
             // play the sound
             announcerMain.Play();
@@ -733,7 +926,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "vampMod")
         {
-            int choice = Random.Range(1, 3);
+            int choice = Random.Range(1, 8);
 
             // choose a sound
             switch (choice)
@@ -743,6 +936,21 @@ public class SoundManager : MonoBehaviour
                     break;
                 case 2:
                     announcerMain.clip = vampMod2;
+                    break;
+                case 3:
+                    announcerMain.clip = vampMod3;
+                    break;
+                case 4:
+                    announcerMain.clip = vampMod4;
+                    break;
+                case 5:
+                    announcerMain.clip = vampMod5;
+                    break;
+                case 6:
+                    announcerMain.clip = vampMod6;
+                    break;
+                case 7:
+                    announcerMain.clip = vampMod7;
                     break;
             }
             // play the sound
