@@ -9,12 +9,15 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource announcerMain;
     public AudioSource musicMain;
+    public AudioSource beeperMain;
 
     #region Music Tracks
     public AudioClip MainMenuTheme;
     public AudioClip BattleThemeA;
     public AudioClip BattleThemeB;
     public AudioClip BattleThemeC;
+
+    public AudioClip beeper;
     #endregion
 
     #region all the sounds (if you're gonna open this take a deep breath)
@@ -1407,6 +1410,12 @@ public class SoundManager : MonoBehaviour
         {
             musicMain.clip = BattleThemeC;
             musicMain.Play();
+        }
+
+        if(soundGroup == "countdown")
+        {
+            beeperMain.clip = beeper;
+            beeperMain.Play();
         }
     }
 }

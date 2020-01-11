@@ -180,6 +180,7 @@ public class RoundManager : MonoBehaviour
 
     private IEnumerator CountDown()
     {
+        sm.PlaySound("countdown");
         float baseSpeed = Player1Cam.GetComponent<PlayerController>().speed;
         Player1Cam.GetComponent<PlayerController>().speed = 0;
         Player2Cam.GetComponent<PlayerController>().speed = 0;
@@ -433,9 +434,7 @@ public class RoundManager : MonoBehaviour
 
             yield return new WaitForSeconds(5);
 
-            string testString = "round" + ((roundNum + 1).ToString());
-            Debug.Log(testString);
-            sm.PlaySound(testString);
+            sm.PlaySound("round" + ((roundNum + 1).ToString()));
 
             yield return new WaitForSeconds(5);
 
