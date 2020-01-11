@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+
+    public RoundManager rm;
+
     // this script does the sound
     // there's a lot okay
 
     public AudioSource announcerMain;
     public AudioSource musicMain;
     public AudioSource beeperMain;
+
+    private bool chatterChecked = false;
+    [Range (0, 100)]
+    public int chattiness;
 
     #region Music Tracks
     public AudioClip MainMenuTheme;
@@ -273,6 +280,32 @@ public class SoundManager : MonoBehaviour
     public AudioClip exclaim7;
     #endregion
 
+    #region chatter
+    public AudioClip shoutout1;
+    public AudioClip shoutout2;
+    public AudioClip shoutout3;
+    public AudioClip shoutout4;
+    public AudioClip shoutout5;
+    public AudioClip shoutout6;
+    public AudioClip shoutout7;
+    public AudioClip shoutout8;
+    public AudioClip shoutout9;
+
+    public AudioClip room1;
+    public AudioClip room2;
+    public AudioClip room3;
+    public AudioClip room4;
+    public AudioClip room5;
+    public AudioClip room6;
+    public AudioClip room7;
+    public AudioClip room8;
+    public AudioClip room9;
+    public AudioClip room10;
+    public AudioClip room11;
+    public AudioClip room12;
+    public AudioClip room13;
+    #endregion
+
     #region ENTER THE RUBICON
     public AudioClip enter1;
     public AudioClip enter2;
@@ -285,6 +318,40 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     #endregion 
+
+    private void Update()
+    {
+        if(!announcerMain.isPlaying && chatterChecked == false)
+        {
+            StartCoroutine(PlayChatter());
+            chatterChecked = true;
+        }
+    }
+
+    public IEnumerator PlayChatter()
+    {
+        bool doPlayChatter = false;
+        yield return new WaitForSeconds(3);
+        if(!announcerMain.isPlaying)
+        {
+            float chatterKey = Random.Range(1, 101);
+            if(chatterKey <= chattiness)
+            {
+                doPlayChatter = true;
+            }
+            float waitPeriod = Random.Range(5, 10);
+            yield return new WaitForSeconds(waitPeriod);
+            if(doPlayChatter && !announcerMain.isPlaying)
+            {
+                PlaySound("chatter");
+            }
+            chatterChecked = false;
+        }
+        else
+        {
+            chatterChecked = false;
+        }
+    }
 
     // use this to play a random sound from each group
     public void PlaySound(string soundGroup) // sound groups are for example, the group of HP Regen vocal sounds. You would ask this to play an HP Regen mod sound.
@@ -1351,7 +1418,7 @@ public class SoundManager : MonoBehaviour
             announcerMain.Play();
         }
 
-        // ENTER THE RUBICOCNN
+        // ENTER THE RUBICON
         if (soundGroup == "enterTheRubicon")
         {
             int choice = Random.Range(1, 9);
@@ -1416,6 +1483,84 @@ public class SoundManager : MonoBehaviour
         {
             beeperMain.clip = beeper;
             beeperMain.Play();
+        }
+
+        if(soundGroup == "chatter")
+        {
+            int choice = Random.Range(1, 23);
+
+            // choose a sound
+            switch (choice)
+            {
+                case 1:
+                    announcerMain.clip = shoutout1;
+                    break;
+                case 2:
+                    announcerMain.clip = shoutout2;
+                    break;
+                case 3:
+                    announcerMain.clip = shoutout3;
+                    break;
+                case 4:
+                    announcerMain.clip = shoutout4;
+                    break;
+                case 5:
+                    announcerMain.clip = shoutout5;
+                    break;
+                case 6:
+                    announcerMain.clip = shoutout6;
+                    break;
+                case 7:
+                    announcerMain.clip = shoutout7;
+                    break;
+                case 8:
+                    announcerMain.clip = shoutout8;
+                    break;
+                case 9:
+                    announcerMain.clip = shoutout9;
+                    break;
+                case 10:
+                    announcerMain.clip = room1;
+                    break;
+                case 11:
+                    announcerMain.clip = room2;
+                    break;
+                case 12:
+                    announcerMain.clip = room3;
+                    break;
+                case 13:
+                    announcerMain.clip = room4;
+                    break;
+                case 14:
+                    announcerMain.clip = room5;
+                    break;
+                case 15:
+                    announcerMain.clip = room6;
+                    break;
+                case 16:
+                    announcerMain.clip = room7;
+                    break;
+                case 17:
+                    announcerMain.clip = room8;
+                    break;
+                case 18:
+                    announcerMain.clip = room9;
+                    break;
+                case 19:
+                    announcerMain.clip = room10;
+                    break;
+                case 20:
+                    announcerMain.clip = room11;
+                    break;
+                case 21:
+                    announcerMain.clip = room12;
+                    break;
+                case 22:
+                    announcerMain.clip = room13;
+                    break;
+            }
+            // play the sound
+            announcerMain.Play();
         }
     }
 }
