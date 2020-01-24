@@ -44,7 +44,6 @@ public class SoundManager : MonoBehaviour
     public AudioClip xrayPickup3;
     public AudioClip xrayPickup4;
     public AudioClip xrayPickup5;
-    public AudioClip xrayPickup6;
     public AudioClip xrayPickup7;
     public AudioClip xrayPickup8;
     public AudioClip HPPickup1;
@@ -59,51 +58,29 @@ public class SoundManager : MonoBehaviour
     public AudioClip blasterRound2;
     public AudioClip blasterRound3;
     public AudioClip blasterRound4;
-    public AudioClip blasterRound5;
-    public AudioClip blasterRound6;
-    public AudioClip blasterRound7;
-    public AudioClip blasterRound8;
 
     public AudioClip grenadeRound1;
     public AudioClip grenadeRound2;
     public AudioClip grenadeRound3;
-    public AudioClip grenadeRound4;
-    public AudioClip grenadeRound5;
-    public AudioClip grenadeRound6;
 
     public AudioClip machineRound1;
     public AudioClip machineRound2;
     public AudioClip machineRound3;
     public AudioClip machineRound4;
-    public AudioClip machineRound5;
-    public AudioClip machineRound6;
-    public AudioClip machineRound7;
-    public AudioClip machineRound8;
 
     public AudioClip missileRound1;
     public AudioClip missileRound2;
     public AudioClip missileRound3;
     public AudioClip missileRound4;
-    public AudioClip missileRound5;
-    public AudioClip missileRound6;
-    public AudioClip missileRound7;
-    public AudioClip missileRound8;
 
     public AudioClip shotgunRound1;
     public AudioClip shotgunRound2;
     public AudioClip shotgunRound3;
     public AudioClip shotgunRound4;
-    public AudioClip shotgunRound5;
-    public AudioClip shotgunRound6;
-    public AudioClip shotgunRound7;
-    public AudioClip shotgunRound8;
 
     public AudioClip sniperRound1;
     public AudioClip sniperRound2;
     public AudioClip sniperRound3;
-    public AudioClip sniperRound4;
-    public AudioClip sniperRound5;
-    public AudioClip sniperRound6;
     #endregion
 
     #region mod declarations
@@ -126,7 +103,6 @@ public class SoundManager : MonoBehaviour
     public AudioClip glowMod7;
     public AudioClip glowMod8;
     public AudioClip HPRegenMod1;
-    public AudioClip HPRegenMod2;
     public AudioClip HPRegenMod3;
     public AudioClip HPRegenMod4;
     public AudioClip HPRegenMod5;
@@ -201,18 +177,11 @@ public class SoundManager : MonoBehaviour
     public AudioClip kill2;
     public AudioClip kill3;
     public AudioClip kill4;
-    public AudioClip kill5;
-    public AudioClip kill6;
     public AudioClip kill7;
     public AudioClip kill8;
     public AudioClip kill9;
     public AudioClip kill10;
     public AudioClip kill11;
-    public AudioClip kill12;
-    public AudioClip kill13;
-    public AudioClip kill14;
-    public AudioClip kill15;
-    public AudioClip kill16;
     #endregion
 
     #region player congrats
@@ -398,7 +367,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "xrayPickup")
         {
-            int choice = Random.Range(1, 9);
+            int choice = Random.Range(1, 8);
 
             // choose a sound
             switch (choice)
@@ -419,12 +388,9 @@ public class SoundManager : MonoBehaviour
                     announcerMain.clip = xrayPickup5;
                     break;
                 case 6:
-                    announcerMain.clip = xrayPickup6;
-                    break;
-                case 7:
                     announcerMain.clip = xrayPickup7;
                     break;
-                case 8:
+                case 7:
                     announcerMain.clip = xrayPickup8;
                     break;
 
@@ -460,7 +426,7 @@ public class SoundManager : MonoBehaviour
         // rounds
         if (soundGroup == "blasterRound")
         {
-            int choice = Random.Range(1, 9);
+            int choice = Random.Range(1, 5);
 
             // choose a sound
             switch (choice)
@@ -477,18 +443,6 @@ public class SoundManager : MonoBehaviour
                 case 4:
                     announcerMain.clip = blasterRound4;
                     break;
-                case 5:
-                    announcerMain.clip = blasterRound5;
-                    break;
-                case 6:
-                    announcerMain.clip = blasterRound6;
-                    break;
-                case 7:
-                    announcerMain.clip = blasterRound7;
-                    break;
-                case 8:
-                    announcerMain.clip = blasterRound8;
-                    break;
             }
             // play the sound
             announcerMain.Play();
@@ -496,7 +450,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "grenadeRound")
         {
-            int choice = Random.Range(1, 7);
+            int choice = Random.Range(1, 4);
 
             // choose a sound
             switch (choice)
@@ -510,15 +464,6 @@ public class SoundManager : MonoBehaviour
                 case 3:
                     announcerMain.clip = grenadeRound3;
                     break;
-                case 4:
-                    announcerMain.clip = grenadeRound4;
-                    break;
-                case 5:
-                    announcerMain.clip = grenadeRound5;
-                    break;
-                case 6:
-                    announcerMain.clip = grenadeRound6;
-                    break;
             }
             // play the sound
             announcerMain.Play();
@@ -526,7 +471,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "machineRound")
         {
-            int choice = Random.Range(1, 9);
+            int choice = Random.Range(1, 5);
 
             // choose a sound
             switch (choice)
@@ -543,18 +488,6 @@ public class SoundManager : MonoBehaviour
                 case 4:
                     announcerMain.clip = machineRound4;
                     break;
-                case 5:
-                    announcerMain.clip = machineRound5;
-                    break;
-                case 6:
-                    announcerMain.clip = machineRound6;
-                    break;
-                case 7:
-                    announcerMain.clip = machineRound7;
-                    break;
-                case 8:
-                    announcerMain.clip = machineRound8;
-                    break;
             }
             // play the sound
             announcerMain.Play();
@@ -562,7 +495,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "missileRound")
         {
-            int choice = Random.Range(1, 9);
+            int choice = Random.Range(1, 5);
 
             // choose a sound
             switch (choice)
@@ -579,18 +512,6 @@ public class SoundManager : MonoBehaviour
                 case 4:
                     announcerMain.clip = missileRound4;
                     break;
-                case 5:
-                    announcerMain.clip = missileRound5;
-                    break;
-                case 6:
-                    announcerMain.clip = missileRound6;
-                    break;
-                case 7:
-                    announcerMain.clip = missileRound7;
-                    break;
-                case 8:
-                    announcerMain.clip = missileRound8;
-                    break;
             }
             // play the sound
             announcerMain.Play();
@@ -598,7 +519,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "shotgunRound")
         {
-            int choice = Random.Range(1, 9);
+            int choice = Random.Range(1, 5);
 
             // choose a sound
             switch (choice)
@@ -615,18 +536,6 @@ public class SoundManager : MonoBehaviour
                 case 4:
                     announcerMain.clip = shotgunRound4;
                     break;
-                case 5:
-                    announcerMain.clip = shotgunRound5;
-                    break;
-                case 6:
-                    announcerMain.clip = shotgunRound6;
-                    break;
-                case 7:
-                    announcerMain.clip = shotgunRound7;
-                    break;
-                case 8:
-                    announcerMain.clip = shotgunRound8;
-                    break;
             }
             // play the sound
             announcerMain.Play();
@@ -634,7 +543,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "sniperRound")
         {
-            int choice = Random.Range(1, 7);
+            int choice = Random.Range(1, 4);
 
             // choose a sound
             switch (choice)
@@ -647,15 +556,6 @@ public class SoundManager : MonoBehaviour
                     break;
                 case 3:
                     announcerMain.clip = sniperRound3;
-                    break;
-                case 4:
-                    announcerMain.clip = sniperRound4;
-                    break;
-                case 5:
-                    announcerMain.clip = sniperRound5;
-                    break;
-                case 6:
-                    announcerMain.clip = sniperRound6;
                     break;
             }
             // play the sound
@@ -755,7 +655,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundGroup == "hpRegenMod")
         {
-            int choice = Random.Range(1, 9);
+            int choice = Random.Range(1, 8);
 
             // choose a sound
             switch (choice)
@@ -764,7 +664,7 @@ public class SoundManager : MonoBehaviour
                     announcerMain.clip = HPRegenMod1;
                     break;
                 case 2:
-                    announcerMain.clip = HPRegenMod2;
+                    announcerMain.clip = HPRegenMod8;
                     break;
                 case 3:
                     announcerMain.clip = HPRegenMod3;
@@ -780,9 +680,6 @@ public class SoundManager : MonoBehaviour
                     break;
                 case 7:
                     announcerMain.clip = HPRegenMod7;
-                    break;
-                case 8:
-                    announcerMain.clip = HPRegenMod8;
                     break;
             }
             // play the sound
@@ -1056,7 +953,7 @@ public class SoundManager : MonoBehaviour
         // kills
         if (soundGroup == "kill")
         {
-            int choice = Random.Range(1, 17);
+            int choice = Random.Range(1, 10);
 
             // choose a sound
             switch (choice)
@@ -1074,10 +971,10 @@ public class SoundManager : MonoBehaviour
                     announcerMain.clip = kill4;
                     break;
                 case 5:
-                    announcerMain.clip = kill5;
+                    announcerMain.clip = kill10;
                     break;
                 case 6:
-                    announcerMain.clip = kill6;
+                    announcerMain.clip = kill11;
                     break;
                 case 7:
                     announcerMain.clip = kill7;
@@ -1087,27 +984,6 @@ public class SoundManager : MonoBehaviour
                     break;
                 case 9:
                     announcerMain.clip = kill9;
-                    break;
-                case 10:
-                    announcerMain.clip = kill10;
-                    break;
-                case 11:
-                    announcerMain.clip = kill11;
-                    break;
-                case 12:
-                    announcerMain.clip = kill12;
-                    break;
-                case 13:
-                    announcerMain.clip = kill13;
-                    break;
-                case 14:
-                    announcerMain.clip = kill14;
-                    break;
-                case 15:
-                    announcerMain.clip = kill15;
-                    break;
-                case 16:
-                    announcerMain.clip = kill16;
                     break;
             }
             // play the sound
