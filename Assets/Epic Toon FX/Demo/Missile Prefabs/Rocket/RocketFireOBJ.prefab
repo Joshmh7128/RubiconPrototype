@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5479992}
   - component: {fileID: 11464288}
   - component: {fileID: 8873469115673266018}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RocketFireOBJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,3 +94,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modApp: {fileID: 0}
   dmg: 0
+  myID: 0
+  burst: {fileID: 0}
