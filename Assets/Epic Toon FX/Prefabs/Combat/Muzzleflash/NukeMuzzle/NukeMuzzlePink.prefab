@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 456444}
   - component: {fileID: 19890310}
   - component: {fileID: 19914326}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: VolumetricGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4704,7 +4704,7 @@ GameObject:
   - component: {fileID: 438374}
   - component: {fileID: 19801266}
   - component: {fileID: 19948516}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9388,7 +9388,7 @@ GameObject:
   - component: {fileID: 402602}
   - component: {fileID: 19818636}
   - component: {fileID: 19950072}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: NukeMuzzlePink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9665,7 +9665,7 @@ ParticleSystem:
         m_RotationOrder: 0
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -9718,7 +9718,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -9771,7 +9771,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -9824,7 +9824,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -14060,7 +14060,7 @@ GameObject:
   - component: {fileID: 425416}
   - component: {fileID: 19820378}
   - component: {fileID: 19950328}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: SmokeRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18726,7 +18726,7 @@ GameObject:
   - component: {fileID: 449856}
   - component: {fileID: 19832278}
   - component: {fileID: 19969716}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23455,7 +23455,7 @@ GameObject:
   - component: {fileID: 448018}
   - component: {fileID: 19848686}
   - component: {fileID: 19976862}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28139,7 +28139,7 @@ GameObject:
   - component: {fileID: 423806}
   - component: {fileID: 19873720}
   - component: {fileID: 19926102}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: FireSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 497848}
   - component: {fileID: 19869954}
   - component: {fileID: 19915314}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4695,7 +4695,7 @@ GameObject:
   - component: {fileID: 487660}
   - component: {fileID: 19852606}
   - component: {fileID: 19968150}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: BulletFatMuzzlePink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9417,7 +9417,7 @@ GameObject:
   - component: {fileID: 448480}
   - component: {fileID: 19865416}
   - component: {fileID: 19909412}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}

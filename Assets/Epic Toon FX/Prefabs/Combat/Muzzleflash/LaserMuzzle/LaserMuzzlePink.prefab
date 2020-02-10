@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 412828}
   - component: {fileID: 19898846}
   - component: {fileID: 19967678}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4695,7 +4695,7 @@ GameObject:
   - component: {fileID: 496974}
   - component: {fileID: 19859660}
   - component: {fileID: 19978124}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: LaserMuzzlePink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
