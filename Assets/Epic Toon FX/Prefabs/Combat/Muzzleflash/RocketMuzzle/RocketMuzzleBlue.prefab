@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 479868}
   - component: {fileID: 19837616}
   - component: {fileID: 19901902}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4695,7 +4695,7 @@ GameObject:
   - component: {fileID: 416442}
   - component: {fileID: 19893260}
   - component: {fileID: 19947968}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9415,7 +9415,7 @@ GameObject:
   - component: {fileID: 491650}
   - component: {fileID: 19859546}
   - component: {fileID: 19948970}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocketMuzzleBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9689,7 +9689,7 @@ ParticleSystem:
         m_RotationOrder: 0
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -9742,7 +9742,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -9795,7 +9795,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -9848,7 +9848,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -14084,7 +14084,7 @@ GameObject:
   - component: {fileID: 417126}
   - component: {fileID: 19833914}
   - component: {fileID: 19940826}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}

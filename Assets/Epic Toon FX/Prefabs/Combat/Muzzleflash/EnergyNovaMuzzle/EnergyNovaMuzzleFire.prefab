@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 445696}
   - component: {fileID: 19803938}
   - component: {fileID: 19916900}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4695,7 +4695,7 @@ GameObject:
   - component: {fileID: 494190}
   - component: {fileID: 19873824}
   - component: {fileID: 19921962}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnergyNovaMuzzleFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9419,7 +9419,7 @@ GameObject:
   - component: {fileID: 484356}
   - component: {fileID: 19859538}
   - component: {fileID: 19920204}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VolumetricGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14103,7 +14103,7 @@ GameObject:
   - component: {fileID: 499490}
   - component: {fileID: 19883802}
   - component: {fileID: 19906476}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18787,7 +18787,7 @@ GameObject:
   - component: {fileID: 449172}
   - component: {fileID: 19859346}
   - component: {fileID: 19903816}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
