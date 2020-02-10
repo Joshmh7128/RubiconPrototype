@@ -21,9 +21,19 @@ public class SpawnFinder4p : MonoBehaviour
             rm.SpawnTop = sp;
         }
 
-        if(other.gameObject.name == "SpawnDetectBottom")
+        else if(other.gameObject.name == "SpawnDetectBottom")
         {
             rm.SpawnBottom = sp;
+        }
+
+        else if (other.gameObject.name == "SpawnDetectTop1")
+        {
+            rm.SpawnTop1 = sp;
+        }
+
+        else if (other.gameObject.name == "SpawnDetectBottom1")
+        {
+            rm.SpawnBottom1 = sp;
         }
     }
 }
