@@ -17,6 +17,10 @@ public class Billboard : MonoBehaviour
                 break;
             }
         }
+        if(target == null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame

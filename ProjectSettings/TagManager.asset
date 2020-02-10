@@ -31,14 +31,14 @@ TagManager:
   - Only2CanSee
   - HoloLayer
   - 1Gyro
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Only3CanSee
+  - Only4CanSee
+  - 3CantSee
+  - 4CantSee
+  - Guns3
+  - Guns4
+  - Player3Projectile
+  - Player4Projectile
   - 
   - 
   - 
