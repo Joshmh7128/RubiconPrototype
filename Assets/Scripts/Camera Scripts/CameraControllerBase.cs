@@ -25,8 +25,8 @@ public class CameraControllerBase
 		rotAroundX += Input.GetAxis("Mouse Y") * player.Xsensitivity;
 		rotAroundY += Input.GetAxis("Mouse X") * player.Ysensitivity;
 
-		rotAroundX += rewiredPlayer.GetAxis("LookHorizontalX") * -player.Xsensitivity;
-		rotAroundY += rewiredPlayer.GetAxis("LookHorizontalY") * player.Ysensitivity;
+		//rotAroundX += rewiredPlayer.GetAxis("LookHorizontalX") * -player.Xsensitivity;
+		//rotAroundY += rewiredPlayer.GetAxis("LookHorizontalY") * player.Ysensitivity;
 
 		// Clamp rotation values
 		rotAroundX = Mathf.Clamp(rotAroundX, player.XMinRotation, player.XMaxRotation);

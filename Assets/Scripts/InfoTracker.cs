@@ -57,6 +57,23 @@ public class InfoTracker : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // for pausing
+            Debug.Log(Time.timeScale.ToString());
+            if (myPlayer.playerID == 1)
+            {
+                if (Time.timeScale == 1.0f)
+                {
+                    Time.timeScale = 0.05f;
+                }
+                else if (Time.timeScale == 0.05f)
+                {
+                    Time.timeScale = 1.0f;
+                }
+            }
+
+        }
         int ammo = myPlayer._weaponSystems.mag;
         reloadPrompt.GetComponent<Animator>().SetInteger("ammo", ammo);
         /*
