@@ -44,7 +44,14 @@ public class PickupManager : MonoBehaviour
             {
                 spawned1 = Instantiate(pickupXray, location1.position, Quaternion.identity);
                 spawned1.transform.SetParent(location1);
-                spawned1.GetComponent<XrayPickup>().sm = sm;
+                if (spawned1.GetComponent<XrayPickup>() != null)
+                {
+                    spawned1.GetComponent<XrayPickup>().sm = sm;
+                }
+                else if (spawned1.GetComponent<XrayPickup4p>() != null)
+                {
+                    spawned1.GetComponent<XrayPickup4p>().sm = sm;
+                }
             }
         }
         if (noSpawn != 1)
@@ -66,7 +73,14 @@ public class PickupManager : MonoBehaviour
             {
                 spawned2 = Instantiate(pickupXray, location2.position, Quaternion.identity);
                 spawned2.transform.SetParent(location2);
-                spawned2.GetComponent<XrayPickup>().sm = sm;
+                if (spawned2.GetComponent<XrayPickup>() != null)
+                {
+                    spawned2.GetComponent<XrayPickup>().sm = sm;
+                }
+                else if (spawned2.GetComponent<XrayPickup4p>() != null)
+                {
+                    spawned2.GetComponent<XrayPickup4p>().sm = sm;
+                }
             }
         }
         if (noSpawn != 2)
@@ -88,7 +102,14 @@ public class PickupManager : MonoBehaviour
             {
                 spawned3 = Instantiate(pickupXray, location3.position, Quaternion.identity);
                 spawned3.transform.SetParent(location3);
-                spawned3.GetComponent<XrayPickup>().sm = sm;
+                if (spawned3.GetComponent<XrayPickup>() != null)
+                {
+                    spawned3.GetComponent<XrayPickup>().sm = sm;
+                }
+                else if (spawned3.GetComponent<XrayPickup4p>() != null)
+                {
+                    spawned3.GetComponent<XrayPickup4p>().sm = sm;
+                }
             }
         }
         if (noSpawn != 3)
@@ -110,7 +131,14 @@ public class PickupManager : MonoBehaviour
             {
                 spawned4 = Instantiate(pickupXray, location4.position, Quaternion.identity);
                 spawned4.transform.SetParent(location4);
-                spawned4.GetComponent<XrayPickup>().sm = sm;
+                if (spawned4.GetComponent<XrayPickup>() != null)
+                {
+                    spawned4.GetComponent<XrayPickup>().sm = sm;
+                }
+                else if (spawned4.GetComponent<XrayPickup4p>() != null)
+                {
+                    spawned4.GetComponent<XrayPickup4p>().sm = sm;
+                }
             }
         }
     }

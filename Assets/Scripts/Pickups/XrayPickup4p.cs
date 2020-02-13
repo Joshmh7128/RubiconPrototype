@@ -28,14 +28,24 @@ public class XrayPickup4p : MonoBehaviour
             switch(id)
             {
                 case 1:
-                    rm.Player2.GetComponent<InfoTracker>().AddXray(activeTime);
+                    rm.Player2.GetComponent<InfoTracker4p>().AddXray(activeTime);
+                    rm.Player3.GetComponent<InfoTracker4p>().AddXray(activeTime);
+                    rm.Player4.GetComponent<InfoTracker4p>().AddXray(activeTime);
                     break;
                 case 2:
-                    rm.Player1.GetComponent<InfoTracker>().AddXray(activeTime);
+                    rm.Player1.GetComponent<InfoTracker4p>().AddXray(activeTime);
+                    rm.Player3.GetComponent<InfoTracker4p>().AddXray(activeTime);
+                    rm.Player4.GetComponent<InfoTracker4p>().AddXray(activeTime);
                     break;
                 case 3:
+                    rm.Player1.GetComponent<InfoTracker4p>().AddXray(activeTime);
+                    rm.Player2.GetComponent<InfoTracker4p>().AddXray(activeTime);
+                    rm.Player4.GetComponent<InfoTracker4p>().AddXray(activeTime);
                     break;
                 case 4:
+                    rm.Player1.GetComponent<InfoTracker4p>().AddXray(activeTime);
+                    rm.Player2.GetComponent<InfoTracker4p>().AddXray(activeTime);
+                    rm.Player3.GetComponent<InfoTracker4p>().AddXray(activeTime);
                     break;
             }
             Instantiate(burst, this.transform.position, Quaternion.identity);
