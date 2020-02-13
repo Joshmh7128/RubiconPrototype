@@ -18,7 +18,14 @@ public class HealthPickup : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<InfoTracker>().AddHealth(hpBoost);
+            if(collision.gameObject.GetComponent<InfoTracker>() != null && collision.gameObject.GetComponent<InfoTracker>().enabled == true)
+            {
+                collision.gameObject.GetComponent<InfoTracker>().AddHealth(hpBoost);
+            }
+            else if (collision.gameObject.GetComponent<InfoTracker4p>() != null)
+            {
+                collision.gameObject.GetComponent<InfoTracker4p>().AddHealth(hpBoost);
+            }
             Instantiate(burst, this.transform.position, Quaternion.identity);
             sm.PlaySound("hpPickup");
             GameObject instantiated = Instantiate(respawner, this.transform.position, Quaternion.identity);

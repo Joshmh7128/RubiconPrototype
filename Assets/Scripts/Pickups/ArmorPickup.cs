@@ -18,7 +18,14 @@ public class ArmorPickup : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<InfoTracker>().AddArmor(armorBoost);
+            if (collision.gameObject.GetComponent<InfoTracker>() != null)
+            {
+                collision.gameObject.GetComponent<InfoTracker>().AddArmor(armorBoost);
+            }
+            else if (collision.gameObject.GetComponent<InfoTracker4p>() != null)
+            {
+                collision.gameObject.GetComponent<InfoTracker4p>().AddArmor(armorBoost);
+            }
             Instantiate(burst, this.transform.position, Quaternion.identity);
             sm.PlaySound("armorPickup");
             GameObject instantiated = Instantiate(respawner, this.transform.position, Quaternion.identity);

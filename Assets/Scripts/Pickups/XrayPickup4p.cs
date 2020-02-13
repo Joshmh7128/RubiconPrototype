@@ -24,7 +24,7 @@ public class XrayPickup4p : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            int id = collision.gameObject.GetComponent<InfoTracker>().id;
+            int id = collision.gameObject.GetComponent<InfoTracker4p>().id;
             switch(id)
             {
                 case 1:
