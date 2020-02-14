@@ -76,6 +76,8 @@ public class RoundManager : MonoBehaviour
 
     public Transform SpawnTop;
     public Transform SpawnBottom;
+    public Transform SpawnTop1;
+    public Transform SpawnBottom1;
 
     private int needed = 3;
 
@@ -490,16 +492,26 @@ public class RoundManager : MonoBehaviour
     private IEnumerator SetupRound()
     {
         yield return new WaitForEndOfFrame();
-        int index = Random.Range(1, 3);
-        if(index == 1)
+        if(players == 2)
+        {
+            int index = Random.Range(1, 3);
+            if (index == 1)
+            {
+                Player1.transform.position = SpawnTop.position;
+                Player2.transform.position = SpawnBottom.position;
+            }
+            else
+            {
+                Player1.transform.position = SpawnBottom.position;
+                Player2.transform.position = SpawnTop.position;
+            }
+        }
+        else if(players == 4)
         {
             Player1.transform.position = SpawnTop.position;
             Player2.transform.position = SpawnBottom.position;
-        }
-        else
-        {
-            Player1.transform.position = SpawnBottom.position;
-            Player2.transform.position = SpawnTop.position;
+            Player3.transform.position = SpawnTop1.position;
+            Player4.transform.position = SpawnBottom1.position;
         }
         AssignWeapons();
         pm.ClearPickups();

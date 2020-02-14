@@ -25,13 +25,43 @@ public class XrayPickup : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             int id = collision.gameObject.GetComponent<InfoTracker>().id;
-            if(id == 1)
+            if(rm.players == 2)
             {
-                rm.Player2.GetComponent<InfoTracker>().AddXray(activeTime);
+                if (id == 1)
+                {
+                    rm.Player2.GetComponent<InfoTracker>().AddXray(activeTime);
+                }
+                else
+                {
+                    rm.Player1.GetComponent<InfoTracker>().AddXray(activeTime);
+                }
             }
-            else
+            else if(rm.players == 4)
             {
-                rm.Player1.GetComponent<InfoTracker>().AddXray(activeTime);
+                if (id == 1)
+                {
+                    rm.Player2.GetComponent<InfoTracker>().AddXray(activeTime);
+                    rm.Player3.GetComponent<InfoTracker>().AddXray(activeTime);
+                    rm.Player4.GetComponent<InfoTracker>().AddXray(activeTime);
+                }
+                else if (id == 2)
+                {
+                    rm.Player1.GetComponent<InfoTracker>().AddXray(activeTime);
+                    rm.Player3.GetComponent<InfoTracker>().AddXray(activeTime);
+                    rm.Player4.GetComponent<InfoTracker>().AddXray(activeTime);
+                }
+                else if (id == 3)
+                {
+                    rm.Player1.GetComponent<InfoTracker>().AddXray(activeTime);
+                    rm.Player2.GetComponent<InfoTracker>().AddXray(activeTime);
+                    rm.Player4.GetComponent<InfoTracker>().AddXray(activeTime);
+                }
+                else if (id == 4)
+                {
+                    rm.Player1.GetComponent<InfoTracker>().AddXray(activeTime);
+                    rm.Player2.GetComponent<InfoTracker>().AddXray(activeTime);
+                    rm.Player3.GetComponent<InfoTracker>().AddXray(activeTime);
+                }
             }
             Instantiate(burst, this.transform.position, Quaternion.identity);
             sm.PlaySound("xrayPickup");

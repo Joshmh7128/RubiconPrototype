@@ -25,5 +25,15 @@ public class SpawnFinder : MonoBehaviour
         {
             rm.SpawnBottom = sp;
         }
+
+        if (other.gameObject.name == "SpawnDetectTop1")
+        {
+            rm.SpawnTop1 = sp;
+        }
+
+        if (other.gameObject.name == "SpawnDetectBottom1")
+        {
+            rm.SpawnBottom1 = sp;
+        }
     }
 }
