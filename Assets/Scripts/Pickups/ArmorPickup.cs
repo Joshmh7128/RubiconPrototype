@@ -22,7 +22,7 @@ public class ArmorPickup : MonoBehaviour
             {
                 collision.gameObject.GetComponent<InfoTracker>().AddArmor(armorBoost);
             }
-            else if (collision.gameObject.GetComponent<InfoTracker4p>() != null)
+            if (collision.gameObject.GetComponent<InfoTracker4p>() != null)
             {
                 collision.gameObject.GetComponent<InfoTracker4p>().AddArmor(armorBoost);
             }

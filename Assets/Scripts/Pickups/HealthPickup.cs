@@ -18,11 +18,11 @@ public class HealthPickup : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(collision.gameObject.GetComponent<InfoTracker>() != null && collision.gameObject.GetComponent<InfoTracker>().enabled == true)
+            if(collision.gameObject.GetComponent<InfoTracker>() != null)
             {
                 collision.gameObject.GetComponent<InfoTracker>().AddHealth(hpBoost);
             }
-            else if (collision.gameObject.GetComponent<InfoTracker4p>() != null)
+            if (collision.gameObject.GetComponent<InfoTracker4p>() != null)
             {
                 collision.gameObject.GetComponent<InfoTracker4p>().AddHealth(hpBoost);
             }
