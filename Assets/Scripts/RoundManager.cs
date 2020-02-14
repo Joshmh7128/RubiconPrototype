@@ -15,19 +15,30 @@ public class RoundManager : MonoBehaviour
 
     // all variable definitions
     #region
+    [Header("Mode")]
+    public int players = 2;
+
     [Header("Score")]
 
     public int Player1Kills = 0;
     public int Player2Kills = 0;
+    public int Player3Kills = 0;
+    public int Player4Kills = 0;
 
     public Text Player1Score;
     public Text Player2Score;
+    public Text Player3Score;
+    public Text Player4Score;
 
     public int Player1RoundsWon = 0;
     public int Player2RoundsWon = 0;
+    public int Player3RoundsWon = 0;
+    public int Player4RoundsWon = 0;
 
     public Text Player1Rounds;
     public Text Player2Rounds;
+    public Text Player3Rounds;
+    public Text Player4Rounds;
 
     public int roundNum = 1; // needed to make public
     public Text RoundCounter;
@@ -36,15 +47,23 @@ public class RoundManager : MonoBehaviour
 
     public GameObject Player1;
     public GameObject Player2;
+    public GameObject Player3;
+    public GameObject Player4;
 
     public GameObject Player1Cam;
     public GameObject Player2Cam;
+    public GameObject Player3Cam;
+    public GameObject Player4Cam;
 
     public GameObject Player1Canvas;
     public GameObject Player2Canvas;
+    public GameObject Player3Canvas;
+    public GameObject Player4Canvas;
 
     public GameObject Player1Countdown;
     public GameObject Player2Countdown;
+    public GameObject Player3Countdown;
+    public GameObject Player4Countdown;
 
     public GameObject RoundCanvas;
     public GameObject InterRound;
@@ -79,6 +98,8 @@ public class RoundManager : MonoBehaviour
 
     public ModApplication ma1;
     public ModApplication ma2;
+    public ModApplication ma3;
+    public ModApplication ma4;
 
     [Header("Others")]
     public SoundManager soundManager;
