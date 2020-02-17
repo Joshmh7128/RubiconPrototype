@@ -201,16 +201,35 @@ public class RoundManager : MonoBehaviour
         Player2Cam.GetComponent<PlayerController>().speed = 0;
         Player1Countdown.SetActive(true);
         Player2Countdown.SetActive(true);
+        if(players == 4)
+        {
+            Player3Cam.GetComponent<PlayerController>().speed = 0;
+            Player4Cam.GetComponent<PlayerController>().speed = 0;
+            Player3Countdown.SetActive(true);
+            Player4Countdown.SetActive(true);
+        }
         Rotator.live = true;
         yield return new WaitForSeconds(3.75f);
         Player1Cam.GetComponent<PlayerController>().speed = baseSpeed;
         Player2Cam.GetComponent<PlayerController>().speed = baseSpeed;
         Player1Cam.GetComponent<PlayerController>().weaponLocked = false;
         Player2Cam.GetComponent<PlayerController>().weaponLocked = false;
+        if(players == 4)
+        {
+            Player3Cam.GetComponent<PlayerController>().speed = baseSpeed;
+            Player4Cam.GetComponent<PlayerController>().speed = baseSpeed;
+            Player3Cam.GetComponent<PlayerController>().weaponLocked = false;
+            Player4Cam.GetComponent<PlayerController>().weaponLocked = false;
+        }
         sm.PlaySound("enterTheRubicon");
         yield return new WaitForSeconds(1f);
         Player1Countdown.SetActive(false);
         Player2Countdown.SetActive(false);
+        if(players == 4)
+        {
+            Player3Countdown.SetActive(false);
+            Player4Countdown.SetActive(false);
+        }
         yield return null;
         //PlayMusic(roundNum);
     }
@@ -307,6 +326,11 @@ public class RoundManager : MonoBehaviour
         }
         Player1Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
         Player2Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
+        if(players == 4)
+        {
+            Player3Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
+            Player4Cam.GetComponent<PlayerController>().activeWeapon = weaponTypeList[roundNum - 1];
+        }
     }
 
     // score update
@@ -363,6 +387,11 @@ public class RoundManager : MonoBehaviour
     {
         Player1Cam.GetComponent<PlayerController>().enabled = false;
         Player2Cam.GetComponent<PlayerController>().enabled = false;
+        if(players == 4)
+        {
+            Player3Cam.GetComponent<PlayerController>().enabled = false;
+            Player4Cam.GetComponent<PlayerController>().enabled = false;
+        }
         depthOfField.active = true;
         Time.timeScale = 0;
         PauseMenu.SetActive(true);
@@ -372,6 +401,11 @@ public class RoundManager : MonoBehaviour
     {
         Player1Cam.GetComponent<PlayerController>().enabled = true;
         Player2Cam.GetComponent<PlayerController>().enabled = true;
+        if(players == 4)
+        {
+            Player3Cam.GetComponent<PlayerController>().enabled = true;
+            Player4Cam.GetComponent<PlayerController>().enabled = true;
+        }
         depthOfField.active = false;
         PauseMenu.SetActive(false);
         Time.timeScale = 1;
@@ -386,11 +420,19 @@ public class RoundManager : MonoBehaviour
         Player2Kills = 0;
         Player1Score.text = "0";
         Player2Score.text = "0";
+        if(players == 4)
+        {
+            Player3Kills = 0;
+            Player4Kills = 0;
+            Player3Score.text = "0";
+            Player4Score.text = "0";
+        }
 
     }
 
     public void resetPlayers(int id)
     {
+        /*
         if (id == 1)
         {
             Player1Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
@@ -413,6 +455,32 @@ public class RoundManager : MonoBehaviour
             Player2Cam.transform.SetParent(null);
             Player1.GetComponent<InfoTracker>().ResetStats();
             Player2.GetComponent<InfoTracker>().ResetStats();
+        }
+        */
+
+        Player1Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+        Player2Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player2Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+        Player1Cam.GetComponent<PlayerController>().enabled = true;
+        Player2Cam.GetComponent<PlayerController>().enabled = true;
+        Player1.GetComponent<Rigidbody>().useGravity = false;
+        Player2.GetComponent<Rigidbody>().useGravity = false;
+        Player1Cam.transform.SetParent(null);
+        Player2Cam.transform.SetParent(null);
+        Player1.GetComponent<InfoTracker>().ResetStats();
+        Player2.GetComponent<InfoTracker>().ResetStats();
+
+        if (players == 4)
+        {
+            Player3Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+            Player4Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player2Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+            Player3Cam.GetComponent<PlayerController>().enabled = true;
+            Player4Cam.GetComponent<PlayerController>().enabled = true;
+            Player3.GetComponent<Rigidbody>().useGravity = false;
+            Player4.GetComponent<Rigidbody>().useGravity = false;
+            Player3Cam.transform.SetParent(null);
+            Player4Cam.transform.SetParent(null);
+            Player3.GetComponent<InfoTracker>().ResetStats();
+            Player4.GetComponent<InfoTracker>().ResetStats();
         }
 
         StartCoroutine(SetupRound());
