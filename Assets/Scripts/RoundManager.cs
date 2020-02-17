@@ -337,19 +337,23 @@ public class RoundManager : MonoBehaviour
 
     public void updateScore(int loser)
     {
-        if(loser == 1)
+        if(players == 2)
         {
-            Player2Kills++;
-            Player2Score.text = Player2Kills.ToString();
-        }
-        else if(loser == 2)
-        {
-            Player1Kills++;
-            Player1Score.text = Player1Kills.ToString();
-        }
+            if (loser == 1)
+            {
+                Player2Kills++;
+                Player2Score.text = Player2Kills.ToString();
+            }
+            else if (loser == 2)
+            {
+                Player1Kills++;
+                Player1Score.text = Player1Kills.ToString();
+            }
 
-        Rotator.live = false;
-        StartCoroutine(PlayerDeath(loser));
+            Rotator.live = false;
+            StartCoroutine(PlayerDeath(loser));
+        }
+        
     }
 
     // round end coroutine
@@ -580,35 +584,38 @@ public class RoundManager : MonoBehaviour
 
     private IEnumerator PlayerDeath(int id)
     {
-        Debug.Log("Player died, running coroutine...");
-        int posNeg = Random.Range(1, 11);
-        if (id == 1)
+        if(players == 2)
         {
-            Player1Cam.GetComponent<PlayerController>().enabled = false;
-            Player1.GetComponent<Rigidbody>().useGravity = true;
-            Player1Cam.transform.SetParent(Player1.transform);
-            Player2.GetComponent<InfoTracker>().Hide();
-
-            if(Player2Kills < 3)
+            Debug.Log("Player died, running coroutine...");
+            int posNeg = Random.Range(1, 11);
+            if (id == 1)
             {
-                sm.PlaySound("kill");
-                yield return new WaitForSeconds(downtime);
-                resetPlayers(id);
-                if (posNeg < 8)
+                Player1Cam.GetComponent<PlayerController>().enabled = false;
+                Player1.GetComponent<Rigidbody>().useGravity = true;
+                Player1Cam.transform.SetParent(Player1.transform);
+                Player2.GetComponent<InfoTracker>().Hide();
+
+                if (Player2Kills < 3)
                 {
-                    BattleModAssign(true, 1); // choose a modifier
-                    BattleModActivate(newMod); // set it
+                    sm.PlaySound("kill");
+                    yield return new WaitForSeconds(downtime);
+                    resetPlayers(id);
+                    if (posNeg < 8)
+                    {
+                        BattleModAssign(true, 1); // choose a modifier
+                        BattleModActivate(newMod); // set it
+                    }
+                    else
+                    {
+                        BattleModAssign(false, 2); // choose a modifier
+                        BattleModActivate(newMod); // set it
+                    }
                 }
                 else
                 {
-                    BattleModAssign(false, 2); // choose a modifier
-                    BattleModActivate(newMod); // set it
-                } 
+                    StartCoroutine(NextRound(id));
+                }
             }
-            else
-            {
-                StartCoroutine(NextRound(id));
-            } 
         }
 
         else if(id == 2)
