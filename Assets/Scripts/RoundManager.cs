@@ -158,36 +158,21 @@ public class RoundManager : MonoBehaviour
         InterRound.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
         InterRound.transform.Find("BottomText").GetComponent<Text>().text = "This Round: ";
         InterRound.transform.Find("WeaponText").GetComponent<Text>().text = weaponList[roundNum -1].ToString();
+        if (players == 4)
+        {
+            Player3Canvas.SetActive(false);
+            Player4Canvas.SetActive(false);
+            Player3Cam.GetComponent<PlayerController>().speed = 0;
+            Player4Cam.GetComponent<PlayerController>().speed = 0;
+            Player3Cam.GetComponent<PlayerController>().weaponLocked = true;
+            Player4Cam.GetComponent<PlayerController>().weaponLocked = true;
+            InterRound.transform.Find("P3").GetComponent<Text>().text = Player1RoundsWon.ToString();
+            InterRound.transform.Find("P4").GetComponent<Text>().text = Player2RoundsWon.ToString();
+        }
         //sm.PlaySound("roundStart");
         yield return new WaitForSeconds(1);
         sm.PlaySound("round1");
-        /*
-        string weaponKey = weaponTypeList[roundNum - 1].ToString();
-        if (weaponKey == "Blaster")
-        {
-            sm.PlaySound("blasterRound");
-        }
-        if (weaponKey == "Grenade")
-        {
-            sm.PlaySound("grenadeRound");
-        }
-        if (weaponKey == "Machine")
-        {
-            sm.PlaySound("machineRound");
-        }
-        if (weaponKey == "Missile")
-        {
-            sm.PlaySound("missileRound");
-        }
-        if (weaponKey == "Shotgun")
-        {
-            sm.PlaySound("shotgunRound");
-        }
-        if (weaponKey == "Sniper")
-        {
-            sm.PlaySound("sniperRound");
-        }
-        */
+
         yield return new WaitForSeconds(9);
 
         RoundCanvas.SetActive(true);
@@ -197,6 +182,13 @@ public class RoundManager : MonoBehaviour
         InterRound.SetActive(false);
         Player1Cam.GetComponent<PlayerController>().speed = baseSpeed;
         Player2Cam.GetComponent<PlayerController>().speed = baseSpeed;
+        if(players == 4)
+        {
+            Player3Canvas.SetActive(true);
+            Player4Canvas.SetActive(true);
+            Player3Cam.GetComponent<PlayerController>().speed = baseSpeed;
+            Player4Cam.GetComponent<PlayerController>().speed = baseSpeed;
+        }
         StartCoroutine(CountDown());
         PlayMusic(1);
     }
