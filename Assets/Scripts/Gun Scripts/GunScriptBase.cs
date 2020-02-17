@@ -80,10 +80,10 @@ public class GunScriptBase : MonoBehaviour
                 magSize = 6;
                 myInfo.magSize = magSize;
                 fireRate = 0.5f;
-                dmg = 20;
+                dmg = 35;
                 if (x > 1)
                 {
-                    dmg = 12;
+                    dmg = 20;
                 }
                 shake = 0.1f;
                 //player.grenadeCrosshairs.SetActive(true);

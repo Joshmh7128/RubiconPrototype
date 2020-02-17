@@ -29,12 +29,12 @@ public class ModApplication : MonoBehaviour
     [Header("Mod Variables")]
 
     public Material invisPlayer; // set this manually
-    public int newScale; // how large is the player now?
-    public int speedAdd; // how much speed are we adding?
+    private int newScale = 3; // how large is the player now?
+    private int speedAdd = 5; // how much speed are we adding?
     public float hpRegenAmount = 1f; // how much regen per update?
-    public float hpRegenDelay = 1f; // how long to wait between regen increments
-    public float vampAmount = 0.25f; // how much hp per hit?
-    private int armorAmount = 50;
+    private float hpRegenDelay = 2f; // how long to wait between regen increments
+    private float vampAmount = 0.25f; // how much hp per hit?
+    private int armorAmount = 35;
 
     #endregion
 
