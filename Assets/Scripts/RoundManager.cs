@@ -16,6 +16,7 @@ public class RoundManager : MonoBehaviour
     // all variable definitions
     #region
     [Header("Mode")]
+    [Range(2, 4)]
     public int players = 2;
 
     [Header("Score")]
@@ -353,7 +354,77 @@ public class RoundManager : MonoBehaviour
             Rotator.live = false;
             StartCoroutine(PlayerDeath(loser));
         }
-        
+        if(players == 4)
+        {
+            if(GetLivingFourPlayers() <= 1)
+            {
+                int winner = GetBattleWinner();
+                if(winner == 1)
+                {
+                    Player1Kills++;
+                    Player1Score.text = Player1Kills.ToString();
+                }
+                else if(winner == 2)
+                {
+                    Player2Kills++;
+                    Player2Score.text = Player2Kills.ToString();
+                }
+                else if(winner == 3)
+                {
+                    Player3Kills++;
+                    Player3Score.text = Player3Kills.ToString();
+                }
+                else
+                {
+                    Player4Kills++;
+                    Player4Score.text = Player4Kills.ToString();
+                }
+                Rotator.live = false;
+                StartCoroutine(PlayerDeath(loser));
+            }
+        }
+    }
+
+    public int GetLivingFourPlayers()
+    {
+        int alive = 0;
+        if(Player1.GetComponent<InfoTracker>().hp > 0)
+        {
+            alive++;
+        }
+        if (Player2.GetComponent<InfoTracker>().hp > 0)
+        {
+            alive++;
+        }
+        if (Player3.GetComponent<InfoTracker>().hp > 0)
+        {
+            alive++;
+        }
+        if (Player4.GetComponent<InfoTracker>().hp > 0)
+        {
+            alive++;
+        }
+        return alive;
+    }
+
+    public int GetBattleWinner()
+    {
+        if(Player1.GetComponent<InfoTracker>().hp <= 0)
+        {
+            return 1;
+        }
+        else if (Player2.GetComponent<InfoTracker>().hp <= 0)
+        {
+            return 2;
+        }
+        else if (Player3.GetComponent<InfoTracker>().hp <= 0)
+        {
+            return 3;
+        }
+        else
+        {
+            return 4;
+        }
     }
 
     // round end coroutine
@@ -493,64 +564,71 @@ public class RoundManager : MonoBehaviour
 
     private IEnumerator NextRound(int loser)
     { 
-        if(loser == 1)
+        if(players == 2)
         {
-            Player2RoundsWon++;
-            Player2Rounds.text = Player2RoundsWon.ToString();
+            if (loser == 1)
+            {
+                Player2RoundsWon++;
+                Player2Rounds.text = Player2RoundsWon.ToString();
+            }
+            else if (loser == 2)
+            {
+                Player1RoundsWon++;
+                Player1Rounds.text = Player1RoundsWon.ToString();
+            }
+            ma1.ResetMods();
+            ma2.ResetMods();
+
+            if (Player1RoundsWon < 3 && Player2RoundsWon < 3)
+            {
+                RoundCanvas.SetActive(false);
+                Player1.GetComponent<InfoTracker>().Hide();
+                Player2.GetComponent<InfoTracker>().Hide();
+                depthOfField.active = true;
+                InterRound.SetActive(true);
+                InterRound.transform.Find("TopText").GetComponent<Text>().text = "Round " + roundNum.ToString() + " Complete";
+                InterRound.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
+                InterRound.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
+                InterRound.transform.Find("WeaponText").GetComponent<Text>().text = weaponList[roundNum].ToString();
+                sm.PlaySound("roundOver");
+
+                yield return new WaitForSeconds(5);
+
+                sm.PlaySound("round" + ((roundNum + 1).ToString()));
+
+                yield return new WaitForSeconds(5);
+
+                depthOfField.active = false;
+                InterRound.SetActive(false);
+                resetScore();
+                roundNum++; // advances to next round
+                player1Mods = new int[4];
+                player2Mods = new int[4];
+                player3Mods = new int[4];
+                player4Mods = new int[4];
+                md.ResetPanels();
+                resetPlayers(loser);
+
+                yield return new WaitForSeconds(0.1f);
+
+                RoundCanvas.SetActive(true);
+                Player1Canvas.transform.Find("ToHide").gameObject.SetActive(true);
+                Player2Canvas.transform.Find("ToHide").gameObject.SetActive(true);
+                Player1Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+                Player2Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player2Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+                RoundCounter.text = "Round " + roundNum.ToString();
+                StartCoroutine(CountDown());
+            }
+            else
+            {
+                EndMatch(Mathf.Abs(loser - 3));
+            }
+            PlayMusic(roundNum);
         }
-        else if(loser == 2)
+        else if(players == 4)
         {
-            Player1RoundsWon++;
-            Player1Rounds.text = Player1RoundsWon.ToString();
+
         }
-        ma1.ResetMods();
-        ma2.ResetMods();
-
-        if(Player1RoundsWon < 3 && Player2RoundsWon < 3)
-        {
-            RoundCanvas.SetActive(false);
-            Player1.GetComponent<InfoTracker>().Hide();
-            Player2.GetComponent<InfoTracker>().Hide();
-            depthOfField.active = true;
-            InterRound.SetActive(true);
-            InterRound.transform.Find("TopText").GetComponent<Text>().text = "Round " + roundNum.ToString() + " Complete";
-            InterRound.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
-            InterRound.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
-            InterRound.transform.Find("WeaponText").GetComponent<Text>().text = weaponList[roundNum].ToString();
-            sm.PlaySound("roundOver");
-
-            yield return new WaitForSeconds(5);
-
-            sm.PlaySound("round" + ((roundNum + 1).ToString()));
-
-            yield return new WaitForSeconds(5);
-
-            depthOfField.active = false;
-            InterRound.SetActive(false);
-            resetScore();
-            roundNum++; // advances to next round
-            player1Mods = new int[4];
-            player2Mods = new int[4];
-            player3Mods = new int[4];
-            player4Mods = new int[4];
-            md.ResetPanels();
-            resetPlayers(loser);
-
-            yield return new WaitForSeconds(0.1f);
-
-            RoundCanvas.SetActive(true);
-            Player1Canvas.transform.Find("ToHide").gameObject.SetActive(true);
-            Player2Canvas.transform.Find("ToHide").gameObject.SetActive(true);
-            Player1Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
-            Player2Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player2Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
-            RoundCounter.text = "Round " + roundNum.ToString();
-            StartCoroutine(CountDown());
-        }
-        else
-        {
-            EndMatch(Mathf.Abs(loser - 3));
-        }
-        PlayMusic(roundNum);
     }
 
     private IEnumerator SetupRound()
@@ -648,7 +726,41 @@ public class RoundManager : MonoBehaviour
             }
         Rotator.live = true;
         yield return null;
+        }
+        if(players == 4)
+        {
+            if(id == 1)
+            {
+                Player1Cam.GetComponent<PlayerController>().enabled = false;
+                Player1.GetComponent<Rigidbody>().useGravity = true;
+                Player1Cam.transform.SetParent(Player1.transform);
+            }
+            else if (id == 2)
+            {
+                Player2Cam.GetComponent<PlayerController>().enabled = false;
+                Player2.GetComponent<Rigidbody>().useGravity = true;
+                Player2Cam.transform.SetParent(Player2.transform);
+            }
+            else if (id == 3)
+            {
+                Player3Cam.GetComponent<PlayerController>().enabled = false;
+                Player3.GetComponent<Rigidbody>().useGravity = true;
+                Player3Cam.transform.SetParent(Player3.transform);
+            }
+            else if (id == 4)
+            {
+                Player4Cam.GetComponent<PlayerController>().enabled = false;
+                Player4.GetComponent<Rigidbody>().useGravity = true;
+                Player4Cam.transform.SetParent(Player4.transform);
+            }
+            if(GetLivingFourPlayers() >= 2)
+            {
 
+            }
+            else
+            {
+                StartCoroutine(NextRound(id));
+            }
         }
     }
 
