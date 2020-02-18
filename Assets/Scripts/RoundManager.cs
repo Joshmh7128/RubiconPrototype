@@ -457,6 +457,13 @@ public class RoundManager : MonoBehaviour
         MatchEnd.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
         MatchEnd.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
         MatchEnd.SetActive(true);
+        if(players == 4)
+        {
+            Player3.GetComponent<InfoTracker>().Hide();
+            Player4.GetComponent<InfoTracker>().Hide();
+            MatchEnd.transform.Find("P3").GetComponent<Text>().text = Player3RoundsWon.ToString();
+            MatchEnd.transform.Find("P4").GetComponent<Text>().text = Player4RoundsWon.ToString();
+        }
     }
 
     public void PauseGame()
