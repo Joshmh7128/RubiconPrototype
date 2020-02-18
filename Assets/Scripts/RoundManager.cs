@@ -125,7 +125,7 @@ public class RoundManager : MonoBehaviour
     public int[] player4Mods = new int[4];
 
     public int newMod;
-    public int goodMod = 69;
+    public int goodMod = 0;
 
     #endregion
 
@@ -1018,7 +1018,7 @@ public class RoundManager : MonoBehaviour
                                 sm.PlaySound("cineMod");
                                 break;
                         }
-                        goodMod = 69;
+                        goodMod = 0;
                     }
                 }
             }
@@ -1091,7 +1091,7 @@ public class RoundManager : MonoBehaviour
                     {
                         if(players == 4)
                         {
-                            if(goodMod == 69)
+                            if(goodMod == 0)
                             {
                                 j = goodMod;
                             }
