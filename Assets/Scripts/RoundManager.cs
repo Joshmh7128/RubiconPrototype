@@ -125,7 +125,7 @@ public class RoundManager : MonoBehaviour
     public int[] player4Mods = new int[4];
 
     public int newMod;
-    private int goodMod;
+    public int goodMod = 69;
 
     #endregion
 
@@ -1091,7 +1091,7 @@ public class RoundManager : MonoBehaviour
                     {
                         if(players == 4)
                         {
-                            if(goodMod != 69)
+                            if(goodMod == 69)
                             {
                                 j = goodMod;
                             }
