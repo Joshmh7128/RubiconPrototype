@@ -295,7 +295,7 @@ public class RoundManager : MonoBehaviour
 
     private void AssignWeapons()
     {
-        if (roundNum > 1 && (Player1Kills + Player2Kills == 0))
+        if (roundNum > 1 && (Player1Kills + Player2Kills  + Player3Kills + Player4Kills == 0))
         {
             /*
             string weaponKey = weaponTypeList[roundNum - 1].ToString();
@@ -410,15 +410,15 @@ public class RoundManager : MonoBehaviour
 
     public int GetBattleWinner()
     {
-        if(Player1.GetComponent<InfoTracker>().hp <= 0)
+        if(Player1.GetComponent<InfoTracker>().hp > 0)
         {
             return 1;
         }
-        else if (Player2.GetComponent<InfoTracker>().hp <= 0)
+        else if (Player2.GetComponent<InfoTracker>().hp > 0)
         {
             return 2;
         }
-        else if (Player3.GetComponent<InfoTracker>().hp <= 0)
+        else if (Player3.GetComponent<InfoTracker>().hp > 0)
         {
             return 3;
         }
@@ -839,7 +839,7 @@ public class RoundManager : MonoBehaviour
                 Player4.GetComponent<Rigidbody>().useGravity = true;
                 Player4Cam.transform.SetParent(Player4.transform);
             }
-            if(GetLivingFourPlayers() <= 2)
+            if(GetLivingFourPlayers() <= 1)
             {
                 if(GetBattleWinner() == 1)
                 {
@@ -867,27 +867,28 @@ public class RoundManager : MonoBehaviour
                 //if battle end
                 else
                 {
+                    int victor = GetBattleWinner();
                     yield return new WaitForSeconds(downtime);
                     resetPlayers(id);
-                    int modChooser = Random.Range(1, 3);
+                    int modChooser = Random.Range(1, 4);
                     if(modChooser == 1)
                     {
-                        if(GetBattleWinner() == 1)
+                        if(victor == 1)
                         {
                             BattleModAssign(false, 1);
                             BattleModActivate(newMod);
                         }
-                        else if (GetBattleWinner() == 2)
+                        else if (victor == 2)
                         {
                             BattleModAssign(false, 2);
                             BattleModActivate(newMod);
                         }
-                        else if (GetBattleWinner() == 3)
+                        else if (victor == 3)
                         {
                             BattleModAssign(false, 3);
                             BattleModActivate(newMod);
                         }
-                        else if (GetBattleWinner() == 4)
+                        else if (victor == 4)
                         {
                             BattleModAssign(false, 4);
                             BattleModActivate(newMod);
