@@ -909,116 +909,77 @@ public class RoundManager : MonoBehaviour
                             BattleModAssign(false, 4);
                             BattleModActivate(newMod);
                         }
-                        switch(newMod)
-                        {
-                            case 1:
-                                sm.PlaySound("shieldMod");
-                                break;
-                            case 2:
-                                sm.PlaySound("hpRegenMod");
-                                break;
-                            case 3:
-                                sm.PlaySound("scatterMod");
-                                break;
-                            case 4:
-                                sm.PlaySound("armorMod");
-                                break;
-                            case 5:
-                                sm.PlaySound("speedMod");
-                                break;
-                            case 6:
-                                sm.PlaySound("invisMod");
-                                break;
-                            case 7:
-                                sm.PlaySound("superchargeMod");
-                                break;
-                            case 8:
-                                sm.PlaySound("vampMod");
-                                break;
-                            case 9:
-                                sm.PlaySound("glowingMod");
-                                break;
-                            case 10:
-                                sm.PlaySound("largeMod");
-                                break;
-                            case 11:
-                                sm.PlaySound("trackingMod");
-                                break;
-                            case 12:
-                                sm.PlaySound("cineMod");
-                                break;
-                        }
                     }
                     else
                     {
-                        if (GetBattleWinner() == 1)
+                        if (victor == 1)
                         {
                             BattleModAssign(true, 2);
                             BattleModAssign(true, 3);
                             BattleModAssign(true, 4);
                             BattleModActivate(newMod);
                         }
-                        else if (GetBattleWinner() == 2)
+                        else if (victor == 2)
                         {
                             BattleModAssign(true, 1);
                             BattleModAssign(true, 3);
                             BattleModAssign(true, 4);
                             BattleModActivate(newMod);
                         }
-                        else if (GetBattleWinner() == 3)
+                        else if (victor == 3)
                         {
                             BattleModAssign(true, 1);
                             BattleModAssign(true, 2);
                             BattleModAssign(true, 4);
-                            BattleModActivate(newMod); ;
+                            BattleModActivate(newMod);
                         }
-                        else if (GetBattleWinner() == 4)
+                        else if (victor == 4)
                         {
                             BattleModAssign(true, 1);
                             BattleModAssign(true, 2);
                             BattleModAssign(true, 3);
                             BattleModActivate(newMod);
                         }
-                        switch(goodMod)
-                        {
-                            case 1:
-                                sm.PlaySound("shieldMod");
-                                break;
-                            case 2:
-                                sm.PlaySound("hpRegenMod");
-                                break;
-                            case 3:
-                                sm.PlaySound("scatterMod");
-                                break;
-                            case 4:
-                                sm.PlaySound("armorMod");
-                                break;
-                            case 5:
-                                sm.PlaySound("speedMod");
-                                break;
-                            case 6:
-                                sm.PlaySound("invisMod");
-                                break;
-                            case 7:
-                                sm.PlaySound("superchargeMod");
-                                break;
-                            case 8:
-                                sm.PlaySound("vampMod");
-                                break;
-                            case 9:
-                                sm.PlaySound("glowingMod");
-                                break;
-                            case 10:
-                                sm.PlaySound("largeMod");
-                                break;
-                            case 11:
-                                sm.PlaySound("trackingMod");
-                                break;
-                            case 12:
-                                sm.PlaySound("cineMod");
-                                break;
-                        }
-                        goodMod = 0;
+                    }
+                    goodMod = 0;
+                    switch (newMod)
+                    {
+                        case 1:
+                            sm.PlaySound("shieldMod");
+                            break;
+                        case 2:
+                            sm.PlaySound("hpRegenMod");
+                            break;
+                        case 3:
+                            sm.PlaySound("scatterMod");
+                            break;
+                        case 4:
+                            sm.PlaySound("armorMod");
+                            break;
+                        case 5:
+                            sm.PlaySound("speedMod");
+                            break;
+                        case 6:
+                            sm.PlaySound("invisMod");
+                            break;
+                        case 7:
+                            sm.PlaySound("superchargeMod");
+                            break;
+                        case 8:
+                            sm.PlaySound("vampMod");
+                            break;
+                        case 9:
+                            sm.PlaySound("glowingMod");
+                            break;
+                        case 10:
+                            sm.PlaySound("largeMod");
+                            break;
+                        case 11:
+                            sm.PlaySound("trackingMod");
+                            break;
+                        case 12:
+                            sm.PlaySound("cineMod");
+                            break;
                     }
                 }
             }
@@ -1089,13 +1050,6 @@ public class RoundManager : MonoBehaviour
 
                     if (isGood)
                     {
-                        if(players == 4)
-                        {
-                            if(goodMod == 0)
-                            {
-                                j = goodMod;
-                            }
-                        }
                         j = Random.Range((int)1, (int)9); // choose a good mod
                     }
                     else
@@ -1120,7 +1074,14 @@ public class RoundManager : MonoBehaviour
 
                 if(players == 4 && isGood)
                 {
-                    goodMod = j;
+                    if(goodMod == 0)
+                    {
+                        goodMod = j;
+                    }
+                    else
+                    {
+                        j = goodMod;
+                    }
                 }
                 targetMods[i] = j; // set it
                 newMod = j;
