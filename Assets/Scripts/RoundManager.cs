@@ -731,7 +731,8 @@ public class RoundManager : MonoBehaviour
 
         else if(players == 4)
         {
-            if(id == 1)
+            sm.PlaySound("kill");
+            if (id == 1)
             {
                 Player1Cam.GetComponent<PlayerController>().enabled = false;
                 Player1.GetComponent<Rigidbody>().useGravity = true;
@@ -755,7 +756,7 @@ public class RoundManager : MonoBehaviour
                 Player4.GetComponent<Rigidbody>().useGravity = true;
                 Player4Cam.transform.SetParent(Player4.transform);
             }
-            if(GetLivingFourPlayers() >= 2)
+            if(GetLivingFourPlayers() <= 2)
             {
                 if(GetBattleWinner() == 1)
                 {
@@ -773,10 +774,18 @@ public class RoundManager : MonoBehaviour
                 {
                     Player4.GetComponent<InfoTracker>().Hide();
                 }
-            }
-            else
-            {
-                StartCoroutine(NextRound(id));
+
+                //check if battle or round end
+                if(Player1Kills > 1 || Player2Kills > 1 || Player3Kills > 1 || Player3Kills > 1)
+                {
+                    StartCoroutine(NextRound(id));
+                }
+                else
+                {
+                    yield return new WaitForSeconds(downtime);
+                    resetPlayers(id);
+                    //apply mod
+                }
             }
         }
     }
