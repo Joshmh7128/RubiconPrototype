@@ -125,6 +125,7 @@ public class RoundManager : MonoBehaviour
     public int[] player4Mods = new int[4];
 
     public int newMod;
+    private int goodMod;
 
     #endregion
 
@@ -908,6 +909,45 @@ public class RoundManager : MonoBehaviour
                             BattleModAssign(false, 4);
                             BattleModActivate(newMod);
                         }
+                        switch(newMod)
+                        {
+                            case 1:
+                                sm.PlaySound("shieldMod");
+                                break;
+                            case 2:
+                                sm.PlaySound("hpRegenMod");
+                                break;
+                            case 3:
+                                sm.PlaySound("scatterMod");
+                                break;
+                            case 4:
+                                sm.PlaySound("armorMod");
+                                break;
+                            case 5:
+                                sm.PlaySound("speedMod");
+                                break;
+                            case 6:
+                                sm.PlaySound("invisMod");
+                                break;
+                            case 7:
+                                sm.PlaySound("superchargeMod");
+                                break;
+                            case 8:
+                                sm.PlaySound("vampMod");
+                                break;
+                            case 9:
+                                sm.PlaySound("glowingMod");
+                                break;
+                            case 10:
+                                sm.PlaySound("largeMod");
+                                break;
+                            case 11:
+                                sm.PlaySound("trackingMod");
+                                break;
+                            case 12:
+                                sm.PlaySound("cineMod");
+                                break;
+                        }
                     }
                     else
                     {
@@ -939,6 +979,46 @@ public class RoundManager : MonoBehaviour
                             BattleModAssign(true, 3);
                             BattleModActivate(newMod);
                         }
+                        switch(goodMod)
+                        {
+                            case 1:
+                                sm.PlaySound("shieldMod");
+                                break;
+                            case 2:
+                                sm.PlaySound("hpRegenMod");
+                                break;
+                            case 3:
+                                sm.PlaySound("scatterMod");
+                                break;
+                            case 4:
+                                sm.PlaySound("armorMod");
+                                break;
+                            case 5:
+                                sm.PlaySound("speedMod");
+                                break;
+                            case 6:
+                                sm.PlaySound("invisMod");
+                                break;
+                            case 7:
+                                sm.PlaySound("superchargeMod");
+                                break;
+                            case 8:
+                                sm.PlaySound("vampMod");
+                                break;
+                            case 9:
+                                sm.PlaySound("glowingMod");
+                                break;
+                            case 10:
+                                sm.PlaySound("largeMod");
+                                break;
+                            case 11:
+                                sm.PlaySound("trackingMod");
+                                break;
+                            case 12:
+                                sm.PlaySound("cineMod");
+                                break;
+                        }
+                        goodMod = 69;
                     }
                 }
             }
@@ -1009,7 +1089,14 @@ public class RoundManager : MonoBehaviour
 
                     if (isGood)
                     {
-                        j = Random.Range((int)1, (int)8); // choose a good mod
+                        if(players == 4)
+                        {
+                            if(goodMod != 69)
+                            {
+                                j = goodMod;
+                            }
+                        }
+                        j = Random.Range((int)1, (int)9); // choose a good mod
                     }
                     else
                     {
@@ -1022,19 +1109,23 @@ public class RoundManager : MonoBehaviour
                         {
                             if (isGood)
                             {
-                                j = Random.Range((int)1, (int)7); // choose a good mod
+                                j = Random.Range((int)1, (int)9); // choose a good mod
                             }
                             else
                             {
-                                j = Random.Range((int)8, (int)11); // choose a bad mod
+                                j = Random.Range((int)9, (int)13); // choose a bad mod
                             }
                         }
                     }
 
-                    targetMods[i] = j; // set it
-                    newMod = j;
-                    Debug.Log("mod is " + j);
-                    md.ActivateMod(targetPlayer, isGood, i, j);
+                if(players == 4 && isGood)
+                {
+                    goodMod = j;
+                }
+                targetMods[i] = j; // set it
+                newMod = j;
+                Debug.Log("mod is " + j);
+                md.ActivateMod(targetPlayer, isGood, i, j);
                 break;
                 }
         }
