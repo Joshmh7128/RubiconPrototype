@@ -39,10 +39,10 @@ TagManager:
   - Guns4
   - Player3Projectile
   - Player4Projectile
-  - 
-  - 
-  - 
-  - 
+  - Player1XrayVision
+  - Player2XrayVision
+  - Player3XrayVision
+  - Player4XrayVision
   m_SortingLayers:
   - name: PlayerUI
     uniqueID: 2177145587

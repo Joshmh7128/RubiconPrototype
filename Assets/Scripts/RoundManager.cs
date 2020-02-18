@@ -66,6 +66,11 @@ public class RoundManager : MonoBehaviour
     public GameObject Player3Countdown;
     public GameObject Player4Countdown;
 
+    public GameObject player1xray;
+    public GameObject player2xray;
+    public GameObject player3xray;
+    public GameObject player4xray;
+
     public GameObject RoundCanvas;
     public GameObject InterRound;
     public GameObject MatchEnd;
@@ -492,6 +497,16 @@ public class RoundManager : MonoBehaviour
         depthOfField.active = false;
         PauseMenu.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void layerXray(int activator)
+    {
+        int newLayer = 27 + activator;
+        player1xray.layer = newLayer;
+        player2xray.layer = newLayer;
+        player3xray.layer = newLayer;
+        player4xray.layer = newLayer;
+
     }
 
     // full reset and next round start and setup

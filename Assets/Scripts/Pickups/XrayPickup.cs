@@ -40,24 +40,28 @@ public class XrayPickup : MonoBehaviour
             {
                 if (id == 1)
                 {
+                    rm.layerXray(id);
                     rm.Player2.GetComponent<InfoTracker>().AddXray(activeTime);
                     rm.Player3.GetComponent<InfoTracker>().AddXray(activeTime);
                     rm.Player4.GetComponent<InfoTracker>().AddXray(activeTime);
                 }
                 else if (id == 2)
                 {
+                    rm.layerXray(id);
                     rm.Player1.GetComponent<InfoTracker>().AddXray(activeTime);
                     rm.Player3.GetComponent<InfoTracker>().AddXray(activeTime);
                     rm.Player4.GetComponent<InfoTracker>().AddXray(activeTime);
                 }
                 else if (id == 3)
                 {
+                    rm.layerXray(id);
                     rm.Player1.GetComponent<InfoTracker>().AddXray(activeTime);
                     rm.Player2.GetComponent<InfoTracker>().AddXray(activeTime);
                     rm.Player4.GetComponent<InfoTracker>().AddXray(activeTime);
                 }
                 else if (id == 4)
                 {
+                    rm.layerXray(id);
                     rm.Player1.GetComponent<InfoTracker>().AddXray(activeTime);
                     rm.Player2.GetComponent<InfoTracker>().AddXray(activeTime);
                     rm.Player3.GetComponent<InfoTracker>().AddXray(activeTime);
