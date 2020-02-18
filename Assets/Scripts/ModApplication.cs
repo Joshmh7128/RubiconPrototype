@@ -85,7 +85,11 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Tracking");
         tracking = true;
         trackingLine.SetActive(true);
-        playerInfoTracker.rm.sm.PlaySound("trackingMod");
+        if(playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("trackingMod");
+        }
+        
     }
 
     public void ActivateLarge()
@@ -93,7 +97,10 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Large");
         large = true;
         targetPlayer.transform.localScale = new Vector3(newScale, newScale, newScale); // double size
-        playerInfoTracker.rm.sm.PlaySound("largeMod");
+        if (playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("largeMod");
+        }
     }
 
     public void ActivateSpeed()
@@ -101,7 +108,10 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Speed");
         speed = true;
         playerController.speed += speedAdd; // base speed is 10
-        playerInfoTracker.rm.sm.PlaySound("speedMod");
+        if (playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("speedMod");
+        }
     }
 
     public void ActivateGlow()
@@ -109,7 +119,10 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Glow");
         glowing = true;
         glowObj.SetActive(true);
-        playerInfoTracker.rm.sm.PlaySound("glowingMod");
+        if (playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("glowingMod");
+        }
     }
 
     public void ActivateTunnelVision()
@@ -117,21 +130,30 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Tunnel Vision");
         tunnelVision = true;
         targetPlayerCineRend.SetActive(true);
-        playerInfoTracker.rm.sm.PlaySound("cineMod");
+        if (playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("cineMod");
+        }
     }
 
     public void ActivateSupercharge()
     {
         Debug.Log("Activating Supercharge");
         supercharge = true;
-        playerInfoTracker.rm.sm.PlaySound("superchargeMod");
+        if (playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("superchargeMod");
+        }
     }
 
     public void ActivateScatter()
     {
         Debug.Log("Activating Scattershot");
         scatter = true;
-        playerInfoTracker.rm.sm.PlaySound("scatterMod");
+        if (playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("scatterMod");
+        }
     }
 
     public void ActivateShield()
@@ -139,7 +161,10 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Shield");
         armor = true;
         targetPlayerShield.SetActive(true);
-        playerInfoTracker.rm.sm.PlaySound("shieldMod");
+        if (playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("shieldMod");
+        }
     }
 
     public void ActivateArmor()
@@ -148,14 +173,20 @@ public class ModApplication : MonoBehaviour
         targetPlayer.GetComponent<InfoTracker>().maxArmor = armorAmount;
         targetPlayer.GetComponent<InfoTracker>().AddArmor(armorAmount);
         shield = true;
-        playerInfoTracker.rm.sm.PlaySound("armorMod");
+        if (playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("armorMod");
+        }
     }
 
     public void ActivateVampirism()
     {
         Debug.Log("Activating Vampirism");
         vampirism = true;
-        playerInfoTracker.rm.sm.PlaySound("vampMod");
+        if (playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("vampMod");
+        }
     }
 
     public void ActivateRegen()
@@ -163,7 +194,10 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Regen");
         regen = true;
         StartCoroutine(Regenerate());
-        playerInfoTracker.rm.sm.PlaySound("hpRegenMod");
+        if (playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("hpRegenMod");
+        }
     }
 
     public void ActivateStealth()
@@ -171,7 +205,10 @@ public class ModApplication : MonoBehaviour
         Debug.Log("Activating Stealth");
         stealth = true;
         targetPlayerRend.material = invisPlayer;
-        playerInfoTracker.rm.sm.PlaySound("invisMod");
+        if (playerInfoTracker.rm.players == 2)
+        {
+            playerInfoTracker.rm.sm.PlaySound("invisMod");
+        }
     }
 
     private IEnumerator Regenerate()

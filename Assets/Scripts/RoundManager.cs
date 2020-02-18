@@ -628,7 +628,83 @@ public class RoundManager : MonoBehaviour
         }
         else if(players == 4)
         {
+            int won = GetBattleWinner();
+            if(won == 1)
+            {
+                Player1RoundsWon++;
+                Player1Rounds.text = Player1RoundsWon.ToString();
+            }
+            else if (won == 2)
+            {
+                Player2RoundsWon++;
+                Player2Rounds.text = Player2RoundsWon.ToString();
+            }
+            else if (won == 3)
+            {
+                Player3RoundsWon++;
+                Player3Rounds.text = Player3RoundsWon.ToString();
+            }
+            else if (won == 4)
+            {
+                Player4RoundsWon++;
+                Player4Rounds.text = Player4RoundsWon.ToString();
+            }
+            ma1.ResetMods();
+            ma2.ResetMods();
+            ma3.ResetMods();
+            ma4.ResetMods();
+            if(Player1RoundsWon > 1 || Player2RoundsWon > 1 || Player3RoundsWon > 1 || Player4RoundsWon > 1)
+            {
+                RoundCanvas.SetActive(false);
+                Player1.GetComponent<InfoTracker>().Hide();
+                Player2.GetComponent<InfoTracker>().Hide();
+                Player3.GetComponent<InfoTracker>().Hide();
+                Player4.GetComponent<InfoTracker>().Hide();
+                depthOfField.active = true;
+                InterRound.SetActive(true);
+                InterRound.transform.Find("TopText").GetComponent<Text>().text = "Round " + roundNum.ToString() + " Complete";
+                InterRound.transform.Find("P1").GetComponent<Text>().text = Player1RoundsWon.ToString();
+                InterRound.transform.Find("P2").GetComponent<Text>().text = Player2RoundsWon.ToString();
+                InterRound.transform.Find("P3").GetComponent<Text>().text = Player3RoundsWon.ToString();
+                InterRound.transform.Find("P4").GetComponent<Text>().text = Player4RoundsWon.ToString();
+                InterRound.transform.Find("WeaponText").GetComponent<Text>().text = weaponList[roundNum].ToString();
+                sm.PlaySound("roundOver");
 
+                yield return new WaitForSeconds(5);
+
+                sm.PlaySound("round" + ((roundNum + 1).ToString()));
+
+                yield return new WaitForSeconds(5);
+
+                depthOfField.active = false;
+                InterRound.SetActive(false);
+                resetScore();
+                roundNum++; // advances to next round
+                player1Mods = new int[4];
+                player2Mods = new int[4];
+                player3Mods = new int[4];
+                player4Mods = new int[4];
+                md.ResetPanels();
+                resetPlayers(loser);
+
+                yield return new WaitForSeconds(0.1f);
+
+                RoundCanvas.SetActive(true);
+                Player1Canvas.transform.Find("ToHide").gameObject.SetActive(true);
+                Player2Canvas.transform.Find("ToHide").gameObject.SetActive(true);
+                Player3Canvas.transform.Find("ToHide").gameObject.SetActive(true);
+                Player4Canvas.transform.Find("ToHide").gameObject.SetActive(true);
+                Player1Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+                Player2Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player2Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+                Player3Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player3Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+                Player4Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player4Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+                RoundCounter.text = "Round " + roundNum.ToString();
+                StartCoroutine(CountDown());
+            }
+            else
+            {
+                EndMatch(won);
+            }
         }
     }
 
@@ -775,16 +851,72 @@ public class RoundManager : MonoBehaviour
                     Player4.GetComponent<InfoTracker>().Hide();
                 }
 
-                //check if battle or round end
+                //if round end
                 if(Player1Kills > 1 || Player2Kills > 1 || Player3Kills > 1 || Player3Kills > 1)
                 {
                     StartCoroutine(NextRound(id));
                 }
+
+                //if battle end
                 else
                 {
                     yield return new WaitForSeconds(downtime);
                     resetPlayers(id);
-                    //apply mod
+                    int modChooser = Random.Range(1, 3);
+                    if(modChooser == 1)
+                    {
+                        if(GetBattleWinner() == 1)
+                        {
+                            BattleModAssign(false, 1);
+                            BattleModActivate(newMod);
+                        }
+                        else if (GetBattleWinner() == 2)
+                        {
+                            BattleModAssign(false, 2);
+                            BattleModActivate(newMod);
+                        }
+                        else if (GetBattleWinner() == 3)
+                        {
+                            BattleModAssign(false, 3);
+                            BattleModActivate(newMod);
+                        }
+                        else if (GetBattleWinner() == 4)
+                        {
+                            BattleModAssign(false, 4);
+                            BattleModActivate(newMod);
+                        }
+                    }
+                    else
+                    {
+                        if (GetBattleWinner() == 1)
+                        {
+                            BattleModAssign(true, 2);
+                            BattleModAssign(true, 3);
+                            BattleModAssign(true, 4);
+                            BattleModActivate(newMod);
+                        }
+                        else if (GetBattleWinner() == 2)
+                        {
+                            BattleModAssign(true, 1);
+                            BattleModAssign(true, 3);
+                            BattleModAssign(true, 4);
+                            BattleModActivate(newMod);
+                        }
+                        else if (GetBattleWinner() == 3)
+                        {
+                            BattleModAssign(true, 1);
+                            BattleModAssign(true, 2);
+                            BattleModAssign(true, 4);
+                            BattleModActivate(newMod); ;
+                        }
+                        else if (GetBattleWinner() == 4)
+                        {
+                            BattleModAssign(true, 1);
+                            BattleModAssign(true, 2);
+                            BattleModAssign(true, 3);
+                            BattleModActivate(newMod);
+                        }
+                    }
                 }
             }
         }
