@@ -354,7 +354,8 @@ public class RoundManager : MonoBehaviour
             Rotator.live = false;
             StartCoroutine(PlayerDeath(loser));
         }
-        if(players == 4)
+
+        else if(players == 4)
         {
             if(GetLivingFourPlayers() <= 1)
             {
@@ -380,8 +381,8 @@ public class RoundManager : MonoBehaviour
                     Player4Score.text = Player4Kills.ToString();
                 }
                 Rotator.live = false;
-                StartCoroutine(PlayerDeath(loser));
             }
+            StartCoroutine(PlayerDeath(loser));
         }
     }
 
@@ -727,7 +728,8 @@ public class RoundManager : MonoBehaviour
         Rotator.live = true;
         yield return null;
         }
-        if(players == 4)
+
+        else if(players == 4)
         {
             if(id == 1)
             {
@@ -755,7 +757,22 @@ public class RoundManager : MonoBehaviour
             }
             if(GetLivingFourPlayers() >= 2)
             {
-
+                if(GetBattleWinner() == 1)
+                {
+                    Player1.GetComponent<InfoTracker>().Hide();
+                }
+                else if(GetBattleWinner() == 2)
+                {
+                    Player2.GetComponent<InfoTracker>().Hide();
+                }
+                else if (GetBattleWinner() == 3)
+                {
+                    Player3.GetComponent<InfoTracker>().Hide();
+                }
+                else if (GetBattleWinner() == 4)
+                {
+                    Player4.GetComponent<InfoTracker>().Hide();
+                }
             }
             else
             {
