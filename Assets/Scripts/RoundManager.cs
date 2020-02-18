@@ -584,7 +584,7 @@ public class RoundManager : MonoBehaviour
 
     private IEnumerator PlayerDeath(int id)
     {
-        if(players == 2)
+        if (players == 2)
         {
             Debug.Log("Player died, running coroutine...");
             int posNeg = Random.Range(1, 11);
@@ -616,39 +616,40 @@ public class RoundManager : MonoBehaviour
                     StartCoroutine(NextRound(id));
                 }
             }
-        }
 
-        else if(id == 2)
-        {
-            Player2Cam.GetComponent<PlayerController>().enabled = false;
-            Player2.GetComponent<Rigidbody>().useGravity = true;
-            Player2Cam.transform.SetParent(Player2.transform);
-            Player1.GetComponent<InfoTracker>().Hide();
-
-            if (Player1Kills < 3)
+            else if (id == 2)
             {
-                sm.PlaySound("kill");
-                yield return new WaitForSeconds(downtime);
-                resetPlayers(id);
-                if (posNeg < 8)
+                Player2Cam.GetComponent<PlayerController>().enabled = false;
+                Player2.GetComponent<Rigidbody>().useGravity = true;
+                Player2Cam.transform.SetParent(Player2.transform);
+                Player1.GetComponent<InfoTracker>().Hide();
+
+                if (Player1Kills < 3)
                 {
-                    BattleModAssign(true, 2); // choose a modifier
-                    BattleModActivate(newMod); // set it
+                    sm.PlaySound("kill");
+                    yield return new WaitForSeconds(downtime);
+                    resetPlayers(id);
+                    if (posNeg < 8)
+                    {
+                        BattleModAssign(true, 2); // choose a modifier
+                        BattleModActivate(newMod); // set it
+                    }
+                    else
+                    {
+                        BattleModAssign(false, 1); // choose a modifier
+                        BattleModActivate(newMod); // set it
+                    }
                 }
+
                 else
                 {
-                    BattleModAssign(false, 1); // choose a modifier
-                    BattleModActivate(newMod); // set it
+                    StartCoroutine(NextRound(id));
                 }
             }
-
-            else
-            {
-                StartCoroutine(NextRound(id));
-            }
-        }
         Rotator.live = true;
         yield return null;
+
+        }
     }
 
     private void PlayMusic(int currentRoundNum)
