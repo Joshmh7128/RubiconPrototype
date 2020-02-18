@@ -192,7 +192,7 @@ public class InfoTracker : MonoBehaviour
             }
         }
 
-        if(taken > 0)
+        if(taken > 0 && hp > 0)
         {
             armor = 0;
             armorText.text = "";

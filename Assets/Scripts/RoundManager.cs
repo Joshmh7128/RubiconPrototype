@@ -125,7 +125,7 @@ public class RoundManager : MonoBehaviour
     public int[] player4Mods = new int[4];
 
     public int newMod;
-    public int goodMod = 0;
+    private int goodMod = 0;
 
     #endregion
 
@@ -676,7 +676,7 @@ public class RoundManager : MonoBehaviour
             ma2.ResetMods();
             ma3.ResetMods();
             ma4.ResetMods();
-            if(Player1RoundsWon > 1 || Player2RoundsWon > 1 || Player3RoundsWon > 1 || Player4RoundsWon > 1)
+            if(Player1RoundsWon < 2 && Player2RoundsWon < 2 && Player3RoundsWon < 2 && Player4RoundsWon < 2)
             {
                 RoundCanvas.SetActive(false);
                 Player1.GetComponent<InfoTracker>().Hide();
@@ -875,7 +875,7 @@ public class RoundManager : MonoBehaviour
                 }
 
                 //if round end
-                if(Player1Kills > 1 || Player2Kills > 1 || Player3Kills > 1 || Player3Kills > 1)
+                if(Player1Kills > 1 || Player2Kills > 1 || Player3Kills > 1 || Player4Kills > 1)
                 {
                     StartCoroutine(NextRound(id));
                 }
@@ -941,6 +941,7 @@ public class RoundManager : MonoBehaviour
                             BattleModActivate(newMod);
                         }
                     }
+                    Debug.Log("Good mod is: " + goodMod);
                     goodMod = 0;
                     switch (newMod)
                     {
@@ -1076,10 +1077,12 @@ public class RoundManager : MonoBehaviour
                 {
                     if(goodMod == 0)
                     {
+                        Debug.Log("generating good mod: " + j);
                         goodMod = j;
                     }
                     else
                     {
+                        Debug.Log("copying from good mod: " + goodMod);
                         j = goodMod;
                     }
                 }
