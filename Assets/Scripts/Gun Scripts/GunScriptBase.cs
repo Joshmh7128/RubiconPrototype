@@ -83,7 +83,7 @@ public class GunScriptBase : MonoBehaviour
                 dmg = 35;
                 if (x > 1)
                 {
-                    dmg = 20;
+                    dmg = 15;
                 }
                 shake = 0.1f;
                 //player.grenadeCrosshairs.SetActive(true);
