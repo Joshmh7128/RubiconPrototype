@@ -153,7 +153,10 @@ public class InfoTracker : MonoBehaviour
 
     public void AddXray(int activeTime)
     {
-        StartCoroutine(Xray(activeTime));
+        if(!dead)
+        {
+            StartCoroutine(Xray(activeTime));
+        }
     }
 
     private IEnumerator Xray(int uptime)
