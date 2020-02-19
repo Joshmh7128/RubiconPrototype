@@ -328,7 +328,14 @@ public class GunScriptBase : MonoBehaviour
 
         if(rewiredPlayer.GetButton("A") && myInfo.rm.isOver)
         {
-            SceneManager.LoadScene("GameplayBase");
+            if(myInfo.rm.players == 2)
+            {
+                SceneManager.LoadScene("GameplayBase");
+            }
+            else if (myInfo.rm.players == 4)
+            {
+                SceneManager.LoadScene("GameplayBase4p");
+            }
         }
 
         if (rewiredPlayer.GetButton("B") && myInfo.rm.isOver)
