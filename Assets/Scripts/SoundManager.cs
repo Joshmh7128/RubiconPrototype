@@ -293,7 +293,7 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
-        if(!announcerMain.isPlaying && chatterChecked == false)
+        if(!announcerMain.isPlaying && chatterChecked == false && Time.timeSinceLevelLoad > 15)
         {
             StartCoroutine(PlayChatter());
             chatterChecked = true;

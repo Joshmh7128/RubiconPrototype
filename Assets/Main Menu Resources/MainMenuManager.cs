@@ -79,7 +79,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene("GameplayBase");
+        WhichScene.SceneToLoad = "GameplayBase";
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public void OptionsMenuToggle()
