@@ -330,17 +330,20 @@ public class GunScriptBase : MonoBehaviour
         {
             if(myInfo.rm.players == 2)
             {
-                SceneManager.LoadScene("GameplayBase");
+                WhichScene.SceneToLoad = "GameplayBase";
+                SceneManager.LoadScene("LoadingScene");
             }
             else if (myInfo.rm.players == 4)
             {
-                SceneManager.LoadScene("GameplayBase4p");
+                WhichScene.SceneToLoad = "GameplayBase4p";
+                SceneManager.LoadScene("LoadingScene");
             }
         }
 
         if (rewiredPlayer.GetButton("B") && myInfo.rm.isOver)
         {
-            SceneManager.LoadScene("NewMainMenu");
+            WhichScene.SceneToLoad = "NewMainMenu";
+            SceneManager.LoadScene("LoadingScene");
         }
 
     }
