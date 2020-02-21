@@ -16,7 +16,7 @@ public class InfoTracker : MonoBehaviour
     public int armor = 0;
     public int maxArmor = 0;
     private int tempMaxArmor;
-    private bool dead = false;
+    public bool dead = false;
 
     public Image hpBar;
     public Text hpText;

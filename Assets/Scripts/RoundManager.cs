@@ -395,19 +395,19 @@ public class RoundManager : MonoBehaviour
     public int GetLivingFourPlayers()
     {
         int alive = 0;
-        if(Player1.GetComponent<InfoTracker>().hp > 0)
+        if(!Player1.GetComponent<InfoTracker>().dead)
         {
             alive++;
         }
-        if (Player2.GetComponent<InfoTracker>().hp > 0)
+        if (!Player2.GetComponent<InfoTracker>().dead)
         {
             alive++;
         }
-        if (Player3.GetComponent<InfoTracker>().hp > 0)
+        if (!Player3.GetComponent<InfoTracker>().dead)
         {
             alive++;
         }
-        if (Player4.GetComponent<InfoTracker>().hp > 0)
+        if (!Player4.GetComponent<InfoTracker>().dead)
         {
             alive++;
         }
@@ -416,15 +416,15 @@ public class RoundManager : MonoBehaviour
 
     public int GetBattleWinner()
     {
-        if(Player1.GetComponent<InfoTracker>().hp > 0)
+        if(!Player1.GetComponent<InfoTracker>().dead)
         {
             return 1;
         }
-        else if (Player2.GetComponent<InfoTracker>().hp > 0)
+        else if (!Player2.GetComponent<InfoTracker>().dead)
         {
             return 2;
         }
-        else if (Player3.GetComponent<InfoTracker>().hp > 0)
+        else if (!Player3.GetComponent<InfoTracker>().dead)
         {
             return 3;
         }
