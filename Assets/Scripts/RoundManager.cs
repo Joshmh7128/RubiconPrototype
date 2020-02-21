@@ -728,6 +728,7 @@ public class RoundManager : MonoBehaviour
             {
                 EndMatch(won);
             }
+            PlayMusic(roundNum);
         }
     }
 
