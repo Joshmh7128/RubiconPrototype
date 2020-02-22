@@ -578,6 +578,8 @@ MonoBehaviour:
   myBars:
   - {fileID: 9089779280727141889}
   - {fileID: 9089779280846803142}
+  - {fileID: 4429445532761037660}
+  - {fileID: 4075140549159257267}
   pickup1: {fileID: 1449638096123819848, guid: f9a5dd0cf53210b4ea990bf79816fcc2, type: 3}
   pickup2: {fileID: 6036684876639179153, guid: f4e94f8ecb7522e4b8c36c1f39b41008, type: 3}
   pickup3: {fileID: 7328360200165749936, guid: b5b92cab72a6b1a4e9282fbffb22affa, type: 3}
