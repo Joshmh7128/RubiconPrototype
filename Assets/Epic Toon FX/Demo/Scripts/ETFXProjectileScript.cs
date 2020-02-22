@@ -10,6 +10,7 @@ using System.Collections;
         public float colliderRadius = 1f;
         [Range(0f, 1f)] // This is an offset that moves the impact effect slightly away from the point of impact to reduce clipping of the impact effect
         public float collideOffset = 0.15f;
+        public bool mute = false;
 
         void Start()
         {
@@ -19,6 +20,10 @@ using System.Collections;
             {
                 muzzleParticle = Instantiate(muzzleParticle, transform.position, transform.rotation) as GameObject;
                 Destroy(muzzleParticle, 1.5f); // 2nd parameter is lifetime of effect in seconds
+            }
+            if(mute)
+            {
+                projectileParticle.GetComponent<AudioSource>().enabled = false;
             }
         }
 		
@@ -49,6 +54,10 @@ using System.Collections;
                 transform.position = hit.point + (hit.normal * collideOffset); // Move projectile to point of collision
 
                 GameObject impactP = Instantiate(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject; // Spawns impact effect
+                if(mute)
+                {
+                    impactP.GetComponent<AudioSource>().enabled = false;
+                }
 
                 ParticleSystem[] trails = GetComponentsInChildren<ParticleSystem>(); // Gets a list of particle systems, as we need to detach the trails
                 //Component at [0] is that of the parent i.e. this object (if there is any)

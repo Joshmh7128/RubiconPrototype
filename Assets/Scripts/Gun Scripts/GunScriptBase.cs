@@ -21,6 +21,7 @@ public class GunScriptBase : MonoBehaviour
     private Rewired.Player rewiredPlayer;
     private float shake = 0.1f;
     private bool isLocked;
+    private bool firstFired = false;
 
     public GunScriptBase(PlayerController player)
 	{
@@ -251,6 +252,10 @@ public class GunScriptBase : MonoBehaviour
                     {
                         for (int j = 0; j < 6; j++)
                         {
+                            if(j == 0)
+                            {
+                                firstFired = true;
+                            }
                             shootProjectile(player.shotgunShotRotAdd + ((x - 1) * 3), player.shotgunEnd, player.shotgunProjectile, player.shotgunShotSpeed);
                         }
                     } 
@@ -361,6 +366,11 @@ public class GunScriptBase : MonoBehaviour
         projectile.GetComponent<ProjectileScript>().burst = bloodBurst;
         projectile.GetComponent<ProjectileScript>().modApp = player.modApp; // set this to utilize vampirism
         projectile.GetComponent<ProjectileScript>().myID = myInfo.id;
+        if(!firstFired && player.activeWeapon == PlayerController.Weapons.Shotgun)
+        {
+            projectile.GetComponent<ETFXProjectileScript>().mute = true;
+        }
+        firstFired = false;
         float myX = Random.Range(-randomShotRot, randomShotRot);
         float myY = Random.Range(-randomShotRot, randomShotRot);
         float myZ = Random.Range(-randomShotRot, randomShotRot);
