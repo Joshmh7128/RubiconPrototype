@@ -54,10 +54,12 @@ using System.Collections;
                 transform.position = hit.point + (hit.normal * collideOffset); // Move projectile to point of collision
 
                 GameObject impactP = Instantiate(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject; // Spawns impact effect
+                
                 if(mute)
                 {
                     impactP.GetComponent<AudioSource>().enabled = false;
                 }
+                
 
                 ParticleSystem[] trails = GetComponentsInChildren<ParticleSystem>(); // Gets a list of particle systems, as we need to detach the trails
                 //Component at [0] is that of the parent i.e. this object (if there is any)
