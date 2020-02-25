@@ -56,7 +56,7 @@ public class GunScriptBase : MonoBehaviour
                 player.blaster.SetActive(true);
                 magSize = 10;
                 myInfo.magSize = magSize;
-                fireRate = 0.2f;
+                fireRate = 0.25f;
                 dmg = 7;
                 if (x > 1)
                 {
@@ -104,7 +104,7 @@ public class GunScriptBase : MonoBehaviour
                 player.machineGun.SetActive(true);
                 magSize = 25;
                 myInfo.magSize = magSize;
-                fireRate = 0.1f;
+                fireRate = 0.15f;
                 dmg = 8;
                 if (x > 1)
                 {
