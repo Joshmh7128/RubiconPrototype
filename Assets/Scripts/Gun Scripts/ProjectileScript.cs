@@ -11,11 +11,29 @@ public class ProjectileScript : MonoBehaviour
     public int myID;
     public ParticleSystem burst;
 
+    /*
     private void Start()
     {
         if(modApp.ChargeCheck())
         {
             this.gameObject.transform.localScale = new Vector3(this.gameObject.transform.localScale.x * 3, 
+                this.gameObject.transform.localScale.y * 3, this.gameObject.transform.localScale.z * 3);
+            dmgMult = 1.5f;
+        }
+    }
+    */
+
+    private void OnEnable()
+    {
+        StartCoroutine("SetUpObj");
+    }
+
+    IEnumerator SetUpObj()
+    {
+        yield return new WaitForEndOfFrame();
+        if (modApp.ChargeCheck())
+        {
+            this.gameObject.transform.localScale = new Vector3(this.gameObject.transform.localScale.x * 3,
                 this.gameObject.transform.localScale.y * 3, this.gameObject.transform.localScale.z * 3);
             dmgMult = 1.5f;
         }

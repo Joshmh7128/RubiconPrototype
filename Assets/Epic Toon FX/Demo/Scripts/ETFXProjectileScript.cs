@@ -11,7 +11,9 @@ using System.Collections;
         [Range(0f, 1f)] // This is an offset that moves the impact effect slightly away from the point of impact to reduce clipping of the impact effect
         public float collideOffset = 0.15f;
         public bool mute = false;
+        private AP_Reference apRef;
 
+        /*
         void Start()
         {
             projectileParticle = Instantiate(projectileParticle, transform.position, transform.rotation) as GameObject;
@@ -26,8 +28,25 @@ using System.Collections;
                 projectileParticle.GetComponent<AudioSource>().enabled = false;
             }
         }
-		
-        void FixedUpdate()
+        */
+
+    private void OnEnable()
+    {
+        apRef = gameObject.GetComponent<AP_Reference>();
+        projectileParticle = Instantiate(projectileParticle, transform.position, transform.rotation) as GameObject;
+        projectileParticle.transform.parent = transform;
+        if (muzzleParticle)
+        {
+            muzzleParticle = Instantiate(muzzleParticle, transform.position, transform.rotation) as GameObject;
+            Destroy(muzzleParticle, 1.5f); // 2nd parameter is lifetime of effect in seconds
+        }
+        if (mute)
+        {
+            projectileParticle.GetComponent<AudioSource>().enabled = false;
+        }
+    }
+
+    void FixedUpdate()
         {	
 			if (GetComponent<Rigidbody>().velocity.magnitude != 0)
 			{
@@ -78,7 +97,8 @@ using System.Collections;
 
                 Destroy(projectileParticle, 3f); // Removes particle effect after delay
                 Destroy(impactP, 3.5f); // Removes impact effect after delay
-                Destroy(gameObject); // Removes the projectile
+                                        //Destroy(gameObject); // Removes the projectile
+                MF_AutoPool.Despawn(apRef);
             }
         }
     }

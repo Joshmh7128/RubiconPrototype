@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 13576440}
   - component: {fileID: 5479992}
   - component: {fileID: 11464288}
+  - component: {fileID: 4547556567764093803}
+  - component: {fileID: 4056392258669977050}
   m_Layer: 0
   m_Name: LiquidWaterOBJ
   m_TagString: Untagged
@@ -79,3 +81,35 @@ MonoBehaviour:
   muzzleParticle: {fileID: 176998, guid: f1179f7c8280ed9418120582fab4e86b, type: 3}
   colliderRadius: 1
   collideOffset: 0.15
+  mute: 0
+--- !u!114 &4547556567764093803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cc300b07705bd4d8d766d68d7b7bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modApp: {fileID: 0}
+  dmg: 0
+  myID: 0
+  burst: {fileID: 0}
+--- !u!114 &4056392258669977050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039dfc7e753bd42a8a59285d15464252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  poolScript: {fileID: 0}
+  timeSpawned: 0

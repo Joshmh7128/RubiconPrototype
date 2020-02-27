@@ -83,6 +83,8 @@ public class PlayerController : MonoBehaviour
     public GameObject shotgunProjectile;
     public GameObject sniperProjectile;
 
+    public GameObject testProjectile;
+
     public PlayerState _state
 	{
 		get;

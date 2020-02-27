@@ -22,6 +22,7 @@ public class GunScriptBase : MonoBehaviour
     private float shake = 0.1f;
     private bool isLocked;
     private bool firstFired = false;
+    private GameObject testProj;
 
     public GunScriptBase(PlayerController player)
 	{
@@ -33,6 +34,7 @@ public class GunScriptBase : MonoBehaviour
 		mag = magSize; // mag size 
         bloodBurst = player.blood;
         overlapObj = player.overlapCheckObj;
+        testProj = player.testProjectile;
 	}
 
 	public void Update()
@@ -355,7 +357,9 @@ public class GunScriptBase : MonoBehaviour
 
     void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)
     {
-        GameObject projectile = Instantiate(shotProjectile, gunEnd.position, Quaternion.identity); //Spawns the selected projectile
+        //GameObject projectile = Instantiate(shotProjectile, gunEnd.position, Quaternion.identity); //Spawns the selected projectile
+        GameObject projectile = MF_AutoPool.Spawn(testProj);
+        projectile.transform.position = gunEnd.transform.position;
         GameObject overlapper = Instantiate(overlapObj, gunEnd.position, Quaternion.identity);
         overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
         overlapper.GetComponent<OverlapChecker>().damage = dmg;
