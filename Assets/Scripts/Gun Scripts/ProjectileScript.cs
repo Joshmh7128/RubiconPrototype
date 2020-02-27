@@ -11,7 +11,7 @@ public class ProjectileScript : MonoBehaviour
     public int myID;
     public ParticleSystem burst;
 
-    /*
+    
     private void Start()
     {
         if(modApp.ChargeCheck())
@@ -21,8 +21,8 @@ public class ProjectileScript : MonoBehaviour
             dmgMult = 1.5f;
         }
     }
-    */
-
+    
+    /*
     private void OnEnable()
     {
         StartCoroutine("SetUpObj");
@@ -38,6 +38,7 @@ public class ProjectileScript : MonoBehaviour
             dmgMult = 1.5f;
         }
     }
+    */
 
     private void OnCollisionEnter(Collision hit)
     {

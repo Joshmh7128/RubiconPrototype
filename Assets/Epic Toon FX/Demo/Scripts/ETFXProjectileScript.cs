@@ -13,7 +13,7 @@ using System.Collections;
         public bool mute = false;
         private AP_Reference apRef;
 
-        /*
+        
         void Start()
         {
             projectileParticle = Instantiate(projectileParticle, transform.position, transform.rotation) as GameObject;
@@ -28,8 +28,8 @@ using System.Collections;
                 projectileParticle.GetComponent<AudioSource>().enabled = false;
             }
         }
-        */
-
+        
+    /*
     private void OnEnable()
     {
         apRef = gameObject.GetComponent<AP_Reference>();
@@ -45,6 +45,7 @@ using System.Collections;
             projectileParticle.GetComponent<AudioSource>().enabled = false;
         }
     }
+    */
 
     void FixedUpdate()
         {	
