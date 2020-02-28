@@ -358,14 +358,16 @@ public class GunScriptBase : MonoBehaviour
         GameObject projectile = Instantiate(shotProjectile, gunEnd.position, Quaternion.identity); //Spawns the selected projectile
         GameObject overlapper = Instantiate(overlapObj, gunEnd.position, Quaternion.identity);
         overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
-        overlapper.GetComponent<OverlapChecker>().damage = dmg;
-        overlapper.GetComponent<OverlapChecker>().myID = player.playerID;
+        OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
+        ovc.damage = dmg;
+        ovc.myID = player.playerID;
         projectile.AddComponent<DestroyAfterTime>();
         projectile.GetComponent<DestroyAfterTime>().key = 5;
-        projectile.GetComponent<ProjectileScript>().dmg = dmg; // set our damage properly
-        projectile.GetComponent<ProjectileScript>().burst = bloodBurst;
-        projectile.GetComponent<ProjectileScript>().modApp = player.modApp; // set this to utilize vampirism
-        projectile.GetComponent<ProjectileScript>().myID = myInfo.id;
+        ProjectileScript ps = projectile.GetComponent<ProjectileScript>();
+        ps.dmg = dmg; // set our damage properly
+        ps.burst = bloodBurst;
+        ps.modApp = player.modApp; // set this to utilize vampirism
+        ps.myID = myInfo.id;
         if(!firstFired && player.activeWeapon == PlayerController.Weapons.Shotgun)
         {
             projectile.GetComponent<ETFXProjectileScript>().mute = true;
