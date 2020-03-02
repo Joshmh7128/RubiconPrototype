@@ -80,6 +80,7 @@ public class ProjectileScript : MonoBehaviour
         }
     }
 
+    /*
     private void OnCollisionEnter(Collision hit)
     {
         if (hit.collider.gameObject.CompareTag("Player"))
@@ -100,4 +101,5 @@ public class ProjectileScript : MonoBehaviour
             hit.collider.gameObject.GetComponent<JokeObject>().TakeDamage((int)(dmg * dmgMult));
         }
     }
+    */
 }
