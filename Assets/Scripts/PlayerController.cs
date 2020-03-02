@@ -83,6 +83,14 @@ public class PlayerController : MonoBehaviour
     public GameObject shotgunProjectile;
     public GameObject sniperProjectile;
 
+    [Header("Weapon Muzzle Flashes")]
+    public GameObject blasterMuzzle;
+    public GameObject grenadeMuzzle;
+    public GameObject machineMuzzle;
+    public GameObject missileMuzzle;
+    public GameObject shotgunMuzzle;
+    public GameObject sniperMuzzle;
+
     public PlayerState _state
 	{
 		get;
