@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 19959462}
   - component: {fileID: 7793171307632082913}
   - component: {fileID: 3691522914464993406}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: P2_Blaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4664,7 +4664,7 @@ GameObject:
   - component: {fileID: 439976}
   - component: {fileID: 19894380}
   - component: {fileID: 19916514}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: FireGlowTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

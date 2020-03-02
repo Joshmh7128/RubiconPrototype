@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 400330}
   - component: {fileID: 19818466}
   - component: {fileID: 19982656}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4639,7 +4639,7 @@ GameObject:
   - component: {fileID: 19944016}
   - component: {fileID: 3067063444585408261}
   - component: {fileID: 3321296471244996274}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: P1_Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9291,7 +9291,7 @@ GameObject:
   - component: {fileID: 426712}
   - component: {fileID: 19854584}
   - component: {fileID: 19993692}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

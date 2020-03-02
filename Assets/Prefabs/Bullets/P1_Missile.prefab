@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 464292}
   - component: {fileID: 19891616}
   - component: {fileID: 19907760}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4685,7 +4685,7 @@ GameObject:
   - component: {fileID: 10898388}
   - component: {fileID: 3295747588982336958}
   - component: {fileID: 4491473784623786188}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: P1_Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9369,7 +9369,7 @@ GameObject:
   - component: {fileID: 430112}
   - component: {fileID: 19850848}
   - component: {fileID: 19990700}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: FireGlowTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14004,7 +14004,7 @@ GameObject:
   - component: {fileID: 489164}
   - component: {fileID: 19881218}
   - component: {fileID: 19994098}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: FireTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18630,7 +18630,7 @@ GameObject:
   - component: {fileID: 410578}
   - component: {fileID: 19829218}
   - component: {fileID: 19907386}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RingGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23256,7 +23256,7 @@ GameObject:
   - component: {fileID: 429294}
   - component: {fileID: 19898588}
   - component: {fileID: 19979100}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BigGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

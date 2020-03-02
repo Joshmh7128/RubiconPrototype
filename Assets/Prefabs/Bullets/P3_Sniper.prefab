@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 424054}
   - component: {fileID: 19846296}
   - component: {fileID: 19951996}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: FireSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4637,7 +4637,7 @@ GameObject:
   - component: {fileID: 461094}
   - component: {fileID: 19839650}
   - component: {fileID: 19913144}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: WhiteGlobe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9256,7 +9256,7 @@ GameObject:
   - component: {fileID: 19914910}
   - component: {fileID: 3704175919811760204}
   - component: {fileID: 2724756977202342069}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: P3_Sniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13919,7 +13919,7 @@ GameObject:
   - component: {fileID: 402688}
   - component: {fileID: 19832024}
   - component: {fileID: 19959306}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: SmokeTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18527,7 +18527,7 @@ GameObject:
   - component: {fileID: 430656}
   - component: {fileID: 19856146}
   - component: {fileID: 19999128}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

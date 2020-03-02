@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 413330}
   - component: {fileID: 19848362}
   - component: {fileID: 19995754}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Nova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4601,7 +4601,7 @@ GameObject:
   - component: {fileID: 437594}
   - component: {fileID: 19896570}
   - component: {fileID: 19907034}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: WhiteGlobe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9218,7 +9218,7 @@ GameObject:
   - component: {fileID: 404056}
   - component: {fileID: 19804764}
   - component: {fileID: 19903070}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13847,7 +13847,7 @@ GameObject:
   - component: {fileID: 10800094}
   - component: {fileID: 8830913213770738067}
   - component: {fileID: 889629153037795949}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: P2_Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18548,7 +18548,7 @@ GameObject:
   - component: {fileID: 483480}
   - component: {fileID: 19802438}
   - component: {fileID: 19981532}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 10885552}
   - component: {fileID: 3745347270974620896}
   - component: {fileID: 7267972804661740830}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: P3_Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4715,7 +4715,7 @@ GameObject:
   - component: {fileID: 447980}
   - component: {fileID: 19805814}
   - component: {fileID: 19993550}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: FireGlowTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9341,7 +9341,7 @@ GameObject:
   - component: {fileID: 489142}
   - component: {fileID: 19802188}
   - component: {fileID: 19966394}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: SmokeTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13958,7 +13958,7 @@ GameObject:
   - component: {fileID: 441236}
   - component: {fileID: 19891748}
   - component: {fileID: 19904428}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: FireTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18593,7 +18593,7 @@ GameObject:
   - component: {fileID: 428082}
   - component: {fileID: 19812062}
   - component: {fileID: 19904988}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
