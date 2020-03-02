@@ -211,7 +211,7 @@ public class GunScriptBase : MonoBehaviour
                 // blaster
                 if (player.activeWeapon == PlayerController.Weapons.Blaster)
                 {
-                    Instantiate(player.blasterMuzzle, player.blasterEnd.position, Quaternion.identity);
+                    Instantiate(player.blasterMuzzle, player.blasterEnd.position, player.transform.localRotation);
                     GameObject overlapper = Instantiate(overlapObj, player.blasterEnd.position, Quaternion.identity);
                     overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
                     OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
@@ -226,7 +226,7 @@ public class GunScriptBase : MonoBehaviour
                 // grenade launcher
                 if (player.activeWeapon == PlayerController.Weapons.Grenade)
                 {
-                    Instantiate(player.grenadeMuzzle, player.grenadeLauncherEnd.position, Quaternion.identity);
+                    Instantiate(player.grenadeMuzzle, player.grenadeLauncherEnd.position, player.transform.localRotation);
                     GameObject overlapper = Instantiate(overlapObj, player.grenadeLauncherEnd.position, Quaternion.identity);
                     overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
                     OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
@@ -241,7 +241,7 @@ public class GunScriptBase : MonoBehaviour
                 // machine gun
                 if (player.activeWeapon == PlayerController.Weapons.Machine)
                 {
-                    Instantiate(player.machineMuzzle, player.machineGunEnd.position, Quaternion.identity);
+                    Instantiate(player.machineMuzzle, player.machineGunEnd.position, player.transform.localRotation);
                     GameObject overlapper = Instantiate(overlapObj, player.machineGunEnd.position, Quaternion.identity);
                     overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
                     OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
@@ -256,7 +256,7 @@ public class GunScriptBase : MonoBehaviour
                 // missile launcher
                 if (player.activeWeapon == PlayerController.Weapons.Missile)
                 {
-                    Instantiate(player.missileMuzzle, player.missileLauncherEnd.position, Quaternion.identity);
+                    Instantiate(player.missileMuzzle, player.missileLauncherEnd.position, player.transform.localRotation);
                     GameObject overlapper = Instantiate(overlapObj, player.missileLauncherEnd.position, Quaternion.identity);
                     overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
                     OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
@@ -271,7 +271,7 @@ public class GunScriptBase : MonoBehaviour
                 // shotgun 
                 if (player.activeWeapon == PlayerController.Weapons.Shotgun)
                 {
-                    Instantiate(player.shotgunMuzzle, player.shotgunEnd.position, Quaternion.identity);
+                    Instantiate(player.shotgunMuzzle, player.shotgunEnd.position, player.transform.localRotation);
                     GameObject overlapper = Instantiate(overlapObj, player.shotgunEnd.position, Quaternion.identity);
                     overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
                     OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
@@ -289,7 +289,7 @@ public class GunScriptBase : MonoBehaviour
                 // sniper
                 if (player.activeWeapon == PlayerController.Weapons.Sniper)
                 {
-                    Instantiate(player.sniperMuzzle, player.sniperRifleEnd.position, Quaternion.identity);
+                    Instantiate(player.sniperMuzzle, player.sniperRifleEnd.position, player.transform.localRotation);
                     GameObject overlapper = Instantiate(overlapObj, player.sniperRifleEnd.position, Quaternion.identity);
                     overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
                     OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
