@@ -211,7 +211,12 @@ public class GunScriptBase : MonoBehaviour
                 // blaster
                 if (player.activeWeapon == PlayerController.Weapons.Blaster)
                 {
-                    for(int i = 0; i < x; i++)
+                    GameObject overlapper = Instantiate(overlapObj, player.blasterEnd.position, Quaternion.identity);
+                    overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
+                    OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
+                    ovc.damage = dmg;
+                    ovc.myID = player.playerID;
+                    for (int i = 0; i < x; i++)
                     {
                         shootProjectile(player.blasterShotRotAdd + ((x - 1) * 3), player.blasterEnd, player.blasterProjectile, player.blasterShotSpeed);
                     }
@@ -220,6 +225,11 @@ public class GunScriptBase : MonoBehaviour
                 // grenade launcher
                 if (player.activeWeapon == PlayerController.Weapons.Grenade)
                 {
+                    GameObject overlapper = Instantiate(overlapObj, player.grenadeLauncherEnd.position, Quaternion.identity);
+                    overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
+                    OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
+                    ovc.damage = dmg;
+                    ovc.myID = player.playerID;
                     for (int i = 0; i < x; i++)
                     {
                         shootProjectile(player.grenadeShotRotAdd + ((x - 1) * 3), player.grenadeLauncherEnd, player.grenadeProjectile, player.grenadeShotSpeed);
@@ -229,6 +239,11 @@ public class GunScriptBase : MonoBehaviour
                 // machine gun
                 if (player.activeWeapon == PlayerController.Weapons.Machine)
                 {
+                    GameObject overlapper = Instantiate(overlapObj, player.machineGunEnd.position, Quaternion.identity);
+                    overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
+                    OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
+                    ovc.damage = dmg;
+                    ovc.myID = player.playerID;
                     for (int i = 0; i < x; i++)
                     {
                         shootProjectile(player.machineShotRotAdd + ((x - 1) * 3), player.machineGunEnd, player.machineProjectile, player.machineShotSpeed);
@@ -238,6 +253,11 @@ public class GunScriptBase : MonoBehaviour
                 // missile launcher
                 if (player.activeWeapon == PlayerController.Weapons.Missile)
                 {
+                    GameObject overlapper = Instantiate(overlapObj, player.missileLauncherEnd.position, Quaternion.identity);
+                    overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
+                    OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
+                    ovc.damage = dmg;
+                    ovc.myID = player.playerID;
                     for (int i = 0; i < x; i++)
                     {
                         shootProjectile(player.missileShotRotAdd + ((x - 1) * 3), player.missileLauncherEnd, player.missileProjectile, player.missileShotSpeed);
@@ -247,6 +267,11 @@ public class GunScriptBase : MonoBehaviour
                 // shotgun 
                 if (player.activeWeapon == PlayerController.Weapons.Shotgun)
                 {
+                    GameObject overlapper = Instantiate(overlapObj, player.shotgunEnd.position, Quaternion.identity);
+                    overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
+                    OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
+                    ovc.damage = dmg;
+                    ovc.myID = player.playerID;
                     for (int i = 0; i < x; i++)
                     {
                         for (int j = 0; j < 6; j++)
@@ -259,6 +284,11 @@ public class GunScriptBase : MonoBehaviour
                 // sniper
                 if (player.activeWeapon == PlayerController.Weapons.Sniper)
                 {
+                    GameObject overlapper = Instantiate(overlapObj, player.sniperRifleEnd.position, Quaternion.identity);
+                    overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
+                    OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
+                    ovc.damage = dmg;
+                    ovc.myID = player.playerID;
                     for (int i = 0; i < x; i++)
                     {
                         shootProjectile(player.sniperShotRotAdd + ((x - 1) * 3), player.sniperRifleEnd, player.sniperProjectile, player.sniperShotSpeed);
@@ -351,13 +381,8 @@ public class GunScriptBase : MonoBehaviour
     void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)
     {
         GameObject projectile = Instantiate(shotProjectile, gunEnd.position, Quaternion.identity); //Spawns the selected projectile
-        GameObject overlapper = Instantiate(overlapObj, gunEnd.position, Quaternion.identity);
-        overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
-        OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
-        ovc.damage = dmg;
-        ovc.myID = player.playerID;
-        projectile.AddComponent<DestroyAfterTime>();
-        projectile.GetComponent<DestroyAfterTime>().key = 5;
+        //projectile.AddComponent<DestroyAfterTime>();
+        //projectile.GetComponent<DestroyAfterTime>().key = 5;
         ProjectileScript ps = projectile.GetComponent<ProjectileScript>();
         ps.dmg = dmg; // set our damage properly
         ps.burst = bloodBurst;
