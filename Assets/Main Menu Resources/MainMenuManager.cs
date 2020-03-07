@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.PostProcessing;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -23,15 +24,19 @@ public class MainMenuManager : MonoBehaviour
     public Text announcerVolDisplay;
     public Text musicVolDisplay;
     public SoundManager soundManager;
+    public PostProcessVolume post;
+    DepthOfField depthOfField = null;
+    public GameObject[] toHide;
 
     private void Start()
     {
+        post.profile.TryGetSettings(out depthOfField);
         // on click listeners
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         optionsActive = false;
         optionsButton.onClick.AddListener(OptionsMenuToggle);
-        playButton.onClick.AddListener(LoadLevel);
+        playButton.onClick.AddListener(ModeSelect);
         exitButton.onClick.AddListener(EndGame);
         fullscreenToggle.onClick.AddListener(ToggleFullscreen);
         resetAudioButton.onClick.AddListener(ResetAudio);
@@ -100,5 +105,14 @@ public class MainMenuManager : MonoBehaviour
     {
         Screen.fullScreen = !Screen.fullScreen;
         Debug.Log("Fullscreen toggled");
+    }
+
+    public void ModeSelect()
+    {
+        depthOfField.active = true;
+        foreach(GameObject obj in toHide)
+        {
+            obj.SetActive(false);
+        }
     }
 }
