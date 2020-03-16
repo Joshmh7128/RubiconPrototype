@@ -386,9 +386,7 @@ public class GunScriptBase : MonoBehaviour
 
     void shootProjectile(float randomShotRot, Transform gunEnd, GameObject shotProjectile, float shotSpeed)
     {
-        GameObject projectile = Instantiate(shotProjectile, gunEnd.position, Quaternion.identity); //Spawns the selected projectile
-        //projectile.AddComponent<DestroyAfterTime>();
-        //projectile.GetComponent<DestroyAfterTime>().key = 5;
+        GameObject projectile = Instantiate(shotProjectile, gunEnd.position, player.gameObject.transform.rotation); //Spawns the selected projectile
         ProjectileScript ps = projectile.GetComponent<ProjectileScript>();
         ps.dmg = dmg; // set our damage properly
         ps.burst = bloodBurst;
@@ -397,9 +395,7 @@ public class GunScriptBase : MonoBehaviour
         float myX = Random.Range(-randomShotRot, randomShotRot);
         float myY = Random.Range(-randomShotRot, randomShotRot);
         float myZ = Random.Range(-randomShotRot, randomShotRot);
-        Vector3 newRot = new Vector3(myX, myY, myZ);
-        projectile.transform.localEulerAngles += player.transform.localEulerAngles;
-        projectile.transform.localEulerAngles += newRot;
+        projectile.transform.Rotate(myX, myY, myZ);
         if(modApp.supercharge)
         {
             shotSpeed *= 1.5f;
