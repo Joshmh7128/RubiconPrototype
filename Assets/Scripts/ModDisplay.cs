@@ -74,8 +74,8 @@ public class ModDisplay : MonoBehaviour
             Text modName = Player1Panels[modNum].transform.Find("Text").GetComponent<Text>();
             if (modKey == 1)
             {
-                modName.text = "Shield";
-                ma1.ActivateShield();
+                modName.text = "Armor";
+                ma1.ActivateArmor();
             }
             if (modKey == 2)
             {
@@ -89,8 +89,8 @@ public class ModDisplay : MonoBehaviour
             }
             if (modKey == 4)
             {
-                modName.text = "Armor";
-                ma1.ActivateArmor();
+                modName.text = "Shield";
+                ma1.ActivateShield();
             }
             if (modKey == 5)
             {
