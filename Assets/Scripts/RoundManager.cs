@@ -1052,11 +1052,11 @@ public class RoundManager : MonoBehaviour
 
                     if (isGood)
                     {
-                        j = Random.Range((int)1, (int)9); // choose a good mod
+                        j = Random.Range(1, 9); // choose a good mod
                     }
                     else
                     {
-                        j = Random.Range((int)9, (int)13); // choose a bad mod
+                        j = Random.Range(9, 13); // choose a bad mod
                     }
 
                     for (int f = 0; f < targetMods.Length; f++) // check for no dupes
@@ -1065,11 +1065,11 @@ public class RoundManager : MonoBehaviour
                         {
                             if (isGood)
                             {
-                                j = Random.Range((int)1, (int)9); // choose a good mod
+                                j = Random.Range(1, 9); // choose a good mod
                             }
                             else
                             {
-                                j = Random.Range((int)9, (int)13); // choose a bad mod
+                                j = Random.Range(9, 13); // choose a bad mod
                             }
                         }
                     }
