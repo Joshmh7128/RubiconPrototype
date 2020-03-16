@@ -147,7 +147,6 @@ public class SceneLoader : MonoBehaviour
 
             while (gameLevel.progress < 1)
             {
-                Debug.Log(gameLevel.progress);
                 progressBar.fillAmount = gameLevel.progress;
                 yield return new WaitForEndOfFrame();
             }

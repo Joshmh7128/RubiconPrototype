@@ -765,7 +765,6 @@ public class RoundManager : MonoBehaviour
     {
         if (players == 2)
         {
-            Debug.Log("Player died, running coroutine...");
             int posNeg = Random.Range(1, 11);
             if (id == 1)
             {
@@ -942,7 +941,6 @@ public class RoundManager : MonoBehaviour
                             BattleModActivate(newMod);
                         }
                     }
-                    Debug.Log("Good mod is: " + goodMod);
                     goodMod = 0;
                     switch (newMod)
                     {
@@ -1078,18 +1076,15 @@ public class RoundManager : MonoBehaviour
                 {
                     if(goodMod == 0)
                     {
-                        Debug.Log("generating good mod: " + j);
                         goodMod = j;
                     }
                     else
                     {
-                        Debug.Log("copying from good mod: " + goodMod);
                         j = goodMod;
                     }
                 }
                 targetMods[i] = j; // set it
                 newMod = j;
-                Debug.Log("mod is " + j);
                 md.ActivateMod(targetPlayer, isGood, i, j);
                 break;
                 }
@@ -1104,80 +1099,68 @@ public class RoundManager : MonoBehaviour
         #region
         if (mod == (int)battleMods.Armor)
         {
-            Debug.Log(mod.ToString() + ": Armor");
             // add armor
 
         }
 
         if (mod == (int)battleMods.TunnelVision)
         {
-            Debug.Log(mod.ToString() + ": Tunnel Vision");
             // change the camera
 
         }
 
         if (mod == (int)battleMods.Glowing)
         {
-            Debug.Log(mod.ToString() + ": Glowing");
             // change the target player's material
 
         }
 
         if (mod == (int)battleMods.Stealth)
         {
-            Debug.Log(mod.ToString() + ": Stealth");
             // change the target player's material
 
         }
 
         if (mod == (int)battleMods.Large)
         {
-            Debug.Log(mod.ToString() + ": Large");
             // change the target player's size
 
         }
 
         if (mod == (int)battleMods.Scatter)
         {
-            Debug.Log(mod.ToString() + ": Scatter");
         }
 
         if (mod == (int)battleMods.Supercharge)
         {
-            Debug.Log(mod.ToString() + ": Supercharge");
         }
 
         if (mod == (int)battleMods.Regen)
         {
-            Debug.Log(mod.ToString() + ": Regen");
             // add HP regen to a player
 
         }
 
         if (mod == (int)battleMods.Shield)
         {
-            Debug.Log(mod.ToString() + ": Shield");
             // change the target player's material
 
         }
 
         if (mod == (int)battleMods.Speed)
         {
-            Debug.Log(mod.ToString() + ": Speed");
             // increase the speed of the player
 
         }
 
         if (mod == (int)battleMods.Tracking)
         {
-            Debug.Log(mod.ToString() + ": Tracking");
             // add tracking particles to the player
 
         }
 
         if (mod == (int)battleMods.Vampirism)
         {
-            Debug.Log(mod.ToString() + ": Vampirism");
             // change the target player's material
 
         }

@@ -99,6 +99,5 @@ public class MainMenuManager : MonoBehaviour
     public void ToggleFullscreen()
     {
         Screen.fullScreen = !Screen.fullScreen;
-        Debug.Log("Fullscreen toggled");
     }
 }
