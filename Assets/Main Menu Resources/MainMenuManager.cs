@@ -13,6 +13,8 @@ public class MainMenuManager : MonoBehaviour
     public Button fullscreenToggle;
     public Button resetAudioButton;
     public Button closeOptions;
+    public Button pButton;
+    public Button pBackButton;
     public GameObject optionsContainer;
     public bool optionsActive;
     public Slider masterVol;
@@ -47,6 +49,7 @@ public class MainMenuManager : MonoBehaviour
         optionsActive = false;
         optionsButton.onClick.AddListener(OptionsMenuToggle);
         closeOptions.onClick.AddListener(OptionsMenuToggle);
+        pBackButton.onClick.AddListener(ReturnToMenu);
         playButton.onClick.AddListener(ModeSelect);
         exitButton.onClick.AddListener(EndGame);
         fullscreenToggle.onClick.AddListener(ToggleFullscreen);
@@ -142,6 +145,7 @@ public class MainMenuManager : MonoBehaviour
         {
             obj.SetActive(true);
         }
+        pButton.Select();
     }
 
     public void ReturnToMenu()
