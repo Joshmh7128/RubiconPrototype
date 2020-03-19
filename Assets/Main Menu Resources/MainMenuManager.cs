@@ -26,11 +26,19 @@ public class MainMenuManager : MonoBehaviour
     public SoundManager soundManager;
     public PostProcessVolume post;
     DepthOfField depthOfField = null;
+    public GameObject[] modeMenu;
     public GameObject[] toHide;
+    public Camera uicam;
 
     private void Start()
     {
         post.profile.TryGetSettings(out depthOfField);
+        foreach (GameObject obj in modeMenu)
+        {
+            obj.SetActive(false);
+        }
+        uicam.depth = 0;
+
         // on click listeners
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -109,8 +117,27 @@ public class MainMenuManager : MonoBehaviour
 
     public void ModeSelect()
     {
+        uicam.depth = 1;
         depthOfField.active = true;
         foreach(GameObject obj in toHide)
+        {
+            obj.SetActive(false);
+        }
+        foreach(GameObject obj in modeMenu)
+        {
+            obj.SetActive(true);
+        }
+    }
+
+    public void ReturnToMenu()
+    {
+        uicam.depth = 0;
+        depthOfField.active = false;
+        foreach (GameObject obj in toHide)
+        {
+            obj.SetActive(true);
+        }
+        foreach (GameObject obj in modeMenu)
         {
             obj.SetActive(false);
         }
