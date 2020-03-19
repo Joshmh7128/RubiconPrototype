@@ -8924,6 +8924,7 @@ MonoBehaviour:
   - {fileID: 965642741}
   - {fileID: 54895007}
   - {fileID: 1351777403}
+  - {fileID: 1345114513}
 --- !u!4 &482169563
 Transform:
   m_ObjectHideFlags: 0
@@ -12580,7 +12581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 1345114517}
+    m_SelectOnUp: {fileID: 1831203778}
     m_SelectOnDown: {fileID: 21231194}
     m_SelectOnLeft: {fileID: 908106352}
     m_SelectOnRight: {fileID: 2084655113}
@@ -13335,7 +13336,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 1
   m_MaxValue: 100
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 80
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13750,7 +13751,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 1
   m_MaxValue: 100
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 80
   m_OnValueChanged:
     m_PersistentCalls:
@@ -23754,7 +23755,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 1
   m_MaxValue: 100
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
