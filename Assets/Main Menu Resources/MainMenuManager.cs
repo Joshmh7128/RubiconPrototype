@@ -29,6 +29,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject[] modeMenu;
     public GameObject[] toHide;
     public Camera uicam;
+    public GameObject[] hideWhenOptions;
 
     private void Start()
     {
@@ -101,6 +102,18 @@ public class MainMenuManager : MonoBehaviour
         // activate and deactivate the options menu
         optionsActive = !optionsActive;
         optionsContainer.SetActive(optionsActive);
+        foreach(GameObject obj in hideWhenOptions)
+        {
+            obj.SetActive(!obj.activeInHierarchy);
+        }
+        if(optionsActive)
+        {
+            resetAudioButton.Select();
+        }
+        else
+        {
+            optionsButton.Select();
+        }
     }
 
     public void StartPlay()
