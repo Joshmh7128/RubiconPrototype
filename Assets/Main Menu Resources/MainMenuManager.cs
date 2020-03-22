@@ -15,6 +15,8 @@ public class MainMenuManager : MonoBehaviour
     public Button closeOptions;
     public Button pButton;
     public Button pBackButton;
+    public Button twoJoin;
+    public Button fourJoin;
     public GameObject optionsContainer;
     public bool optionsActive;
     public Slider masterVol;
@@ -33,6 +35,9 @@ public class MainMenuManager : MonoBehaviour
     public GameObject[] toHide;
     public Camera uicam;
     public GameObject[] hideWhenOptions;
+    public GameObject[] hideWhenJoin;
+    public GameObject showJoin2p;
+    public GameObject showJoin4p;
 
     private void Start()
     {
@@ -52,6 +57,8 @@ public class MainMenuManager : MonoBehaviour
         pBackButton.onClick.AddListener(ReturnToMenu);
         playButton.onClick.AddListener(ModeSelect);
         exitButton.onClick.AddListener(EndGame);
+        twoJoin.onClick.AddListener(Join2p);
+        fourJoin.onClick.AddListener(Join4p);
         fullscreenToggle.onClick.AddListener(ToggleFullscreen);
         resetAudioButton.onClick.AddListener(ResetAudio);
 
@@ -161,5 +168,23 @@ public class MainMenuManager : MonoBehaviour
             obj.SetActive(false);
         }
         playButton.Select();
+    }
+
+    public void Join2p()
+    {
+        foreach(GameObject obj in hideWhenJoin)
+        {
+            obj.SetActive(false);
+        }
+        showJoin2p.SetActive(true);
+    }
+
+    public void Join4p()
+    {
+        foreach (GameObject obj in hideWhenJoin)
+        {
+            obj.SetActive(false);
+        }
+        showJoin4p.SetActive(true);
     }
 }
