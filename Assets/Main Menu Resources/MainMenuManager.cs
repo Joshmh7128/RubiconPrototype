@@ -17,6 +17,8 @@ public class MainMenuManager : MonoBehaviour
     public Button pBackButton;
     public Button twoJoin;
     public Button fourJoin;
+    public Button backToMode;
+    public Button startGame;
     public GameObject optionsContainer;
     public bool optionsActive;
     public Slider masterVol;
@@ -36,8 +38,8 @@ public class MainMenuManager : MonoBehaviour
     public Camera uicam;
     public GameObject[] hideWhenOptions;
     public GameObject[] hideWhenJoin;
-    public GameObject showJoin2p;
-    public GameObject showJoin4p;
+    public GameObject[] showJoin2p;
+    public GameObject[] showJoin4p;
 
     private void Start()
     {
@@ -59,6 +61,8 @@ public class MainMenuManager : MonoBehaviour
         exitButton.onClick.AddListener(EndGame);
         twoJoin.onClick.AddListener(Join2p);
         fourJoin.onClick.AddListener(Join4p);
+        startGame.onClick.AddListener(LoadLevel);
+        backToMode.onClick.AddListener(ModeSelect);
         fullscreenToggle.onClick.AddListener(ToggleFullscreen);
         resetAudioButton.onClick.AddListener(ResetAudio);
 
@@ -105,7 +109,6 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        WhichScene.SceneToLoad = "GameplayBase";
         SceneManager.LoadScene("LoadingScene");
     }
 
@@ -153,6 +156,14 @@ public class MainMenuManager : MonoBehaviour
             obj.SetActive(true);
         }
         pButton.Select();
+        foreach (GameObject obj in showJoin2p)
+        {
+            obj.SetActive(false);
+        }
+        foreach (GameObject obj in showJoin4p)
+        {
+            obj.SetActive(false);
+        }
     }
 
     public void ReturnToMenu()
@@ -172,19 +183,31 @@ public class MainMenuManager : MonoBehaviour
 
     public void Join2p()
     {
+        WhichScene.SceneToLoad = "GameplayBase";
         foreach(GameObject obj in hideWhenJoin)
         {
             obj.SetActive(false);
         }
-        showJoin2p.SetActive(true);
+        foreach (GameObject obj in showJoin2p)
+        {
+            obj.SetActive(true);
+        }
+        backToMode.Select();
+        startGame.interactable = false;
     }
 
     public void Join4p()
     {
+        WhichScene.SceneToLoad = "GameplayBase4p";
         foreach (GameObject obj in hideWhenJoin)
         {
             obj.SetActive(false);
         }
-        showJoin4p.SetActive(true);
+        foreach (GameObject obj in showJoin4p)
+        {
+            obj.SetActive(true);
+        }
+        backToMode.Select();
+        startGame.interactable = false;
     }
 }
