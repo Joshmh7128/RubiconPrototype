@@ -7,6 +7,13 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [Header("Joining")]
+    public int joined = 0;
+    public bool players2readyToJoin = false;
+    public bool players4readyToJoin = false;
+    public int[] players2joined;
+    public int[] players4joined;
+
     public Button exitButton;
     public Button playButton;
     public Button optionsButton;
@@ -75,6 +82,8 @@ public class MainMenuManager : MonoBehaviour
 
         // get our sound manager
         soundManager.PlaySound("menuMusic");
+
+        resetJoined();
     }
 
     private void Update()
@@ -100,6 +109,20 @@ public class MainMenuManager : MonoBehaviour
         announcerVol.value = 80;
         audioValues.musicVolume = 100;
         musicVol.value = 100;
+    }
+
+    public void resetJoined()
+    {
+        players2joined = new int[2];
+        players4joined = new int[4];
+
+        players2joined[0] = 0;
+        players2joined[1] = 0;
+
+        players4joined[0] = 0;
+        players4joined[1] = 0;
+        players4joined[2] = 0;
+        players4joined[3] = 0;
     }
 
     public void EndGame()
@@ -164,6 +187,9 @@ public class MainMenuManager : MonoBehaviour
         {
             obj.SetActive(false);
         }
+        resetJoined();
+        players2readyToJoin = false;
+        players4readyToJoin = false;
     }
 
     public void ReturnToMenu()
@@ -194,6 +220,7 @@ public class MainMenuManager : MonoBehaviour
         }
         backToMode.Select();
         startGame.interactable = false;
+        players2readyToJoin = true;
     }
 
     public void Join4p()
@@ -209,5 +236,6 @@ public class MainMenuManager : MonoBehaviour
         }
         backToMode.Select();
         startGame.interactable = false;
+        players4readyToJoin = true;
     }
 }
