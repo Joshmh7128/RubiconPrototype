@@ -14,6 +14,12 @@ public class MainMenuManager : MonoBehaviour
     public int[] players2joined;
     public int[] players4joined;
 
+    [Header("Player Previews")]
+    public GameObject[] players2press;
+    public GameObject[] players4press;
+    public GameObject[] players2preview;
+    public GameObject[] players4preview;
+
     public Button exitButton;
     public Button playButton;
     public Button optionsButton;
@@ -123,6 +129,23 @@ public class MainMenuManager : MonoBehaviour
         players4joined[1] = 0;
         players4joined[2] = 0;
         players4joined[3] = 0;
+
+        foreach (GameObject obj in players2press)
+        {
+            obj.SetActive(false);
+        }
+        foreach (GameObject obj in players4press)
+        {
+            obj.SetActive(false);
+        }
+        foreach (GameObject obj in players2preview)
+        {
+            obj.SetActive(false);
+        }
+        foreach (GameObject obj in players4preview)
+        {
+            obj.SetActive(false);
+        }
     }
 
     public void EndGame()
