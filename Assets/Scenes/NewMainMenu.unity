@@ -1144,8 +1144,8 @@ Camera:
   m_GameObject: {fileID: 75841905}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0.39215687, g: 0.47058824, b: 0.47058824, a: 0.47058824}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.39215687, g: 0.47058824, b: 0.47058824, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -4043,7 +4043,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-335172
+  m_Name: pb_Mesh-491726
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -6033,7 +6033,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-335174
+  m_Name: pb_Mesh-491728
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -17671,8 +17671,8 @@ Camera:
   m_GameObject: {fileID: 1165033494}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0.39215687, g: 0.47058824, b: 0.47058824, a: 0.47058824}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.39215687, g: 0.47058824, b: 0.47058824, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -24226,8 +24226,8 @@ Camera:
   m_GameObject: {fileID: 1652631497}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0.39215687, g: 0.47058824, b: 0.47058824, a: 0.47058824}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.39215687, g: 0.47058824, b: 0.47058824, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -26869,7 +26869,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-335170
+  m_Name: pb_Mesh-491724
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -28837,7 +28837,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-335176
+  m_Name: pb_Mesh-491730
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -38466,8 +38466,8 @@ Camera:
   m_GameObject: {fileID: 2048533351}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0.39215687, g: 0.47058824, b: 0.47058824, a: 0.47058824}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.39215687, g: 0.47058824, b: 0.47058824, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
