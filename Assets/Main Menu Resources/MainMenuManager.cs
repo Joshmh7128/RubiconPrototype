@@ -156,6 +156,77 @@ public class MainMenuManager : MonoBehaviour
                 }
             }
         }
+        else if (players4readyToJoin)
+        {
+            if (player1.GetButtonDown("Reload") || Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                if (players4joined[0] == 0)
+                {
+                    players4joined[0] = 1;
+                    players4press[0].SetActive(false);
+                    players4preview[0].SetActive(true);
+                    checkJoined();
+                }
+                else
+                {
+                    players4joined[0] = 0;
+                    players4press[0].SetActive(true);
+                    players4preview[0].SetActive(false);
+                    checkJoined();
+                }
+            }
+            if (player2.GetButtonDown("Reload") || Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                if (players4joined[1] == 0)
+                {
+                    players4joined[1] = 1;
+                    players4press[1].SetActive(false);
+                    players4preview[1].SetActive(true);
+                    checkJoined();
+                }
+                else
+                {
+                    players4joined[1] = 0;
+                    players4press[1].SetActive(true);
+                    players4preview[1].SetActive(false);
+                    checkJoined();
+                }
+            }
+            if (player3.GetButtonDown("Reload") || Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if (players4joined[2] == 0)
+                {
+                    players4joined[2] = 1;
+                    players4press[2].SetActive(false);
+                    players4preview[2].SetActive(true);
+                    checkJoined();
+                }
+                else
+                {
+                    players4joined[2] = 0;
+                    players4press[2].SetActive(true);
+                    players4preview[2].SetActive(false);
+                    checkJoined();
+                }
+            }
+            if (player4.GetButtonDown("Reload") || Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if (players4joined[3] == 0)
+                {
+                    players4joined[3] = 1;
+                    players4press[3].SetActive(false);
+                    players4preview[3].SetActive(true);
+                    checkJoined();
+                }
+                else
+                {
+                    players4joined[3] = 0;
+                    players4press[3].SetActive(true);
+                    players4preview[3].SetActive(false);
+                    checkJoined();
+                }
+            }
+        }
 
     }
 
