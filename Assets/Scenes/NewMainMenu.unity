@@ -17671,7 +17671,7 @@ Camera:
   m_GameObject: {fileID: 1165033494}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.39215687, g: 0.47058824, b: 0.47058824, a: 0.47058824}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -20653,7 +20653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.78431374, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -23773,7 +23773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.78431374, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -24226,7 +24226,7 @@ Camera:
   m_GameObject: {fileID: 1652631497}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.39215687, g: 0.47058824, b: 0.47058824, a: 0.47058824}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -38466,7 +38466,7 @@ Camera:
   m_GameObject: {fileID: 2048533351}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.39215687, g: 0.47058824, b: 0.47058824, a: 0.47058824}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}

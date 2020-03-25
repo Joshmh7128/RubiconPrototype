@@ -138,6 +138,23 @@ public class MainMenuManager : MonoBehaviour
                     checkJoined();
                 }
             }
+            if (player2.GetButtonDown("Reload") || Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                if (players2joined[1] == 0)
+                {
+                    players2joined[1] = 1;
+                    players2press[1].SetActive(false);
+                    players2preview[1].SetActive(true);
+                    checkJoined();
+                }
+                else
+                {
+                    players2joined[1] = 0;
+                    players2press[1].SetActive(true);
+                    players2preview[1].SetActive(false);
+                    checkJoined();
+                }
+            }
         }
 
     }
