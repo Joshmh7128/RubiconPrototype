@@ -118,6 +118,54 @@ public class MainMenuManager : MonoBehaviour
         sfxVolDisplay.text = audioValues.sfxVolume.ToString();
         announcerVolDisplay.text = audioValues.announcerVolume.ToString();
         musicVolDisplay.text = audioValues.musicVolume.ToString();
+
+        if(players2readyToJoin)
+        {
+            if(player1.GetButtonDown("Reload") || Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                if(players2joined[0] == 0)
+                {
+                    players2joined[0] = 1;
+                    players2press[0].SetActive(false);
+                    players2preview[0].SetActive(true);
+                    checkJoined();
+                }
+                else
+                {
+                    players2joined[0] = 0;
+                    players2press[0].SetActive(true);
+                    players2preview[0].SetActive(false);
+                    checkJoined();
+                }
+            }
+        }
+
+    }
+
+    private void checkJoined()
+    {
+        if(players2readyToJoin)
+        {
+            if(players2joined[0] + players2joined[1] >= 2)
+            {
+                startGame.interactable = true;
+            }
+            else
+            {
+                startGame.interactable = false;
+            }
+        }
+        else if(players4readyToJoin)
+        {
+            if(players4joined[0] + players4joined[1] + players4joined[2] + players4joined[3] >= 4)
+            {
+                startGame.interactable = true;
+            }
+            else
+            {
+                startGame.interactable = false;
+            }
+        }
     }
 
     public void ResetAudio()
