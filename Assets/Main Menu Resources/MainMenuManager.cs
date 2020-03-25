@@ -130,22 +130,31 @@ public class MainMenuManager : MonoBehaviour
         players4joined[2] = 0;
         players4joined[3] = 0;
 
-        foreach (GameObject obj in players2press)
+        if(players2readyToJoin)
         {
-            obj.SetActive(false);
+            foreach (GameObject obj in players2press)
+            {
+                obj.SetActive(false);
+            }
+            foreach (GameObject obj in players2preview)
+            {
+                obj.SetActive(false);
+            }
         }
-        foreach (GameObject obj in players4press)
+        else if(players4readyToJoin)
         {
-            obj.SetActive(false);
+            foreach (GameObject obj in players4press)
+            {
+                obj.SetActive(false);
+            }
+            foreach (GameObject obj in players4preview)
+            {
+                obj.SetActive(false);
+            }
         }
-        foreach (GameObject obj in players2preview)
-        {
-            obj.SetActive(false);
-        }
-        foreach (GameObject obj in players4preview)
-        {
-            obj.SetActive(false);
-        }
+        
+        players2readyToJoin = false;
+        players4readyToJoin = false;
     }
 
     public void EndGame()
@@ -202,17 +211,22 @@ public class MainMenuManager : MonoBehaviour
             obj.SetActive(true);
         }
         pButton.Select();
-        foreach (GameObject obj in showJoin2p)
+        if(players2readyToJoin)
         {
-            obj.SetActive(false);
+            foreach (GameObject obj in showJoin2p)
+            {
+                obj.SetActive(false);
+            }
         }
-        foreach (GameObject obj in showJoin4p)
+        else if (players4readyToJoin)
         {
-            obj.SetActive(false);
+            foreach (GameObject obj in showJoin4p)
+            {
+                obj.SetActive(false);
+            }
         }
         resetJoined();
-        players2readyToJoin = false;
-        players4readyToJoin = false;
+        
     }
 
     public void ReturnToMenu()
