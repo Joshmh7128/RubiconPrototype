@@ -19,6 +19,12 @@ public class MainMenuManager : MonoBehaviour
     public GameObject[] players2preview;
     public GameObject[] players4preview;
 
+    [Header("Players")]
+    private Rewired.Player player1;
+    private Rewired.Player player2;
+    private Rewired.Player player3;
+    private Rewired.Player player4;
+
     public Button exitButton;
     public Button playButton;
     public Button optionsButton;
@@ -55,6 +61,8 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        FindPlayers();
+
         post.profile.TryGetSettings(out depthOfField);
         foreach (GameObject obj in modeMenu)
         {
@@ -89,6 +97,14 @@ public class MainMenuManager : MonoBehaviour
         soundManager.PlaySound("menuMusic");
 
         resetJoined();
+    }
+
+    private void FindPlayers()
+    {
+        player1 = Rewired.ReInput.players.GetPlayer(0);
+        player2 = Rewired.ReInput.players.GetPlayer(1);
+        player3 = Rewired.ReInput.players.GetPlayer(2);
+        player4 = Rewired.ReInput.players.GetPlayer(3);
     }
 
     private void Update()
