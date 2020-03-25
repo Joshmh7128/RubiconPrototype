@@ -8,7 +8,6 @@ using UnityEngine.Rendering.PostProcessing;
 public class MainMenuManager : MonoBehaviour
 {
     [Header("Joining")]
-    public int joined = 0;
     public bool players2readyToJoin = false;
     public bool players4readyToJoin = false;
     public int[] players2joined;
