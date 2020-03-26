@@ -18,12 +18,13 @@ public class MainMenuManager : MonoBehaviour
     public GameObject[] players4press;
     public GameObject[] players2preview;
     public GameObject[] players4preview;
+    public GameObject[] miniPlayers;
 
     [Header("Players")]
-    private Rewired.Player player1;
-    private Rewired.Player player2;
-    private Rewired.Player player3;
-    private Rewired.Player player4;
+    public Rewired.Player player1;
+    public Rewired.Player player2;
+    public Rewired.Player player3;
+    public Rewired.Player player4;
 
     public Button exitButton;
     public Button playButton;
@@ -128,6 +129,7 @@ public class MainMenuManager : MonoBehaviour
                     players2joined[0] = 1;
                     players2press[0].SetActive(false);
                     players2preview[0].SetActive(true);
+                    miniPlayers[0].SetActive(true);
                     checkJoined();
                 }
                 else
@@ -135,6 +137,7 @@ public class MainMenuManager : MonoBehaviour
                     players2joined[0] = 0;
                     players2press[0].SetActive(true);
                     players2preview[0].SetActive(false);
+                    miniPlayers[0].SetActive(false);
                     checkJoined();
                 }
             }
@@ -145,6 +148,7 @@ public class MainMenuManager : MonoBehaviour
                     players2joined[1] = 1;
                     players2press[1].SetActive(false);
                     players2preview[1].SetActive(true);
+                    miniPlayers[1].SetActive(true);
                     checkJoined();
                 }
                 else
@@ -152,6 +156,7 @@ public class MainMenuManager : MonoBehaviour
                     players2joined[1] = 0;
                     players2press[1].SetActive(true);
                     players2preview[1].SetActive(false);
+                    miniPlayers[1].SetActive(false);
                     checkJoined();
                 }
             }
@@ -165,6 +170,7 @@ public class MainMenuManager : MonoBehaviour
                     players4joined[0] = 1;
                     players4press[0].SetActive(false);
                     players4preview[0].SetActive(true);
+                    miniPlayers[0].SetActive(true);
                     checkJoined();
                 }
                 else
@@ -172,6 +178,7 @@ public class MainMenuManager : MonoBehaviour
                     players4joined[0] = 0;
                     players4press[0].SetActive(true);
                     players4preview[0].SetActive(false);
+                    miniPlayers[0].SetActive(false);
                     checkJoined();
                 }
             }
@@ -182,6 +189,7 @@ public class MainMenuManager : MonoBehaviour
                     players4joined[1] = 1;
                     players4press[1].SetActive(false);
                     players4preview[1].SetActive(true);
+                    miniPlayers[1].SetActive(true);
                     checkJoined();
                 }
                 else
@@ -189,6 +197,7 @@ public class MainMenuManager : MonoBehaviour
                     players4joined[1] = 0;
                     players4press[1].SetActive(true);
                     players4preview[1].SetActive(false);
+                    miniPlayers[1].SetActive(false);
                     checkJoined();
                 }
             }
@@ -199,6 +208,7 @@ public class MainMenuManager : MonoBehaviour
                     players4joined[2] = 1;
                     players4press[2].SetActive(false);
                     players4preview[2].SetActive(true);
+                    miniPlayers[2].SetActive(true);
                     checkJoined();
                 }
                 else
@@ -206,6 +216,7 @@ public class MainMenuManager : MonoBehaviour
                     players4joined[2] = 0;
                     players4press[2].SetActive(true);
                     players4preview[2].SetActive(false);
+                    miniPlayers[2].SetActive(false);
                     checkJoined();
                 }
             }
@@ -216,6 +227,7 @@ public class MainMenuManager : MonoBehaviour
                     players4joined[3] = 1;
                     players4press[3].SetActive(false);
                     players4preview[3].SetActive(true);
+                    miniPlayers[3].SetActive(true);
                     checkJoined();
                 }
                 else
@@ -223,6 +235,7 @@ public class MainMenuManager : MonoBehaviour
                     players4joined[3] = 0;
                     players4press[3].SetActive(true);
                     players4preview[3].SetActive(false);
+                    miniPlayers[3].SetActive(false);
                     checkJoined();
                 }
             }
