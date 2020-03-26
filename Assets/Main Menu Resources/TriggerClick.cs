@@ -24,7 +24,6 @@ public class TriggerClick : MonoBehaviour
             switch (buttonType)
             {
                 case "options":
-                    Debug.Log("options highlighted");
                     mainMenuManager.OptionsMenuToggle();
                     break;
 

@@ -82,7 +82,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateTracking()
     {
-        Debug.Log("Activating Tracking");
         tracking = true;
         trackingLine.SetActive(true);
         if(playerInfoTracker.rm.players == 2)
@@ -94,7 +93,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateLarge()
     {
-        Debug.Log("Activating Large");
         large = true;
         targetPlayer.transform.localScale = new Vector3(newScale, newScale, newScale); // double size
         if (playerInfoTracker.rm.players == 2)
@@ -105,7 +103,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateSpeed()
     {
-        Debug.Log("Activating Speed");
         speed = true;
         playerController.speed += speedAdd; // base speed is 10
         if (playerInfoTracker.rm.players == 2)
@@ -116,7 +113,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateGlow()
     {
-        Debug.Log("Activating Glow");
         glowing = true;
         glowObj.SetActive(true);
         if (playerInfoTracker.rm.players == 2)
@@ -127,7 +123,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateTunnelVision()
     {
-        Debug.Log("Activating Tunnel Vision");
         tunnelVision = true;
         targetPlayerCineRend.SetActive(true);
         if (playerInfoTracker.rm.players == 2)
@@ -138,7 +133,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateSupercharge()
     {
-        Debug.Log("Activating Supercharge");
         supercharge = true;
         if (playerInfoTracker.rm.players == 2)
         {
@@ -148,7 +142,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateScatter()
     {
-        Debug.Log("Activating Scattershot");
         scatter = true;
         if (playerInfoTracker.rm.players == 2)
         {
@@ -158,7 +151,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateShield()
     {
-        Debug.Log("Activating Shield");
         armor = true;
         targetPlayerShield.SetActive(true);
         if (playerInfoTracker.rm.players == 2)
@@ -169,7 +161,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateArmor()
     {
-        Debug.Log("Activating Armor");
         targetPlayer.GetComponent<InfoTracker>().maxArmor = armorAmount;
         targetPlayer.GetComponent<InfoTracker>().AddArmor(armorAmount);
         shield = true;
@@ -181,7 +172,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateVampirism()
     {
-        Debug.Log("Activating Vampirism");
         vampirism = true;
         if (playerInfoTracker.rm.players == 2)
         {
@@ -191,7 +181,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateRegen()
     {
-        Debug.Log("Activating Regen");
         regen = true;
         StartCoroutine(Regenerate());
         if (playerInfoTracker.rm.players == 2)
@@ -202,7 +191,6 @@ public class ModApplication : MonoBehaviour
 
     public void ActivateStealth()
     {
-        Debug.Log("Activating Stealth");
         stealth = true;
         targetPlayerRend.material = invisPlayer;
         if (playerInfoTracker.rm.players == 2)
