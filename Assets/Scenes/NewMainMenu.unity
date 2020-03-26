@@ -14146,7 +14146,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Default audio levels are recommended! If the game is too loud or soft, adjust
+  m_Text: Default audio levels are recommended. If the game is too loud or soft, adjust
     the Master Volume.
 --- !u!222 &815213918
 CanvasRenderer:
@@ -24010,6 +24010,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 668615c229bd9244ba9acc3f83c098b8, type: 2}
+    - target: {fileID: 1245964887911949054, guid: 6543c354f52ea3a429429490e54f0f75,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e6435993fa5b2db4fa67c1f27dfb9554,
+        type: 3}
+    - target: {fileID: 16121583773529104, guid: 6543c354f52ea3a429429490e54f0f75,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fc98fed9f21f90443a4261a302d7e708, type: 2}
+    - target: {fileID: 16121583913138561, guid: 6543c354f52ea3a429429490e54f0f75,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fc98fed9f21f90443a4261a302d7e708, type: 2}
     - target: {fileID: 1245964887911949055, guid: 6543c354f52ea3a429429490e54f0f75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24030,22 +24046,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.20830597
       objectReference: {fileID: 0}
-    - target: {fileID: 1245964887911949054, guid: 6543c354f52ea3a429429490e54f0f75,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: e6435993fa5b2db4fa67c1f27dfb9554,
-        type: 3}
-    - target: {fileID: 16121583773529104, guid: 6543c354f52ea3a429429490e54f0f75,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fc98fed9f21f90443a4261a302d7e708, type: 2}
-    - target: {fileID: 16121583913138561, guid: 6543c354f52ea3a429429490e54f0f75,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fc98fed9f21f90443a4261a302d7e708, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6543c354f52ea3a429429490e54f0f75, type: 3}
 --- !u!1 &1631120808 stripped
@@ -39322,7 +39322,7 @@ MonoBehaviour:
   m_MinValue: 1
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 10
+  m_Value: 30
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

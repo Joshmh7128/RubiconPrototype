@@ -64,6 +64,8 @@ public class MainMenuManager : MonoBehaviour
     {
         FindPlayers();
 
+        ResetAudio();
+
         post.profile.TryGetSettings(out depthOfField);
         foreach (GameObject obj in modeMenu)
         {
@@ -271,8 +273,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void ResetAudio()
     {
-        audioValues.masterVolume = 10;
-        masterVol.value = 10;
+        audioValues.masterVolume = 30;
+        masterVol.value = 30;
         audioValues.sfxVolume = 80;
         sfxVol.value = 80;
         audioValues.announcerVolume = 80;
