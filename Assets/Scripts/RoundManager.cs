@@ -18,6 +18,8 @@ public class RoundManager : MonoBehaviour
     [Header("Mode")]
     [Range(2, 4)]
     public int players = 2;
+    public bool uiOff;
+    public GameObject[] uiObjects;
 
     [Header("Score")]
 
@@ -134,6 +136,22 @@ public class RoundManager : MonoBehaviour
     private void Start()
     {
         StartGame();
+    }
+
+    private void Update()
+    {
+        if(uiOff)
+        {
+            DeactivateUI();
+        }
+    }
+
+    private void DeactivateUI()
+    {
+        foreach(GameObject obj in uiObjects)
+        {
+            obj.SetActive(false);
+        }
     }
 
     //pre-first round setup and display
