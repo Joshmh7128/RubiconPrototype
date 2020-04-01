@@ -21,6 +21,8 @@ public class GunScriptBase : MonoBehaviour
     private Rewired.Player rewiredPlayer;
     private float shake = 0.1f;
     private bool isLocked;
+    private int currentPlayer;
+    private int myID;
 
     public GunScriptBase(PlayerController player)
 	{
@@ -32,10 +34,13 @@ public class GunScriptBase : MonoBehaviour
 		mag = magSize; // mag size 
         bloodBurst = player.blood;
         overlapObj = player.overlapCheckObj;
+        myID = player.playerID;
 	}
 
 	public void Update()
 	{
+        currentPlayer = myInfo.rm.focusedPlayer;
+
         isLocked = player.weaponLocked;
 
         int x = modApp.ScatterCheck();
@@ -192,7 +197,7 @@ public class GunScriptBase : MonoBehaviour
         }
 
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-        if ((rewiredPlayer.GetAxis("FireTrigger") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire && !isLocked)
+        if (((rewiredPlayer.GetAxis("FireTrigger") > 0.1f || Input.GetMouseButtonDown(0)) && Time.time > nextFire && !isLocked) && (currentPlayer == 0 || currentPlayer == myID))
 		{
 
         #region
@@ -356,7 +361,7 @@ public class GunScriptBase : MonoBehaviour
 
         #endregion
 
-        if ((rewiredPlayer.GetButton("Reload") || Input.GetKeyDown(KeyCode.R)) && mag < magSize)
+        if ((rewiredPlayer.GetButton("Reload") || Input.GetKeyDown(KeyCode.R)) && mag < magSize && (currentPlayer == 0 || currentPlayer == myID))
 		{
 			mag = 0;
 			player.StartCoroutine(Reload());
