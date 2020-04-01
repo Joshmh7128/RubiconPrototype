@@ -9,6 +9,7 @@ public class CameraControllerBase
 	private float rotAroundX, rotAroundY;
 	private bool camMoved = false;
     private Rewired.Player rewiredPlayer;
+    private int playing;
 
 	// Use this for initialization
 	public CameraControllerBase(PlayerController player)
@@ -22,8 +23,12 @@ public class CameraControllerBase
 
 	public void FixedUpdate()
 	{
-		rotAroundX += Input.GetAxis("Mouse Y") * player.Xsensitivity;
-		rotAroundY += Input.GetAxis("Mouse X") * player.Ysensitivity;
+        playing = player._weaponSystems.myInfo.rm.focusedPlayer;
+        if(playing == 0 || playing == player.playerID)
+        {
+            rotAroundX += Input.GetAxis("Mouse Y") * player.Xsensitivity;
+            rotAroundY += Input.GetAxis("Mouse X") * player.Ysensitivity;
+        }
 
 		rotAroundX += rewiredPlayer.GetAxis("LookHorizontalX") * -player.Xsensitivity;
 		rotAroundY += rewiredPlayer.GetAxis("LookHorizontalY") * player.Ysensitivity;

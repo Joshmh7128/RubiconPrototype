@@ -7,7 +7,7 @@ public class GunScriptBase : MonoBehaviour
 {
 	private PlayerController player;
 
-    private InfoTracker myInfo;
+    public InfoTracker myInfo;
     
     public int mag;
 	public int magSize = 100;

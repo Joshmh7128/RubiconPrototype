@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class PlayerMoveBase
 {
-	private PlayerController player;
-	private Rigidbody playerBody;
-	private Vector3 inputVector;
+    private PlayerController player;
+    private Rigidbody playerBody;
+    private Vector3 inputVector;
     private string axis1;
     private string axis2;
     private string axis5bump;
     private string axis4bump;
     private Rewired.Player rewiredPlayer;
+    private int playing;
+    private int myID;
 
     // Start is called before the first frame update
     public PlayerMoveBase(PlayerController player)
-	{
+    {
         rewiredPlayer = Rewired.ReInput.players.GetPlayer(player.playerID - 1);
+        myID = player.playerID;
         this.player = player;
-		playerBody = player.playerBody;
+        playerBody = player.playerBody;
         /* // depricated
         axis1 = "Joy" + player.playerID + "Axis1";
         axis2 = "Joy" + player.playerID + "Axis2";
@@ -27,48 +30,50 @@ public class PlayerMoveBase
         */
     }
 
-	// Update is called once per frame
-	public void FixedUpdate()
-	{
+    // Update is called once per frame
+    public void FixedUpdate()
+    {
         // basic stick based movement
-		inputVector = new Vector3(rewiredPlayer.GetAxis("MoveHorizontalX"), 0, rewiredPlayer.GetAxis("MoveHorizontalY"));
-		//inputVector = player.transform.TransformDirection(inputVector);
+        inputVector = new Vector3(rewiredPlayer.GetAxis("MoveHorizontalX"), 0, rewiredPlayer.GetAxis("MoveHorizontalY"));
+        //inputVector = player.transform.TransformDirection(inputVector);
 
         // In order to properly get the bumper buttons you MUST set them manually through the inspector, they are next to each other near the joystick 1 definitions 
         // up and down movement
-        
-        if (rewiredPlayer.GetButton("RightBumper") || Input.GetKey(KeyCode.E))
+
+        playing = player._weaponSystems.myInfo.rm.focusedPlayer;
+
+        if (rewiredPlayer.GetButton("RightBumper") || (Input.GetKey(KeyCode.E) && (playing == 0 || playing == myID)))
         {
             // move up
             inputVector.y += 1;
             
         }
 
-        if (rewiredPlayer.GetButton("LeftBumper") || Input.GetKey(KeyCode.Q))
+        if (rewiredPlayer.GetButton("LeftBumper") || (Input.GetKey(KeyCode.Q) && (playing == 0 || playing == myID)))
         {
             // move down
             inputVector.y -= 1;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && (playing == 0 || playing == myID))
         {
             // for playtesting without a controller
             inputVector.z += 1;
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && (playing == 0 || playing == myID))
         {
             // for playtesting without a controller
             inputVector.x -= 1;
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && (playing == 0 || playing == myID))
         {
             // for playtesting without a controller
             inputVector.z -= 1;
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && (playing == 0 || playing == myID))
         {
             // for playtesting without a controller
             inputVector.x += 1;

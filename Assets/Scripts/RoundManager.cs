@@ -190,7 +190,7 @@ public class RoundManager : MonoBehaviour
             Player1Cam.GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
             Player1Cam.transform.Find("GunCam").gameObject.SetActive(true);
             Player1Cam.transform.Find("GunCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
-            Player1Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player1Cam.transform.Find("XrayCam").gameObject.SetActive(true);
             Player1Cam.transform.Find("XrayCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
         }
         else if (playerNumber == 2)
@@ -199,7 +199,7 @@ public class RoundManager : MonoBehaviour
             Player2Cam.GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
             Player2Cam.transform.Find("GunCam").gameObject.SetActive(true);
             Player2Cam.transform.Find("GunCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
-            Player2Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player2Cam.transform.Find("XrayCam").gameObject.SetActive(true);
             Player2Cam.transform.Find("XrayCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
         }
         else if (playerNumber == 3 && players == 4)
@@ -208,7 +208,7 @@ public class RoundManager : MonoBehaviour
             Player3Cam.GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
             Player3Cam.transform.Find("GunCam").gameObject.SetActive(true);
             Player3Cam.transform.Find("GunCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
-            Player3Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player3Cam.transform.Find("XrayCam").gameObject.SetActive(true);
             Player3Cam.transform.Find("XrayCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
         }
         else if (playerNumber == 4 && players == 4)
@@ -217,7 +217,7 @@ public class RoundManager : MonoBehaviour
             Player4Cam.GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
             Player4Cam.transform.Find("GunCam").gameObject.SetActive(true);
             Player4Cam.transform.Find("GunCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
-            Player4Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player4Cam.transform.Find("XrayCam").gameObject.SetActive(true);
             Player4Cam.transform.Find("XrayCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
         }
     }
