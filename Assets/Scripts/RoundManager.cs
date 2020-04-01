@@ -18,6 +18,7 @@ public class RoundManager : MonoBehaviour
     [Header("Mode")]
     [Range(2, 4)]
     public int players = 2;
+    public int focusedPlayer = 0;
     public bool uiOff;
     public GameObject[] uiObjects;
 
@@ -57,6 +58,8 @@ public class RoundManager : MonoBehaviour
     public GameObject Player2Cam;
     public GameObject Player3Cam;
     public GameObject Player4Cam;
+
+    public GameObject[] playerCameras;
 
     public GameObject Player1Canvas;
     public GameObject Player2Canvas;
@@ -143,6 +146,79 @@ public class RoundManager : MonoBehaviour
         if(uiOff)
         {
             DeactivateUI();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            FocusPlayer(1);
+            focusedPlayer = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            FocusPlayer(2);
+            focusedPlayer = 2;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            FocusPlayer(3);
+            focusedPlayer = 3;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            FocusPlayer(4);
+            focusedPlayer = 4;
+        }
+    }
+
+    private void FocusPlayer(int playerNumber)
+    {
+        foreach(GameObject obj in playerCameras)
+        {
+            obj.SetActive(false);
+        }
+        Player1Cam.GetComponent<Camera>().enabled = false;
+        Player2Cam.GetComponent<Camera>().enabled = false;
+        if(players == 4)
+        {
+            Player3Cam.GetComponent<Camera>().enabled = false;
+            Player4Cam.GetComponent<Camera>().enabled = false;
+        }
+
+        if (playerNumber == 1)
+        {
+            Player1Cam.GetComponent<Camera>().enabled = true;
+            Player1Cam.GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+            Player1Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player1Cam.transform.Find("GunCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+            Player1Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player1Cam.transform.Find("XrayCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+        }
+        else if (playerNumber == 2)
+        {
+            Player2Cam.GetComponent<Camera>().enabled = true;
+            Player2Cam.GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+            Player2Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player2Cam.transform.Find("GunCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+            Player2Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player2Cam.transform.Find("XrayCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+        }
+        else if (playerNumber == 3 && players == 4)
+        {
+            Player3Cam.GetComponent<Camera>().enabled = true;
+            Player3Cam.GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+            Player3Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player3Cam.transform.Find("GunCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+            Player3Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player3Cam.transform.Find("XrayCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+        }
+        else if (playerNumber == 4 && players == 4)
+        {
+            Player4Cam.GetComponent<Camera>().enabled = true;
+            Player4Cam.GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+            Player4Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player4Cam.transform.Find("GunCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+            Player4Cam.transform.Find("GunCam").gameObject.SetActive(true);
+            Player4Cam.transform.Find("XrayCam").GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
         }
     }
 
