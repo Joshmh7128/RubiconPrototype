@@ -24,7 +24,10 @@ public class PickupTimer : MonoBehaviour
         myTimer -= Time.deltaTime;
         foreach(Image x in myBars)
         {
-            x.fillAmount = 1 - (myTimer / timerLength);
+            if (x != null)
+            {
+                x.fillAmount = 1 - (myTimer / timerLength);
+            }
         }
         if(myTimer <= 0)
         {
