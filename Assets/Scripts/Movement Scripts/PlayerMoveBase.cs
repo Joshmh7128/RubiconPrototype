@@ -37,14 +37,14 @@ public class PlayerMoveBase
         // In order to properly get the bumper buttons you MUST set them manually through the inspector, they are next to each other near the joystick 1 definitions 
         // up and down movement
         
-        if (rewiredPlayer.GetButton("RightBumper"))
+        if (rewiredPlayer.GetButton("RightBumper") || Input.GetKey(KeyCode.E))
         {
             // move up
             inputVector.y += 1;
             
         }
 
-        if (rewiredPlayer.GetButton("LeftBumper"))
+        if (rewiredPlayer.GetButton("LeftBumper") || Input.GetKey(KeyCode.Q))
         {
             // move down
             inputVector.y -= 1;
@@ -54,6 +54,24 @@ public class PlayerMoveBase
         {
             // for playtesting without a controller
             inputVector.z += 1;
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            // for playtesting without a controller
+            inputVector.x -= 1;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            // for playtesting without a controller
+            inputVector.z -= 1;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            // for playtesting without a controller
+            inputVector.x += 1;
         }
 
         inputVector = player.transform.TransformDirection(inputVector);
