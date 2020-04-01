@@ -19,6 +19,7 @@ public class RoundManager : MonoBehaviour
     [Range(2, 4)]
     public int players = 2;
     public int focusedPlayer = 0;
+    public bool focusMode = false;
     public bool uiOff;
     public GameObject[] uiObjects;
 
@@ -150,23 +151,35 @@ public class RoundManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            FocusPlayer(1);
             focusedPlayer = 1;
+            if(focusMode)
+            {
+                FocusPlayer(1);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            FocusPlayer(2);
             focusedPlayer = 2;
+            if (focusMode)
+            {
+                FocusPlayer(2);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            FocusPlayer(3);
             focusedPlayer = 3;
+            if (focusMode)
+            {
+                FocusPlayer(3);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            FocusPlayer(4);
             focusedPlayer = 4;
+            if (focusMode)
+            {
+                FocusPlayer(4);
+            }
         }
     }
 
