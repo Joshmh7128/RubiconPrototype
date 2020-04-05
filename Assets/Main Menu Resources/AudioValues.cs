@@ -21,19 +21,19 @@ public class AudioValues : MonoBehaviour
     public void SetMusic(System.Single level)
     {
         MasterMixerVolume.SetFloat("music", level);
-        AudioLevels.masterVol = level;
+        AudioLevels.musicVol = level;
     }
 
     public void SetSFX(System.Single level)
     {
         MasterMixerVolume.SetFloat("sfx", level);
-        AudioLevels.masterVol = level;
+        AudioLevels.sfxVol = level;
     }
 
     public void SetMatt(System.Single level)
     {
         MasterMixerVolume.SetFloat("announcer", level);
-        AudioLevels.masterVol = level;
+        AudioLevels.announcerVol = level;
     }
 
 }
