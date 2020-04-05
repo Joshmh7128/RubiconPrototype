@@ -20,6 +20,8 @@ AudioMixerController:
     name: Master
   - guid: ede730b0e9ed0f84bb9de8c6adf2f7fb
     name: announcer
+  - guid: 9d148b30d90034544bd2715cdf2c18ca
+    name: MyExposedParam
   - guid: e0001d88f45d98d439d64f130c4efc56
     name: music
   - guid: 8cc34a7dfcc13234c9a10db366d0acae

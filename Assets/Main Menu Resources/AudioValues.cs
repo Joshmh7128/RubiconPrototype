@@ -12,12 +12,28 @@ public class AudioValues : MonoBehaviour
 
     public AudioMixer MasterMixerVolume;
 
-    private void Update()
+    public void SetMaster(System.Single level)
     {
-        MasterMixerVolume.SetFloat("Master", 100 / (float)masterVolume * (-0.8f));
-        MasterMixerVolume.SetFloat("music", 100 / (float)musicVolume * (-0.8f));
-        MasterMixerVolume.SetFloat("sfx", 100 / (float)sfxVolume * (-0.8f));
-        MasterMixerVolume.SetFloat("announcer", 100 / (float)announcerVolume * (-0.8f));
+        MasterMixerVolume.SetFloat("Master", level);
+        AudioLevels.masterVol = level;
+    }
+
+    public void SetMusic(System.Single level)
+    {
+        MasterMixerVolume.SetFloat("music", level);
+        AudioLevels.masterVol = level;
+    }
+
+    public void SetSFX(System.Single level)
+    {
+        MasterMixerVolume.SetFloat("sfx", level);
+        AudioLevels.masterVol = level;
+    }
+
+    public void SetMatt(System.Single level)
+    {
+        MasterMixerVolume.SetFloat("announcer", level);
+        AudioLevels.masterVol = level;
     }
 
 }

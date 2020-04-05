@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Audio;
 
 public class RoundManager : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class RoundManager : MonoBehaviour
     public Text RoundCounter;
 
     [Header("Scene")]
+
+    public AudioMixer MasterMixerVolume;
 
     public GameObject Player1;
     public GameObject Player2;
@@ -140,12 +143,22 @@ public class RoundManager : MonoBehaviour
 
     private void StartGame()
     {
+        SetVolume();
         post.profile.TryGetSettings(out depthOfField);
         GenerateWeapons();
         AssignWeapons();
         myArena.shuffle(shuffles);
         StartCoroutine(SetupRound());
         StartCoroutine(DisplayFirst());
+    }
+
+    private void SetVolume()
+    {
+        MasterMixerVolume.SetFloat("Master", AudioLevels.masterVol);
+        MasterMixerVolume.SetFloat("music", AudioLevels.musicVol);
+        MasterMixerVolume.SetFloat("sfx", AudioLevels.sfxVol);
+        MasterMixerVolume.SetFloat("guns", AudioLevels.sfxVol - 4);
+        MasterMixerVolume.SetFloat("announcer", AudioLevels.announcerVol);
     }
 
     private IEnumerator DisplayFirst()
