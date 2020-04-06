@@ -25,8 +25,8 @@ public class MiniPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rotAroundX += Input.GetAxis("Mouse Y") * 3.5f;
-        rotAroundY += Input.GetAxis("Mouse X") * 3.5f;
+        //rotAroundX += Input.GetAxis("Mouse Y") * 3.5f;
+        //rotAroundY += Input.GetAxis("Mouse X") * 3.5f;
 
         rotAroundX += myPlayer.GetAxis("LookHorizontalX") * -3.5f;
         rotAroundY += myPlayer.GetAxis("LookHorizontalY") * 3.5f;

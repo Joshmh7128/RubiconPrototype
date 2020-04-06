@@ -256,6 +256,7 @@ public class MainMenuManager : MonoBehaviour
             else
             {
                 startGame.interactable = false;
+                backToMode.Select();
             }
         }
         else if(players4readyToJoin)
@@ -267,6 +268,7 @@ public class MainMenuManager : MonoBehaviour
             else
             {
                 startGame.interactable = false;
+                backToMode.Select();
             }
         }
     }
