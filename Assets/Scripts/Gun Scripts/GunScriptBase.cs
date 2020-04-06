@@ -53,7 +53,7 @@ public class GunScriptBase : MonoBehaviour
             if (player.blaster.activeSelf == false)
             {
                 player.blaster.SetActive(true);
-                magSize = 10;
+                magSize = 20;
                 myInfo.magSize = magSize;
                 fireRate = 0.25f;
                 dmg = 7;
@@ -77,7 +77,7 @@ public class GunScriptBase : MonoBehaviour
             if (player.grenadeLauncher.activeSelf == false)
             {
                 player.grenadeLauncher.SetActive(true);
-                magSize = 6;
+                magSize = 10;
                 myInfo.magSize = magSize;
                 fireRate = 0.5f;
                 dmg = 35;
@@ -101,7 +101,7 @@ public class GunScriptBase : MonoBehaviour
             if (player.machineGun.activeSelf == false)
             {
                 player.machineGun.SetActive(true);
-                magSize = 25;
+                magSize = 35;
                 myInfo.magSize = magSize;
                 fireRate = 0.15f;
                 dmg = 8;
@@ -173,7 +173,7 @@ public class GunScriptBase : MonoBehaviour
             if (player.sniperRifle.activeSelf == false)
             {
                 player.sniperRifle.SetActive(true);
-                magSize = 3;
+                magSize = 5;
                 myInfo.magSize = magSize;
                 fireRate = 1f;
                 dmg = 40;
