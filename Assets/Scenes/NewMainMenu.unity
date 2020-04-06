@@ -19673,8 +19673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fead4e47f04704449b4ea8df524bbea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
+  m_HorizontalAxis: DpadHorizontal
+  m_VerticalAxis: DpadVertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
