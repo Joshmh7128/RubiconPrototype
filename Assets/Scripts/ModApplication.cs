@@ -56,6 +56,34 @@ public class ModApplication : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            ActivateGlow();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            ActivateScatter();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            ActivateShield();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            ActivateStealth();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            ActivateSpeed();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            ResetMods();
+        }
+    }
+
     public void ResetMods()
     {
         armor = false;
