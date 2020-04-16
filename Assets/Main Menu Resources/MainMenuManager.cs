@@ -29,6 +29,7 @@ public class MainMenuManager : MonoBehaviour
     public Button exitButton;
     public Button playButton;
     public Button optionsButton;
+    public Button creditsButton;
     public Button fullscreenToggle;
     public Button resetAudioButton;
     public Button closeOptions;
@@ -59,6 +60,8 @@ public class MainMenuManager : MonoBehaviour
     public GameObject[] hideWhenJoin;
     public GameObject[] showJoin2p;
     public GameObject[] showJoin4p;
+    public GameObject creditsPage;
+    public Button creditsBack;
 
     private void Start()
     {
@@ -78,6 +81,8 @@ public class MainMenuManager : MonoBehaviour
         Cursor.visible = false;
         optionsActive = false;
         optionsButton.onClick.AddListener(OptionsMenuToggle);
+        creditsButton.onClick.AddListener(ShowCredits);
+        creditsBack.onClick.AddListener(ReturnToMenu);
         closeOptions.onClick.AddListener(OptionsMenuToggle);
         pBackButton.onClick.AddListener(ReturnToMenu);
         playButton.onClick.AddListener(ModeSelect);
@@ -361,6 +366,18 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    public void ShowCredits()
+    {
+        uicam.depth = 1;
+        depthOfField.active = true;
+        foreach (GameObject obj in toHide)
+        {
+            obj.SetActive(false);
+        }
+        creditsPage.SetActive(true);
+        creditsBack.Select();
+    }
+
     public void StartPlay()
     {
         // load the next scene
@@ -415,6 +432,7 @@ public class MainMenuManager : MonoBehaviour
         {
             obj.SetActive(false);
         }
+        creditsPage.SetActive(false);
         playButton.Select();
     }
 
