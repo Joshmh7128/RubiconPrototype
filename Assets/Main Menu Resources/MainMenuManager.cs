@@ -74,8 +74,8 @@ public class MainMenuManager : MonoBehaviour
         uicam.depth = 0;
 
         // on click listeners
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         optionsActive = false;
         optionsButton.onClick.AddListener(OptionsMenuToggle);
         closeOptions.onClick.AddListener(OptionsMenuToggle);
