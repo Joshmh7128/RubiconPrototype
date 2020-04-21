@@ -280,21 +280,21 @@ public class MainMenuManager : MonoBehaviour
 
     public void ResetAudio()
     {
-        audioValues.masterVolume = -10;
-        masterVol.value = -10;
-        audioValues.SetMaster(-10);
+        audioValues.masterVolume = 70;
+        masterVol.value = 70;
+        audioValues.SetMaster(70);
 
-        audioValues.sfxVolume = 0;
-        sfxVol.value = 0;
-        audioValues.SetSFX(0);
+        audioValues.sfxVolume = 80;
+        sfxVol.value = 80;
+        audioValues.SetSFX(80);
 
-        audioValues.announcerVolume = 5;
-        announcerVol.value = 5;
-        audioValues.SetMatt(5);
+        audioValues.announcerVolume = 85;
+        announcerVol.value = 85;
+        audioValues.SetMatt(85);
 
-        audioValues.musicVolume = 0;
-        musicVol.value = 0;
-        audioValues.SetMusic(0);
+        audioValues.musicVolume = 80;
+        musicVol.value = 80;
+        audioValues.SetMusic(80);
     }
 
     public void resetJoined()
