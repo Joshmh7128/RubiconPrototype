@@ -8,12 +8,23 @@ public class SceneLoader : MonoBehaviour
 {
     public Image progressBar;
     public Text tipText;
+    public GameObject myCanvas;
+    private Camera myCam;
+    private UnityEngine.Video.VideoPlayer videoPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
+        myCam = Camera.main;
+        SetupCutscene();
         StartCoroutine(DisplayTip());
         StartCoroutine(LoadAsyncOperation());
+    }
+
+    private void SetupCutscene()
+    {
+        videoPlayer = myCam.gameObject.GetComponent<UnityEngine.Video.VideoPlayer>();
+        videoPlayer.Prepare();
     }
 
     private string RandomTip()
@@ -144,12 +155,16 @@ public class SceneLoader : MonoBehaviour
         if (WhichScene.SceneToLoad != null)
         {
             AsyncOperation gameLevel = SceneManager.LoadSceneAsync(WhichScene.SceneToLoad);
+            gameLevel.allowSceneActivation = false;
 
-            while (gameLevel.progress < 1)
+            while (gameLevel.progress < 0.8999)
             {
                 progressBar.fillAmount = gameLevel.progress;
                 yield return new WaitForEndOfFrame();
             }
+
+            myCanvas.SetActive(false);
+            videoPlayer.Play();
         }
     }
 
