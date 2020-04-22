@@ -8,7 +8,7 @@ public class SceneLoader : MonoBehaviour
 {
     public Image progressBar;
     public Text tipText;
-    public GameObject myCanvas;
+    public GameObject loadingCanvas;
     private Camera myCam;
     private UnityEngine.Video.VideoPlayer videoPlayer;
 
@@ -163,7 +163,7 @@ public class SceneLoader : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
 
-            myCanvas.SetActive(false);
+            loadingCanvas.SetActive(false);
             videoPlayer.Play();
         }
     }
