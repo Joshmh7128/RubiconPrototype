@@ -11,6 +11,8 @@ public class SceneLoader : MonoBehaviour
     public GameObject loadingCanvas;
     private Camera myCam;
     private UnityEngine.Video.VideoPlayer videoPlayer;
+    private bool startedCutscene = false;
+    private AsyncOperation gameLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +23,30 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadAsyncOperation());
     }
 
+    private void Update()
+    {
+        if(startedCutscene)
+        {
+            if(Input.GetKeyDown("joystick button 0"))
+            {
+                videoPlayer.Stop();
+            }
+            if (!videoPlayer.isPlaying)
+            {
+                gameLevel.allowSceneActivation = true;
+            }
+        }
+    }
+
     private void SetupCutscene()
     {
         videoPlayer = myCam.gameObject.GetComponent<UnityEngine.Video.VideoPlayer>();
         videoPlayer.Prepare();
+    }
+
+    private void EndCutscene()
+    {
+
     }
 
     private string RandomTip()
@@ -154,7 +176,7 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         if (WhichScene.SceneToLoad != null)
         {
-            AsyncOperation gameLevel = SceneManager.LoadSceneAsync(WhichScene.SceneToLoad);
+            gameLevel = SceneManager.LoadSceneAsync(WhichScene.SceneToLoad);
             gameLevel.allowSceneActivation = false;
 
             while (gameLevel.progress < 0.8999)
@@ -165,6 +187,7 @@ public class SceneLoader : MonoBehaviour
 
             loadingCanvas.SetActive(false);
             videoPlayer.Play();
+            startedCutscene = true;
         }
     }
 
