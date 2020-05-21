@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Rewired;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -27,10 +28,19 @@ public class SceneLoader : MonoBehaviour
     {
         if(startedCutscene)
         {
-            if(Input.GetKeyDown("joystick button 0"))
+            for (int i = 0; i < ReInput.players.playerCount; i++)
+            {
+                if (ReInput.players.GetPlayer(i).GetButtonDown("FireTrigger"))
+                {
+                    videoPlayer.Stop();
+                }
+            }
+            /*
+            if (Input.GetKeyDown("joystick button 0"))
             {
                 videoPlayer.Stop();
             }
+            */
             if (!videoPlayer.isPlaying)
             {
                 gameLevel.allowSceneActivation = true;
