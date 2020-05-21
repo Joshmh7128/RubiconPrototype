@@ -275,7 +275,7 @@ public class GunScriptBase : MonoBehaviour
                     GameObject overlapper = Instantiate(overlapObj, player.shotgunEnd.position, Quaternion.identity);
                     overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
                     OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
-                    ovc.damage = dmg;
+                    ovc.damage = dmg * 6;
                     ovc.myID = player.playerID;
                     for (int i = 0; i < x; i++)
                     {
