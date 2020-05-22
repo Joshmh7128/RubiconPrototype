@@ -30,7 +30,7 @@ public class SceneLoader : MonoBehaviour
         {
             for (int i = 0; i < ReInput.players.playerCount; i++)
             {
-                if (ReInput.players.GetPlayer(i).GetButtonDown("FireTrigger"))
+                if (ReInput.players.GetPlayer(i).GetButton("FireTrigger"))
                 {
                     videoPlayer.Stop();
                 }

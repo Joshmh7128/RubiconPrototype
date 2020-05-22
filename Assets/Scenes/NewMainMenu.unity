@@ -2123,10 +2123,10 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Meaghan Doherty\r\nCadence Hira\r\nScott Kwon\r\nSean Mathieu\r\nDavis
-    Peng\n"
+  m_Text: "Zachary Anderson\nMeaghan Doherty\r\nCadence Hira\r\nScott Kwon\r\nSean
+    Mathieu\r\nDavis Peng\n"
 --- !u!222 &131203881
 CanvasRenderer:
   m_ObjectHideFlags: 0
