@@ -33,6 +33,7 @@ public class SceneLoader : MonoBehaviour
                 if (ReInput.players.GetPlayer(i).GetButton("FireTrigger"))
                 {
                     videoPlayer.Stop();
+                    break;
                 }
             }
             /*
