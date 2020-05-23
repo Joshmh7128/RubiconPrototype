@@ -22,17 +22,20 @@ public class SceneLoader : MonoBehaviour
         SetupCutscene();
         StartCoroutine(DisplayTip());
         StartCoroutine(LoadAsyncOperation());
+        videoPlayer.loopPointReached += EndReached;
     }
 
     private void Update()
     {
         if(startedCutscene)
         {
+            
             for (int i = 0; i < ReInput.players.playerCount; i++)
             {
                 if (ReInput.players.GetPlayer(i).GetButton("FireTrigger"))
                 {
                     videoPlayer.Stop();
+                    gameLevel.allowSceneActivation = true;
                     break;
                 }
             }
@@ -42,10 +45,12 @@ public class SceneLoader : MonoBehaviour
                 videoPlayer.Stop();
             }
             */
+            /*
             if (!videoPlayer.isPlaying)
             {
                 gameLevel.allowSceneActivation = true;
             }
+            */
         }
     }
 
@@ -55,9 +60,9 @@ public class SceneLoader : MonoBehaviour
         videoPlayer.Prepare();
     }
 
-    private void EndCutscene()
+    void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
-
+        gameLevel.allowSceneActivation = true;
     }
 
     private string RandomTip()
