@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
 using Rewired;
 
 public class SceneLoader : MonoBehaviour
@@ -39,24 +40,30 @@ public class SceneLoader : MonoBehaviour
                     break;
                 }
             }
+            if(Input.GetKey(KeyCode.Space))
+            {
+                videoPlayer.Stop();
+                gameLevel.allowSceneActivation = true;
+            }
             /*
             if (Input.GetKeyDown("joystick button 0"))
             {
                 videoPlayer.Stop();
             }
             */
-            /*
+            
             if (!videoPlayer.isPlaying)
             {
                 gameLevel.allowSceneActivation = true;
             }
-            */
+            
         }
     }
 
     private void SetupCutscene()
     {
         videoPlayer = myCam.gameObject.GetComponent<UnityEngine.Video.VideoPlayer>();
+        videoPlayer.url = Path.Combine(Application.streamingAssetsPath, "Intro.mp4");
         videoPlayer.Prepare();
     }
 
