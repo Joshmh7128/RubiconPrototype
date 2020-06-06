@@ -3499,11 +3499,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Welcome to the Rubicon closed beta!
-
-
-    We''re always looking for feedback and suggestions. Join our Discord server to
-    chat with developers and fans!'
+  m_Text: "Welcome to the Rubicon closed beta!\n\nWe're always looking for feedback
+    and suggestions. Join our Discord server to chat with developers and fans!\n\n
+    https://discord.gg/YXBw5e7"
 --- !u!222 &233968283
 CanvasRenderer:
   m_ObjectHideFlags: 0
