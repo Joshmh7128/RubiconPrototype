@@ -40,13 +40,13 @@ public class SceneLoader : MonoBehaviour
                     break;
                 }
             }
-            /*
+            
             if(Input.GetKey(KeyCode.Space))
             {
                 videoPlayer.Stop();
                 gameLevel.allowSceneActivation = true;
             }
-            */
+            
             /*
             if (Input.GetKeyDown("joystick button 0"))
             {

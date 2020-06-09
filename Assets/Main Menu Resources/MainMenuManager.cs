@@ -77,8 +77,10 @@ public class MainMenuManager : MonoBehaviour
         uicam.depth = 0;
 
         // on click listeners
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         optionsActive = false;
         optionsButton.onClick.AddListener(OptionsMenuToggle);
         creditsButton.onClick.AddListener(ShowCredits);
@@ -280,6 +282,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void ResetAudio()
     {
+        /*
         audioValues.masterVolume = 70;
         masterVol.value = 70;
         audioValues.SetMaster(70);
@@ -295,6 +298,15 @@ public class MainMenuManager : MonoBehaviour
         audioValues.musicVolume = 80;
         musicVol.value = 80;
         audioValues.SetMusic(80);
+        */
+        masterVol.value = (int)(AudioLevels.masterVol + 80);
+        audioValues.SetMaster(AudioLevels.masterVol + 80);
+        sfxVol.value = (int)(AudioLevels.sfxVol + 80);
+        audioValues.SetSFX(AudioLevels.sfxVol + 80);
+        announcerVol.value = (int)(AudioLevels.announcerVol + 80);
+        audioValues.SetMatt(AudioLevels.announcerVol + 80);
+        musicVol.value = (int)(AudioLevels.musicVol + 80);
+        audioValues.SetMusic(AudioLevels.musicVol + 80);
     }
 
     public void resetJoined()
