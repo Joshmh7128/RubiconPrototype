@@ -41,11 +41,13 @@ public class SceneLoader : MonoBehaviour
                 }
             }
             
+            /*
             if(Input.GetKey(KeyCode.Space))
             {
                 videoPlayer.Stop();
                 gameLevel.allowSceneActivation = true;
             }
+            */
             
             /*
             if (Input.GetKeyDown("joystick button 0"))
@@ -77,7 +79,7 @@ public class SceneLoader : MonoBehaviour
     private string RandomTip()
     {
         string tip = "Random Tip";
-        int key = Random.Range(1, 38);
+        int key = Random.Range(1, 43);
         switch(key)
         {
             case 1:
@@ -99,7 +101,7 @@ public class SceneLoader : MonoBehaviour
                 tip = "Blue power-ups give you armor, providing limited protection from attacks.";
                 break;
             case 7:
-                tip = "Red power-ups restore health if you activate them while injured.";
+                tip = "Red power-ups restore health if you collect them while injured.";
                 break;
             case 8:
                 tip = "Pickups respawn after a cooldown; use their timing to your advantage.";
@@ -123,13 +125,13 @@ public class SceneLoader : MonoBehaviour
                 tip = "Every match has a random configuration of rooms, so stop trying to memorize the map layout. Hey! I said stop!";
                 break;
             case 15:
-                tip = "The arena's center room is the only area that never rotates. Use it to get your bearings.";
+                tip = "The arena's center room is the only area that never rotates. Use it to get your bearings or redeploy to a new sector.";
                 break;
             case 16:
                 tip = "Holding down the trigger auto-fires your weapon. Any weapon.";
                 break;
             case 17:
-                tip = "Disoriented by the six-sided omnidirectional puzzle cube? Check your gyroscope at the bottom center of your HUD.";
+                tip = "Disoriented by the omnidirectional puzzle cube? Check your gyroscope at the bottom center of your HUD.";
                 break;
             case 18:
                 tip = "The Machine Gun has a very high rate of fire, so keep an eye on your ammo so you don't have to reload in the middle of a firefight.";
@@ -159,7 +161,7 @@ public class SceneLoader : MonoBehaviour
                 tip = "If you see a sphere, please stop the match and report it to the Announcer immediately.";
                 break;
             case 27:
-                tip = "Losing a match? Try shooting your opponent more than they shoot you.";
+                tip = "Losing a match? Hmm. Did you remember to shoot your opponent more than they shoot you?";
                 break;
             case 28:
                 tip = "NOTE TO HR: Todd has been exhibiting sphere-like behavior. Recommend surveillance.";
@@ -190,6 +192,21 @@ public class SceneLoader : MonoBehaviour
                 break;
             case 37:
                 tip = "The 'Large' modifier makes you present a bigger target, plus you might struggle with some tight squeezes.";
+                break;
+            case 38:
+                tip = "The 'Tunnel Vision' modifier cloaks your peripheral vision. Watch out for surprise attacks!";
+                break;
+            case 39:
+                tip = "The only thing we have to fear is sphere itself.";
+                break;
+            case 40:
+                tip = "The Third Power would like to remind you to only consume news media from state-approved outlets. Don't worry, we're winning the war!";
+                break;
+            case 41:
+                tip = "It's almost election season! Encourage your family and friends to vote correctly. You wouldn't want anything to happen to them, would you?";
+                break;
+            case 42:
+                tip = "The Announcer is a dear friend of Supreme Leader Rhombo Hedron himself! Be sportsmanlike at all times to show your respect. It's for your own good.";
                 break;
         }
         return tip;

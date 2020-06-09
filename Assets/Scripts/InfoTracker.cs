@@ -77,11 +77,6 @@ public class InfoTracker : MonoBehaviour
         int mag = myPlayer._weaponSystems.magSize;
         ammoText.text = ammo.ToString() + " / " + mag;
 
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            SceneManager.LoadScene("NewMainMenu");
-        }
-
         if (rewiredPlayer.GetButton("Pause") && !rm.isPaused && !rm.isOver)
         {
             rm.isPaused = true;
