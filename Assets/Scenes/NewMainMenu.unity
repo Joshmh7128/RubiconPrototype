@@ -10293,6 +10293,7 @@ MonoBehaviour:
   creditsBack: {fileID: 723807860}
   join: {fileID: 8300000, guid: cfcfaf05c68bc744693113ef15b8ac6d, type: 3}
   leave: {fileID: 8300000, guid: 5eceda603fb729040aa09c42664abe9e, type: 3}
+  fade: {fileID: 701433965}
 --- !u!4 &482169563
 Transform:
   m_ObjectHideFlags: 0
@@ -13324,7 +13325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &701433966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21540,8 +21541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fead4e47f04704449b4ea8df524bbea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: StickHorizontal
-  m_VerticalAxis: StickVertical
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -23946,7 +23947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

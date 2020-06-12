@@ -12,69 +12,15 @@ public class SceneLoader : MonoBehaviour
     public Text tipText;
     public GameObject loadingCanvas;
     private Camera myCam;
-    private UnityEngine.Video.VideoPlayer videoPlayer;
-    private bool startedCutscene = false;
     private AsyncOperation gameLevel;
 
     // Start is called before the first frame update
     void Start()
     {
         myCam = Camera.main;
-        SetupCutscene();
         StartCoroutine(DisplayTip());
         StartCoroutine(LoadAsyncOperation());
-        videoPlayer.loopPointReached += EndReached;
         AudioLevels.firstLoad = false;
-    }
-
-    private void Update()
-    {
-        if(startedCutscene)
-        {
-            
-            for (int i = 0; i < ReInput.players.playerCount; i++)
-            {
-                if (ReInput.players.GetPlayer(i).GetButton("FireTrigger"))
-                {
-                    videoPlayer.Stop();
-                    gameLevel.allowSceneActivation = true;
-                    break;
-                }
-            }
-            
-            /*
-            if(Input.GetKey(KeyCode.Space))
-            {
-                videoPlayer.Stop();
-                gameLevel.allowSceneActivation = true;
-            }
-            */
-            
-            /*
-            if (Input.GetKeyDown("joystick button 0"))
-            {
-                videoPlayer.Stop();
-            }
-            */
-            
-            if (!videoPlayer.isPlaying)
-            {
-                gameLevel.allowSceneActivation = true;
-            }
-            
-        }
-    }
-
-    private void SetupCutscene()
-    {
-        videoPlayer = myCam.gameObject.GetComponent<UnityEngine.Video.VideoPlayer>();
-        videoPlayer.url = Path.Combine(Application.streamingAssetsPath, "Intro.mp4");
-        videoPlayer.Prepare();
-    }
-
-    void EndReached(UnityEngine.Video.VideoPlayer vp)
-    {
-        gameLevel.allowSceneActivation = true;
     }
 
     private string RandomTip()
@@ -220,17 +166,7 @@ public class SceneLoader : MonoBehaviour
         if (WhichScene.SceneToLoad != null)
         {
             gameLevel = SceneManager.LoadSceneAsync(WhichScene.SceneToLoad);
-            gameLevel.allowSceneActivation = false;
-
-            while (gameLevel.progress < 0.8999)
-            {
-                progressBar.fillAmount = gameLevel.progress;
-                yield return new WaitForEndOfFrame();
-            }
-
-            loadingCanvas.SetActive(false);
-            videoPlayer.Play();
-            startedCutscene = true;
+            gameLevel.allowSceneActivation = true;
         }
     }
 

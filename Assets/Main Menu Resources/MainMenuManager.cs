@@ -66,6 +66,7 @@ public class MainMenuManager : MonoBehaviour
     private AudioSource joinSource;
     public AudioClip join;
     public AudioClip leave;
+    public GameObject fade;
 
     private void Start()
     {
@@ -116,6 +117,7 @@ public class MainMenuManager : MonoBehaviour
 
         StartCoroutine("AddPlaySound");
         joinSource = soundManager.beeperMain;
+        fade.SetActive(true);
     }
 
     private void FindPlayers()
