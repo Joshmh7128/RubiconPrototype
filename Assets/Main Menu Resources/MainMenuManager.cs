@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.EventSystems;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -68,6 +69,10 @@ public class MainMenuManager : MonoBehaviour
         FindPlayers();
 
         ResetAudio();
+        if(AudioLevels.firstLoad)
+        {
+            ResetDefaults();
+        }
 
         post.profile.TryGetSettings(out depthOfField);
         foreach (GameObject obj in modeMenu)
@@ -92,7 +97,7 @@ public class MainMenuManager : MonoBehaviour
         startGame.onClick.AddListener(LoadLevel);
         backToMode.onClick.AddListener(ModeSelect);
         fullscreenToggle.onClick.AddListener(ToggleFullscreen);
-        resetAudioButton.onClick.AddListener(ResetAudio);
+        resetAudioButton.onClick.AddListener(ResetDefaults);
 
         // add the hover checks
 
@@ -105,6 +110,8 @@ public class MainMenuManager : MonoBehaviour
         soundManager.PlaySound("menuMusic");
 
         resetJoined();
+
+        StartCoroutine("AddPlaySound");
     }
 
     private void FindPlayers()
@@ -113,6 +120,14 @@ public class MainMenuManager : MonoBehaviour
         player2 = Rewired.ReInput.players.GetPlayer(1);
         player3 = Rewired.ReInput.players.GetPlayer(2);
         player4 = Rewired.ReInput.players.GetPlayer(3);
+    }
+
+    IEnumerator AddPlaySound()
+    {
+        EventTrigger et = playButton.GetComponent<EventTrigger>();
+        et.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        et.enabled = true;
     }
 
     private void Update()
@@ -276,6 +291,18 @@ public class MainMenuManager : MonoBehaviour
                 backToMode.Select();
             }
         }
+    }
+
+    public void ResetDefaults()
+    {
+        masterVol.value = (70);
+        audioValues.SetMaster(70);
+        sfxVol.value = (80);
+        audioValues.SetSFX(AudioLevels.sfxVol + 80);
+        announcerVol.value = (85);
+        audioValues.SetMatt(85);
+        musicVol.value = (80);
+        audioValues.SetMusic(80);
     }
 
     public void ResetAudio()

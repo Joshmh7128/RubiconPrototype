@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class AudioLevels
 {
+    public static bool firstLoad = true;
+
     public static float masterVol = -10;
     public static float musicVol = 0;
     public static float sfxVol = 0;

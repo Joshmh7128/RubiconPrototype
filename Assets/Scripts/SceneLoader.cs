@@ -24,6 +24,7 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(DisplayTip());
         StartCoroutine(LoadAsyncOperation());
         videoPlayer.loopPointReached += EndReached;
+        AudioLevels.firstLoad = false;
     }
 
     private void Update()
