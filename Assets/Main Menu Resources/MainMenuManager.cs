@@ -63,6 +63,9 @@ public class MainMenuManager : MonoBehaviour
     public GameObject[] showJoin4p;
     public GameObject creditsPage;
     public Button creditsBack;
+    private AudioSource joinSource;
+    public AudioClip join;
+    public AudioClip leave;
 
     private void Start()
     {
@@ -112,6 +115,7 @@ public class MainMenuManager : MonoBehaviour
         resetJoined();
 
         StartCoroutine("AddPlaySound");
+        joinSource = soundManager.beeperMain;
     }
 
     private void FindPlayers()
@@ -153,6 +157,7 @@ public class MainMenuManager : MonoBehaviour
                     players2preview[0].SetActive(true);
                     miniPlayers[0].SetActive(true);
                     checkJoined();
+                    joinSource.PlayOneShot(join);
                 }
                 else
                 {
@@ -161,6 +166,7 @@ public class MainMenuManager : MonoBehaviour
                     players2preview[0].SetActive(false);
                     miniPlayers[0].SetActive(false);
                     checkJoined();
+                    joinSource.PlayOneShot(leave);
                 }
             }
             if (player2.GetButtonDown("Reload") || Input.GetKeyDown(KeyCode.Alpha2))
@@ -172,6 +178,7 @@ public class MainMenuManager : MonoBehaviour
                     players2preview[1].SetActive(true);
                     miniPlayers[1].SetActive(true);
                     checkJoined();
+                    joinSource.PlayOneShot(join);
                 }
                 else
                 {
@@ -180,6 +187,7 @@ public class MainMenuManager : MonoBehaviour
                     players2preview[1].SetActive(false);
                     miniPlayers[1].SetActive(false);
                     checkJoined();
+                    joinSource.PlayOneShot(leave);
                 }
             }
         }
@@ -194,6 +202,7 @@ public class MainMenuManager : MonoBehaviour
                     players4preview[0].SetActive(true);
                     miniPlayers[0].SetActive(true);
                     checkJoined();
+                    joinSource.PlayOneShot(join);
                 }
                 else
                 {
@@ -202,6 +211,7 @@ public class MainMenuManager : MonoBehaviour
                     players4preview[0].SetActive(false);
                     miniPlayers[0].SetActive(false);
                     checkJoined();
+                    joinSource.PlayOneShot(leave);
                 }
             }
             if (player2.GetButtonDown("Reload") || Input.GetKeyDown(KeyCode.Alpha2))
@@ -213,6 +223,7 @@ public class MainMenuManager : MonoBehaviour
                     players4preview[1].SetActive(true);
                     miniPlayers[1].SetActive(true);
                     checkJoined();
+                    joinSource.PlayOneShot(join);
                 }
                 else
                 {
@@ -221,6 +232,7 @@ public class MainMenuManager : MonoBehaviour
                     players4preview[1].SetActive(false);
                     miniPlayers[1].SetActive(false);
                     checkJoined();
+                    joinSource.PlayOneShot(leave);
                 }
             }
             if (player3.GetButtonDown("Reload") || Input.GetKeyDown(KeyCode.Alpha3))
@@ -232,6 +244,7 @@ public class MainMenuManager : MonoBehaviour
                     players4preview[2].SetActive(true);
                     miniPlayers[2].SetActive(true);
                     checkJoined();
+                    joinSource.PlayOneShot(join);
                 }
                 else
                 {
@@ -240,6 +253,7 @@ public class MainMenuManager : MonoBehaviour
                     players4preview[2].SetActive(false);
                     miniPlayers[2].SetActive(false);
                     checkJoined();
+                    joinSource.PlayOneShot(leave);
                 }
             }
             if (player4.GetButtonDown("Reload") || Input.GetKeyDown(KeyCode.Alpha4))
@@ -251,6 +265,7 @@ public class MainMenuManager : MonoBehaviour
                     players4preview[3].SetActive(true);
                     miniPlayers[3].SetActive(true);
                     checkJoined();
+                    joinSource.PlayOneShot(join);
                 }
                 else
                 {
@@ -259,6 +274,7 @@ public class MainMenuManager : MonoBehaviour
                     players4preview[3].SetActive(false);
                     miniPlayers[3].SetActive(false);
                     checkJoined();
+                    joinSource.PlayOneShot(leave);
                 }
             }
         }
