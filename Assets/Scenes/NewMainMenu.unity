@@ -13324,7 +13324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &701433966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21540,8 +21540,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fead4e47f04704449b4ea8df524bbea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
+  m_HorizontalAxis: StickHorizontal
+  m_VerticalAxis: StickVertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
