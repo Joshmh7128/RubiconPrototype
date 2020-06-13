@@ -362,7 +362,7 @@ public class GunScriptBase : MonoBehaviour
 			player.StartCoroutine(Reload());
 		}
 
-        if(rewiredPlayer.GetButton("A") && myInfo.rm.isOver)
+        if(rewiredPlayer.GetButton("LeftBumper") && myInfo.rm.isOver)
         {
             if(myInfo.rm.players == 2)
             {
@@ -376,7 +376,7 @@ public class GunScriptBase : MonoBehaviour
             }
         }
 
-        if (rewiredPlayer.GetButton("B") && myInfo.rm.isOver)
+        if (rewiredPlayer.GetButton("RightBumper") && myInfo.rm.isOver)
         {
             WhichScene.SceneToLoad = "NewMainMenu";
             SceneManager.LoadScene("LoadingScene");
