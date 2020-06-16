@@ -73,7 +73,6 @@ public class MainMenuManager : MonoBehaviour
     public GameObject fade;
     public Button tutorialBack;
     private int tutorialIndex = 0;
-    public Image[] tutorialImages;
 
     private void Start()
     {

@@ -10100,7 +10100,6 @@ MonoBehaviour:
   leave: {fileID: 8300000, guid: 5eceda603fb729040aa09c42664abe9e, type: 3}
   fade: {fileID: 701433965}
   tutorialBack: {fileID: 1804391918}
-  tutorialImages: []
 --- !u!4 &482169563
 Transform:
   m_ObjectHideFlags: 0
@@ -13742,7 +13741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9607843}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
