@@ -61,6 +61,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject[] toHide;
     public Camera uicam;
     public GameObject[] hideWhenOptions;
+    public GameObject[] hideWhenTutorial;
     public GameObject[] hideWhenJoin;
     public GameObject[] showJoin2p;
     public GameObject[] showJoin4p;
@@ -70,6 +71,7 @@ public class MainMenuManager : MonoBehaviour
     public AudioClip join;
     public AudioClip leave;
     public GameObject fade;
+    public Button tutorialBack;
 
     private void Start()
     {
@@ -107,6 +109,7 @@ public class MainMenuManager : MonoBehaviour
         backToMode.onClick.AddListener(ModeSelect);
         fullscreenToggle.onClick.AddListener(ToggleFullscreen);
         resetAudioButton.onClick.AddListener(ResetDefaults);
+        tutorialBack.onClick.AddListener(ToggleTutorial);
 
         // add the hover checks
 
@@ -413,9 +416,9 @@ public class MainMenuManager : MonoBehaviour
         tutorialContainer.SetActive(tutorialActive);
         if(tutorialActive)
         {
-            foreach (GameObject obj in toHide)
+            foreach (GameObject obj in hideWhenTutorial)
             {
-                obj.SetActive(!obj.activeInHierarchy);
+                obj.SetActive(false);
             }
             uicam.depth = 1;
             depthOfField.active = true;
@@ -424,6 +427,17 @@ public class MainMenuManager : MonoBehaviour
         {
             uicam.depth = 0;
             depthOfField.active = false;
+            foreach (GameObject obj in hideWhenTutorial)
+            {
+                obj.SetActive(!obj.activeInHierarchy);
+            }
+        }
+        if(tutorialActive)
+        {
+            tutorialBack.Select();
+        }
+        else
+        {
             tutorialButton.Select();
         }
     }
