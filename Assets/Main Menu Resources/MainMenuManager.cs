@@ -29,6 +29,7 @@ public class MainMenuManager : MonoBehaviour
 
     public Button exitButton;
     public Button playButton;
+    public Button tutorialButton;
     public Button optionsButton;
     public Button creditsButton;
     public Button fullscreenToggle;
@@ -41,7 +42,9 @@ public class MainMenuManager : MonoBehaviour
     public Button backToMode;
     public Button startGame;
     public GameObject optionsContainer;
+    public GameObject tutorialContainer;
     public bool optionsActive;
+    public bool tutorialActive;
     public Slider masterVol;
     public Slider sfxVol;
     public Slider announcerVol;
@@ -89,7 +92,9 @@ public class MainMenuManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         optionsActive = false;
+        tutorialActive = false;
         optionsButton.onClick.AddListener(OptionsMenuToggle);
+        tutorialButton.onClick.AddListener(ToggleTutorial);
         creditsButton.onClick.AddListener(ShowCredits);
         creditsBack.onClick.AddListener(ReturnToMenu);
         closeOptions.onClick.AddListener(OptionsMenuToggle);
@@ -400,6 +405,27 @@ public class MainMenuManager : MonoBehaviour
     public void LoadLevel()
     {
         SceneManager.LoadScene("LoadingScene");
+    }
+
+    public void ToggleTutorial()
+    {
+        tutorialActive = !tutorialActive;
+        tutorialContainer.SetActive(tutorialActive);
+        if(tutorialActive)
+        {
+            foreach (GameObject obj in toHide)
+            {
+                obj.SetActive(!obj.activeInHierarchy);
+            }
+            uicam.depth = 1;
+            depthOfField.active = true;
+        }
+        else
+        {
+            uicam.depth = 0;
+            depthOfField.active = false;
+            tutorialButton.Select();
+        }
     }
 
     public void OptionsMenuToggle()
