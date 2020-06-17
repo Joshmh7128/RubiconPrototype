@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   myID: 0
-  burst: {fileID: 0}
+  burst: {fileID: 1386193425164969425, guid: 771fb4b711283d547ba1162ffa81f8ea, type: 3}
   modApp: {fileID: 0}
 --- !u!54 &7279451453283078268
 Rigidbody:

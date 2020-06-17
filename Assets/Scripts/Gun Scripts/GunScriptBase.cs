@@ -276,6 +276,7 @@ public class GunScriptBase : MonoBehaviour
                     overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
                     OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
                     ovc.damage = dmg * 6;
+                    ovc.modApp = this.modApp;
                     ovc.myID = player.playerID;
                     for (int i = 0; i < x; i++)
                     {
@@ -294,7 +295,6 @@ public class GunScriptBase : MonoBehaviour
                     overlapper.transform.localEulerAngles += player.transform.localEulerAngles;
                     OverlapChecker ovc = overlapper.GetComponent<OverlapChecker>();
                     ovc.damage = dmg;
-                    ovc.burst = this.bloodBurst;
                     ovc.modApp = this.modApp;
                     ovc.myID = player.playerID;
                     for (int i = 0; i < x; i++)

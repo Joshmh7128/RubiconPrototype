@@ -17,7 +17,7 @@ public class InfoTracker : MonoBehaviour
     public int maxArmor = 0;
     private int tempMaxArmor;
     public bool dead = false;
-    public bool damagedThisFrame = false;
+    public bool overlappedThisFrame = false;
 
     public Image hpBar;
     public Text hpText;
@@ -58,9 +58,9 @@ public class InfoTracker : MonoBehaviour
 
     private void Update()
     {
-        if(damagedThisFrame)
+        if(overlappedThisFrame)
         {
-            damagedThisFrame = false;
+            overlappedThisFrame = false;
         }
         int ammo = myPlayer._weaponSystems.mag;
         reloadPrompt.GetComponent<Animator>().SetInteger("ammo", ammo);
@@ -174,7 +174,7 @@ public class InfoTracker : MonoBehaviour
 
     public void TakeDamage(int taken)
     {
-        if(!damagedThisFrame)
+        if(!overlappedThisFrame)
         {
             if (armor > 0)
             {
@@ -225,7 +225,6 @@ public class InfoTracker : MonoBehaviour
                     redAnim.Play("redFlash");
                 }
             }
-            damagedThisFrame = true;
         }
         
            
