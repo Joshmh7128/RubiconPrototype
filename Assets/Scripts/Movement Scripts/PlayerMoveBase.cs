@@ -50,13 +50,13 @@ public class PlayerMoveBase
             inputVector.y -= 1;
         }
 
-        /*
+        
         if (Input.GetKey(KeyCode.W))
         {
             // for playtesting without a controller
             inputVector.z += 1;
         }
-        */
+        
 
         inputVector = player.transform.TransformDirection(inputVector);
 
