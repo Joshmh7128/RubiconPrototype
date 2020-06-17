@@ -161,12 +161,17 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator LoadAsyncOperation()
     {
-        tipText.text = RandomTip();
         yield return new WaitForSeconds(0.5f);
         if (WhichScene.SceneToLoad != null)
         {
             gameLevel = SceneManager.LoadSceneAsync(WhichScene.SceneToLoad);
             gameLevel.allowSceneActivation = true;
+
+            while(gameLevel.progress < 1)
+            {
+                progressBar.fillAmount = gameLevel.progress;
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 
