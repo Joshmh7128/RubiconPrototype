@@ -19,7 +19,7 @@ public class OverlapChecker : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Breakable"))
         {
-            other.GetComponent<BreakableObject>().TakeDamage(damage);
+            other.GetComponent<BreakableObject>().TakeDamage(40);
             Destroy(this.gameObject);
         }
         else if(other.gameObject.CompareTag("Player"))
