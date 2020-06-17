@@ -17,6 +17,7 @@ public class InfoTracker : MonoBehaviour
     public int maxArmor = 0;
     private int tempMaxArmor;
     public bool dead = false;
+    public bool damagedThisFrame = false;
 
     public Image hpBar;
     public Text hpText;
@@ -57,6 +58,10 @@ public class InfoTracker : MonoBehaviour
 
     private void Update()
     {
+        if(damagedThisFrame)
+        {
+            damagedThisFrame = false;
+        }
         int ammo = myPlayer._weaponSystems.mag;
         reloadPrompt.GetComponent<Animator>().SetInteger("ammo", ammo);
         /*
@@ -169,55 +174,60 @@ public class InfoTracker : MonoBehaviour
 
     public void TakeDamage(int taken)
     {
-        if (armor > 0)
+        if(!damagedThisFrame)
         {
-            int temp = taken;
-            taken -= armor;
-            armor -= temp;
-            if (taken <= 0)
+            if (armor > 0)
             {
-                taken = 0;
-                if (armor > 0)
+                int temp = taken;
+                taken -= armor;
+                armor -= temp;
+                if (taken <= 0)
                 {
-                    armorText.text = armor.ToString();
-                    armorAmount.fillAmount = (float)armor / tempMaxArmor;
-                }
-                else
-                {
-                    armor = 0;
-                    armorText.text = "";
-                    armorBar.fillAmount = 0f;
-                    armorBar.gameObject.SetActive(false);
+                    taken = 0;
+                    if (armor > 0)
+                    {
+                        armorText.text = armor.ToString();
+                        armorAmount.fillAmount = (float)armor / tempMaxArmor;
+                    }
+                    else
+                    {
+                        armor = 0;
+                        armorText.text = "";
+                        armorBar.fillAmount = 0f;
+                        armorBar.gameObject.SetActive(false);
+                    }
                 }
             }
-        }
 
-        if(taken > 0 && hp > 0)
-        {
-            armor = 0;
-            armorText.text = "";
-            armorAmount.fillAmount = (float)armor / tempMaxArmor;
-            armorBar.gameObject.SetActive(false);
-            hp -= taken;
-            if (hp <= 0 && !dead)
+            if (taken > 0 && hp > 0)
             {
-                hpBar.fillAmount = 0;
-                dead = true;
-                Die();
-            }
-            else if (hp > 0)
-            {
-                int exKey = Random.Range(1, 101);
-                if (exKey >= (103 - taken))
+                armor = 0;
+                armorText.text = "";
+                armorAmount.fillAmount = (float)armor / tempMaxArmor;
+                armorBar.gameObject.SetActive(false);
+                hp -= taken;
+                if (hp <= 0 && !dead)
                 {
-                    rm.sm.PlaySound("exclamation");
+                    hpBar.fillAmount = 0;
+                    dead = true;
+                    Die();
                 }
-                hpBar.fillAmount = (float)hp / maxHP;
-                int displayHP = (int)hp;
-                hpText.text = displayHP.ToString() + " / " + maxHP.ToString();
-                redAnim.Play("redFlash");
+                else if (hp > 0)
+                {
+                    int exKey = Random.Range(1, 101);
+                    if (exKey >= (103 - taken))
+                    {
+                        rm.sm.PlaySound("exclamation");
+                    }
+                    hpBar.fillAmount = (float)hp / maxHP;
+                    int displayHP = (int)hp;
+                    hpText.text = displayHP.ToString() + " / " + maxHP.ToString();
+                    redAnim.Play("redFlash");
+                }
             }
+            damagedThisFrame = true;
         }
+        
            
     }
 
