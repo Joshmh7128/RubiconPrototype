@@ -9,7 +9,7 @@ public class OverlapChecker : MonoBehaviour
 
     private void Start()
     {
-        Destroy(this.gameObject, 0.05f);
+        //Destroy(this.gameObject, 0.05f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -17,14 +17,14 @@ public class OverlapChecker : MonoBehaviour
         if(other.gameObject.CompareTag("Breakable"))
         {
             other.GetComponent<BreakableObject>().TakeDamage(damage);
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
         else if(other.gameObject.CompareTag("Player"))
         {
             if(other.GetComponent<InfoTracker>().id != myID)
             {
                 other.GetComponent<InfoTracker>().TakeDamage(damage);
-                Destroy(this.gameObject);
+                //Destroy(this.gameObject);
             }
         }
     }
