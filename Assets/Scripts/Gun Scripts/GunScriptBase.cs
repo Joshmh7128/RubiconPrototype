@@ -192,7 +192,7 @@ public class GunScriptBase : MonoBehaviour
         }
 
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-        if ((rewiredPlayer.GetAxis("FireTrigger") > 0.1f || Input.GetKeyDown(KeyCode.Mouse0)) && Time.time > nextFire && !isLocked)
+        if (rewiredPlayer.GetAxis("FireTrigger") > 0.1f && Time.time > nextFire && !isLocked)
 		{
 
         #region
@@ -362,7 +362,7 @@ public class GunScriptBase : MonoBehaviour
 
         #endregion
 
-        if ((rewiredPlayer.GetButton("Reload") || Input.GetKeyDown(KeyCode.R)) && mag < magSize)
+        if (rewiredPlayer.GetButton("Reload") && mag < magSize)
 		{
 			mag = 0;
 			player.StartCoroutine(Reload());

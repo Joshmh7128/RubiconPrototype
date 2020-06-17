@@ -22,9 +22,10 @@ public class CameraControllerBase
 
 	public void FixedUpdate()
 	{
-        
+        /*
 		rotAroundX += Input.GetAxis("Mouse Y") * player.Xsensitivity;
 		rotAroundY += Input.GetAxis("Mouse X") * player.Ysensitivity;
+        */
         
 
 		rotAroundX += rewiredPlayer.GetAxis("LookHorizontalX") * -player.Xsensitivity;
