@@ -10196,6 +10196,8 @@ MonoBehaviour:
   leave: {fileID: 8300000, guid: 5eceda603fb729040aa09c42664abe9e, type: 3}
   fade: {fileID: 701433965}
   tutorialBack: {fileID: 1804391918}
+  tutorialPrev: {fileID: 1900719209}
+  tutorialNext: {fileID: 1512623453}
   tutorialSlides:
   - {fileID: 1859530887}
   - {fileID: 348954168}
@@ -23684,10 +23686,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1512623453}
+    m_SelectOnDown: {fileID: 1512623453}
     m_SelectOnLeft: {fileID: 1804391918}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 1512623453}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.509434, g: 0, b: 0, a: 1}
@@ -29577,8 +29579,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1804391918}
+    m_SelectOnDown: {fileID: 1804391918}
     m_SelectOnLeft: {fileID: 1900719209}
     m_SelectOnRight: {fileID: 1512623453}
   m_Transition: 1

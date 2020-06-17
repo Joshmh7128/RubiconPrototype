@@ -72,6 +72,8 @@ public class MainMenuManager : MonoBehaviour
     public AudioClip leave;
     public GameObject fade;
     public Button tutorialBack;
+    public Button tutorialPrev;
+    public Button tutorialNext;
     private int tutorialIndex = 0;
     public GameObject[] tutorialSlides;
 
@@ -112,6 +114,8 @@ public class MainMenuManager : MonoBehaviour
         fullscreenToggle.onClick.AddListener(ToggleFullscreen);
         resetAudioButton.onClick.AddListener(ResetDefaults);
         tutorialBack.onClick.AddListener(ToggleTutorial);
+        tutorialPrev.onClick.AddListener(PreviousSlide);
+        tutorialNext.onClick.AddListener(NextSlide);
 
         // add the hover checks
 
@@ -431,16 +435,59 @@ public class MainMenuManager : MonoBehaviour
             depthOfField.active = false;
             foreach (GameObject obj in hideWhenTutorial)
             {
-                obj.SetActive(!obj.activeInHierarchy);
+                obj.SetActive(true);
             }
         }
         if(tutorialActive)
         {
             tutorialBack.Select();
+            tutorialSlides[0].GetComponent<Animator>().Play("slideIn");
+            tutorialPrev.interactable = false;
         }
         else
         {
             tutorialButton.Select();
+            tutorialPrev.interactable = true;
+            tutorialNext.interactable = true;
+        }
+        tutorialIndex = 0;
+    }
+
+    public void PreviousSlide()
+    {
+        if(tutorialIndex > 0)
+        {
+            tutorialSlides[tutorialIndex].GetComponent<Animator>().Play("slideOut");
+            tutorialIndex--;
+            tutorialSlides[tutorialIndex].GetComponent<Animator>().Play("slideIn");
+        }
+        if (tutorialIndex == 0)
+        {
+            tutorialPrev.interactable = false;
+            tutorialBack.Select();
+        }
+        if (tutorialIndex == tutorialSlides.Length - 2)
+        {
+            tutorialNext.interactable = true;
+        }
+    }
+
+    public void NextSlide()
+    {
+        if (tutorialIndex < (tutorialSlides.Length - 1))
+        {
+            tutorialSlides[tutorialIndex].GetComponent<Animator>().Play("slideOut");
+            tutorialIndex++;
+            tutorialSlides[tutorialIndex].GetComponent<Animator>().Play("slideIn");
+        }
+        if(tutorialIndex == 1)
+        {
+            tutorialPrev.interactable = true;
+        }
+        if (tutorialIndex == tutorialSlides.Length - 1)
+        {
+            tutorialNext.interactable = false;
+            tutorialBack.Select();
         }
     }
 
