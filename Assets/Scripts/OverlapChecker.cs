@@ -12,7 +12,7 @@ public class OverlapChecker : MonoBehaviour
 
     private void Start()
     {
-        Destroy(this.gameObject, 0.01f);
+        Destroy(this.gameObject, 0.05f);
     }
 
     private void OnTriggerEnter(Collider other)
