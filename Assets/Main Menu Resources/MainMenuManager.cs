@@ -440,7 +440,7 @@ public class MainMenuManager : MonoBehaviour
         }
         if(tutorialActive)
         {
-            tutorialBack.Select();
+            tutorialNext.Select();
             tutorialSlides[0].GetComponent<Animator>().Play("slideIn");
             tutorialPrev.interactable = false;
         }
@@ -457,9 +457,9 @@ public class MainMenuManager : MonoBehaviour
     {
         if(tutorialIndex > 0)
         {
-            tutorialSlides[tutorialIndex].GetComponent<Animator>().Play("slideOut");
+            tutorialSlides[tutorialIndex].GetComponent<Animator>().Play("slideBackOut");
             tutorialIndex--;
-            tutorialSlides[tutorialIndex].GetComponent<Animator>().Play("slideIn");
+            tutorialSlides[tutorialIndex].GetComponent<Animator>().Play("slideBackIn");
         }
         if (tutorialIndex == 0)
         {
