@@ -95,8 +95,8 @@ public class MainMenuManager : MonoBehaviour
         uicam.depth = 0;
 
         // on click listeners
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         optionsActive = false;
         tutorialActive = false;
         optionsButton.onClick.AddListener(OptionsMenuToggle);
@@ -308,7 +308,7 @@ public class MainMenuManager : MonoBehaviour
             else
             {
                 startGame.interactable = false;
-                backToMode.Select();
+                //backToMode.Select();
             }
         }
         else if(players4readyToJoin)
@@ -320,7 +320,7 @@ public class MainMenuManager : MonoBehaviour
             else
             {
                 startGame.interactable = false;
-                backToMode.Select();
+                //backToMode.Select();
             }
         }
     }
@@ -440,13 +440,13 @@ public class MainMenuManager : MonoBehaviour
         }
         if(tutorialActive)
         {
-            tutorialNext.Select();
+            //tutorialNext.Select();
             tutorialSlides[0].GetComponent<Animator>().Play("slideIn");
             tutorialPrev.interactable = false;
         }
         else
         {
-            tutorialButton.Select();
+            //tutorialButton.Select();
             tutorialPrev.interactable = true;
             tutorialNext.interactable = true;
         }
@@ -464,7 +464,7 @@ public class MainMenuManager : MonoBehaviour
         if (tutorialIndex == 0)
         {
             tutorialPrev.interactable = false;
-            tutorialBack.Select();
+            //tutorialBack.Select();
         }
         if (tutorialIndex == tutorialSlides.Length - 2)
         {
@@ -487,7 +487,7 @@ public class MainMenuManager : MonoBehaviour
         if (tutorialIndex == tutorialSlides.Length - 1)
         {
             tutorialNext.interactable = false;
-            tutorialBack.Select();
+            //tutorialBack.Select();
         }
     }
 
@@ -502,11 +502,11 @@ public class MainMenuManager : MonoBehaviour
         }
         if(optionsActive)
         {
-            resetAudioButton.Select();
+            //resetAudioButton.Select();
         }
         else
         {
-            optionsButton.Select();
+            //optionsButton.Select();
         }
     }
 
@@ -519,7 +519,7 @@ public class MainMenuManager : MonoBehaviour
             obj.SetActive(false);
         }
         creditsPage.SetActive(true);
-        creditsBack.Select();
+        //creditsBack.Select();
     }
 
     public void StartPlay()
@@ -545,7 +545,7 @@ public class MainMenuManager : MonoBehaviour
         {
             obj.SetActive(true);
         }
-        pButton.Select();
+        //pButton.Select();
         if(players2readyToJoin)
         {
             foreach (GameObject obj in showJoin2p)
@@ -577,7 +577,7 @@ public class MainMenuManager : MonoBehaviour
             obj.SetActive(false);
         }
         creditsPage.SetActive(false);
-        playButton.Select();
+        //playButton.Select();
     }
 
     public void Join2p()
@@ -591,7 +591,7 @@ public class MainMenuManager : MonoBehaviour
         {
             obj.SetActive(true);
         }
-        backToMode.Select();
+        //backToMode.Select();
         startGame.interactable = false;
         players2readyToJoin = true;
     }
@@ -607,7 +607,7 @@ public class MainMenuManager : MonoBehaviour
         {
             obj.SetActive(true);
         }
-        backToMode.Select();
+        //backToMode.Select();
         startGame.interactable = false;
         players4readyToJoin = true;
     }
