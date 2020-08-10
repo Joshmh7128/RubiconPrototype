@@ -88,13 +88,13 @@ public class InfoTracker : MonoBehaviour
             rm.PauseGame();
         }
 
-        if(rewiredPlayer.GetButton("LeftBumper") && rm.isPaused && !rm.isOver)
+        if(rewiredPlayer.GetButton("Unpause") && rm.isPaused && !rm.isOver)
         {
             rm.isPaused = false;
             rm.ResumeGame();
         }
 
-        if(rewiredPlayer.GetButton("RightBumper") && rm.isPaused)
+        if(rewiredPlayer.GetButton("ToMenu") && rm.isPaused)
         {
             Time.timeScale = 1;
             SceneManager.LoadScene("NewMainMenu");
