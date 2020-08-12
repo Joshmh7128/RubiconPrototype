@@ -41,6 +41,7 @@ public class MainMenuManager : MonoBehaviour
     public Button fourJoin;
     public Button backToMode;
     public Button startGame;
+    public Button discordButton;
     public GameObject optionsContainer;
     public GameObject tutorialContainer;
     public bool optionsActive;
@@ -116,6 +117,7 @@ public class MainMenuManager : MonoBehaviour
         tutorialBack.onClick.AddListener(ToggleTutorial);
         tutorialPrev.onClick.AddListener(PreviousSlide);
         tutorialNext.onClick.AddListener(NextSlide);
+        discordButton.onClick.AddListener(OpenDiscord);
 
         // add the hover checks
 
@@ -489,6 +491,11 @@ public class MainMenuManager : MonoBehaviour
             tutorialNext.interactable = false;
             //tutorialBack.Select();
         }
+    }
+
+    public void OpenDiscord()
+    {
+        Application.OpenURL("https://discord.gg/vTVVpyD");
     }
 
     public void OptionsMenuToggle()
