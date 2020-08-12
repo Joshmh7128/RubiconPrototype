@@ -10336,6 +10336,8 @@ MonoBehaviour:
   - {fileID: 1961441120}
   - {fileID: 20613886}
   - {fileID: 1254807735}
+  - {fileID: 838906378}
+  - {fileID: 2063974906}
   hideWhenTutorial:
   - {fileID: 172719630}
   - {fileID: 729253204}
