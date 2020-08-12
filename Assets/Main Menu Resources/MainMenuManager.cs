@@ -42,6 +42,7 @@ public class MainMenuManager : MonoBehaviour
     public Button backToMode;
     public Button startGame;
     public Button discordButton;
+    public Button twitterButton;
     public GameObject optionsContainer;
     public GameObject tutorialContainer;
     public bool optionsActive;
@@ -118,6 +119,7 @@ public class MainMenuManager : MonoBehaviour
         tutorialPrev.onClick.AddListener(PreviousSlide);
         tutorialNext.onClick.AddListener(NextSlide);
         discordButton.onClick.AddListener(OpenDiscord);
+        twitterButton.onClick.AddListener(OpenTwitter);
 
         // add the hover checks
 
@@ -496,6 +498,11 @@ public class MainMenuManager : MonoBehaviour
     public void OpenDiscord()
     {
         Application.OpenURL("https://discord.gg/vTVVpyD");
+    }
+
+    public void OpenTwitter()
+    {
+        Application.OpenURL("https://twitter.com/PyrebugStudios");
     }
 
     public void OptionsMenuToggle()
