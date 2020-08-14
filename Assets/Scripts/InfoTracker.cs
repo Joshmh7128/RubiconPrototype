@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public class InfoTracker : MonoBehaviour
 {
@@ -54,6 +55,13 @@ public class InfoTracker : MonoBehaviour
         id = myPlayer.playerID;
         rm = GameObject.FindGameObjectWithTag("Manager").GetComponent<RoundManager>();
         rewiredPlayer = Rewired.ReInput.players.GetPlayer(myPlayer.playerID - 1);
+        ReInput.ControllerPreDisconnectEvent += OnControllerPreDisconnect;
+    }
+
+    void OnControllerPreDisconnect(ControllerStatusChangedEventArgs args)
+    {
+        rm.isPaused = true;
+        rm.PauseGame();
     }
 
     private void Update()
