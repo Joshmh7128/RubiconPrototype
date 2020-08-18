@@ -81,7 +81,7 @@ public class SceneLoader : MonoBehaviour
                 tip = "Disoriented by the omnidirectional puzzle cube? Check your gyroscope at the bottom center of your HUD.";
                 break;
             case 18:
-                tip = "The Machine Gun has a very high rate of fire, so keep an eye on your ammo so you don't have to reload in the middle of a firefight.";
+                tip = "The Machine Gun has a very high rate of fire, so keep an eye on your magazine.";
                 break;
             case 19:
                 tip = "The Grenade Launcher is the only weapon whose projectiles are affected by gravity, so lead your shots accordingly.";
@@ -150,10 +150,10 @@ public class SceneLoader : MonoBehaviour
                 tip = "The Third Power would like to remind you to only consume news media from state-approved outlets. Don't worry, we're winning the war!";
                 break;
             case 41:
-                tip = "It's almost election season! Encourage your family and friends to vote correctly. You wouldn't want anything to happen to them, would you?";
+                tip = "It's almost election season! Encourage your family & friends to vote correctly. You wouldn't want anything to happen to them, would you?";
                 break;
             case 42:
-                tip = "The Announcer is a dear friend of Supreme Leader Rhombo Hedron himself! Be sportsmanlike at all times to show your respect. It's for your own good.";
+                tip = "The Announcer is a dear friend of Supreme Leader Rhombo Hedron himself! For your own good, be sportsmanlike at all times.";
                 break;
         }
         return tip;
