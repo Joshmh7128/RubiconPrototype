@@ -42,9 +42,10 @@ public class ProjectileScript : MonoBehaviour
             GameObject hitObj = hit.collider.gameObject;
             if (hitObj.CompareTag("Player"))
             {
-                if (hitObj.GetComponent<InfoTracker>().id != myID)
+                InfoTracker it = hitObj.GetComponent<InfoTracker>();
+                if (it.id != myID && !it.dead)
                 {
-                    hitObj.GetComponent<InfoTracker>().TakeDamage((int)(dmg * dmgMult));
+                    it.TakeDamage((int)(dmg * dmgMult));
                     Instantiate(burst, transform.position, Quaternion.identity);
                     modApp.VampCheck((int)(dmg * dmgMult));
                 }
