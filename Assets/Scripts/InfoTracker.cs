@@ -19,6 +19,9 @@ public class InfoTracker : MonoBehaviour
     private int tempMaxArmor;
     public bool dead = false;
     public bool overlappedThisFrame = false;
+    private Renderer thisRend;
+    public Material deadMat;
+    private Material baseMat;
 
     public Image hpBar;
     public Text hpText;
@@ -36,6 +39,8 @@ public class InfoTracker : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
+        thisRend = GetComponent<MeshRenderer>();
+        baseMat = thisRend.material;
         playerCanvas.enabled = true;
         hp = maxHP;
         hpText.text = hp.ToString() + " / " + maxHP.ToString();
@@ -243,6 +248,7 @@ public class InfoTracker : MonoBehaviour
     {
         Hide();
         redAnim.Play("redDead");
+        thisRend.material = deadMat;
         rm.updateScore(id);
     }
 
@@ -255,6 +261,7 @@ public class InfoTracker : MonoBehaviour
     {
         playerCanvas.transform.Find("ToHide").gameObject.SetActive(true);
         dead = false;
+        thisRend.material = baseMat;
         redAnim.Play("redIdle");
         hp = maxHP;
         hpBar.fillAmount = 1;

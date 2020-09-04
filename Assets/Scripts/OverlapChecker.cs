@@ -25,7 +25,7 @@ public class OverlapChecker : MonoBehaviour
         else if(other.gameObject.CompareTag("Player"))
         {
             InfoTracker it = other.GetComponent<InfoTracker>();
-            if (it.id != myID)
+            if (it.id != myID && !it.dead)
             {
                 it.TakeDamage(damage);
                 it.overlappedThisFrame = true;
