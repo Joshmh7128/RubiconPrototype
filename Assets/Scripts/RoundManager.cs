@@ -501,12 +501,24 @@ public class RoundManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        Player1Cam.GetComponent<PlayerController>().enabled = true;
-        Player2Cam.GetComponent<PlayerController>().enabled = true;
-        if(players == 4)
+        if(!Player1.GetComponent<InfoTracker>().dead)
         {
-            Player3Cam.GetComponent<PlayerController>().enabled = true;
-            Player4Cam.GetComponent<PlayerController>().enabled = true;
+            Player1Cam.GetComponent<PlayerController>().enabled = true;
+        }
+        if (!Player2.GetComponent<InfoTracker>().dead)
+        {
+            Player2Cam.GetComponent<PlayerController>().enabled = true;
+        }
+        if (players == 4)
+        {
+            if (!Player3.GetComponent<InfoTracker>().dead)
+            {
+                Player3Cam.GetComponent<PlayerController>().enabled = true;
+            }
+            if (!Player4.GetComponent<InfoTracker>().dead)
+            {
+                Player4Cam.GetComponent<PlayerController>().enabled = true;
+            }
         }
         depthOfField.active = false;
         PauseMenu.SetActive(false);
