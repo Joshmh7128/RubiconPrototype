@@ -10,7 +10,7 @@ namespace Rewired.Demos {
     using System.Collections;
     using System.Collections.Generic;
     using Rewired;
-
+    /*
     [AddComponentMenu("")]
     [RequireComponent(typeof(GUITexture))]
     public class TouchJoystickExample : MonoBehaviour {
@@ -39,7 +39,7 @@ namespace Rewired.Demos {
         /*
          * Currently unused.
         private float fingerDownTime;
-        */
+        
         private float firstDeltaTime;
 
         // TouchJoystick graphic 
@@ -259,7 +259,7 @@ namespace Rewired.Demos {
                             /*
                              * Currently unused.
                             fingerDownTime = Time.time;
-                            */
+                            
                         }
 
                         lastFingerId = tFingerId;
@@ -286,7 +286,7 @@ namespace Rewired.Demos {
                             Override the tap count with what the iOS SDK reports if it is greater.
                             This is a workaround, since the iOS SDK does not currently track taps
                             for multiple touches.
-                        */
+                        
                         if(tTapCount > tapCount) {
                             tapCount = tTapCount;
                         }
@@ -351,5 +351,5 @@ namespace Rewired.Demos {
             public Vector2 min = Vector2.zero;
             public Vector2 max = Vector2.zero;
         }
-    }
+    }*/
 }

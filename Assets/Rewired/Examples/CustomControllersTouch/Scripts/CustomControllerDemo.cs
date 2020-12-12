@@ -17,6 +17,7 @@ namespace Rewired.Demos {
      * This example creates two on-screen thumb pads which will control the two characters. You can use the mouse to control
      * the thumb pads if you do not have a touch screen.
     */
+    /*
 
     [AddComponentMenu("")]
     [RequireComponent(typeof(Demos.TouchControllerExample))]
@@ -160,5 +161,5 @@ namespace Rewired.Demos {
             return buttonValues[index];
         }
 
-    }
+    }*/
 }

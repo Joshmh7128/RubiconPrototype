@@ -10,7 +10,7 @@ namespace Rewired.Demos {
 
     [AddComponentMenu("")]
     public class TouchControllerExample : MonoBehaviour {
-        public TouchJoystickExample[] joysticks;
-        public TouchButtonExample[] buttons;
+         // public TouchJoystickExample[] joysticks;
+        // public TouchButtonExample[] buttons;
     }
 }
