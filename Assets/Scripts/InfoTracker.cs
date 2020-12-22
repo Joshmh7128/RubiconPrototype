@@ -262,6 +262,10 @@ public class InfoTracker : MonoBehaviour
         playerCanvas.transform.Find("ToHide").gameObject.SetActive(true);
         dead = false;
         thisRend.material = baseMat;
+        if(myPlayer.modApp.stealth)
+        {
+            thisRend.material = myPlayer.modApp.invisPlayer;
+        }
         redAnim.Play("redIdle");
         hp = maxHP;
         hpBar.fillAmount = 1;

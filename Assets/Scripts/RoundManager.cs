@@ -595,8 +595,8 @@ public class RoundManager : MonoBehaviour
 
         if (players == 4)
         {
-            Player3Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player1Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
-            Player4Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player2Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+            Player3Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player3Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
+            Player4Cam.GetComponent<PlayerController>()._weaponSystems.mag = Player4Cam.GetComponent<PlayerController>()._weaponSystems.magSize;
             Player3Cam.GetComponent<PlayerController>().enabled = true;
             Player4Cam.GetComponent<PlayerController>().enabled = true;
             Player3.GetComponent<Rigidbody>().useGravity = false;
